@@ -615,6 +615,33 @@
     .final-cta { padding: 80px 16px 60px; }
     .final-cta h2 { font-size: clamp(2rem, 8vw, 3.5rem); }
     footer { padding: 28px 16px; }
+
+    /* ASCENT CARDS — vertical stack on mobile */
+    .ascent-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 6px !important;
+      perspective: none !important;
+    }
+    .ascent-grid .ascent-card {
+      min-height: auto !important;
+      align-self: auto !important;
+      border-radius: 8px !important;
+      border-left: 4px solid rgba(245,245,240,0.2) !important;
+    }
+    .ascent-grid .ascent-inner {
+      justify-content: flex-start !important;
+      padding: 20px 16px !important;
+    }
+    .ascent-grid .ascent-title {
+      font-size: 1.6rem !important;
+    }
+    .ascent-grid .ascent-card:hover {
+      transform: none !important;
+    }
+    .ascent-grid .ascent-context {
+      font-size: 0.78rem !important;
+    }
   }
 </style>
 <!-- Meta Pixel Code -->
@@ -644,7 +671,7 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
     <span class="nav-brand-text">Matt Chenard</span>
   </a>
   <div class="nav-links">
-    <a href="https://form.typeform.com/to/vP787Q9P" class="nav-cta">Apply Now</a>
+    <a href="https://linktw.in/QSIDqK" class="nav-cta">Apply Now</a>
   </div>
 </nav>
 
@@ -655,7 +682,7 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
   <h1>Become a <em>Hero</em><br>at Home.</h1>
   <p class="hero-sub">You've built a successful business. Now build the discipline, presence, and faith to match. so your family sees the best version of you, not the leftovers.</p>
   <div class="hero-actions">
-    <a href="https://form.typeform.com/to/vP787Q9P" class="btn-primary">Apply Now</a>
+    <a href="https://linktw.in/QSIDqK" class="btn-primary">Apply Now</a>
     <p class="hero-meta">Small group only · New cohort every 4 weeks · 5 spots left</p>
   </div>
   <div class="hero-proof">
@@ -681,7 +708,7 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
     <div class="pain-item-light stagger"><div class="pain-num">04</div><p><strong class="pain-headline">Successful, but unanchored.</strong><br>You've built the business. But discipline in the rest of your life? That's a different story.</p></div>
   </div>
 </section>
-  <div class="section-cta" style="background: var(--white);"><a href="https://form.typeform.com/to/vP787Q9P" class="btn-primary" style="background: var(--black); color: var(--white);">Apply Now</a></div>
+  <div class="section-cta" style="background: var(--white);"><a href="https://linktw.in/QSIDqK" class="btn-primary" style="background: var(--black); color: var(--white);">Apply Now</a></div>
 
 <!-- GUIDE (DARK) -->
 <section class="s-dark" id="program">
@@ -701,7 +728,7 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
-  <div class="section-cta" style="background: var(--black);"><a href="https://form.typeform.com/to/vP787Q9P" class="btn-primary">Apply Now</a></div>
+  <div class="section-cta" style="background: var(--black);"><a href="https://linktw.in/QSIDqK" class="btn-primary">Apply Now</a></div>
 
 
 <!-- PROMISE (WHITE) -->
@@ -730,12 +757,10 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
-  <div class="section-cta" style="background: var(--white);"><a href="https://form.typeform.com/to/vP787Q9P" class="btn-primary" style="background: var(--black); color: var(--white);">Apply Now</a></div>
-
 <!-- CTA BAND -->
 <div class="cta-band">
   <h3>2,200+ on the Waitlist. 40+ Men Already on the Mission.</h3>
-  <a href="https://form.typeform.com/to/vP787Q9P" class="btn-primary">Apply Now</a>
+  <a href="https://linktw.in/QSIDqK" class="btn-primary">Apply Now</a>
 </div>
 
 <!-- FRAMEWORK (DARK) -->
@@ -753,7 +778,7 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
     <div class="week-row stagger"><div class="week-num">Weeks 5 – 6</div><div class="week-content"><h3>Routines — Build Your Systems</h3><p>You don't rise to the level of your goals — you fall to the level of your systems. Design the daily and weekly rhythms that make consistency automatic.</p></div></div>
   </div>
 </section>
-<div class="section-cta" style="background: var(--black);"><a href="https://form.typeform.com/to/vP787Q9P" class="btn-primary">Apply Now</a></div>
+<div class="section-cta" style="background: var(--black);"><a href="https://linktw.in/QSIDqK" class="btn-primary">Apply Now</a></div>
 
 <!-- PHASE 2: THE ASCENT (LIGHT) -->
 <section class="s-light">
@@ -767,7 +792,7 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
 
   <!-- ASCENT STAGES -->
   <div class="reveal" style="margin-top: 48px;">
-    <div style="display:grid; grid-template-columns: repeat(5,1fr); gap: 2px; perspective: 1000px;">
+    <div class="ascent-grid" style="display:grid; grid-template-columns: repeat(5,1fr); gap: 2px; perspective: 1000px;">
       <div class="ascent-card" style="--card-color:#3a6b8a; align-self: end; min-height: 240px;">
         <div class="ascent-inner">
           <div class="ascent-num">1</div>
@@ -834,7 +859,8 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
     <p style="color:var(--mid-text); margin-bottom:40px; letter-spacing:1px; font-size:0.8rem; text-transform:uppercase;">Creating Separation Between Time Invested and Money Earned</p>
 
     <!-- GAP CHART: SVG lines only + HTML text overlays (no SVG text = no stretching) -->
-    <div style="position:relative; border:1px solid rgba(0,0,0,0.08); border-radius:4px; background:#F0F0EA; overflow:hidden;">
+    <div class="gap-chart-outer" style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
+    <div style="min-width:480px; position:relative; border:1px solid rgba(0,0,0,0.08); border-radius:4px; background:#F0F0EA; overflow:hidden;">
       <!-- Stage labels row -->
       <div style="display:grid; grid-template-columns:repeat(5,1fr); border-bottom:1px solid rgba(0,0,0,0.08);">
         <div style="padding:10px 8px; text-align:center; font-size:0.55rem; letter-spacing:2px; text-transform:uppercase; color:#999; border-right:1px solid rgba(0,0,0,0.06);">Founder</div>
@@ -871,10 +897,11 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
         </div>
       </div>
     </div>
+    </div>
 
     <p style="margin-top:20px; color:var(--mid-text); font-size:0.82rem;">More money, less time. True lifestyle freedom. Not to lay on a beach, but to steward well and be on mission all the days of your life.</p>
     <div style="text-align:center; margin-top:48px;">
-      <a href="https://form.typeform.com/to/vP787Q9P" class="btn-primary" style="background:var(--black); color:var(--white);">Apply Now</a>
+      <a href="https://linktw.in/QSIDqK" class="btn-primary" style="background:var(--black); color:var(--white);">Apply Now</a>
     </div>
   </div>
 </section>
@@ -895,7 +922,7 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
     <div class="included-item stagger"><div class="included-dot"></div><div><h4>Workout Track</h4><p>A complete training plan to get in great physical shape. Physical discipline fuels every other area.</p></div></div>
   </div>
 </section>
-  <div class="section-cta" style="background: var(--black);"><a href="https://form.typeform.com/to/vP787Q9P" class="btn-primary">Apply Now</a></div>
+  <div class="section-cta" style="background: var(--black);"><a href="https://linktw.in/QSIDqK" class="btn-primary">Apply Now</a></div>
 
 <!-- TESTIMONIALS (DARK). FEATURED LAYOUT -->
 <section class="s-dark-alt" id="results">
@@ -976,7 +1003,7 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
-  <div class="section-cta" style="background: var(--dark-gray);"><a href="https://form.typeform.com/to/vP787Q9P" class="btn-primary">Apply Now</a></div>
+  <div class="section-cta" style="background: var(--dark-gray);"><a href="https://linktw.in/QSIDqK" class="btn-primary">Apply Now</a></div>
 
 
 
@@ -1005,7 +1032,7 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
 <!-- CTA BAND 2 -->
 <div class="cta-band">
   <h3>470+ Applications. Small Group Intake Open.</h3>
-  <a href="https://form.typeform.com/to/vP787Q9P" class="btn-primary">Apply Now</a>
+  <a href="https://linktw.in/QSIDqK" class="btn-primary">Apply Now</a>
 </div>
 
 <!-- FIT CHECK (DARK) -->
@@ -1032,7 +1059,7 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
     </ul></div>
   </div>
 </section>
-  <div class="section-cta" style="background: var(--black);"><a href="https://form.typeform.com/to/vP787Q9P" class="btn-primary">Apply Now</a></div>
+  <div class="section-cta" style="background: var(--black);"><a href="https://linktw.in/QSIDqK" class="btn-primary">Apply Now</a></div>
 
 <!-- GUARANTEE (DARK ALT) -->
 <section class="s-dark-alt">
@@ -1044,7 +1071,7 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
-  <div class="section-cta" style="background: var(--dark-gray);"><a href="https://form.typeform.com/to/vP787Q9P" class="btn-primary">Apply Now</a></div>
+  <div class="section-cta" style="background: var(--dark-gray);"><a href="https://linktw.in/QSIDqK" class="btn-primary">Apply Now</a></div>
 
 <!-- ABOUT (WHITE) -->
 <section class="s-light" id="about">
@@ -1087,7 +1114,7 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
     <div class="about-stat stagger"><span class="about-stat-num">2,200+</span><span class="about-stat-label">On the Waitlist</span></div>
   </div>
 </section>
-  <div class="section-cta" style="background: var(--white);"><a href="https://form.typeform.com/to/vP787Q9P" class="btn-primary" style="background: var(--black); color: var(--white);">Apply Now</a></div>
+  <div class="section-cta" style="background: var(--white);"><a href="https://linktw.in/QSIDqK" class="btn-primary" style="background: var(--black); color: var(--white);">Apply Now</a></div>
 
 
 
@@ -1101,7 +1128,7 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
-<div class="section-cta" style="background: var(--black); text-align: center;"><a href="https://form.typeform.com/to/vP787Q9P" class="btn-primary">Apply Now</a></div>
+<div class="section-cta" style="background: var(--black); text-align: center;"><a href="https://linktw.in/QSIDqK" class="btn-primary">Apply Now</a></div>
 
 <!-- FINAL CTA -->
 <section class="final-cta">
@@ -1109,7 +1136,7 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
     <p class="section-tag">Don't Wait</p>
     <h2 class="section-title">The Gap Won't Close<br>on Its Own.</h2>
     <p class="section-desc">It closes when you commit to a system, get accountability, and do the work. That's what we do here. Let's go.</p>
-    <a href="https://form.typeform.com/to/vP787Q9P" class="btn-primary">Apply Now</a>
+    <a href="https://linktw.in/QSIDqK" class="btn-primary">Apply Now</a>
     <div><span class="spots-badge">Small Group Only · Next Cohort Starts Soon · 5 Spots</span></div>
   </div>
 </section>
@@ -1129,7 +1156,7 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
 
 <!-- Track Apply Now button clicks as Lead events -->
 <script>
-  document.querySelectorAll('a[href*="typeform.com"]').forEach(function(btn) {
+  document.querySelectorAll('a[href*="linktw.in"]').forEach(function(btn) {
     btn.addEventListener('click', function() {
       fbq('track', 'Lead');
     });
