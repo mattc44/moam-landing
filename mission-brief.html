@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mission Brief™ — 30-Minute Strategy Session with Matt Chenard</title>
+<meta name="description" content="One 30-minute session with Matt Chenard. Your business, your blind spots, your next move. 10 spots per month.">
+<meta property="og:title" content="The Mission Brief™ — Matt Chenard">
+<meta property="og:description" content="One 30-minute session. Your business, your blind spots, your next move.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://manonmission.ca/mission-brief">
+<meta property="og:image" content="https://manonmission.ca/apple-touch-icon.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0A0A0A;
+    --white: #F5F5F0;
+    --off-white: #E8E8E2;
+    --sage: #7B9E8E;
+    --sage-hover: #8FB3A1;
+    --sage-dark: #5E806F;
+    --gray: #999;
+    --mid-text: #555;
+    --light-text: #666;
+    --dark-gray: #141414;
+    --card-dark: #111;
+    --card-light: #E0E0DA;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 48px;
+    background: rgba(10,10,10,0.9);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(245,245,240,0.05);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-brand img { width: 34px; height: 34px; border-radius: 0px; object-fit: cover; }
+  .nav-brand-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.45rem; letter-spacing: 4px; color: var(--white); }
+  .nav-links { display: flex; align-items: center; gap: 36px; }
+  .nav-link { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); text-decoration: none; transition: color 0.3s; }
+  .nav-link:hover { color: var(--white); }
+  .nav-cta { background: var(--sage); color: var(--white); padding: 11px 30px; font-weight: 700; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease; }
+  .nav-cta:hover { background: var(--sage-hover); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(123,158,142,0.35); }
+
+  /* BUTTONS */
+  .btn-primary { display: inline-block; background: var(--sage); color: var(--white); padding: 18px 48px; font-weight: 700; font-size: 0.8rem; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease; position: relative; overflow: hidden; }
+  .btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); transition: left 0.5s ease; }
+  .btn-primary:hover::before { left: 100%; }
+  .btn-primary:hover { background: var(--sage-hover); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(123,158,142,0.35); letter-spacing: 3px; }
+  .btn-dark { display: inline-block; background: var(--black); color: var(--white); border: 1px solid rgba(245,245,240,0.15); padding: 18px 48px; font-weight: 700; font-size: 0.8rem; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease; position: relative; overflow: hidden; }
+  .btn-dark:hover { border-color: rgba(245,245,240,0.4); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.4); letter-spacing: 3px; }
+
+  /* SECTIONS */
+  section { padding: 120px 48px; }
+  .s-dark { background: var(--black); color: var(--white); }
+  .s-dark-alt { background: var(--dark-gray); color: var(--white); }
+  .s-light { background: var(--off-white); color: var(--black); }
+  .section-tag { font-size: 0.68rem; letter-spacing: 5px; text-transform: uppercase; color: var(--sage); font-weight: 600; margin-bottom: 20px; }
+  .s-light .section-tag { color: var(--sage-dark); }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.6rem, 5.5vw, 4.5rem); line-height: 1.02; max-width: 700px; margin-bottom: 24px; }
+  .section-desc { font-size: 1.05rem; line-height: 1.75; color: var(--gray); max-width: 600px; margin-bottom: 16px; }
+  .s-light .section-desc { color: var(--light-text); }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  /* SECTION CTA BAND */
+  .section-cta { padding: 0 48px 56px; }
+  .cta-band { background: var(--sage); padding: 56px 48px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+  .cta-band h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--white); max-width: 500px; }
+  .cta-band .btn-primary { background: var(--black); color: var(--white); flex-shrink: 0; }
+  .cta-band .btn-primary:hover { background: #1a1a1a; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 140px 48px 80px;
+    position: relative;
+  }
+  .hero-bg {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(ellipse at 20% 50%, rgba(123,158,142,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-tag { font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; color: var(--sage); margin-bottom: 32px; font-weight: 600; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
+  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4.2rem, 10vw, 9.5rem); line-height: 0.92; letter-spacing: -1px; max-width: 860px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
+  .hero h1 em { font-style: normal; color: var(--sage); }
+  .hero-sub { font-size: 1.15rem; line-height: 1.75; color: var(--gray); max-width: 520px; margin-top: 36px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
+  .hero-actions { display: flex; align-items: center; gap: 20px; margin-top: 48px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s; }
+  .hero-meta { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,245,240,0.35); margin-top: 20px; opacity: 0; animation: fadeUp 0.8s ease forwards 1s; }
+  .spots-badge { display: inline-block; margin-top: 0; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--sage); border: 1px solid rgba(123,158,142,0.25); padding: 10px 24px; }
+
+  /* WHO IT'S FOR — pain grid */
+  .pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 56px; }
+  .pain-item-light { background: var(--card-light); padding: 36px 32px; border-left: 3px solid transparent; transition: border-left-color 0.3s, background 0.3s; }
+  .pain-item-light:hover { border-left-color: var(--sage); background: rgba(123,158,142,0.07); }
+  .pain-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; color: rgba(139,58,58,0.25); margin-bottom: 10px; }
+  .pain-headline { font-weight: 700; color: var(--black); font-size: 1rem; }
+  .pain-item-light p { font-size: 0.95rem; line-height: 1.7; color: var(--mid-text); }
+
+  /* THE SESSION — step rows */
+  .step-container { margin-top: 56px; border-top: 1px solid rgba(245,245,240,0.06); }
+  .step-row { display: grid; grid-template-columns: 180px 1fr; border-bottom: 1px solid rgba(245,245,240,0.04); }
+  .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 2px; color: var(--sage); padding: 32px; display: flex; align-items: flex-start; border-right: 1px solid rgba(245,245,240,0.04); }
+  .step-content { padding: 32px 40px; }
+  .step-content h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.5px; margin-bottom: 10px; color: var(--white); }
+  .step-content p { font-size: 0.97rem; line-height: 1.75; color: var(--gray); }
+
+  /* INVESTMENT — pricing cards */
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 56px; }
+  .pricing-card { background: var(--card-light); padding: 48px 40px; border-top: 3px solid transparent; transition: border-top-color 0.3s, transform 0.3s; position: relative; }
+  .pricing-card:hover { transform: translateY(-4px); }
+  .pricing-card.featured { border-top-color: var(--sage); }
+  .pricing-card .price { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; line-height: 1; color: var(--black); margin-bottom: 8px; }
+  .pricing-card .price-label { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--sage-dark); font-weight: 600; margin-bottom: 24px; }
+  .pricing-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--black); margin-bottom: 16px; }
+  .pricing-card p { font-size: 0.95rem; line-height: 1.75; color: var(--mid-text); margin-bottom: 32px; }
+  .pricing-card .btn-primary { background: var(--sage); }
+  .pricing-card .btn-dark { background: transparent; border: 1px solid rgba(0,0,0,0.15); color: var(--black); }
+  .pricing-card .btn-dark:hover { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.3); color: var(--black); box-shadow: none; }
+  .pricing-note { margin-top: 40px; max-width: 680px; font-size: 0.92rem; line-height: 1.75; color: var(--light-text); border-left: 3px solid var(--sage-dark); padding: 24px 28px; background: rgba(94,128,111,0.05); }
+
+  /* ABOUT ROW */
+  .about-strip { display: flex; align-items: center; gap: 56px; max-width: 900px; margin-top: 56px; }
+  .about-strip img { width: 96px; height: 96px; object-fit: cover; border-radius: 0; flex-shrink: 0; }
+  .about-strip-text h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 1px; color: var(--white); margin-bottom: 8px; }
+  .about-strip-text p { font-size: 0.93rem; line-height: 1.7; color: var(--gray); }
+
+  /* FINAL CTA */
+  .final-cta { text-align: center; padding: 120px 48px; background: var(--black); }
+  .final-cta .section-tag { margin-bottom: 24px; }
+  .final-cta h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 6rem); line-height: 0.95; max-width: 700px; margin: 0 auto 32px; }
+  .final-cta p { font-size: 1rem; color: var(--gray); max-width: 480px; margin: 0 auto 48px; line-height: 1.7; }
+  .final-cta-actions { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .spots-row { margin-top: 28px; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(245,245,240,0.3); }
+
+  /* DIVIDER BAND */
+  .divider-band { background: var(--dark-gray); padding: 28px 48px; display: flex; align-items: center; justify-content: center; border-top: 1px solid rgba(245,245,240,0.04); border-bottom: 1px solid rgba(245,245,240,0.04); }
+  .divider-band p { font-size: 0.72rem; letter-spacing: 4px; text-transform: uppercase; color: rgba(245,245,240,0.3); text-align: center; }
+  .divider-band strong { color: var(--sage); }
+
+  /* FOOTER */
+  footer { padding: 40px 48px; border-top: 1px solid rgba(245,245,240,0.05); display: flex; justify-content: space-between; align-items: center; background: var(--black); }
+  footer p { font-size: 0.72rem; color: rgba(245,245,240,0.25); letter-spacing: 1px; }
+
+  /* ANIMATIONS */
+  .reveal { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .pain-item-light, .pricing-card, .step-row {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    nav { padding: 14px 24px; }
+    .nav-links .nav-link { display: none; }
+    section { padding: 100px 28px; }
+    .section-cta { padding: 0 24px 48px; }
+    .hero { padding: 120px 24px 64px; }
+    .hero h1 { font-size: clamp(3rem, 8vw, 6rem); }
+    .pain-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .step-row { grid-template-columns: 1fr; }
+    .step-num { border-right: none; border-bottom: 1px solid rgba(245,245,240,0.04); padding: 18px 20px; }
+    .step-content { padding: 20px; }
+    .cta-band { flex-direction: column; text-align: center; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .about-strip { flex-direction: column; align-items: flex-start; gap: 28px; }
+    .final-cta-actions { flex-direction: column; align-items: center; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 12px 16px; }
+    .nav-brand-text { font-size: 1.1rem; letter-spacing: 2px; }
+    .nav-brand img { width: 28px; height: 28px; }
+    .nav-brand { gap: 10px; }
+    .nav-cta { padding: 8px 16px; font-size: 0.65rem; }
+    section { padding: 56px 16px; }
+    .section-cta { padding: 0 16px 40px; }
+    .hero { padding: 100px 16px 40px; }
+    .hero h1 { font-size: clamp(2.8rem, 12vw, 4.5rem); line-height: 0.95; }
+    .hero-sub { font-size: 1rem; }
+    .section-title { font-size: clamp(2rem, 7vw, 3rem); }
+    .pain-item-light { padding: 28px 20px; }
+    .pricing-card { padding: 36px 24px; }
+    .pricing-card .price { font-size: 3rem; }
+    .btn-primary, .btn-dark { width: 100%; text-align: center; padding: 18px 24px; }
+    .final-cta { padding: 80px 16px 60px; }
+    .final-cta h2 { font-size: clamp(2.2rem, 9vw, 3.5rem); }
+    .cta-band { padding: 32px 16px; }
+    .cta-band h3 { font-size: 1.2rem; }
+    footer { padding: 28px 16px; flex-direction: column; gap: 8px; text-align: center; }
+    .divider-band { padding: 24px 16px; }
+    .about-strip { gap: 20px; }
+    .about-strip img { width: 72px; height: 72px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://manonmission.ca" class="nav-brand">
+    <img src="/apple-touch-icon.png" alt="MOAM">
+    <span class="nav-brand-text">Matt Chenard</span>
+  </a>
+  <div class="nav-links">
+    <a href="https://manonmission.ca" class="nav-link">Home</a>
+    <a href="#book" class="nav-cta">Book a Session</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero s-dark">
+  <div class="hero-bg"></div>
+  <p class="hero-tag">One-on-One &nbsp;·&nbsp; 30 Minutes &nbsp;·&nbsp; 10 Spots Per Month</p>
+  <h1>The <em>Mission</em><br>Brief™</h1>
+  <p class="hero-sub">One session with Matt. Your business, your blind spots, your next move. You walk out with one specific thing to execute. Not a list, not a framework, not a pitch for a program.</p>
+  <div class="hero-actions">
+    <a href="#book" class="btn-primary">Book for $250</a>
+    <a href="#book" class="btn-dark">Book for $500</a>
+  </div>
+  <p class="hero-meta">$250 with recording permission &nbsp;·&nbsp; $500 fully private</p>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider-band">
+  <p><strong>10 spots available each month.</strong> &nbsp;When they're gone, they're gone until next month.</p>
+</div>
+
+<!-- WHO IT'S FOR -->
+<section class="s-light">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">Who It's For</p>
+      <h2 class="section-title">Already Moving.<br>Need Clarity.</h2>
+      <p class="section-desc">This isn't a starting point. It's for Christian entrepreneurial men who already have momentum. Business is running, life is in motion. But something's off and you can't quite put your finger on what.</p>
+    </div>
+    <div class="pain-grid reveal">
+      <div class="pain-item-light stagger">
+        <div class="pain-num">01</div>
+        <p><strong class="pain-headline">You know what to work on. You just can't pick.</strong><br>Multiple projects, multiple priorities. No clear constraint. So you work on all of them and move none of them.</p>
+      </div>
+      <div class="pain-item-light stagger">
+        <div class="pain-num">02</div>
+        <p><strong class="pain-headline">Business is growing but your life system hasn't kept up.</strong><br>Wins at work. Bleeding everywhere else. The gap between your revenue and your actual quality of life keeps widening.</p>
+      </div>
+      <div class="pain-item-light stagger">
+        <div class="pain-num">03</div>
+        <p><strong class="pain-headline">You want a second set of eyes. Not a sales call.</strong><br>Not looking for a coach to commit to. Just someone who's been around enough to call it straight in 30 minutes.</p>
+      </div>
+      <div class="pain-item-light stagger">
+        <div class="pain-num">04</div>
+        <p><strong class="pain-headline">You need a decision made, not a program sold to you.</strong><br>One conversation, one clear answer. You came in scattered. You leave with the one thing that changes everything else.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SESSION -->
+<section class="s-dark">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">The Session</p>
+      <h2 class="section-title">What Happens<br>in 30 Minutes</h2>
+      <p class="section-desc">No intake form. No slides. No program overview. Matt comes in cold, asks the right questions fast, and helps you see what you're too close to see.</p>
+    </div>
+    <div class="step-container reveal">
+      <div class="step-row stagger">
+        <div class="step-num">Map It</div>
+        <div class="step-content">
+          <h3>Where You Are Right Now</h3>
+          <p>We cover your current state across business and life. Revenue, time, margin, family, faith, fitness. What's working, what's costing you the most, and where the pressure is actually coming from. This takes less time than you think. Most men are self-aware. They just haven't said it out loud to anyone.</p>
+        </div>
+      </div>
+      <div class="step-row stagger">
+        <div class="step-num">Name It</div>
+        <div class="step-content">
+          <h3>The Real Constraint</h3>
+          <p>Not the surface problem. The thing underneath it. Matt has worked with enough driven men to recognize patterns fast. The bottleneck is usually not what it looks like from the inside. He'll name it, you'll know it's right, and the rest of the session gets easier.</p>
+        </div>
+      </div>
+      <div class="step-row stagger">
+        <div class="step-num">Move</div>
+        <div class="step-content">
+          <h3>One Clear Next Action</h3>
+          <p>You leave with one specific thing to execute. Not a list. Not a framework to study later. One move that changes the trajectory of everything else if you actually do it. That's the whole point of the session.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section class="s-light" id="invest">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">The Investment</p>
+      <h2 class="section-title">Two Options.<br>Same Session.</h2>
+      <p class="section-desc">The work is identical. The only difference is what happens to the session after it ends.</p>
+    </div>
+    <div class="pricing-grid reveal">
+      <div class="pricing-card featured stagger">
+        <div class="price">$250</div>
+        <div class="price-label">Content Session</div>
+        <h3>Record for Content</h3>
+        <p>Matt may record the session and use a clip, quote, or edited version for content. Anonymous by default. Your name and details stay private unless you choose otherwise. You get the same 30 minutes, the same work, the same outcome.</p>
+        <a href="#book" class="btn-primary">Book This Session</a>
+      </div>
+      <div class="pricing-card stagger">
+        <div class="price">$500</div>
+        <div class="price-label">Private Session</div>
+        <h3>Fully Confidential</h3>
+        <p>Nothing is recorded. Matt doesn't reference the session anywhere, for anything. Full confidentiality, no exceptions. If your situation is sensitive, this is the right choice.</p>
+        <a href="#book" class="btn-dark">Book This Session</a>
+      </div>
+    </div>
+    <div class="pricing-note reveal">
+      <strong>Why the difference in price?</strong> Matt is building a content library of real conversations with real men facing real problems. If your session can help someone else in the same position, that has value, and the discount reflects it. The session itself is the same either way. You're just deciding how it lives after.
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<section class="s-dark-alt">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">Your Guide</p>
+      <h2 class="section-title">Matt Chenard</h2>
+      <div class="about-strip">
+        <img src="/apple-touch-icon.png" alt="Matt Chenard">
+        <div class="about-strip-text">
+          <h4>Founder, Man on a Mission™</h4>
+          <p>Matt has worked with hundreds of Christian entrepreneurial men building discipline, presence, and momentum across faith, family, fitness, and business. He lost $1.2M and rebuilt. He's been through the good months and the hard ones. He knows what the pattern looks like before you say a word. The Mission Brief gives you 30 minutes of that without committing to anything else.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h3>10 Spots Each Month. No Waitlist. First Come.</h3>
+  <a href="#book" class="btn-primary">Book Your Session</a>
+</div>
+
+<!-- FINAL CTA / BOOK -->
+<section class="final-cta s-dark" id="book">
+  <p class="section-tag">Book Your Session</p>
+  <h2>Pick Your Session.<br>Grab a Spot.</h2>
+  <p>Both sessions are 30 minutes on Zoom. Come ready to talk about where you are. Matt handles the rest.</p>
+  <div class="final-cta-actions">
+    <a href="[BOOKING_LINK_250]" class="btn-primary">Book for $250 (Content)</a>
+    <a href="[BOOKING_LINK_500]" class="btn-dark">Book for $500 (Private)</a>
+  </div>
+  <p class="spots-row">10 spots per month &nbsp;·&nbsp; Sessions run on Zoom &nbsp;·&nbsp; 30 minutes</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Man on a Mission™ · Matt Chenard</p>
+  <p style="color: rgba(245,245,240,0.4);">Earn Your Dopamine.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
