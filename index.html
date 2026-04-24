@@ -1162,7 +1162,7 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
     data-layout="{'id':'POPUP'}"
     data-trigger-type="onClick"
     data-trigger-value=""
-    data-activation-type="activate"
+    data-activation-type="alwaysActivated"
     data-activation-value=""
     data-deactivation-type="neverDeactivate"
     data-deactivation-value=""
@@ -1176,15 +1176,19 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
 <script>
   function openMOAMForm() {
     if (typeof fbq === 'function') { fbq('track', 'Lead'); }
-    var iframe = document.getElementById('popup-1qn5GNNdABKz8MkEfd4n');
-    if (iframe) {
-      iframe.style.display = 'block';
-      iframe.style.position = 'fixed';
-      iframe.style.top = '0';
-      iframe.style.left = '0';
-      iframe.style.width = '100%';
-      iframe.style.height = '100%';
-      iframe.style.zIndex = '9999';
+    if (window.LeadConnector && window.LeadConnector.openForm) {
+      window.LeadConnector.openForm('1qn5GNNdABKz8MkEfd4n');
+    } else {
+      var iframe = document.getElementById('popup-1qn5GNNdABKz8MkEfd4n');
+      if (iframe) {
+        iframe.style.display = 'block';
+        iframe.style.position = 'fixed';
+        iframe.style.top = '0';
+        iframe.style.left = '0';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.zIndex = '9999';
+      }
     }
   }
 </script>
