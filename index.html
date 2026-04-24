@@ -1154,35 +1154,26 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
-<!-- GHL Popup Form -->
-<iframe
-    src="https://link.tmtmarketing.co/widget/form/1qn5GNNdABKz8MkEfd4n"
-    style="display:none;width:100%;height:100%;border:none;border-radius:3px"
-    id="popup-1qn5GNNdABKz8MkEfd4n"
-    data-layout="{'id':'POPUP'}"
-    data-trigger-type="alwaysShow"
-    data-trigger-value=""
-    data-activation-type="alwaysActivated"
-    data-activation-value=""
-    data-deactivation-type="neverDeactivate"
-    data-deactivation-value=""
-    data-form-name="Man on a Mission Application"
-    data-height="undefined"
-    data-layout-iframe-id="popup-1qn5GNNdABKz8MkEfd4n"
-    data-form-id="1qn5GNNdABKz8MkEfd4n"
-    title="Man on a Mission Application"
-></iframe>
-<script src="https://link.tmtmarketing.co/js/form_embed.js"></script>
+<!-- MOAM Application Modal -->
+<div id="moam-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:9999;justify-content:center;align-items:center;">
+  <div style="position:relative;width:90%;max-width:600px;height:80vh;background:#fff;border-radius:8px;overflow:hidden;">
+    <button onclick="closeMOAMForm()" style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:24px;cursor:pointer;z-index:10;color:#333;">✕</button>
+    <iframe src="https://link.tmtmarketing.co/widget/form/1qn5GNNdABKz8MkEfd4n" style="width:100%;height:100%;border:none;"></iframe>
+  </div>
+</div>
+
 <script>
   function openMOAMForm() {
     if (typeof fbq === 'function') { fbq('track', 'Lead'); }
-    if (window.LeadConnector && window.LeadConnector.openForm) {
-      window.LeadConnector.openForm('1qn5GNNdABKz8MkEfd4n');
-    } else {
-      var iframe = document.getElementById('popup-1qn5GNNdABKz8MkEfd4n');
-      if (iframe) { iframe.style.display = 'block'; }
-    }
+    var modal = document.getElementById('moam-modal');
+    modal.style.display = 'flex';
   }
+  function closeMOAMForm() {
+    document.getElementById('moam-modal').style.display = 'none';
+  }
+  window.addEventListener('click', function(e) {
+    if (e.target === document.getElementById('moam-modal')) { closeMOAMForm(); }
+  });
 </script>
 </body>
 </html>
