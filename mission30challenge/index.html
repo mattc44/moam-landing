@@ -203,8 +203,14 @@ ul{list-style:none}
 .freq-daily{background:rgba(123,158,142,.15);color:var(--sage-l)}
 .freq-week{background:rgba(123,158,142,.10);color:var(--sage)}
 .freq-mf{background:rgba(180,150,80,.12);color:#c8a84b}
-.habit-desc-wrap{max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .25s ease;opacity:0}
-.habit-row:hover .habit-desc-wrap{max-height:80px;opacity:1}
+.habit-toggle{background:none;border:1px solid rgba(255,255,255,.14);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;color:rgba(123,158,142,.7);cursor:pointer;flex-shrink:0;transition:border-color .2s,color .2s;padding:0}
+.habit-toggle svg{transition:transform .32s ease}
+.habit-row:hover .habit-toggle{border-color:rgba(123,158,142,.45);color:var(--sage)}
+.habit-row.open .habit-toggle{border-color:rgba(123,158,142,.55);color:var(--sage)}
+.habit-row.open .habit-toggle svg{transform:rotate(180deg)}
+.habit-desc-wrap{max-height:0;overflow:hidden;transition:max-height .38s ease,opacity .28s ease;opacity:0}
+.habit-row:hover .habit-desc-wrap,.habit-row.open .habit-desc-wrap{max-height:120px;opacity:1}
+.habit-row.open{background:rgba(123,158,142,.09)}
 .habit-desc{padding:0 36px 22px 88px;font-size:.875rem;line-height:1.72;color:var(--wm);font-family:var(--sans)}
 @media(max-width:768px){.habits-grid{grid-template-columns:1fr}.habit-desc{padding:0 24px 20px 24px}}
 
@@ -851,6 +857,16 @@ document.querySelectorAll('a[href="#start"]').forEach(el=>{
 
 // Cycling CTA hover
 const cycleLabels = ['Join here', 'Join here', 'Join here', 'Okay, go for it'];
+// Habits toggle — injects chevron button, handles tap/click
+document.querySelectorAll('.habit-row').forEach(row => {
+  const btn = document.createElement('button');
+  btn.className = 'habit-toggle';
+  btn.setAttribute('aria-label', 'Show description');
+  btn.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  row.querySelector('.habit-main').appendChild(btn);
+  btn.addEventListener('click', () => row.classList.toggle('open'));
+});
+
 document.querySelectorAll('.btn-cycle').forEach(btn => {
   let step = 0;
   const label = btn.querySelector('.btn-label');
