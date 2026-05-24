@@ -189,6 +189,26 @@ ul{list-style:none}
 .step-b{font-size:.9375rem;line-height:1.76;color:var(--bm)}
 
 /* ══════════════════════════════
+   4b. HABITS  (DARK)
+══════════════════════════════ */
+.habits-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:64px}
+.habit-row{display:flex;flex-direction:column;background:var(--ink-2);transition:background .22s;cursor:default}
+.habit-row:hover{background:rgba(123,158,142,.09)}
+.habit-main{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:28px 36px}
+.habit-left{display:flex;align-items:center;gap:20px}
+.habit-num{font-family:var(--display);font-size:28px;letter-spacing:.03em;color:rgba(123,158,142,.35);flex-shrink:0;width:32px}
+.habit-name{font-family:var(--sans);font-size:.9375rem;font-weight:600;color:var(--wt);line-height:1.3}
+.habit-cat{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--wx);margin-top:3px}
+.habit-freq{font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:2px;white-space:nowrap;flex-shrink:0}
+.freq-daily{background:rgba(123,158,142,.15);color:var(--sage-l)}
+.freq-week{background:rgba(123,158,142,.10);color:var(--sage)}
+.freq-mf{background:rgba(180,150,80,.12);color:#c8a84b}
+.habit-desc-wrap{max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .25s ease;opacity:0}
+.habit-row:hover .habit-desc-wrap{max-height:80px;opacity:1}
+.habit-desc{padding:0 36px 22px 88px;font-size:.875rem;line-height:1.72;color:var(--wm);font-family:var(--sans)}
+@media(max-width:768px){.habits-grid{grid-template-columns:1fr}.habit-desc{padding:0 24px 20px 24px}}
+
+/* ══════════════════════════════
    5. OFFER STACK  (DARK)
 ══════════════════════════════ */
 .offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:64px}
@@ -465,6 +485,107 @@ ul{list-style:none}
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
       <span class="note-b">$49/month · Cancel anytime</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 4b. HABITS — dark ══ -->
+<section class="sec d2">
+  <div class="wrap">
+    <div class="rule d2" data-r></div>
+    <div class="ey d2" data-r>The 8 Habits</div>
+    <h2 class="h2" style="margin-top:14px" data-r data-d="1">Here's Exactly<br>What You're<br>Building.</h2>
+
+    <div class="habits-grid" data-r data-d="2">
+
+      <div class="habit-row">
+        <div class="habit-main">
+          <div class="habit-left">
+            <div class="habit-num">01</div>
+            <div><div class="habit-name">Read Bible</div><div class="habit-cat">Spiritual</div></div>
+          </div>
+          <span class="habit-freq freq-daily">Daily</span>
+        </div>
+        <div class="habit-desc-wrap"><p class="habit-desc">The day that starts without scripture is a day you're leading from your own understanding. This keeps you anchored to something bigger than the pressure of the week.</p></div>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-main">
+          <div class="habit-left">
+            <div class="habit-num">02</div>
+            <div><div class="habit-name">Follow Nutrition Plan</div><div class="habit-cat">Physical</div></div>
+          </div>
+          <span class="habit-freq freq-daily">Daily</span>
+        </div>
+        <div class="habit-desc-wrap"><p class="habit-desc">You can't lead at your best on the wrong fuel. What you eat is a decision you make before the day even starts — and it shapes everything that follows.</p></div>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-main">
+          <div class="habit-left">
+            <div class="habit-num">03</div>
+            <div><div class="habit-name">30 Min Outside</div><div class="habit-cat">Mental</div></div>
+          </div>
+          <span class="habit-freq freq-daily">Daily</span>
+        </div>
+        <div class="habit-desc-wrap"><p class="habit-desc">Most men are overstimulated and under-recovered. Thirty minutes outside clears the noise, resets your head, and gives you back something screens never will.</p></div>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-main">
+          <div class="habit-left">
+            <div class="habit-num">04</div>
+            <div><div class="habit-name">Work Out</div><div class="habit-cat">Physical</div></div>
+          </div>
+          <span class="habit-freq freq-week">4×/week</span>
+        </div>
+        <div class="habit-desc-wrap"><p class="habit-desc">A strong body is evidence of a disciplined life. Four sessions a week is enough to build real strength and momentum without becoming another thing that falls off the calendar.</p></div>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-main">
+          <div class="habit-left">
+            <div class="habit-num">05</div>
+            <div><div class="habit-name">Morning Routine</div><div class="habit-cat">Professional</div></div>
+          </div>
+          <span class="habit-freq freq-mf">Mon–Fri</span>
+        </div>
+        <div class="habit-desc-wrap"><p class="habit-desc">The morning is the only time you own before the world takes over. Win it Monday through Friday and you'll be shocked how differently the rest of the day goes.</p></div>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-main">
+          <div class="habit-left">
+            <div class="habit-num">06</div>
+            <div><div class="habit-name">Date Night / Friends Hangout</div><div class="habit-cat">Relational</div></div>
+          </div>
+          <span class="habit-freq freq-week">1×/week</span>
+        </div>
+        <div class="habit-desc-wrap"><p class="habit-desc">The people you love need intentional time, not whatever's left over after work takes everything. Once a week, on purpose. It changes the whole relational climate at home.</p></div>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-main">
+          <div class="habit-left">
+            <div class="habit-num">07</div>
+            <div><div class="habit-name">Bible Study / Men's Group</div><div class="habit-cat">Spiritual</div></div>
+          </div>
+          <span class="habit-freq freq-week">1×/week</span>
+        </div>
+        <div class="habit-desc-wrap"><p class="habit-desc">You weren't designed to grow alone. Every strong man has men around him who tell him the truth. Iron sharpens iron — and isolation is where discipline goes to die.</p></div>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-main">
+          <div class="habit-left">
+            <div class="habit-num">08</div>
+            <div><div class="habit-name">Sabbath — Full Rest Day</div><div class="habit-cat">Spiritual</div></div>
+          </div>
+          <span class="habit-freq freq-week">1×/week</span>
+        </div>
+        <div class="habit-desc-wrap"><p class="habit-desc">One full day of rest is obedience, not laziness. It's also the most countercultural thing a driven man can do — and the men who do it consistently lead from a full tank.</p></div>
+      </div>
+
     </div>
   </div>
 </section>
