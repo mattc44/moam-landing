@@ -129,7 +129,7 @@ ul{list-style:none}
 /* ══════════════════════════════
    1. HERO
 ══════════════════════════════ */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:104px;position:relative;overflow:hidden;background:var(--ink);background-image:url('assets/hero-cold-plunge.jpg');background-size:cover;background-position:center right}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:104px;position:relative;overflow:hidden;background:var(--ink);background-image:url('/mission30challenge/assets/hero-cold-plunge.jpg');background-size:cover;background-position:center right}
 .hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.025;pointer-events:none;z-index:1}
 .hero-grad{position:absolute;inset:0;background:linear-gradient(to right,rgba(8,8,8,.82) 0%,rgba(8,8,8,.45) 55%,rgba(8,8,8,.15) 100%),linear-gradient(to bottom,transparent 38%,rgba(8,8,8,.88) 100%),radial-gradient(ellipse 55% 65% at 72% 28%,rgba(123,158,142,.11) 0%,transparent 65%);z-index:1}
 .hero-inner{position:relative;z-index:2;max-width:var(--max);margin:0 auto;padding:0 56px;width:100%}
@@ -290,7 +290,7 @@ ul{list-style:none}
 <!-- NAV -->
 <nav class="nav" id="nav">
   <a href="https://manonmission.ca" class="nav-logo">
-    <img src="assets/mission30-logo.png" alt="Mission 30" style="height:68px;width:auto">
+    <img src="/mission30challenge/assets/mission30-logo.png" alt="Mission 30" style="height:68px;width:auto">
   </a>
   <div class="nav-links">
     <a href="#start" class="nav-cta">Start Your 30 Days</a>
@@ -378,7 +378,7 @@ ul{list-style:none}
       <div class="guide-left" data-r>
         <!-- Swap src for actual photo path when deploying -->
         <img
-          src="assets/matt-deadlift.png"
+          src="/mission30challenge/assets/matt-deadlift.png"
           alt="Matt Chenard deadlifting"
           class="guide-photo"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
