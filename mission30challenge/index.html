@@ -123,8 +123,7 @@ ul{list-style:none}
 .nav-lk:hover{color:var(--wt)}
 .nav-cta{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:11px 24px;background:var(--sage);color:var(--ink);border-radius:2px;transition:background .2s}
 .nav-cta:hover{background:var(--sage-l)}
-.ham{display:none;flex-direction:column;gap:5px;cursor:pointer}
-.ham span{display:block;width:22px;height:1.5px;background:var(--wt)}
+.nav-mob-cta{display:none}
 
 /* ══════════════════════════════
    1. HERO
@@ -272,7 +271,8 @@ ul{list-style:none}
   :root{--pad:72px;--pad-xl:80px}
   .nav,.hero-inner,.wrap{padding-left:24px;padding-right:24px}
   .nav-links{display:none}
-  .ham{display:flex}
+  .nav-mob-cta{display:block;font-size:9px;padding:10px 14px}
+  .hero{padding-top:100px}
   .steps-grid,.t-grid,.path-grid,.prob-list,.success-list{grid-template-columns:1fr}
   .prob-item,.success-item{padding:22px 24px}
   .offer-price{flex-direction:column;align-items:flex-start;gap:32px}
@@ -296,9 +296,9 @@ ul{list-style:none}
     <img src="/mission30challenge/assets/mission30-logo.png" alt="Mission 30" style="height:68px;width:auto">
   </a>
   <div class="nav-links">
-    <a href="#start" class="nav-cta">Start Your 30 Days</a>
+    <a href="#start" class="nav-cta">Accept the Mission</a>
   </div>
-  <div class="ham" id="ham"><span></span><span></span><span></span></div>
+  <a href="#start" class="nav-cta nav-mob-cta">Accept the Mission</a>
 </nav>
 
 <!-- ══ 1. HERO — dark ══ -->
@@ -313,7 +313,7 @@ ul{list-style:none}
     </p>
     <div class="hero-ctas" data-r data-d="3">
       <a href="#start" class="btn btn-p" style="padding:17px 44px;font-size:12px">
-        Start Your 30 Days
+        Accept the Mission
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
       <a href="#how-it-works" class="btn btn-gw">See How It Works</a>
@@ -364,7 +364,7 @@ ul{list-style:none}
 
     <div class="cta-row" data-r>
       <a href="#start" class="btn btn-gb">
-        Start Your 30 Days
+        Accept the Mission
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
       <span class="note-b">$49/month · Cancel anytime</span>
@@ -421,7 +421,7 @@ ul{list-style:none}
 
     <div class="cta-row" data-r style="margin-top:52px">
       <a href="#start" class="btn btn-p btn-cycle" style="padding:17px 44px;font-size:12px">
-        <span class="btn-label">Start Your 30 Days</span>
+        <span class="btn-label">Accept the Mission</span>
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
       <span class="note-w">$49/month · Cancel anytime</span>
@@ -518,7 +518,7 @@ ul{list-style:none}
         <div class="price-terms">Month to month &nbsp;·&nbsp; No contracts &nbsp;·&nbsp; Cancel anytime</div>
       </div>
       <a href="#start" class="btn btn-p" style="padding:18px 52px;font-size:12px">
-        Start Your 30 Days
+        Accept the Mission
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -591,7 +591,7 @@ ul{list-style:none}
 
     <div class="cta-row" data-r style="margin-top:52px">
       <a href="#start" class="btn btn-p btn-cycle" style="padding:17px 44px;font-size:12px">
-        <span class="btn-label">Start Your 30 Days</span>
+        <span class="btn-label">Accept the Mission</span>
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
       <span class="note-w">$49/month · Cancel anytime</span>
@@ -613,7 +613,7 @@ ul{list-style:none}
 
     <div class="cta-row" data-r data-d="3">
       <a href="#start" class="btn btn-gb">
-        Start Your 30 Days
+        Accept the Mission
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
       <span class="note-b">$49/month · Cancel anytime</span>
@@ -653,7 +653,7 @@ ul{list-style:none}
 
     <div class="cta-row" data-r style="margin-top:52px">
       <a href="#start" class="btn btn-p btn-cycle" style="padding:17px 44px;font-size:12px">
-        <span class="btn-label">Start Your 30 Days</span>
+        <span class="btn-label">Accept the Mission</span>
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
       <span class="note-w">$49/month · Cancel anytime</span>
@@ -670,7 +670,7 @@ ul{list-style:none}
       <p class="final-sub" data-r data-d="2">You can join anytime. Track your habits, get on the leaderboard, build the system. You need 30 days on the leaderboard to qualify for the monthly prize.</p>
       <div data-r data-d="3">
         <a href="#start" class="btn btn-p" style="padding:18px 56px;font-size:12px">
-          Start Your 30 Days — $49/mo
+          Accept the Mission — $49/mo
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -725,7 +725,6 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 document.querySelectorAll('a[href="#start"]').forEach(el=>{
   el.addEventListener('click',e=>{e.preventDefault();openModal();});
 });
-document.getElementById('ham').addEventListener('click',openModal);
 
 // Cycling CTA hover
 const cycleLabels = ['Join here', 'Join here', 'Join here', 'Okay, go for it'];
