@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission 30 — 30 Days to Get Your Life Back in Order</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --ink:     #080808;
+  --ink-2:   #141414;
+  --ink-3:   #1C1C1C;
+  --snow:    #F8F7F3;
+  --snow-2:  #F1EFE9;
+  --snow-3:  #E9E6DE;
+
+  --wt:      #F4F4EF;
+  --wm:      rgba(244,244,239,.68);
+  --wx:      rgba(244,244,239,.42);
+
+  --bt:      #0F0F0E;
+  --bm:      rgba(15,15,14,.62);
+  --bx:      rgba(15,15,14,.38);
+
+  --sage:    #7B9E8E;
+  --sage-l:  #98B8A9;
+  --sage-d:  #4D7A69;
+  --sage-bg: rgba(123,158,142,.09);
+
+  --display: 'Bebas Neue', sans-serif;
+  --serif:   'Cormorant Garamond', Georgia, serif;
+  --sans:    'DM Sans', system-ui, sans-serif;
+
+  --max:     1200px;
+  --pad-xl:  130px;
+  --pad:     110px;
+  --pad-sm:  72px;
+}
+
+/* ─── RESET ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;background:var(--ink)}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+
+/* ─── SKINS ─── */
+.d {background:var(--ink);  color:var(--wt)}
+.d2{background:var(--ink-2);color:var(--wt)}
+.d3{background:var(--ink-3);color:var(--wt)}
+.l {background:var(--snow); color:var(--bt)}
+.l2{background:var(--snow-2);color:var(--bt)}
+.l3{background:var(--snow-3);color:var(--bt)}
+
+/* ─── LAYOUT ─── */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 56px}
+.sec{padding:var(--pad) 0}
+.sec-xl{padding:var(--pad-xl) 0}
+
+/* ─── RULE ─── */
+.rule{width:32px;height:1.5px;margin-bottom:22px}
+.d  .rule,.d2 .rule,.d3 .rule{background:var(--sage)}
+.l  .rule,.l2 .rule,.l3 .rule{background:var(--sage-d)}
+
+/* ─── EYEBROW ─── */
+.ey{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.d  .ey,.d2 .ey,.d3 .ey{color:var(--sage)}
+.l  .ey,.l2 .ey,.l3 .ey{color:var(--sage-d)}
+
+/* ─── DISPLAY HEADLINES ─── */
+.h1{font-family:var(--display);font-size:clamp(86px,12.5vw,168px);line-height:.86;letter-spacing:.01em;text-transform:uppercase}
+.h2{font-family:var(--display);font-size:clamp(52px,7vw,100px);line-height:.9;letter-spacing:.01em;text-transform:uppercase}
+.h3{font-family:var(--display);font-size:clamp(36px,4.5vw,62px);line-height:.94;letter-spacing:.02em;text-transform:uppercase}
+.h4{font-family:var(--display);font-size:clamp(22px,3vw,36px);line-height:1.05;letter-spacing:.03em;text-transform:uppercase}
+
+/* Cormorant — large decorative quotes ONLY */
+.pull{font-family:var(--serif);font-style:italic;font-size:clamp(1.75rem,3vw,2.6rem);line-height:1.45;font-weight:500}
+
+/* ─── BODY ─── */
+.body{font-family:var(--sans);font-size:1rem;line-height:1.78;font-weight:400}
+.body-lg{font-family:var(--sans);font-size:1.0625rem;line-height:1.78;font-weight:400}
+.d  .body,.d2 .body{color:var(--wm)}
+.d  .body-lg,.d2 .body-lg{color:var(--wm)}
+.l  .body,.l2 .body{color:var(--bm)}
+.l  .body-lg,.l2 .body-lg{color:var(--bm)}
+
+/* ─── BUTTONS ─── */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:15px 34px;border-radius:2px;border:none;cursor:pointer;transition:all .22s ease}
+.btn-p{background:var(--sage);color:var(--ink)}
+.btn-p:hover{background:var(--sage-l);transform:translateY(-1px)}
+.btn-gw{background:transparent;color:var(--wt);border:1px solid rgba(244,244,239,.26)}
+.btn-gw:hover{border-color:var(--sage);color:var(--sage)}
+.btn-gb{background:transparent;color:var(--bt);border:1px solid rgba(15,15,14,.22)}
+.btn-gb:hover{border-color:var(--sage-d);color:var(--sage-d)}
+.btn svg{transition:transform .2s ease}
+.btn:hover svg{transform:translateX(4px)}
+.cta-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:48px}
+.note-w{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--wx)}
+.note-b{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--bx)}
+
+/* ─── REVEAL ─── */
+[data-r]{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+[data-r].on{opacity:1;transform:translateY(0)}
+[data-d="1"]{transition-delay:.1s}[data-d="2"]{transition-delay:.2s}
+[data-d="3"]{transition-delay:.3s}[data-d="4"]{transition-delay:.4s}
+[data-d="5"]{transition-delay:.5s}[data-d="6"]{transition-delay:.6s}
+
+/* ══════════════════════════════
+   NAV
+══════════════════════════════ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;transition:background .3s,transform .3s}
+.nav.bg{background:rgba(8,8,8,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05)}
+.nav.up{transform:translateY(-100%)}
+.nav-logo{font-family:var(--display);font-size:18px;letter-spacing:.09em;text-transform:uppercase;color:var(--wt);display:flex;align-items:center;gap:10px}
+.nav-logo-text{display:flex;align-items:baseline;gap:0}
+.nav-logo em{color:var(--sage);font-style:normal}
+.nav-emblem{height:30px;width:auto;filter:brightness(0) invert(1);flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-lk{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--wx);transition:color .2s}
+.nav-lk:hover{color:var(--wt)}
+.nav-cta{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:11px 24px;background:var(--sage);color:var(--ink);border-radius:2px;transition:background .2s}
+.nav-cta:hover{background:var(--sage-l)}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.ham span{display:block;width:22px;height:1.5px;background:var(--wt)}
+
+/* ══════════════════════════════
+   1. HERO
+══════════════════════════════ */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:104px;position:relative;overflow:hidden;background:var(--ink);background-image:url('assets/hero-cold-plunge.jpg');background-size:cover;background-position:center right}
+.hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.025;pointer-events:none;z-index:1}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(to right,rgba(8,8,8,.82) 0%,rgba(8,8,8,.45) 55%,rgba(8,8,8,.15) 100%),linear-gradient(to bottom,transparent 38%,rgba(8,8,8,.88) 100%),radial-gradient(ellipse 55% 65% at 72% 28%,rgba(123,158,142,.11) 0%,transparent 65%);z-index:1}
+.hero-inner{position:relative;z-index:2;max-width:var(--max);margin:0 auto;padding:0 56px;width:100%}
+.hero-tag{display:flex;align-items:center;gap:12px;margin-bottom:32px}
+.hero-tagline{width:28px;height:1px;background:var(--sage)}
+.hero-h1{font-family:var(--display);font-size:clamp(52px,7vw,96px);line-height:.88;letter-spacing:.01em;text-transform:uppercase;margin-bottom:36px;color:var(--wt)}
+.hero-h1 .accent{color:var(--sage)}
+.hero-sub{font-family:var(--sans);font-size:1.125rem;line-height:1.74;color:var(--wm);max-width:520px;margin-bottom:48px;font-weight:400}
+.hero-ctas{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:52px}
+.hero-fine{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--wx)}
+.hero-fine span{color:var(--sage)}
+
+/* ══════════════════════════════
+   2. PROBLEM  (LIGHT)
+══════════════════════════════ */
+.prob-intro{max-width:680px;margin-bottom:64px}
+.prob-intro .body-lg{margin-top:20px}
+.prob-list{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-bottom:64px;background:rgba(15,15,14,.10)}
+.prob-item{display:flex;align-items:center;gap:20px;padding:28px 32px;background:var(--snow);transition:background .22s;cursor:default}
+.prob-item:hover{background:rgba(180,50,50,.05)}
+.prob-item:hover .prob-x{color:rgba(180,50,50,.95);transform:scale(1.1)}
+.prob-x{font-family:var(--display);font-size:24px;letter-spacing:.02em;color:rgba(180,50,50,.72);flex-shrink:0;width:28px;transition:color .2s,transform .2s}
+.prob-txt{font-size:.9375rem;line-height:1.6;color:var(--bt);font-weight:500}
+.prob-para{max-width:660px;margin-top:8px}
+
+/* ══════════════════════════════
+   3. GUIDE  (DARK)
+══════════════════════════════ */
+.guide-wrap{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:start}
+.guide-left{display:flex;flex-direction:column;gap:32px}
+.guide-photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;border-radius:2px;display:block}
+.guide-photo-placeholder{width:100%;aspect-ratio:4/5;background:var(--ink-2);border:1px solid rgba(255,255,255,.07);border-radius:2px;display:flex;align-items:center;justify-content:center;color:var(--wx);font-family:var(--sans);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.guide-bio{display:flex;flex-direction:column;gap:20px}
+.guide-bio p{font-size:.9375rem;line-height:1.82;color:var(--wm)}
+.guide-sig{padding-top:28px;border-top:1px solid rgba(255,255,255,.07)}
+.sig-name{font-family:var(--display);font-size:24px;letter-spacing:.05em;text-transform:uppercase;color:var(--wt)}
+.sig-ttl{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-top:6px}
+/* Testimonials in guide section */
+.guide-ts{display:flex;flex-direction:column;gap:24px;margin-top:52px}
+.guide-t{padding:32px 36px;background:var(--ink-3);border-left:2px solid var(--sage)}
+.guide-t-q{font-family:var(--serif);font-style:italic;font-size:clamp(1.1rem,1.8vw,1.35rem);line-height:1.65;font-weight:500;color:var(--wm);margin-bottom:14px}
+.guide-t-attr{font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--sage)}
+
+/* ══════════════════════════════
+   4. HOW IT WORKS  (LIGHT)
+══════════════════════════════ */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px}
+.step{padding:64px 52px 52px;background:var(--snow-3);position:relative;overflow:hidden;cursor:default;transition:background .25s}
+.step:hover{background:var(--snow-2)}
+.step-cta{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-d);margin-top:24px;opacity:0;transform:translateY(6px);transition:opacity .25s ease,transform .25s ease;text-decoration:none}
+.step-cta svg{transition:transform .2s ease}
+.step:hover .step-cta{opacity:1;transform:translateY(0)}
+.step:hover .step-cta svg{transform:translateX(3px)}
+.step-n{font-family:var(--display);font-size:96px;line-height:1;color:rgba(77,122,105,.12);letter-spacing:.02em;margin-bottom:20px}
+.step-t{font-family:var(--display);font-size:clamp(26px,3vw,38px);line-height:1.04;letter-spacing:.02em;text-transform:uppercase;margin-bottom:14px;color:var(--bt)}
+.step-b{font-size:.9375rem;line-height:1.76;color:var(--bm)}
+
+/* ══════════════════════════════
+   5. OFFER STACK  (DARK)
+══════════════════════════════ */
+.offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:64px}
+.offer-item{display:flex;align-items:flex-start;gap:20px;padding:48px 44px;background:var(--ink-2)}
+.offer-check{width:22px;height:22px;border-radius:50%;background:rgba(123,158,142,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px}
+.offer-check svg{color:var(--sage)}
+.offer-t{font-family:var(--display);font-size:22px;letter-spacing:.04em;text-transform:uppercase;color:var(--wt);margin-bottom:10px}
+.offer-b{font-size:.9rem;line-height:1.74;color:var(--wm)}
+.offer-price{margin-top:64px;padding:56px;background:var(--ink-2);display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap}
+.price-left{}
+.price-num{font-family:var(--display);font-size:clamp(64px,8vw,96px);line-height:1;letter-spacing:.02em;color:var(--wt)}
+.price-num span{color:var(--sage)}
+.price-terms{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--wx);margin-top:10px}
+
+/* ══════════════════════════════
+   6. SUCCESS STATE  (LIGHT)
+══════════════════════════════ */
+.success-list{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:64px 0;background:rgba(15,15,14,.10)}
+.success-item{display:flex;align-items:center;gap:20px;padding:28px 32px;background:var(--snow)}
+.success-check{width:20px;height:20px;border-radius:50%;background:rgba(77,122,105,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;color:var(--sage-d)}
+.success-txt{font-size:.9375rem;line-height:1.72;color:var(--bt);font-weight:500}
+
+/* ══════════════════════════════
+   7. TESTIMONIALS  (DARK)
+══════════════════════════════ */
+.t-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:64px}
+.t-card{padding:52px 48px;background:var(--ink-2);border-left:2px solid var(--sage);position:relative;overflow:hidden}
+.t-card::before{content:'\201C';font-family:Georgia,serif;font-size:160px;line-height:1;color:rgba(123,158,142,.05);position:absolute;top:4px;left:20px;pointer-events:none}
+.t-q{font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,1.8vw,1.3rem);line-height:1.68;font-weight:500;color:var(--wt);margin-bottom:20px;position:relative;z-index:1}
+.t-attr{font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sage)}
+
+/* ══════════════════════════════
+   8. NEGATIVE STAKES  (LIGHT)
+══════════════════════════════ */
+.stakes-inner{max-width:720px;margin-top:48px}
+.stakes-inner p{font-size:1.125rem;line-height:1.82;color:var(--bm)}
+.stakes-inner p + p{margin-top:24px}
+
+/* ══════════════════════════════
+   9. PATH FORWARD  (DARK)
+══════════════════════════════ */
+.path-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:64px}
+.path-card{padding:56px 44px;background:var(--ink-2);position:relative;overflow:hidden;border-top:2px solid transparent;transition:border-color .3s}
+.path-card:hover{border-top-color:var(--sage)}
+.path-period{font-family:var(--display);font-size:clamp(36px,4vw,56px);line-height:1;letter-spacing:.02em;color:var(--sage);margin-bottom:6px}
+.path-unit{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--wx);margin-bottom:28px;display:block}
+.path-b{font-size:.9rem;line-height:1.78;color:var(--wm)}
+
+/* ══════════════════════════════
+   10. FINAL CTA  (LIGHT)
+══════════════════════════════ */
+.final{text-align:center;padding:168px 0;position:relative;overflow:hidden}
+.final-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(123,158,142,.07) 0%,transparent 65%)}
+.final-inner{position:relative;z-index:2}
+.final-h{font-family:var(--display);font-size:clamp(62px,9.5vw,136px);line-height:.87;letter-spacing:.01em;text-transform:uppercase;margin-top:16px;margin-bottom:36px;color:var(--bt)}
+.final-sub{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2vw,1.6rem);line-height:1.62;color:var(--bm);max-width:480px;margin:0 auto 48px;font-weight:500}
+.final-fine{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--bx);margin-top:28px}
+.final-fine span{color:var(--sage-d)}
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+.footer{padding:56px 0 44px;border-top:1px solid rgba(255,255,255,.06)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.footer-brand{font-family:var(--display);font-size:16px;letter-spacing:.07em;text-transform:uppercase;color:var(--wx)}
+.footer-links{display:flex;align-items:center;gap:28px}
+.footer-lk{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--wx);transition:color .2s}
+.footer-lk:hover{color:var(--sage)}
+.footer-tag{font-family:var(--display);font-size:15px;letter-spacing:.09em;text-transform:uppercase;color:var(--sage)}
+.footer-copy{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--wx)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  .wrap{padding:0 36px}
+  .guide-wrap{grid-template-columns:1fr;gap:56px}
+  .steps-grid{grid-template-columns:1fr 1fr}
+  .offer-grid{grid-template-columns:1fr}
+  .path-grid{grid-template-columns:1fr 1fr}
+  .t-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  :root{--pad:72px;--pad-xl:80px}
+  .nav,.hero-inner,.wrap{padding-left:24px;padding-right:24px}
+  .nav-links{display:none}
+  .ham{display:flex}
+  .steps-grid,.t-grid,.path-grid,.prob-list,.success-list{grid-template-columns:1fr}
+  .prob-item,.success-item{padding:22px 24px}
+  .offer-price{flex-direction:column;align-items:flex-start;gap:32px}
+  .footer-inner{flex-direction:column;text-align:center}
+  .footer-links{flex-direction:column;gap:16px}
+}
+@media(max-width:480px){
+  .cta-row{flex-direction:column;align-items:flex-start}
+  .hero-ctas{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="https://manonmission.ca" class="nav-logo">
+    <img src="assets/mission30-logo.png" alt="Mission 30" style="height:72px;width:auto;filter:none">
+  </a>
+  <div class="nav-links">
+    <a href="#start" class="nav-cta">Start Your 30 Days</a>
+  </div>
+  <div class="ham" id="ham"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ══ 1. HERO — dark ══ -->
+<section class="hero d" id="start">
+  <div class="hero-grad"></div>
+  <div class="hero-inner">
+    <h1 class="hero-h1" data-r data-d="1">
+      Become a<br>consistent<br><span class="accent">leader</span><br>in 30 days.
+    </h1>
+    <p class="hero-sub" data-r data-d="2">
+      A 30-day challenge for Christian men who are done drifting and ready to lead in their faith, their family, their fitness, and their business. 8 habits. Live leaderboard. Monthly prizes. $49 a month, cancel anytime.
+    </p>
+    <div class="hero-ctas" data-r data-d="3">
+      <a href="#start" class="btn btn-p" style="padding:17px 44px;font-size:12px">
+        Start Your 30 Days
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#how-it-works" class="btn btn-gw">See How It Works</a>
+    </div>
+    <p class="hero-fine" data-r data-d="4">$49 / month &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; <span>Prize leaderboard resets the 1st</span></p>
+  </div>
+</section>
+
+<!-- ══ 2. PROBLEM — light ══ -->
+<section class="sec l">
+  <div class="wrap">
+    <div class="prob-intro" data-r>
+      <div class="rule l"></div>
+      <div class="ey l">The Problem</div>
+      <h2 class="h3" style="margin-top:14px;color:var(--bt)">You Know What You Should Be Doing. <span style="color:rgba(180,50,50,.85)">So Why Isn't It Happening?</span></h2>
+    </div>
+
+    <div class="prob-list" data-r>
+      <div class="prob-item">
+        <div class="prob-x">✕</div>
+        <div class="prob-txt">You start the week strong and fall off by Thursday</div>
+      </div>
+      <div class="prob-item">
+        <div class="prob-x">✕</div>
+        <div class="prob-txt">The gym is the first thing cut when the calendar fills up</div>
+      </div>
+      <div class="prob-item">
+        <div class="prob-x">✕</div>
+        <div class="prob-txt">Your faith gets Sunday morning if you're lucky</div>
+      </div>
+      <div class="prob-item">
+        <div class="prob-x">✕</div>
+        <div class="prob-txt">You're home but you're not really there</div>
+      </div>
+      <div class="prob-item">
+        <div class="prob-x">✕</div>
+        <div class="prob-txt">You've told yourself "this is the year" before</div>
+      </div>
+      <div class="prob-item">
+        <div class="prob-x">✕</div>
+        <div class="prob-txt">The business gets everything. Everything else gets what's left.</div>
+      </div>
+    </div>
+
+    <div class="prob-para" data-r>
+      <p class="body-lg l">You want to be the man who shows up everywhere. In his business. In the gym. In his faith. For his family. You know what that man looks like. You just keep putting off becoming him. Wanting it was never the problem. You just never had a system that could hold when life got hard.</p>
+    </div>
+
+    <div class="cta-row" data-r>
+      <a href="#start" class="btn btn-gb">
+        Start Your 30 Days
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <span class="note-b">$49/month · Cancel anytime</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 3. GUIDE — dark ══ -->
+<section class="sec d2">
+  <div class="wrap">
+    <div class="guide-wrap">
+
+      <!-- LEFT: Photo -->
+      <div class="guide-left" data-r>
+        <!-- Swap src for actual photo path when deploying -->
+        <img
+          src="assets/matt-deadlift.png"
+          alt="Matt Chenard deadlifting"
+          class="guide-photo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        >
+        <div class="guide-photo-placeholder" style="display:none">Photo — Matt Chenard</div>
+      </div>
+
+      <!-- RIGHT: Copy -->
+      <div>
+        <div class="rule d2" data-r></div>
+        <div class="ey d2" data-r>The Guide</div>
+        <h2 class="h2" style="margin-top:14px" data-r data-d="1">I Know<br>The Struggle.</h2>
+
+        <div class="guide-bio" style="margin-top:36px">
+          <p data-r data-d="2">One of my businesses is a gym I've been running for 13 years. Between 2020 and 2023 we went through 5 business openings and closures and 7 months total of not being able to use our space while still paying rent and expenses. We lost $1.2 million. I built this system because I needed something that would hold when everything was falling apart, not just when things were easy.</p>
+          <p data-r data-d="3">Show up consistently as a leader in business and life. I'm up before 5am. Cold plunge done. Bible read. The important work in my business handled. Present with my family. Working out consistently. Learning Brazilian Jiu Jitsu. A full day of rest every week. Over time, it stops feeling like a discipline and starts being a part of you. I've coached over 100 Christian entrepreneurs through the same thing. They all had the desire. What was missing was a system that could hold through the hard stretches. Mission 30 is 30 days to prove it to yourself.</p>
+        </div>
+
+        <div class="guide-sig" style="margin-top:44px" data-r data-d="4">
+          <div class="sig-name">Matt Chenard</div>
+          <div class="sig-ttl">Founder, Man on a Mission</div>
+        </div>
+
+        <div class="guide-ts" data-r data-d="5">
+          <div class="guide-t">
+            <p class="guide-t-q">"I'd been trying to build a consistent morning routine for five or six years. Having something I can actually check on and check off every single day — that's what finally made it stick."</p>
+            <div class="guide-t-attr">Man on a Mission Member</div>
+          </div>
+          <div class="guide-t">
+            <p class="guide-t-q">"When you have your priorities clear and you actually build a schedule that reflects them — that's when you feel a level of peace and confidence. Because you know you're doing what you're supposed to be doing."</p>
+            <div class="guide-t-attr">Man on a Mission Member</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cta-row" data-r style="margin-top:52px">
+      <a href="#start" class="btn btn-p btn-cycle" style="padding:17px 44px;font-size:12px">
+        <span class="btn-label">Start Your 30 Days</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <span class="note-w">$49/month · Cancel anytime</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 4. HOW IT WORKS — light ══ -->
+<section class="sec l2" id="how-it-works">
+  <div class="wrap">
+    <div class="rule l2" data-r></div>
+    <div class="ey l2" data-r>The Process</div>
+    <h2 class="h2" style="margin-top:14px;color:var(--bt)" data-r data-d="1">Here's How<br>It Works.</h2>
+
+    <div class="steps-grid">
+      <div class="step" data-r>
+        <div class="step-n">01</div>
+        <h3 class="step-t">Sign Up</h3>
+        <p class="step-b">Create your account and start tracking today. You can join anytime. You need 30 days on the leaderboard to qualify for the monthly prize.</p>
+        <a href="#start" class="step-cta">Start here <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="step" data-r data-d="1">
+        <div class="step-n">02</div>
+        <h3 class="step-t">Track Your Habits</h3>
+        <p class="step-b">Get access to your bespoke habit tracker. 8 daily habits across faith, family, fitness, and business. Your progress is live on the leaderboard from day one.</p>
+        <a href="#start" class="step-cta">Start here <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="step" data-r data-d="2">
+        <div class="step-n">03</div>
+        <h3 class="step-t">Win the Month</h3>
+        <p class="step-b">Compete for the top spot. The highest performer each month wins the prize. Show up for 30 days and watch what changes.</p>
+        <a href="#start" class="step-cta">Start here <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+
+    <div class="cta-row" style="margin-top:52px">
+      <a href="#start" class="btn btn-gb btn-cycle" style="padding:17px 44px;font-size:12px">
+        <span class="btn-label">Sign up to track your habits this month</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <span class="note-b">$49/month · Cancel anytime</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 5. OFFER STACK — dark ══ -->
+<section class="sec d">
+  <div class="wrap">
+    <div class="rule d" data-r></div>
+    <div class="ey d" data-r>The Program</div>
+    <h2 class="h2" style="margin-top:14px" data-r data-d="1">Here's What You<br>Get for $49 a Month.</h2>
+
+    <div class="offer-grid">
+      <div class="offer-item" data-r>
+        <div class="offer-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <div class="offer-t">Bespoke Habit Tracker</div>
+          <p class="offer-b">Built specifically for the 8 habits. Check it off daily. See your streak grow.</p>
+        </div>
+      </div>
+      <div class="offer-item" data-r data-d="1">
+        <div class="offer-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <div class="offer-t">Live Leaderboard</div>
+          <p class="offer-b">Your progress ranked against every man in the cohort. Accountability you can see.</p>
+        </div>
+      </div>
+      <div class="offer-item" data-r data-d="2">
+        <div class="offer-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <div class="offer-t">Monthly Winner Prize</div>
+          <p class="offer-b">Top performer each month wins. Something to compete for. Something to earn.</p>
+        </div>
+      </div>
+      <div class="offer-item" data-r data-d="3">
+        <div class="offer-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <div class="offer-t">Monthly Masterclass</div>
+          <p class="offer-b">One per month led by Matt. Personal development, business growth, AI tools, systems, productivity. Practical and applicable.</p>
+        </div>
+      </div>
+      <div class="offer-item" data-r data-d="4" style="grid-column:1/-1">
+        <div class="offer-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <div class="offer-t">The 8 Habits</div>
+          <p class="offer-b">Faith. Family. Fitness. Mental. Professional. The daily operating system that changes everything — built across all five areas of your life.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="offer-price" data-r>
+      <div class="price-left">
+        <div class="price-num"><span>$</span>49<span style="font-size:clamp(32px,4vw,52px)">/mo</span></div>
+        <div class="price-terms">Month to month &nbsp;·&nbsp; No contracts &nbsp;·&nbsp; Cancel anytime</div>
+      </div>
+      <a href="#start" class="btn btn-p" style="padding:18px 52px;font-size:12px">
+        Start Your 30 Days
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 6. SUCCESS STATE — light ══ -->
+<section class="sec l">
+  <div class="wrap">
+    <div class="rule l" data-r></div>
+    <div class="ey l" data-r>The Outcome</div>
+    <h2 class="h2" style="margin-top:14px;color:var(--bt)" data-r data-d="1">This Is What<br>30 Days Looks Like.</h2>
+
+    <div class="success-list" data-r>
+      <div class="success-item">
+        <div class="success-check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="success-txt">You wake up before your family and you've already won the first battle of the day</div>
+      </div>
+      <div class="success-item">
+        <div class="success-check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="success-txt">The gym happens. Not sometimes. Consistently.</div>
+      </div>
+      <div class="success-item">
+        <div class="success-check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="success-txt">Your Bible isn't sitting on the nightstand unopened</div>
+      </div>
+      <div class="success-item">
+        <div class="success-check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="success-txt">You come home and you're actually there</div>
+      </div>
+      <div class="success-item">
+        <div class="success-check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="success-txt">You stop white-knuckling it through the week and start operating from a system</div>
+      </div>
+      <div class="success-item">
+        <div class="success-check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="success-txt">You become the man your family already thinks you are</div>
+      </div>
+    </div>
+
+    <p class="body-lg l" style="max-width:660px" data-r>Thirty days won't fix everything. But they'll prove something to you that motivation never could — that you're capable of showing up when you build the right structure around it. That changes how you see yourself. And that changes everything else.</p>
+  </div>
+</section>
+
+<!-- ══ 7. TESTIMONIALS — dark ══ -->
+<section class="sec d2">
+  <div class="wrap">
+    <div class="rule d2" data-r></div>
+    <div class="ey d2" data-r>Social Proof</div>
+    <h2 class="h2" style="margin-top:14px" data-r data-d="1">What Man on a Mission<br>Members Are Experiencing.</h2>
+
+    <div class="t-grid">
+      <div class="t-card" data-r>
+        <p class="t-q">"I'd been trying to build a consistent morning routine for five or six years. Having something I can actually check on and check off every single day — that's what finally made it stick."</p>
+        <div class="t-attr">Man on a Mission Member</div>
+      </div>
+      <div class="t-card" data-r data-d="1">
+        <p class="t-q">"I played hockey 3 days in a row and worked out every one of those days. I haven't worked out consistently in around 15 years — sore in a good way."</p>
+        <div class="t-attr">Man on a Mission Member</div>
+      </div>
+      <div class="t-card" data-r data-d="2">
+        <p class="t-q">"Took the family fishing after work and we caught 61 fish in 2.5 hours. I normally wouldn't have gone out after a workday, but I wanted to make a memory regardless of the outcome. MOAM has helped me beat procrastination in a lot of areas."</p>
+        <div class="t-attr">Man on a Mission Member</div>
+      </div>
+      <div class="t-card" data-r data-d="3">
+        <p class="t-q">"When you have your priorities clear and you actually build a schedule that reflects them — that's when you feel a level of peace and confidence. Because you know you're doing what you're supposed to be doing."</p>
+        <div class="t-attr">Man on a Mission Member</div>
+      </div>
+    </div>
+
+    <div class="cta-row" data-r style="margin-top:52px">
+      <a href="#start" class="btn btn-p btn-cycle" style="padding:17px 44px;font-size:12px">
+        <span class="btn-label">Start Your 30 Days</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <span class="note-w">$49/month · Cancel anytime</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 8. NEGATIVE STAKES — light ══ -->
+<section class="sec l2">
+  <div class="wrap">
+    <div class="rule l2" data-r></div>
+    <div class="ey l2" data-r>The Cost of Waiting</div>
+    <h2 class="h2" style="margin-top:14px;color:var(--bt)" data-r data-d="1">What Does Another<br>30 Days of<br>Complacency Cost You?</h2>
+
+    <div class="stakes-inner" data-r data-d="2">
+      <p>Another month of telling yourself you'll start Monday. Another month of your family getting the version of you that everything else already used up. Another month of going to bed knowing you didn't do the things that actually matter to you.</p>
+      <p>The 30 days are going to pass regardless. The only question is who you are on the other side of them.</p>
+    </div>
+
+    <div class="cta-row" data-r data-d="3">
+      <a href="#start" class="btn btn-gb">
+        Start Your 30 Days
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <span class="note-b">$49/month · Cancel anytime</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 9. PATH FORWARD — dark ══ -->
+<section class="sec d">
+  <div class="wrap">
+    <div class="rule d" data-r></div>
+    <div class="ey d" data-r>The Journey</div>
+    <h2 class="h2" style="margin-top:14px" data-r data-d="1">This Is What<br>Consistent Men<br>Look Like.</h2>
+
+    <div class="path-grid">
+      <div class="path-card" data-r>
+        <div class="path-period">30</div>
+        <span class="path-unit">Days</span>
+        <p class="path-b">You finished what you started. The habits are no longer something you have to force. You've got a streak, a system, and proof that you can show up when it matters. Most men never make it here. You did.</p>
+      </div>
+      <div class="path-card" data-r data-d="1">
+        <div class="path-period">90</div>
+        <span class="path-unit">Days</span>
+        <p class="path-b">The people around you are noticing. Your wife. Your kids. Your team. You're calmer. More present. More consistent than you've been in years. It didn't take a complete life overhaul. It took 8 habits and a decision to stop starting over.</p>
+      </div>
+      <div class="path-card" data-r data-d="2">
+        <div class="path-period">6</div>
+        <span class="path-unit">Months</span>
+        <p class="path-b">You don't recognize the old patterns anymore. The drift that used to pull you under doesn't have the same grip. You wake up with a plan. You execute. You lead your family from a full tank instead of an empty one.</p>
+      </div>
+      <div class="path-card" data-r data-d="3">
+        <div class="path-period">1</div>
+        <span class="path-unit">Year</span>
+        <p class="path-b">You're the man your family needed you to be. Your faith is daily, not occasional. Your body is strong. Your business has a leader at the front of it. And you did it one day at a time.</p>
+      </div>
+    </div>
+
+    <div class="cta-row" data-r style="margin-top:52px">
+      <a href="#start" class="btn btn-p btn-cycle" style="padding:17px 44px;font-size:12px">
+        <span class="btn-label">Start Your 30 Days</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <span class="note-w">$49/month · Cancel anytime</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 10. FINAL CTA — light ══ -->
+<section class="final l" id="join">
+  <div class="final-bg"></div>
+  <div class="wrap">
+    <div class="final-inner">
+      <h2 class="final-h" data-r data-d="1">Start Today.</h2>
+      <p class="final-sub" data-r data-d="2">You can join anytime. Track your habits, get on the leaderboard, build the system. You need 30 days on the leaderboard to qualify for the monthly prize.</p>
+      <div data-r data-d="3">
+        <a href="#start" class="btn btn-p" style="padding:18px 56px;font-size:12px">
+          Start Your 30 Days — $49/mo
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <p class="final-fine" data-r data-d="4">Month to month &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; <span>Prize leaderboard resets the 1st of every month</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- FORM MODAL -->
+<div id="m30-modal" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(8,8,8,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:24px">
+  <div style="position:relative;width:100%;max-width:500px;background:var(--ink-2);border-radius:2px;border:1px solid rgba(255,255,255,.07);overflow:hidden">
+    <button id="m30-close" aria-label="Close" style="position:absolute;top:14px;right:18px;background:none;border:none;cursor:pointer;color:var(--wm);font-family:var(--sans);font-size:18px;z-index:10;line-height:1;padding:4px">✕</button>
+    <iframe
+      src="https://link.tmtmarketing.co/widget/form/GZHKYgug1QXn0ElwvpR2"
+      style="display:block;width:100%;height:500px;border:none"
+      title="Mission 30 Challenge"
+    ></iframe>
+  </div>
+</div>
+<script src="https://link.tmtmarketing.co/js/form_embed.js"></script>
+
+<!-- FOOTER -->
+<footer class="footer d">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">Matt Chenard</div>
+      <div class="footer-links">
+        <a href="https://manonmission.ca" class="footer-lk">Man on a Mission</a>
+        <a href="#" class="footer-lk">Privacy Policy</a>
+        <a href="#" class="footer-lk">Contact</a>
+      </div>
+      <div class="footer-tag">Earn Your Dopamine.</div>
+      <div class="footer-copy">© 2026 Man on a Mission</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Reveal
+const els=document.querySelectorAll('[data-r]');
+const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('on');obs.unobserve(en.target);}});},{threshold:.08,rootMargin:'0px 0px -48px 0px'});
+els.forEach(el=>obs.observe(el));
+document.querySelectorAll('.hero [data-r]').forEach(el=>setTimeout(()=>el.classList.add('on'),100));
+
+// Form modal
+const modal=document.getElementById('m30-modal');
+function openModal(){modal.style.display='flex';document.body.style.overflow='hidden';}
+function closeModal(){modal.style.display='none';document.body.style.overflow='';}
+document.getElementById('m30-close').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+document.querySelectorAll('a[href="#start"]').forEach(el=>{
+  el.addEventListener('click',e=>{e.preventDefault();openModal();});
+});
+
+// Cycling CTA hover
+const cycleLabels = ['Join here', 'Join here', 'Join here', 'Okay, go for it'];
+document.querySelectorAll('.btn-cycle').forEach(btn => {
+  let step = 0;
+  const label = btn.querySelector('.btn-label');
+  btn.addEventListener('mouseenter', () => {
+    label.textContent = cycleLabels[step];
+    step = (step + 1) % cycleLabels.length;
+  });
+  btn.addEventListener('mouseleave', () => {
+    if(step === 0) label.textContent = btn.dataset.default || label.textContent;
+  });
+  btn.dataset.default = label.textContent;
+});
+
+// Nav hide/show on scroll
+const nav=document.getElementById('nav');
+let last=0;
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  nav.classList.toggle('bg',y>60);
+  nav.classList.toggle('up',y>last&&y>280);
+  last=y;
+},{passive:true});
+</script>
+</body>
+</html>
