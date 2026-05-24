@@ -189,7 +189,33 @@ ul{list-style:none}
 .step-b{font-size:.9375rem;line-height:1.76;color:var(--bm)}
 
 /* ══════════════════════════════
-   4b. HABITS  (DARK)
+   4b. PHONE DEMO
+══════════════════════════════ */
+.demo-wrap{display:flex;flex-direction:column;align-items:center;margin:60px 0 12px}
+.demo-label{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--bx);margin-bottom:28px}
+.phone-frame{width:268px;background:#0d0d0d;border-radius:40px;border:2px solid rgba(255,255,255,.13);overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.03)}
+.phone-bar{height:34px;background:#0d0d0d;display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px}
+.phone-notch{width:82px;height:20px;background:#000;border-radius:0 0 14px 14px}
+.phone-screen{padding:14px 16px 22px;background:#111}
+.demo-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
+.demo-app-title{font-family:var(--display);font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+.demo-score-badge{font-family:var(--sans);font-size:10px;font-weight:700;color:var(--sage-l);background:rgba(123,158,142,.15);padding:3px 9px;border-radius:2px;transition:background .3s}
+.demo-score-badge.complete{background:rgba(123,158,142,.3)}
+.demo-day{font-family:var(--sans);font-size:8.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:14px}
+.demo-row{display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:3px;margin-bottom:2px;transition:background .35s}
+.demo-row.checked{background:rgba(123,158,142,.1)}
+.demo-cb{width:17px;height:17px;border-radius:3px;border:1.5px solid rgba(255,255,255,.18);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .28s,border-color .28s}
+.demo-row.checked .demo-cb{background:rgba(123,158,142,.85);border-color:rgba(123,158,142,.85)}
+.demo-ck{opacity:0;transition:opacity .18s .1s}
+.demo-row.checked .demo-ck{opacity:1}
+.demo-rn{font-family:var(--sans);font-size:11px;font-weight:600;color:rgba(255,255,255,.42);transition:color .3s;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.demo-row.checked .demo-rn{color:rgba(255,255,255,.78)}
+.demo-rc{font-family:var(--sans);font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2);white-space:nowrap}
+.demo-progress{height:2px;background:rgba(255,255,255,.06);border-radius:1px;margin:14px 0 0;overflow:hidden}
+.demo-progress-fill{height:100%;width:0%;background:linear-gradient(to right,rgba(123,158,142,.6),rgba(123,158,142,1));border-radius:1px;transition:width .4s ease}
+
+/* ══════════════════════════════
+   4c. HABITS  (DARK)
 ══════════════════════════════ */
 .habits-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:64px}
 .habit-row{display:flex;flex-direction:column;background:var(--ink-2);transition:background .22s;cursor:default}
@@ -486,6 +512,29 @@ ul{list-style:none}
         <h3 class="step-t">Win the Month</h3>
         <p class="step-b">Compete for the top spot. The highest performer each month wins the prize. Show up for 30 days and watch what changes.</p>
         <a href="#start" class="step-cta">Start here <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+
+    <div class="demo-wrap">
+      <div class="demo-label">What it looks like inside</div>
+      <div class="phone-frame" id="phone-demo">
+        <div class="phone-bar"><div class="phone-notch"></div></div>
+        <div class="phone-screen">
+          <div class="demo-hdr">
+            <div class="demo-app-title">Mission Control</div>
+            <div class="demo-score-badge" id="demo-badge">0 / 8</div>
+          </div>
+          <div class="demo-day">May 24 &middot; Saturday</div>
+          <div class="demo-row" data-demo><div class="demo-cb"><svg class="demo-ck" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="demo-rn">Read Bible</div><div class="demo-rc">Spiritual</div></div>
+          <div class="demo-row" data-demo><div class="demo-cb"><svg class="demo-ck" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="demo-rn">Follow Nutrition Plan</div><div class="demo-rc">Physical</div></div>
+          <div class="demo-row" data-demo><div class="demo-cb"><svg class="demo-ck" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="demo-rn">30 Min Outside</div><div class="demo-rc">Mental</div></div>
+          <div class="demo-row" data-demo><div class="demo-cb"><svg class="demo-ck" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="demo-rn">Work Out</div><div class="demo-rc">Physical</div></div>
+          <div class="demo-row" data-demo><div class="demo-cb"><svg class="demo-ck" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="demo-rn">Morning Routine</div><div class="demo-rc">Professional</div></div>
+          <div class="demo-row" data-demo><div class="demo-cb"><svg class="demo-ck" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="demo-rn">Date Night / Friends</div><div class="demo-rc">Relational</div></div>
+          <div class="demo-row" data-demo><div class="demo-cb"><svg class="demo-ck" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="demo-rn">Bible Study / Men's Group</div><div class="demo-rc">Spiritual</div></div>
+          <div class="demo-row" data-demo><div class="demo-cb"><svg class="demo-ck" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="demo-rn">Sabbath — Full Rest</div><div class="demo-rc">Spiritual</div></div>
+          <div class="demo-progress"><div class="demo-progress-fill" id="demo-bar"></div></div>
+        </div>
       </div>
     </div>
 
@@ -887,6 +936,38 @@ document.querySelectorAll('.btn-cycle').forEach(btn => {
 // Nav hide/show on scroll
 const nav=document.getElementById('nav');
 let last=0;
+// Phone demo animation
+(function(){
+  const rows=document.querySelectorAll('[data-demo]');
+  const badge=document.getElementById('demo-badge');
+  const bar=document.getElementById('demo-bar');
+  if(!rows.length||!badge)return;
+  let idx=0,running=false;
+  function tick(){
+    if(idx<rows.length){
+      rows[idx].classList.add('checked');
+      idx++;
+      badge.textContent=idx+' / 8';
+      if(idx===8){badge.classList.add('complete');}
+      bar.style.width=(idx/8*100)+'%';
+      setTimeout(tick,idx<4?820:920);
+    } else {
+      setTimeout(reset,2600);
+    }
+  }
+  function reset(){
+    rows.forEach(r=>r.classList.remove('checked'));
+    badge.classList.remove('complete');
+    idx=0;badge.textContent='0 / 8';bar.style.width='0%';
+    setTimeout(tick,500);
+  }
+  const obs=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting&&!running){running=true;obs.disconnect();setTimeout(tick,700);}
+  },{threshold:.35});
+  const target=document.getElementById('phone-demo');
+  if(target)obs.observe(target);
+})();
+
 window.addEventListener('scroll',()=>{
   const y=window.scrollY;
   nav.classList.toggle('bg',y>60);
