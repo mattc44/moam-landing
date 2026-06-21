@@ -11,6 +11,19 @@
 
 <link rel="icon" href="logo.png" />
 
+<!-- Social share preview -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.manonmission.ca/yourstory" />
+<meta property="og:title" content="Help the next man get unstuck" />
+<meta property="og:description" content="Share your Man on a Mission story in two minutes. A thank-you gift to say thanks for your time." />
+<meta property="og:image" content="https://www.manonmission.ca/yourstory/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Help the next man get unstuck" />
+<meta name="twitter:description" content="Share your Man on a Mission story in two minutes. A thank-you gift to say thanks for your time." />
+<meta name="twitter:image" content="https://www.manonmission.ca/yourstory/og.png" />
+
 <style>
   :root{
     --black:#0A0A0A;
@@ -49,9 +62,8 @@
 
   nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;padding:30px 24px}
   .mark{display:flex;align-items:center;gap:11px;font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:1.05rem;color:var(--white)}
-  .mark svg{width:24px;height:24px}
-  .mark-logo{width:34px;height:34px;border-radius:7px}
-  .foot-logo{width:52px;height:52px;border-radius:11px;display:block;margin:0 auto 18px}
+  .mark svg{width:40px;height:40px;color:#fff}
+  .foot-logo{width:56px;height:56px;color:#fff;display:block;margin:0 auto 18px}
 
   .hero{min-height:86vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 24px 90px;position:relative;z-index:1}
   .hero h1{font-size:clamp(3.4rem,12.5vw,9.5rem);margin:18px 0 0;max-width:13ch}
@@ -126,7 +138,10 @@
 
   <nav>
     <span class="mark">
-      <img class="mark-logo" src="logo.png" alt="Man on a Mission" />
+      <svg class="logo-svg" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <circle cx="50" cy="50" r="43" stroke="currentColor" stroke-width="3.2" stroke-dasharray="56 11" stroke-dashoffset="14" stroke-linecap="round"/>
+        <path d="M24 67 L42 39 L51 51 L59 35 L77 67 Z" fill="currentColor"/>
+      </svg>
       MAN ON A MISSION
     </span>
   </nav>
@@ -211,7 +226,10 @@
   </section>
 
   <footer>
-    <img class="foot-logo" src="logo.png" alt="Man on a Mission" />
+    <svg class="foot-logo" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <circle cx="50" cy="50" r="43" stroke="currentColor" stroke-width="3.2" stroke-dasharray="56 11" stroke-dashoffset="14" stroke-linecap="round"/>
+      <path d="M24 67 L42 39 L51 51 L59 35 L77 67 Z" fill="currentColor"/>
+    </svg>
     <div class="foot-mark">MAN ON A MISSION</div>
     <div class="foot-tag">EARN YOUR DOPAMINE.</div>
     <p class="foot-small">Shared with permission. Everyone who shares receives a thank-you gift regardless of their feedback, and any story used publicly was given alongside that gift.</p>
