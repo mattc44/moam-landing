@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Help the Next Man Get Unstuck | Man on a Mission</title>
+<meta name="description" content="Share your Man on a Mission story and help the next man get unstuck. Leave a testimonial, get a thank-you gift." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="icon" href="logo.png" />
+
+<style>
+  :root{
+    --black:#0A0A0A;
+    --dark:#141414;
+    --white:#F5F5F0;
+    --offwhite:#E8E8E2;
+    --ink:#0A0A0A;
+    --ink-muted:#54544c;
+    --sage:#7B9E8E;
+    --muted:#9a9a93;
+    --line:rgba(245,245,240,.10);
+    --line-dark:rgba(10,10,10,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--black);color:var(--white);
+    font-family:'Instrument Sans',system-ui,sans-serif;line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(120% 80% at 50% -10%, rgba(123,158,142,.16), transparent 55%),
+      radial-gradient(100% 60% at 50% 120%, rgba(123,158,142,.08), transparent 60%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 24px}
+
+  h1,h2,.num{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:.02em;line-height:.95}
+  .eyebrow{font-family:'Bebas Neue',sans-serif;letter-spacing:.42em;font-size:.85rem;color:var(--sage);text-transform:uppercase}
+  .sage{color:var(--sage)}
+
+  nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;padding:30px 24px}
+  .mark{display:flex;align-items:center;gap:11px;font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:1.05rem;color:var(--white)}
+  .mark svg{width:24px;height:24px}
+  .mark-logo{width:34px;height:34px;border-radius:7px}
+  .foot-logo{width:52px;height:52px;border-radius:11px;display:block;margin:0 auto 18px}
+
+  .hero{min-height:86vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 24px 90px;position:relative;z-index:1}
+  .hero h1{font-size:clamp(3.4rem,12.5vw,9.5rem);margin:18px 0 0;max-width:13ch}
+  .hero .lead{max-width:48ch;margin:28px auto 0;color:var(--muted);font-size:clamp(1.05rem,2.5vw,1.3rem)}
+  .cta-note{margin-top:18px;font-size:.95rem;color:var(--muted)}
+
+  /* buttons */
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;cursor:pointer;border:0;
+    font-family:'Instrument Sans',sans-serif;
+    background:var(--sage);color:#0c120f;font-weight:600;font-size:1.05rem;
+    padding:18px 38px;border-radius:2px;text-decoration:none;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    box-shadow:0 10px 40px -12px rgba(123,158,142,.5);
+  }
+  .btn:hover{transform:translateY(-3px);background:#8cb1a0;box-shadow:0 18px 55px -12px rgba(123,158,142,.7)}
+  .btn svg{width:18px;height:18px;transition:transform .25s ease}
+  .btn:hover svg{transform:translateX(4px)}
+  .btn-row{margin-top:40px}
+
+  /* sections + alternating contrast */
+  section{position:relative;z-index:1;padding:clamp(72px,11vw,140px) 0}
+  .s-light{background:var(--offwhite);color:var(--ink)}
+  .s-light h2{color:var(--ink)}
+  .s-light .body{color:var(--ink-muted)}
+  .center{text-align:center}
+  h2{font-size:clamp(2.4rem,7vw,5rem);max-width:18ch}
+  .center h2{margin-inline:auto}
+  .body{color:var(--muted);font-size:clamp(1.05rem,2.2vw,1.22rem);max-width:52ch;margin-top:24px}
+  .center .body{margin-inline:auto}
+
+  /* reward cards (dark section) */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:56px}
+  .card{position:relative;background:linear-gradient(180deg,rgba(20,20,20,.92),rgba(10,10,10,.92));
+    border:1px solid var(--line);border-radius:6px;padding:42px 34px;
+    transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+  .card:hover{transform:translateY(-6px);border-color:rgba(123,158,142,.5);box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+  .card.feature{border-color:rgba(123,158,142,.55)}
+  .badge{position:absolute;top:-13px;left:34px;background:var(--sage);color:#0c120f;
+    font-family:'Bebas Neue',sans-serif;letter-spacing:.18em;font-size:.78rem;padding:6px 14px;border-radius:2px}
+  .card .kicker{font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:1.05rem;color:var(--white)}
+  .num{font-size:clamp(3.6rem,9vw,5.4rem);color:var(--sage);margin:6px 0 4px}
+  .num small{font-family:'Instrument Sans';font-size:1rem;color:var(--muted);letter-spacing:0;margin-left:6px}
+  .card p{color:var(--muted);margin-top:10px}
+
+  .disclosure{max-width:58ch;margin:42px auto 0;font-size:.95rem;color:#8a8a82;line-height:1.7}
+  .disclosure strong{color:#b4b4ac;font-weight:600}
+
+  footer{padding:70px 24px 56px;text-align:center;border-top:1px solid var(--line);position:relative;z-index:1}
+  .foot-mark{font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:1.1rem}
+  .foot-tag{font-family:'Bebas Neue',sans-serif;letter-spacing:.3em;color:var(--sage);margin-top:14px;font-size:1.05rem}
+  .foot-small{color:#6f6f68;font-size:.82rem;margin-top:22px;max-width:54ch;margin-inline:auto}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .stagger>*{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .stagger.in>*{opacity:1;transform:none}
+  .stagger.in>*:nth-child(2){transition-delay:.12s}
+
+  @media (max-width:680px){
+    .cards{grid-template-columns:1fr}
+    .hero{min-height:80vh}
+    .btn{width:100%;justify-content:center}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal,.stagger>*{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+  <nav>
+    <span class="mark">
+      <img class="mark-logo" src="logo.png" alt="Man on a Mission" />
+      MAN ON A MISSION
+    </span>
+  </nav>
+
+  <!-- HERO (dark) -->
+  <header class="hero">
+    <p class="eyebrow reveal">Your story matters</p>
+    <h1 class="reveal">Help the next<br>man get<br>unstuck.</h1>
+    <p class="lead reveal">You remember exactly where you were before you started. Another man is sitting in that same spot right now, stuck. Two minutes of your story could be the thing that finally moves him.</p>
+    <div class="btn-row reveal">
+      <a class="btn" href="https://senja.io/p/matt-chenard/r/lq9SSo">
+        Share Your Story
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <p class="cta-note reveal">Takes about two minutes. Write it or record it.</p>
+  </header>
+
+  <!-- WHY (light) -->
+  <section class="s-light">
+    <div class="wrap center">
+      <h2 class="reveal">Your story does the work I can't.</h2>
+      <p class="body reveal">I can tell a man what's possible all day long. It never lands like another man saying "I was right where you are, and here's what happened." That's the one thing I can't manufacture. Only you can.</p>
+      <div class="btn-row reveal">
+        <a class="btn" href="https://senja.io/p/matt-chenard/r/lq9SSo">
+          Share Your Story
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REWARD (dark) -->
+  <section>
+    <div class="wrap center">
+      <p class="eyebrow reveal">A thank-you for your time</p>
+      <h2 class="reveal" style="margin-top:14px">And there's something in it for you.</h2>
+      <p class="body reveal">Pick how you want to share. Either way, I'll send you a gift to say thanks.</p>
+      <div class="cards stagger">
+        <div class="card">
+          <span class="kicker">Write it</span>
+          <div class="num">$40<small>gift</small></div>
+          <p>Share your story in writing. A few honest paragraphs is all it takes.</p>
+        </div>
+        <div class="card feature">
+          <span class="badge">Most impact</span>
+          <span class="kicker">Record it</span>
+          <div class="num">$75<small>gift</small></div>
+          <p>Talk to the camera for two minutes. A video moves men more than anything, so it's worth more.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONEST (light) -->
+  <section class="s-light">
+    <div class="wrap center">
+      <h2 class="reveal">Good or bad, give it to me straight.</h2>
+      <p class="body reveal">If your time in Man on a Mission changed things, tell me. If something fell short, tell me that too. The gift is for your honesty, not your praise. I'd rather have the truth than a compliment.</p>
+      <div class="btn-row reveal">
+        <a class="btn" href="https://senja.io/p/matt-chenard/r/lq9SSo">
+          Share Your Story
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA (dark) -->
+  <section class="center">
+    <div class="wrap">
+      <h2 class="reveal" style="margin-inline:auto">Ready?</h2>
+      <p class="body reveal">Two minutes. One story. It might be the reason another man finally starts.</p>
+      <div class="btn-row reveal">
+        <button class="btn" data-senja-collector-open="matt-chenard" data-url="https://senja.io/p/matt-chenard/r/lq9SSo">
+          Share Your Story
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <p class="disclosure reveal"><strong>Straight up:</strong> everyone who shares gets a thank-you gift, period. No gift is ever held back based on what you say. Give me one star and you still get it. It's for your time and your honesty, never for saying something nice. When I share a story publicly, I'll note a gift was given.</p>
+    </div>
+  </section>
+
+  <footer>
+    <img class="foot-logo" src="logo.png" alt="Man on a Mission" />
+    <div class="foot-mark">MAN ON A MISSION</div>
+    <div class="foot-tag">EARN YOUR DOPAMINE.</div>
+    <p class="foot-small">Shared with permission. Everyone who shares receives a thank-you gift regardless of their feedback, and any story used publicly was given alongside that gift.</p>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:.18, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal,.stagger').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
