@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Stories · Man on a Mission</title>
+<meta name="description" content="Real men. Real missions. Real proof. The stories of the men inside Man on a Mission.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Client Stories · Man on a Mission™">
+<meta property="og:description" content="Real men. Real missions. Real proof.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://manonmission.ca/clientstories">
+<meta property="og:image" content="https://manonmission.ca/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0A0A0A;
+    --ink: #050505;
+    --white: #F5F5F0;
+    --off-white: #ECECE6;
+    --sage: #7B9E8E;
+    --sage-hover: #8FB3A1;
+    --line-dark: rgba(245,245,240,0.10);
+    --line-light: rgba(10,10,10,0.10);
+    --mute-dark: rgba(245,245,240,0.55);
+    --mute-light: rgba(10,10,10,0.55);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+  /* film grain */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* scroll progress */
+  .progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+    background: var(--sage); z-index: 10000; transition: width 0.05s linear;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 200;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 22px 48px;
+    transition: background 0.4s ease, padding 0.4s ease, border-color 0.4s ease;
+    border-bottom: 1px solid transparent;
+  }
+  nav.scrolled { background: rgba(10,10,10,0.82); backdrop-filter: blur(20px); padding: 14px 48px; border-bottom-color: var(--line-dark); }
+  .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-brand-mark { width: 8px; height: 8px; background: var(--sage); border-radius: 50%; }
+  .nav-brand-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 5px; color: var(--white); }
+  .nav-meta { font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase; color: var(--mute-dark); }
+
+  /* SECTION SHELL */
+  section { position: relative; padding: 130px 48px; }
+  .s-black { background: var(--black); color: var(--white); }
+  .s-ink { background: var(--ink); color: var(--white); }
+  .s-white { background: var(--white); color: var(--black); }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+  .narrow { max-width: 860px; margin: 0 auto; }
+
+  .eyebrow { font-size: 0.66rem; letter-spacing: 6px; text-transform: uppercase; font-weight: 600; color: var(--sage); margin-bottom: 26px; display: flex; align-items: center; gap: 14px; }
+  .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--sage); display: inline-block; }
+  .h-display { font-family: 'Bebas Neue', sans-serif; line-height: 0.92; letter-spacing: -0.5px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.6rem, 6vw, 5rem); line-height: 0.98; letter-spacing: -0.5px; margin-bottom: 22px; }
+  .section-desc { font-size: 1.05rem; max-width: 580px; color: var(--mute-dark); }
+  .s-white .section-desc { color: var(--mute-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding-top: 140px; padding-bottom: 90px; background: var(--ink); overflow: hidden;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -30%; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 900px; max-width: 120vw;
+    background: radial-gradient(circle, rgba(123,158,142,0.10) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero .wrap { position: relative; z-index: 2; }
+  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4.5rem, 14vw, 13rem); line-height: 0.86; letter-spacing: -2px; }
+  .hero h1 .line { display: block; overflow: hidden; }
+  .hero h1 .line span { display: block; transform: translateY(105%); animation: riseIn 1s cubic-bezier(0.16,1,0.3,1) forwards; }
+  .hero h1 .line:nth-child(2) span { animation-delay: 0.12s; }
+  .hero h1 em { color: var(--sage); font-style: normal; }
+  .hero-sub { margin-top: 36px; max-width: 560px; font-size: 1.15rem; color: var(--mute-dark); opacity: 0; animation: fadeUp 1s ease forwards 0.5s; }
+  .hero-scroll { margin-top: 70px; font-size: 0.64rem; letter-spacing: 4px; text-transform: uppercase; color: var(--mute-dark); display: flex; align-items: center; gap: 14px; opacity: 0; animation: fadeUp 1s ease forwards 0.7s; }
+  .hero-scroll .bar { position: relative; width: 46px; height: 1px; background: var(--line-dark); overflow: hidden; }
+  .hero-scroll .bar::after { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 40%; background: var(--sage); animation: scrollHint 2s ease-in-out infinite; }
+
+  @keyframes riseIn { to { transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes scrollHint { 0% { left: -40%; } 100% { left: 100%; } }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(42px); transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal[data-delay="1"] { transition-delay: 0.10s; }
+  .reveal[data-delay="2"] { transition-delay: 0.20s; }
+  .reveal[data-delay="3"] { transition-delay: 0.30s; }
+  .reveal[data-delay="4"] { transition-delay: 0.40s; }
+
+  /* FEATURED VIDEO */
+  .featured { background: var(--black); }
+  .featured-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+  .video-frame {
+    position: relative; perspective: 1600px;
+  }
+  .video-embed {
+    position: relative; width: 100%; aspect-ratio: 16 / 9;
+    background: #161616; border: 1px solid var(--line-dark);
+    overflow: hidden; transition: transform 0.3s ease, box-shadow 0.4s ease;
+    transform-style: preserve-3d;
+  }
+  .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video-frame:hover .video-embed { box-shadow: 0 40px 120px rgba(0,0,0,0.6); }
+  .video-frame::before {
+    content: ''; position: absolute; inset: -1px; pointer-events: none; z-index: 3;
+    border: 1px solid rgba(123,158,142,0); transition: border-color 0.4s ease;
+  }
+  .video-frame:hover::before { border-color: rgba(123,158,142,0.5); }
+  /* placeholder slot */
+  .video-placeholder {
+    position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 16px; text-align: center;
+    color: var(--mute-dark); background:
+      repeating-linear-gradient(45deg, #131313, #131313 14px, #161616 14px, #161616 28px);
+  }
+  .video-placeholder .play { width: 64px; height: 64px; border-radius: 50%; border: 1px solid var(--line-dark); display: flex; align-items: center; justify-content: center; }
+  .video-placeholder .play::after { content: ''; border-left: 16px solid var(--sage); border-top: 10px solid transparent; border-bottom: 10px solid transparent; margin-left: 4px; }
+  .video-placeholder span { font-size: 0.66rem; letter-spacing: 3px; text-transform: uppercase; }
+  .video-caption { margin-top: 22px; display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .video-caption .name { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 1px; }
+  .video-caption .tag { font-size: 0.64rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--mute-dark); }
+
+  /* NUMBERS */
+  .numbers { background: var(--black); }
+  .num-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 60px; border-top: 1px solid var(--line-dark); }
+  .num-cell { padding: 48px 28px; border-bottom: 1px solid var(--line-dark); border-right: 1px solid var(--line-dark); }
+  .num-cell:nth-child(4n) { border-right: none; }
+  .num-big { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.4rem, 6vw, 5.6rem); line-height: 0.9; color: var(--white); }
+  .num-big em { color: var(--sage); font-style: normal; }
+  .num-label { margin-top: 14px; font-size: 0.82rem; color: var(--mute-dark); line-height: 1.45; }
+  .num-name { margin-top: 18px; font-size: 0.62rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--sage); }
+
+  /* EDITORIAL PULL-QUOTE */
+  .pull { text-align: left; }
+  .pull .mark { font-family: 'Bebas Neue', sans-serif; font-size: 9rem; line-height: 0.5; color: var(--sage); opacity: 0.4; display: block; height: 70px; }
+  .pull blockquote { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4.6vw, 4rem); line-height: 1.04; letter-spacing: -0.5px; max-width: 940px; }
+  .pull .attr { margin-top: 36px; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--mute-light); display: flex; align-items: center; gap: 14px; }
+  .s-black .pull .attr, .s-ink .pull .attr { color: var(--mute-dark); }
+  .pull .attr::before { content: ''; width: 40px; height: 1px; background: var(--sage); display: inline-block; }
+
+  /* THEMED TESTIMONIALS */
+  .themes-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px; margin-bottom: 56px; }
+  .theme-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .theme-col { display: flex; flex-direction: column; gap: 24px; }
+  .t-card {
+    background: var(--ink); border: 1px solid var(--line-dark); padding: 38px 34px;
+    position: relative; overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), border-color 0.4s ease, background 0.4s ease;
+  }
+  .t-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--sage); transform: scaleX(0); transform-origin: left; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+  .t-card:hover { transform: translateY(-6px); border-color: rgba(123,158,142,0.3); background: #0d0d0d; }
+  .t-card:hover::before { transform: scaleX(1); }
+  .t-theme { font-size: 0.64rem; letter-spacing: 3px; text-transform: uppercase; color: var(--sage); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+  .t-theme .dot { width: 6px; height: 6px; background: var(--sage); border-radius: 50%; }
+  .t-card p { font-size: 1.02rem; line-height: 1.7; color: rgba(245,245,240,0.82); }
+  .t-card .who { margin-top: 22px; font-size: 0.66rem; letter-spacing: 2px; text-transform: uppercase; color: var(--mute-dark); }
+
+  /* VIDEO WALL */
+  .wall-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 56px; }
+
+  /* CASE STUDIES */
+  .case-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 56px; }
+  .case-card {
+    background: var(--white); color: var(--black); border: 1px solid var(--line-light); padding: 48px 42px;
+    position: relative; overflow: hidden; display: flex; flex-direction: column;
+    transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
+  }
+  .case-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--sage); transform: scaleX(0); transform-origin: left; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+  .case-card:hover { transform: translateY(-8px); box-shadow: 0 30px 80px rgba(0,0,0,0.12); }
+  .case-card:hover::before { transform: scaleX(1); }
+  .case-stat { font-family: 'Bebas Neue', sans-serif; font-size: 3.4rem; line-height: 0.9; color: var(--sage); }
+  .case-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.55rem; letter-spacing: 0.5px; margin: 14px 0 16px; }
+  .case-card p { font-size: 0.98rem; line-height: 1.65; color: var(--mute-light); flex: 1; }
+  .case-link { margin-top: 28px; font-size: 0.68rem; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 700; color: var(--black); text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: gap 0.3s ease, color 0.3s ease; }
+  .case-link span { display: inline-block; transition: transform 0.3s ease; }
+  .case-link:hover { color: var(--sage); gap: 14px; }
+  .case-who { margin-top: 22px; font-size: 0.64rem; letter-spacing: 2px; text-transform: uppercase; color: var(--mute-light); }
+
+  /* THE PATTERN */
+  .pattern { background: var(--ink); text-align: center; }
+  .pattern .wrap { max-width: 820px; }
+  .pattern .section-title { margin: 0 auto 28px; }
+  .pattern p { font-size: 1.15rem; line-height: 1.85; color: var(--mute-dark); }
+  .pattern p strong { color: var(--white); font-weight: 600; }
+  .pattern .rule { width: 1px; height: 70px; background: linear-gradient(var(--sage), transparent); margin: 0 auto 50px; }
+
+  /* CLOSE */
+  .close { background: var(--black); text-align: center; padding: 170px 48px; overflow: hidden; }
+  .close::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 760px; height: 760px; max-width: 120vw; background: radial-gradient(circle, rgba(123,158,142,0.08) 0%, transparent 65%); pointer-events: none; }
+  .close .wrap { position: relative; z-index: 2; }
+  .close h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 7vw, 6rem); line-height: 0.96; letter-spacing: -1px; margin-bottom: 28px; }
+  .close h2 em { color: var(--sage); font-style: normal; }
+  .close .sub { font-size: 1.1rem; color: var(--mute-dark); max-width: 520px; margin: 0 auto; }
+  .close .sign { margin-top: 60px; font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 3px; color: var(--sage); }
+
+  /* FOOTER */
+  footer { padding: 40px 48px; border-top: 1px solid var(--line-dark); display: flex; justify-content: space-between; align-items: center; background: var(--black); }
+  footer p { font-size: 0.7rem; color: rgba(245,245,240,0.3); letter-spacing: 1px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    section { padding: 90px 24px; }
+    nav { padding: 18px 24px; }
+    nav.scrolled { padding: 12px 24px; }
+    .num-grid { grid-template-columns: repeat(2, 1fr); }
+    .num-cell:nth-child(4n) { border-right: 1px solid var(--line-dark); }
+    .num-cell:nth-child(2n) { border-right: none; }
+    .theme-grid, .wall-grid, .case-grid { grid-template-columns: 1fr; }
+    .nav-meta { display: none; }
+  }
+  @media (max-width: 560px) {
+    section { padding: 76px 20px; }
+    .hero { padding-top: 120px; }
+    .num-grid { grid-template-columns: 1fr; }
+    .num-cell, .num-cell:nth-child(4n), .num-cell:nth-child(2n) { border-right: none; }
+    .case-card, .t-card { padding: 32px 24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+    .hero h1 .line span { transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<!-- NAV (logo only — no competing CTA, these men have already applied) -->
+<nav id="nav">
+  <a href="https://manonmission.ca" class="nav-brand">
+    <span class="nav-brand-mark"></span>
+    <span class="nav-brand-text">MAN ON A MISSION</span>
+  </a>
+  <span class="nav-meta">Client Stories</span>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Real Men · Real Missions · Real Proof</p>
+    <h1 class="h-display">
+      <span class="line"><span>Don't take</span></span>
+      <span class="line"><span>my <em>word</em> for it.</span></span>
+    </h1>
+    <p class="hero-sub">You've already seen what the mission is. Now meet the men living it — in their own words, with their own results.</p>
+    <div class="hero-scroll"><span class="bar"></span> Scroll</div>
+  </div>
+</header>
+
+<!-- FEATURED VIDEO -->
+<section class="featured">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Featured Story</p>
+      <h2 class="section-title">Watch It For Yourself.</h2>
+    </div>
+    <div class="featured-grid reveal" data-delay="1">
+      <div class="video-frame" data-tilt>
+        <div class="video-embed">
+          <!-- To go live: replace the placeholder below with:
+               <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Andrew Stone" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+               (Vimeo: https://player.vimeo.com/video/VIDEO_ID) -->
+          <div class="video-placeholder">
+            <div class="play"></div>
+            <span>Andrew's Story · Video Coming</span>
+          </div>
+        </div>
+      </div>
+      <div class="video-caption">
+        <span class="name">Andrew</span>
+        <span class="tag">$18.5K month · 30–40% fewer hours</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE NUMBERS -->
+<section class="numbers s-black">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">The Receipts</p>
+      <h2 class="section-title">Results, Not Promises.</h2>
+      <p class="section-desc">A few of the wins men have logged inside the mission. Real businesses. Real homes. Real numbers.</p>
+    </div>
+    <div class="num-grid">
+      <div class="num-cell reveal"><div class="num-big" data-count="145" data-prefix="$" data-suffix="K">$145K</div><div class="num-label">Biggest month of his career — while fully present at home.</div><div class="num-name">Mark</div></div>
+      <div class="num-cell reveal" data-delay="1"><div class="num-big" data-count="565" data-suffix="%"><em>565%</em></div><div class="num-label">Revenue growth in 5 months working full-time in his business.</div><div class="num-name">Brandon</div></div>
+      <div class="num-cell reveal" data-delay="2"><div class="num-big" data-count="40" data-suffix="%">40%</div><div class="num-label">Fewer hours worked — with revenue up, not down.</div><div class="num-name">Andrew</div></div>
+      <div class="num-cell reveal" data-delay="3"><div class="num-big" data-count="77" data-prefix="Day ">Day 77</div><div class="num-label">Straight days reading his eulogy statement and showing up.</div><div class="num-name">Nick</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE 1 -->
+<section class="s-white">
+  <div class="wrap pull reveal">
+    <span class="mark">&ldquo;</span>
+    <blockquote>The biggest shift is taking ownership. If I'm not showing up as a calm father and a loving husband, that's on me. The circumstances don't dictate how I get to show up — where before, it was very much a victim mentality.</blockquote>
+    <p class="attr">Clayton · Man on a Mission</p>
+  </div>
+</section>
+
+<!-- THEMED TESTIMONIALS -->
+<section class="s-ink">
+  <div class="wrap">
+    <div class="themes-head reveal">
+      <div>
+        <p class="eyebrow">In Their Own Words</p>
+        <h2 class="section-title">What Actually Changes.</h2>
+      </div>
+      <p class="section-desc">It's never just one area. The mission moves the whole man.</p>
+    </div>
+    <div class="theme-grid">
+      <div class="theme-col">
+        <div class="t-card reveal">
+          <div class="t-theme"><span class="dot"></span>Marriage &amp; Family</div>
+          <p>"I had lunch with my wife today and what a blessing of a time. Last night I went ice skating with my eight-year-old daughter. The best part was the time with her — she absolutely loved it."</p>
+          <div class="who">Luke · Man on a Mission</div>
+        </div>
+        <div class="t-card reveal" data-delay="1">
+          <div class="t-theme"><span class="dot"></span>Marriage &amp; Family</div>
+          <p>"My wife was the one who saw the program. I didn't have great man mentorship growing up — this whole program has just been so full of it. I'm excited to keep moving forward."</p>
+          <div class="who">Clayton · Man on a Mission</div>
+        </div>
+        <div class="t-card reveal" data-delay="2">
+          <div class="t-theme"><span class="dot"></span>Unbreakable Discipline</div>
+          <p>"I've been the guy my whole life who buys books and never reads them. This is the most I've read in four years — waking up about four times a week to read and pray, as opposed to zero before."</p>
+          <div class="who">Stefano · Man on a Mission</div>
+        </div>
+      </div>
+      <div class="theme-col">
+        <div class="t-card reveal">
+          <div class="t-theme"><span class="dot"></span>Unbreakable Discipline</div>
+          <p>"I'd been trying to build a consistent morning routine for five or six years. Having something I can actually check on and check off every single day — that's what finally made it stick."</p>
+          <div class="who">Neil · Man on a Mission</div>
+        </div>
+        <div class="t-card reveal" data-delay="1">
+          <div class="t-theme"><span class="dot"></span>Mindset Under Pressure</div>
+          <p>"For the first time in my life I'm feeling a real direction forward and an actual plan on how to get there. This has given me discernment and a clear vision going forward."</p>
+          <div class="who">Clayton · Man on a Mission</div>
+        </div>
+        <div class="t-card reveal" data-delay="2">
+          <div class="t-theme"><span class="dot"></span>The Brotherhood</div>
+          <p>"It's cool to see a bunch of Christian men looking to better themselves. I've always found value in that team energy where everyone holds each other accountable — that's something I was missing."</p>
+          <div class="who">Stefano · Man on a Mission</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO WALL -->
+<section class="s-black">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">More Voices</p>
+      <h2 class="section-title">Hear Them Tell It.</h2>
+      <p class="section-desc">More stories drop here as the men share them.</p>
+    </div>
+    <div class="wall-grid">
+      <!-- Each slot: replace the .video-placeholder block with an <iframe> (see featured video comment above). -->
+      <div class="video-frame reveal" data-tilt>
+        <div class="video-embed">
+          <!-- paste YouTube/Vimeo iframe here -->
+          <div class="video-placeholder"><div class="play"></div><span>Story Coming Soon</span></div>
+        </div>
+      </div>
+      <div class="video-frame reveal" data-delay="1" data-tilt>
+        <div class="video-embed">
+          <!-- paste YouTube/Vimeo iframe here -->
+          <div class="video-placeholder"><div class="play"></div><span>Story Coming Soon</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE 2 -->
+<section class="s-white">
+  <div class="wrap pull reveal">
+    <span class="mark">&ldquo;</span>
+    <blockquote>This is likely the biggest month of my career — over $145,000. And I got to be fully there for my daughter's final dance recital, and coach my son's baseball team. Life is full right now.</blockquote>
+    <p class="attr">Mark · Man on a Mission</p>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="s-ink">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">The Long Story</p>
+      <h2 class="section-title">When It Compounds.</h2>
+    </div>
+    <div class="case-grid">
+      <div class="case-card reveal">
+        <div class="case-stat">565%</div>
+        <h3>Revenue Up 565% In 5 Months</h3>
+        <p>Brandon went full-time in his business, landed a new gym partnership, and ran his most client sessions in a single week — all inside the first five months.</p>
+        <div class="case-who">Brandon Burd</div>
+        <a class="case-link" href="https://senja.io/p/matt-chenard/case-studies/bda712ba-d08a-46c3-b33e-551c211d013c" target="_blank" rel="noopener">Read the full story <span>&rarr;</span></a>
+      </div>
+      <div class="case-card reveal" data-delay="1">
+        <div class="case-stat">Faster &amp; sharper</div>
+        <h3>AI That Saved A Construction Company Real Time</h3>
+        <p>Wainman Enterprises streamlined submittals, contract review, estimating and proposals — earning client compliments on the thoroughness of their work.</p>
+        <div class="case-who">Josh Wainman · Wainman Enterprises</div>
+        <a class="case-link" href="https://senja.io/p/matt-chenard/case-studies/9726e66e-14a2-4e43-a557-a00f50e41e09" target="_blank" rel="noopener">Read the full story <span>&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PATTERN -->
+<section class="pattern">
+  <div class="wrap reveal">
+    <div class="rule"></div>
+    <p class="eyebrow" style="justify-content:center;">The Common Thread</p>
+    <h2 class="section-title">None Of This Is Luck.</h2>
+    <p>Different men. Different businesses. Different homes. The same result — <strong>more present, more disciplined, more profitable</strong> — because they're all running the same system. The proof isn't a personality. It's a process. And it's the same one waiting for you.</p>
+  </div>
+</section>
+
+<!-- AFFIRMING CLOSE (no CTA — they've already decided) -->
+<section class="close">
+  <div class="wrap reveal">
+    <h2 class="h-display">You're not joining<br>a program.<br>You're joining <em>these men.</em></h2>
+    <p class="sub">Welcome to the mission.</p>
+    <p class="sign">— Matt</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Man on a Mission™ · Matt Chenard</p>
+  <p style="color: rgba(245,245,240,0.4);">Earn Your Dopamine.</p>
+</footer>
+
+<script>
+  // scroll progress + nav state
+  var nav = document.getElementById('nav');
+  var progress = document.getElementById('progress');
+  function onScroll() {
+    var st = window.scrollY || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    progress.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
+    if (st > 30) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // reveal on scroll
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+  // count-up numbers
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function animateCount(el) {
+    var target = parseFloat(el.getAttribute('data-count'));
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    var wrapEm = el.querySelector('em') !== null;
+    if (reduceMotion) { return; }
+    var start = null, dur = 1400;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      var val = Math.round(target * eased);
+      var html = prefix + val + suffix;
+      el.innerHTML = wrapEm ? '<em>' + html + '</em>' : html;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var numObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { animateCount(entry.target); numObserver.unobserve(entry.target); }
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('[data-count]').forEach(function(el) { numObserver.observe(el); });
+
+  // cursor-aware tilt on video frames
+  if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll('[data-tilt]').forEach(function(frame) {
+      var embed = frame.querySelector('.video-embed');
+      frame.addEventListener('mousemove', function(e) {
+        var r = frame.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        embed.style.transform = 'rotateY(' + (px * 5) + 'deg) rotateX(' + (-py * 5) + 'deg) scale(1.01)';
+      });
+      frame.addEventListener('mouseleave', function() {
+        embed.style.transform = 'rotateY(0) rotateX(0) scale(1)';
+      });
+    });
+  }
+</script>
+</body>
+</html>
