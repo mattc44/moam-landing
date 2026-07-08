@@ -150,6 +150,23 @@
   .guide-quote p { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.28rem; line-height: 1.62; color: var(--mid); }
   .guide-attr { margin-top: 16px; font-weight: 600; font-size: 0.85rem; color: var(--black); }
   .guide-attr span { color: var(--sage-dark); font-weight: 500; font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; margin-left: 10px; }
+  /* CREDENTIALS STRIP (nested under guide photo) */
+  .guide-right { display: flex; flex-direction: column; }
+  .guide-creds { margin-top: 32px; display: flex; flex-direction: column; gap: 26px; }
+  .cred-group { display: flex; flex-direction: column; gap: 15px; }
+  .cred-label { font-size: 0.64rem; letter-spacing: 2px; text-transform: uppercase; color: var(--sage-dark); font-weight: 700; }
+  .cred-items { display: flex; flex-wrap: wrap; gap: 22px 16px; }
+  .cred-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; width: 112px; }
+  .cred-badge { display: flex; align-items: center; justify-content: center; }
+  .cred-item.cert .cred-badge, .cred-item.cert img { height: 74px; }
+  .cred-item.cert img { width: auto; display: block; }
+  .cred-item.biz .cred-badge { height: 46px; }
+  .cred-item.biz img { max-height: 44px; max-width: 104px; width: auto; display: block; object-fit: contain; }
+  .cred-cap { font-size: 0.6rem; letter-spacing: 0.6px; text-transform: uppercase; color: var(--mid); font-weight: 600; line-height: 1.4; }
+  @media (max-width: 760px) {
+    .guide-creds { margin-top: 30px; gap: 24px; }
+    .cred-item { width: 30%; min-width: 96px; }
+  }
 
   /* PLAN */
   .steps { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(245,245,240,0.06); }
@@ -381,8 +398,29 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
           <div class="guide-attr">Man on a Mission Member <span>Verbatim</span></div>
         </div>
       </div>
-      <div class="guide-photo reveal d1"><img src="/mission30challenge/assets/hero-cold-plunge.jpg" alt="Matt Chenard in the cold plunge" id="guide-img"></div>
+      <div class="guide-right reveal d1">
+        <div class="guide-photo"><img src="/mission30challenge/assets/hero-cold-plunge.jpg" alt="Matt Chenard in the cold plunge" id="guide-img"></div>
+        <div class="guide-creds">
+          <div class="cred-group">
+            <span class="cred-label">Certified Coach</span>
+            <div class="cred-items">
+              <div class="cred-item cert"><div class="cred-badge"><img src="/mission30challenge/assets/badges/cert-hero-on-a-mission.png" alt="Certified Hero on a Mission Life Plan Coach" loading="lazy"></div><span class="cred-cap">Certified Life Plan Coach</span></div>
+              <div class="cred-item cert"><div class="cred-badge"><img src="/mission30challenge/assets/badges/cert-business-made-simple.png" alt="Business Made Simple Certified Coach" loading="lazy"></div><span class="cred-cap">Certified Business Coach</span></div>
+              <div class="cred-item cert"><div class="cred-badge"><img src="/mission30challenge/assets/badges/cert-flight-plan.png" alt="Certified Small Business Flight Plan Coach" loading="lazy"></div><span class="cred-cap">Certified Small Business Flight Plan Coach</span></div>
+            </div>
+          </div>
+          <div class="cred-group">
+            <span class="cred-label">Founder &amp; Owner</span>
+            <div class="cred-items">
+              <div class="cred-item biz"><div class="cred-badge"><img src="/mission30challenge/assets/badges/biz-greater-purpose.png" alt="Greater Purpose Health &amp; Fitness" loading="lazy"></div><span class="cred-cap">Gym Business</span></div>
+              <div class="cred-item biz"><div class="cred-badge"><img src="/mission30challenge/assets/badges/biz-tmt-marketing.png" alt="TMT Marketing" loading="lazy"></div><span class="cred-cap">Marketing Business</span></div>
+              <div class="cred-item biz"><div class="cred-badge"><img src="/mission30challenge/assets/badges/biz-earn-your-dopamine.png" alt="Earn Your Dopamine" loading="lazy"></div><span class="cred-cap">Merch Business</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
     <div class="cta-row reveal">
       <a href="#start" class="btn-primary">Start Your 30 Days</a>
       <p class="cta-note">Matt Chenard · <em>Founder, Man on a Mission</em></p>
