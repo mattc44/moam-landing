@@ -838,7 +838,8 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
 
 <script>
   function openMOAMForm() {
-    if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+    // Opening the form = intent, not a real lead. Track it as a custom event so it stops inflating "Lead".
+    if (typeof fbq === 'function') { fbq('trackCustom', 'ApplicationOpened'); }
     document.getElementById('moam-modal').style.display = 'flex';
   }
   function closeMOAMForm() {
