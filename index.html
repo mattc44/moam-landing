@@ -870,19 +870,9 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
     if (e.target === document.getElementById('moam-modal')) { closeMOAMForm(); }
   });
 
-  // A download only actually happens when the form is submitted, and the form lives in a
-  // cross-origin iframe — so the submit message it posts back is the only signal we get.
-  // This is where Lead belongs. Guarded so a repeated message can't double-count.
-  var moamLeadTracked = false;
-  window.addEventListener('message', function (e) {
-    var host = moamHostOf(e.origin);
-    if (!/(^|\.)(tmtmarketing\.co|msgsndr\.com|leadconnectorhq\.com)$/.test(host)) { return; }
-    var payload = typeof e.data === 'string' ? e.data : JSON.stringify(e.data || '');
-    if (!/submit|submission/i.test(payload)) { return; }
-    if (moamLeadTracked) { return; }
-    moamLeadTracked = true;
-    if (typeof fbq === 'function') { fbq('track', 'Lead'); }
-  });
+  // Do NOT fire Lead from this page. The GHL form fires it itself on submission
+  // (form Settings > Facebook Pixel Events > On Form Submission = Lead), using this
+  // same pixel ID. Adding a second Lead here would double-count every download.
 </script>
 </body>
 </html>
