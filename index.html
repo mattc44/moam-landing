@@ -832,11 +832,32 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
 <div id="moam-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:9999;justify-content:center;align-items:center;">
   <div style="position:relative;width:90%;max-width:600px;height:80vh;background:#fff;border-radius:8px;overflow:hidden;">
     <button onclick="closeMOAMForm()" style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:24px;cursor:pointer;z-index:10;color:#333;">✕</button>
-    <iframe src="https://link.tmtmarketing.co/widget/form/1qn5GNNdABKz8MkEfd4n" style="width:100%;height:100%;border:none;"></iframe>
+    <iframe id="moam-form-frame" src="https://link.tmtmarketing.co/widget/form/1qn5GNNdABKz8MkEfd4n" style="width:100%;height:100%;border:none;"></iframe>
   </div>
 </div>
 
 <script>
+  var MOAM_FORM_BASE = 'https://link.tmtmarketing.co/widget/form/1qn5GNNdABKz8MkEfd4n';
+
+  function moamHostOf(origin) {
+    try { return new URL(origin).hostname; } catch (e) { return ''; }
+  }
+
+  // Forward ad tracking params from the page URL into the GHL form, so downloads land in
+  // GHL carrying their campaign instead of showing up as "Direct traffic".
+  // Wrapped in try/catch and only applied when params exist — the form must always load.
+  (function passAttributionToForm() {
+    try {
+      var incoming = new URLSearchParams(window.location.search);
+      var keep = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
+                  'utm_id', 'fbclid', 'ad_id', 'adset_id', 'campaign_id'];
+      var out = new URLSearchParams();
+      keep.forEach(function (k) { if (incoming.get(k)) { out.set(k, incoming.get(k)); } });
+      var qs = out.toString();
+      if (qs) { document.getElementById('moam-form-frame').src = MOAM_FORM_BASE + '?' + qs; }
+    } catch (e) { /* keep the default src */ }
+  })();
+
   function openMOAMForm() {
     // Opening the form = intent, not a real lead. Track it as a custom event so it stops inflating "Lead".
     if (typeof fbq === 'function') { fbq('trackCustom', 'ApplicationOpened'); }
@@ -847,6 +868,20 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
   }
   window.addEventListener('click', function(e) {
     if (e.target === document.getElementById('moam-modal')) { closeMOAMForm(); }
+  });
+
+  // A download only actually happens when the form is submitted, and the form lives in a
+  // cross-origin iframe — so the submit message it posts back is the only signal we get.
+  // This is where Lead belongs. Guarded so a repeated message can't double-count.
+  var moamLeadTracked = false;
+  window.addEventListener('message', function (e) {
+    var host = moamHostOf(e.origin);
+    if (!/(^|\.)(tmtmarketing\.co|msgsndr\.com|leadconnectorhq\.com)$/.test(host)) { return; }
+    var payload = typeof e.data === 'string' ? e.data : JSON.stringify(e.data || '');
+    if (!/submit|submission/i.test(payload)) { return; }
+    if (moamLeadTracked) { return; }
+    moamLeadTracked = true;
+    if (typeof fbq === 'function') { fbq('track', 'Lead'); }
   });
 </script>
 </body>
