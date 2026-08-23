@@ -11,11 +11,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=Archivo:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{
---paper:#FAF7F0;--card:#FFF;--ink:#241F19;--ink2:#5C554A;--ink3:#8C8478;
---rule:#241F19;--hair:#E2DCCF;--tint:#F3EEE2;
---sage:#4E7A64;--sageLt:#7B9E8E;--sageW:#EAF0EB;
---maroon:#7C2D2D;
---df:'Newsreader',Georgia,serif;--bf:'Instrument Sans',system-ui,sans-serif;--lf:'Archivo',sans-serif;
+ --paper:#FAF7F0;--card:#FFF;--ink:#241F19;--ink2:#5C554A;--ink3:#8C8478;
+ --rule:#241F19;--hair:#E2DCCF;--tint:#F3EEE2;
+ --sage:#4E7A64;--sageLt:#7B9E8E;--sageW:#EAF0EB;
+ --maroon:#7C2D2D;
+ --df:'Newsreader',Georgia,serif;--bf:'Instrument Sans',system-ui,sans-serif;--lf:'Archivo',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{max-width:100%;overflow-x:hidden;background:var(--paper)}
@@ -23,6 +23,7 @@ body{font-family:var(--bf);color:var(--ink);font-size:16px;line-height:1.5;-webk
 button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
 button{border:0;background:none;cursor:pointer}
 .wrap{max-width:780px;margin:0 auto;padding:0 20px 70px}
+
 .mast{display:flex;align-items:center;gap:11px;padding:22px 0 14px;border-bottom:2px solid var(--rule)}
 .mast img{width:26px;height:26px;object-fit:contain}
 .mast .nm{font-family:var(--lf);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
@@ -31,12 +32,15 @@ button{border:0;background:none;cursor:pointer}
 .mast .gear i{font-style:normal;font-size:13px;line-height:1}
 @media(max-width:520px){.mast .gear span{display:none}.mast .gear{padding:8px 10px}}
 .mast .rt{margin-left:auto;font-family:var(--lf);font-weight:600;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+
 .tabs{display:flex;border-bottom:1px solid var(--rule);margin-bottom:8px}
 .tab{padding:14px 20px;font-family:var(--lf);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);border-bottom:3px solid transparent;margin-bottom:-1px;transition:color .15s,border-color .15s}
 .tab:hover{color:var(--ink2)}
 .tab.on{color:var(--ink);border-bottom-color:var(--sage)}
+
 .view{display:none}.view.on{display:block;animation:fade .22s ease-out}
 @keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
 h1{font-family:var(--df);font-weight:600;font-size:clamp(27px,6.2vw,36px);line-height:1.12;letter-spacing:-.02em;margin:24px 0 6px}
 h1 em{font-style:italic;color:var(--sage)}
 .sub{color:var(--ink2);font-size:15.5px;margin-bottom:8px;max-width:54ch}
@@ -44,6 +48,7 @@ h1 em{font-style:italic;color:var(--sage)}
 .howto:hover{color:var(--ink)}
 .howto .pl{width:16px;height:16px;border:1.5px solid currentColor;border-radius:50%;position:relative;flex:0 0 auto}
 .howto .pl::after{content:'';position:absolute;left:5.5px;top:3.5px;border-left:5px solid currentColor;border-top:3.5px solid transparent;border-bottom:3.5px solid transparent}
+
 .sec{font-family:var(--lf);font-weight:700;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin:28px 0 10px;display:flex;align-items:center;gap:12px}
 .sec .cnt{color:var(--ink);font-family:var(--df);font-weight:600;font-size:14px;letter-spacing:0;text-transform:none}
 .sec::after{content:'';flex:1;height:1px;background:var(--hair)}
@@ -58,14 +63,18 @@ h1 em{font-style:italic;color:var(--sage)}
 .jump{padding:8px 13px;border:1px solid var(--sage);border-radius:2px;color:var(--sage);font-family:var(--lf);font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;transition:.15s}
 .jump:hover{background:var(--sage);color:#fff}
 .jump.hide{visibility:hidden}
+
+/* circular area toggle — mirrors Mission Control */
 .tog{width:32px;height:32px;border-radius:50%;border:2px solid #D3CCBD;background:var(--card);flex:0 0 auto;
-display:flex;align-items:center;justify-content:center;transition:background .16s,border-color .16s,transform .14s cubic-bezier(.2,.9,.3,1)}
+ display:flex;align-items:center;justify-content:center;transition:background .16s,border-color .16s,transform .14s cubic-bezier(.2,.9,.3,1)}
 .tog svg{width:15px;height:15px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;
-opacity:0;transform:scale(.6);transition:opacity .14s,transform .18s cubic-bezier(.2,1.5,.4,1)}
+ opacity:0;transform:scale(.6);transition:opacity .14s,transform .18s cubic-bezier(.2,1.5,.4,1)}
 .tog:hover{border-color:var(--sageLt)}
 .tog:active{transform:scale(.93)}
 .tog.on{background:var(--sage);border-color:var(--sage)}
 .tog.on svg{opacity:1;transform:scale(1)}
+
+/* big three */
 .b3row{display:flex;align-items:center;gap:14px;padding:15px 18px;border-bottom:1px solid var(--hair);transition:background .18s}
 .b3row:last-child{border-bottom:0}
 .b3row.done{background:var(--sageW)}
@@ -75,6 +84,8 @@ opacity:0;transform:scale(.6);transition:opacity .14s,transform .18s cubic-bezie
 .b3row.done .b3t{color:var(--ink3);text-decoration:line-through;text-decoration-color:#BFB6A6}
 .pick{font-family:var(--lf);font-weight:700;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);padding:6px 10px;border:1px solid var(--sage);border-radius:2px;transition:.15s}
 .pick:hover{background:var(--sage);color:#fff}
+
+/* deposits */
 .dep{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--hair);transition:background .18s}
 .dep:last-of-type{border-bottom:0}
 .dep.done{background:var(--sageW)}
@@ -101,6 +112,8 @@ opacity:0;transform:scale(.6);transition:opacity .14s,transform .18s cubic-bezie
 .add{width:100%;padding:14px;border-top:1px solid var(--rule);font-family:var(--lf);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);transition:background .15s}
 .add:hover{background:var(--sageW)}
 .empty{padding:26px 18px;color:var(--ink3);font-size:14.5px}
+
+/* editor */
 .ed{background:var(--tint);border-top:1px solid var(--rule);padding:18px}
 .fld{margin-bottom:14px}
 .fld label{display:block;font-family:var(--lf);font-weight:700;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
@@ -118,11 +131,15 @@ opacity:0;transform:scale(.6);transition:opacity .14s,transform .18s cubic-bezie
 .btn.p{background:var(--ink);color:var(--paper)}.btn.p:hover{background:#3A332A}
 .btn.g{border:1px solid #CFC7B8;color:var(--ink2)}.btn.g:hover{background:var(--card)}
 .btn.d{color:var(--maroon)}.btn.d:hover{background:#F6EAEA}
+
+/* stats */
 .stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:16px}
 .stat{background:var(--card);border:1px solid var(--rule);border-radius:2px;padding:16px}
 .stat .v{font-family:var(--df);font-weight:600;font-size:30px;line-height:1}
 .stat .v small{font-size:18px;color:var(--ink3)}
 .stat .k{font-family:var(--lf);font-weight:600;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);margin-top:6px}
+
+/* tasks */
 .task{display:flex;align-items:center;gap:13px;padding:13px 18px;border-bottom:1px solid var(--hair)}
 .task:last-of-type{border-bottom:0}
 .task.done .tt{color:var(--ink3);text-decoration:line-through;text-decoration-color:#BFB6A6}
@@ -133,6 +150,8 @@ opacity:0;transform:scale(.6);transition:opacity .14s,transform .18s cubic-bezie
 .tin{display:flex;gap:10px;padding:14px 18px;border-top:1px solid var(--rule);background:var(--tint)}
 .tin input{flex:1;background:var(--card);border:1px solid #CFC7B8;border-radius:2px;padding:10px 11px;outline:none}
 .tin input:focus{border-color:var(--sage)}
+
+/* goals */
 .goals{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .goal{background:var(--card);border:1px solid var(--rule);border-radius:2px;padding:18px;position:relative;transition:.2s}
 .goal.done{background:var(--sageW)}
@@ -146,6 +165,7 @@ opacity:0;transform:scale(.6);transition:opacity .14s,transform .18s cubic-bezie
 .goal .dd{text-align:right;font-size:12.5px;color:var(--ink3)}
 .goal .dd b{display:block;color:var(--ink);font-weight:500;font-size:13.5px}
 .gacts{display:flex;gap:2px}
+
 .month{background:var(--card);border:1px solid var(--rule);border-radius:2px;padding:20px 18px;margin-top:16px}
 .mrow{display:grid;grid-template-columns:78px 1fr 34px;gap:12px;align-items:center;padding:7px 0}
 .mrow .ml{font-family:var(--lf);font-weight:700;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
@@ -153,12 +173,14 @@ opacity:0;transform:scale(.6);transition:opacity .14s,transform .18s cubic-bezie
 .mrow .mb i{display:block;height:100%;border-radius:2px;transition:width .5s cubic-bezier(.2,1,.3,1)}
 .mrow .mv{font-family:var(--df);font-weight:600;font-size:14px;text-align:right;color:var(--ink2);font-variant-numeric:tabular-nums}
 .mnote{font-size:12.5px;color:var(--ink3);margin-top:12px;padding-top:12px;border-top:1px solid var(--hair);line-height:1.45}
+
 .prompt{background:var(--tint);border:1px solid var(--rule);border-left:3px solid var(--sage);border-radius:0 2px 2px 0;padding:18px;margin-top:16px;display:flex;gap:14px;align-items:flex-start}
 .prompt .pt{flex:1;min-width:0}
 .prompt .pk{font-family:var(--lf);font-weight:700;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--sage);margin-bottom:5px}
 .prompt .ph{font-family:var(--df);font-weight:600;font-size:17px;line-height:1.25;margin-bottom:4px}
 .prompt .pd{font-size:13.5px;color:var(--ink2);line-height:1.45}
 .prompt .pa{display:flex;gap:8px;margin-top:12px}
+
 .install{background:var(--card);border:1px solid var(--rule);border-radius:2px;margin-top:16px}
 .install .ih{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--hair)}
 .install .ih b{flex:1;font-family:var(--df);font-weight:600;font-size:16px}
@@ -184,6 +206,7 @@ opacity:0;transform:scale(.6);transition:opacity .14s,transform .18s cubic-bezie
 .banner .ph{font-family:var(--df);font-weight:600;font-size:17px;line-height:1.25;margin-bottom:4px}
 .banner .pd{font-size:13.5px;color:var(--ink2);line-height:1.45}
 .banner .pa{display:flex;gap:8px;margin-top:12px}
+
 .q{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:15px 18px;border-bottom:1px solid var(--hair)}
 .q:last-child{border-bottom:0}
 .qt{font-size:15px;line-height:1.4}
@@ -192,6 +215,7 @@ opacity:0;transform:scale(.6);transition:opacity .14s,transform .18s cubic-bezie
 .op{width:38px;height:34px;border:1px solid #D3CCBD;border-radius:2px;background:var(--card);font-size:12px;color:var(--ink3);transition:.14s}
 .op:hover{border-color:var(--sageLt)}
 .op.on{background:var(--sage);border-color:var(--sage);color:#fff;font-weight:600}
+
 .res{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
 .big{background:var(--card);border:1px solid var(--rule);padding:20px}
 .big .v{font-family:var(--df);font-weight:600;font-size:44px;line-height:1}
@@ -230,6 +254,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:2px;bac
 .hrow .hd{flex:1;font-size:14.5px}
 .hrow .hd small{display:block;color:var(--ink3);font-size:12px}
 .hrow .hv{font-family:var(--df);font-weight:600;font-size:20px}
+
 .sheet{position:fixed;inset:0;background:rgba(36,31,25,.72);display:none;align-items:flex-end;justify-content:center;z-index:998}
 .sheet.on{display:flex}
 .sheetb{background:var(--paper);border-top:2px solid var(--rule);width:100%;max-width:640px;max-height:88vh;overflow:auto;padding-bottom:env(safe-area-inset-bottom)}
@@ -260,147 +285,158 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:2px;bac
 .gfine{margin-top:22px;font-size:12.5px;color:var(--ink3);line-height:1.5}
 .boot{min-height:100svh;display:flex;align-items:center;justify-content:center;font-family:var(--df);font-size:17px;color:var(--ink3)}
 .foot{text-align:center;font-family:var(--lf);font-weight:700;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#B0A899;padding:40px 0 8px}
+
+/* video modal */
 .mo{position:fixed;inset:0;background:rgba(36,31,25,.72);display:none;align-items:center;justify-content:center;z-index:999;padding:20px}
 .mo.on{display:flex}
 .mob{background:var(--card);border:1px solid var(--rule);border-radius:2px;max-width:640px;width:100%}
 .mob .mh{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--rule)}
 .mob .mt{font-family:var(--lf);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
 .mob .mv{aspect-ratio:16/9;background:var(--tint);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:14px;text-align:center;padding:20px}
+
 @media(max-width:600px){
-.wrap{padding:0 14px 52px}
-.tab{padding:13px 13px;font-size:10px;letter-spacing:.1em}
-.goals{grid-template-columns:1fr}
-.stats{grid-template-columns:1fr 1fr}
-.dep,.b3row,.task{gap:12px;padding:13px 14px}
-.right{gap:6px}
-.wk i{width:12px;height:12px}
+ .wrap{padding:0 14px 52px}
+ .tab{padding:13px 13px;font-size:10px;letter-spacing:.1em}
+ .goals{grid-template-columns:1fr}
+ .stats{grid-template-columns:1fr 1fr}
+ .dep,.b3row,.task{gap:12px;padding:13px 14px}
+ .right{gap:6px}
+ .wk i{width:12px;height:12px}
 }
 </style></head><body>
+
 <div class="boot" id="boot">Loading&hellip;</div>
+
 <div class="gate" id="gate" style="display:none"><div class="gatebox">
-<div class="gm"><img src="/habittracker/assets/logo.png" alt=""><span>Man on a Mission</span></div>
-<h1>The <em>Daily Discipline System.</em></h1>
-<p class="gs" id="gsub">Put in your name and email and I will send you a link. There is no password to make up.</p>
-<div id="gateMagic">
-<div class="gf"><label>First name</label><input id="inName" autocomplete="given-name" placeholder="Matt"></div>
-<div class="gf"><label>Email</label><input id="inEmail" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com"></div>
-<button class="gbtn" id="btnLink" onclick="sendLink()">Send me the link</button>
-<div class="gtog">Already set a password? <button onclick="mode('pw')">Sign in with it</button></div>
-</div>
-<div id="gatePw" style="display:none">
-<div class="gf"><label>Email</label><input id="pwEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
-<div class="gf"><label>Password</label><input id="pwPass" type="password" autocomplete="current-password" placeholder="Your password"></div>
-<button class="gbtn" onclick="signInPw()">Sign in</button>
-<div class="gtog">No password? <button onclick="mode('magic')">Email me a link instead</button></div>
-</div>
-<div class="gmsg" id="gmsg"></div>
-<p class="gfine">Free. Your details are yours. Nothing is shared and nothing is sold.</p>
+  <div class="gm"><img src="/habittracker/assets/logo.png" alt=""><span>Man on a Mission</span></div>
+  <h1>The <em>Daily Discipline System.</em></h1>
+  <p class="gs" id="gsub">Put in your name and email. I will send you a link, you tap it, and you are in. Nothing to make up and nothing to remember.</p>
+
+  <div id="gateMagic">
+    <div class="gf"><label>First name</label><input id="inName" autocomplete="given-name" placeholder="Matt"></div>
+    <div class="gf"><label>Email</label><input id="inEmail" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com"></div>
+    <button class="gbtn" id="btnLink" onclick="sendLink()">Send me the link</button>
+  </div>
+
+  <div class="gmsg" id="gmsg"></div>
+  <p class="gfine">Free. Your details are yours. Nothing is shared and nothing is sold.</p>
 </div></div>
+
 <div class="wrap" id="appRoot" style="display:none">
+
 <div class="mast"><img src="/habittracker/assets/logo.png" alt="Man on a Mission"><span class="nm">Man on a Mission</span><span class="rt" id="today"></span><button class="gear" onclick="openSet()" aria-label="Settings"><i>&#9881;</i><span>Settings</span></button></div>
 <div class="tabs">
-<button class="tab on" data-v="today" onclick="go('today')">Today</button>
-<button class="tab" data-v="tasks" onclick="go('tasks')">Tasks</button>
-<button class="tab" data-v="goals" onclick="go('goals')">Goals</button>
-<button class="tab" data-v="fit5" onclick="go('fit5')">Fit5</button>
+  <button class="tab on" data-v="today" onclick="go('today')">Today</button>
+  <button class="tab" data-v="tasks" onclick="go('tasks')">Tasks</button>
+  <button class="tab" data-v="goals" onclick="go('goals')">Goals</button>
+  <button class="tab" data-v="fit5" onclick="go('fit5')">Fit5</button>
 </div>
+
 <div id="ibar"></div>
+
 <!-- TODAY -->
 <section class="view on" id="v-today">
-<h1>Today's <em>Big Three.</em></h1>
-<p class="sub">Three things that would make today count. Pick them from your tasks, or type them straight in.</p>
-<button class="howto" onclick="vid('The Big Three')"><span class="pl"></span>Watch how this works</button>
-<div class="sec">The Big Three <span class="cnt" id="c-b3"></span></div>
-<div class="doc" id="b3"></div>
-<div class="sec" id="depSec">Deposits <span class="cnt" id="c-dep"></span></div>
-<div class="daynav"><button class="nav" onclick="shift(-1)" aria-label="Previous day">&#8249;</button>
-<div class="dlab"><b id="dlab"></b><span id="dsub"></span></div>
-<button class="nav" onclick="shift(1)" id="navNext" aria-label="Next day">&#8250;</button>
-<button class="jump" id="jump" onclick="goToday()">Today</button></div>
-<div class="doc"><div id="deps"></div>
-<button class="add" onclick="startAdd()">+ Add a deposit</button>
-<div id="editor"></div>
-</div>
-<div class="stats">
-<div class="stat"><div class="v" id="s1">0</div><div class="k">Deposits today</div></div>
-<div class="stat"><div class="v" id="s2">0%</div><div class="k">This week</div></div>
-<div class="stat"><div class="v" id="s3">0</div><div class="k">Day streak</div></div>
-</div>
-<div id="fit5banner"></div>
-<div class="sec">Where your deposits went <span class="cnt">last 30 days</span></div>
-<div class="month" id="month"></div>
+  <h1>Today's <em>Big Three.</em></h1>
+  <p class="sub">Three things that would make today count. Pick them from your tasks, or type them straight in.</p>
+  <button class="howto" onclick="vid('The Big Three')"><span class="pl"></span>Watch how this works</button>
+
+  <div class="sec">The Big Three <span class="cnt" id="c-b3"></span></div>
+  <div class="doc" id="b3"></div>
+
+  <div class="sec" id="depSec">Deposits <span class="cnt" id="c-dep"></span></div>
+  <div class="daynav"><button class="nav" onclick="shift(-1)" aria-label="Previous day">&#8249;</button>
+    <div class="dlab"><b id="dlab"></b><span id="dsub"></span></div>
+    <button class="nav" onclick="shift(1)" id="navNext" aria-label="Next day">&#8250;</button>
+    <button class="jump" id="jump" onclick="goToday()">Today</button></div>
+  <div class="doc"><div id="deps"></div>
+    <button class="add" onclick="startAdd()">+ Add a deposit</button>
+    <div id="editor"></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="v" id="s1">0</div><div class="k">Deposits today</div></div>
+    <div class="stat"><div class="v" id="s2">0%</div><div class="k">This week</div></div>
+    <div class="stat"><div class="v" id="s3">0</div><div class="k">Day streak</div></div>
+  </div>
+
+  <div id="fit5banner"></div>
+
+  <div class="sec">Where your deposits went <span class="cnt">last 30 days</span></div>
+  <div class="month" id="month"></div>
+
 </section>
+
 <!-- TASKS -->
 <section class="view" id="v-tasks">
-<h1>Everything <em>on your plate.</em></h1>
-<p class="sub">Dump it all here so it stops living in your head. Then star the three that actually matter today.</p>
-<button class="howto" onclick="vid('Organising your tasks')"><span class="pl"></span>Watch how this works</button>
-<div class="sec">Your list <span class="cnt" id="c-task"></span></div>
-<div class="doc"><div id="tasks"></div>
-<div class="tin"><input id="tnew" placeholder="Add a task and press enter" onkeydown="if(event.key==='Enter')addTask()"><button class="btn p" onclick="addTask()">Add</button></div>
-</div>
+  <h1>Everything <em>on your plate.</em></h1>
+  <p class="sub">Dump it all here so it stops living in your head. Then star the three that actually matter today.</p>
+  <button class="howto" onclick="vid('Organising your tasks')"><span class="pl"></span>Watch how this works</button>
+  <div class="sec">Your list <span class="cnt" id="c-task"></span></div>
+  <div class="doc"><div id="tasks"></div>
+    <div class="tin"><input id="tnew" placeholder="Add a task and press enter" onkeydown="if(event.key==='Enter')addTask()"><button class="btn p" onclick="addTask()">Add</button></div>
+  </div>
 </section>
+
 <!-- FIT5 -->
 <section class="view" id="v-fit5">
-<h1>Your <em>Fit5 audit.</em></h1>
-<p class="sub">Every area is moving toward fitness or toward sickness. Once a month, seven sliders, ninety seconds.</p>
-<button class="howto" onclick="vid('The Fit5 audit')"><span class="pl"></span>Watch how this works</button>
-<div id="fit5body"></div>
+  <h1>Your <em>Fit5 audit.</em></h1>
+  <p class="sub">Every area is moving toward fitness or toward sickness. Once a month, seven sliders, ninety seconds.</p>
+  <button class="howto" onclick="vid('The Fit5 audit')"><span class="pl"></span>Watch how this works</button>
+  <div id="fit5body"></div>
 </section>
+
 <!-- GOALS -->
 <section class="view" id="v-goals">
-<h1>This year's <em>goals.</em></h1>
-<p class="sub">One per area of life is plenty. A goal with no date is a wish.</p>
-<button class="howto" onclick="vid('Setting goals that hold')"><span class="pl"></span>Watch how this works</button>
-<div class="sec">Your goals <span class="cnt" id="c-goal"></span></div>
-<div id="goalEd"></div>
-<button class="btn p" style="margin-bottom:16px" onclick="startGoal()">+ Add a goal</button>
-<div class="goals" id="goals"></div>
+  <h1>This year's <em>goals.</em></h1>
+  <p class="sub">One per area of life is plenty. A goal with no date is a wish.</p>
+  <button class="howto" onclick="vid('Setting goals that hold')"><span class="pl"></span>Watch how this works</button>
+  <div class="sec">Your goals <span class="cnt" id="c-goal"></span></div>
+  <div id="goalEd"></div>
+  <button class="btn p" style="margin-bottom:16px" onclick="startGoal()">+ Add a goal</button>
+  <div class="goals" id="goals"></div>
 </section>
+
 <div class="foot">Earn Your Dopamine.</div>
 </div>
+
 <div class="sheet" id="setSheet" onclick="if(event.target===this)closeSet()">
-<div class="sheetb">
-<div class="sh"><b>Settings</b><button class="ico" onclick="closeSet()">&#10005;</button></div>
-<div class="sc">
-<div class="sec" style="margin-top:0">Put this on your home screen</div>
-<div id="installCard"></div>
-<div class="sec">Your account</div>
-<div class="doc" style="padding:16px 18px">
-<div style="font-size:14px;color:var(--ink2);margin-bottom:14px">Signed in as <b id="setEmail" style="color:var(--ink)"></b>. Your data follows you to any device you sign in on.</div>
-<div id="pwSetter">
-<div class="fld" style="margin-bottom:10px"><label>Set a password (optional)</label>
-<input id="newPw" type="password" autocomplete="new-password" placeholder="At least 8 characters"></div>
-<button class="btn g" onclick="setPassword()">Save password</button>
-<div id="pwMsg" style="font-size:13px;margin-top:10px"></div>
+  <div class="sheetb">
+    <div class="sh"><b>Settings</b><button class="ico" onclick="closeSet()">&#10005;</button></div>
+    <div class="sc">
+      <div class="sec" style="margin-top:0">Put this on your home screen</div>
+      <div id="installCard"></div>
+      <div class="sec">Your account</div>
+      <div class="doc" style="padding:16px 18px">
+        <div style="font-size:14px;color:var(--ink2);margin-bottom:14px">Signed in as <b id="setEmail" style="color:var(--ink)"></b>. Your data follows you to any device you sign in on.</div>
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--hair)">
+          <button class="btn g" onclick="signOut()">Sign out</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--hair)">
-<button class="btn g" onclick="signOut()">Sign out</button>
-</div>
-</div>
-</div>
-</div>
-</div>
+
 <div class="mo" id="mo" onclick="if(event.target===this)closeVid()">
-<div class="mob">
-<div class="mh"><span class="mt" id="mtitle"></span><button class="ico" onclick="closeVid()">&#10005;</button></div>
-<div class="mv">Matt records this one.<br>Drop the embed here.</div>
+  <div class="mob">
+    <div class="mh"><span class="mt" id="mtitle"></span><button class="ico" onclick="closeVid()">&#10005;</button></div>
+    <div class="mv">Matt records this one.<br>Drop the embed here.</div>
+  </div>
 </div>
-</div>
+
 <script>
 const AREAS=[
-{id:"spiritual",name:"Spiritual",c:"#6B5B8A"},
-{id:"mental",name:"Mental",c:"#6E7B4E"},
-{id:"physical",name:"Physical",c:"#A85A2E"},
-{id:"relational",name:"Relational",c:"#7C2D2D"},
-{id:"professional",name:"Professional",c:"#3E5C76"},
+ {id:"spiritual",name:"Spiritual",c:"#6B5B8A"},
+ {id:"mental",name:"Mental",c:"#6E7B4E"},
+ {id:"physical",name:"Physical",c:"#A85A2E"},
+ {id:"relational",name:"Relational",c:"#7C2D2D"},
+ {id:"professional",name:"Professional",c:"#3E5C76"},
 ];
 const FREQ=[
-{id:"daily",name:"Every day",days:[0,1,2,3,4,5,6]},
-{id:"weekdays",name:"Weekdays",days:[1,2,3,4,5]},
-{id:"weekends",name:"Weekends",days:[0,6]},
-{id:"weekly",name:"Once a week",days:[1]},
-{id:"custom",name:"Custom days"},
+ {id:"daily",name:"Every day",days:[0,1,2,3,4,5,6]},
+ {id:"weekdays",name:"Weekdays",days:[1,2,3,4,5]},
+ {id:"weekends",name:"Weekends",days:[0,6]},
+ {id:"weekly",name:"Once a week",days:[1]},
+ {id:"custom",name:"Custom days"},
 ];
 const DAYN=["S","M","T","W","T","F","S"];
 const SUPA_URL="https://yluooiafdkxrkrrdevxj.supabase.co";
@@ -415,80 +451,83 @@ const vDate=()=>new Date(VIEW+"T12:00:00");
 const vDow=()=>vDate().getDay();
 const CHK='<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
 const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
+
 let S={tasks:[
-{id:1,text:"Finish the Henderson proposal",done:false,big3:true},
-{id:2,text:"Call back the two leads from Friday",done:false,big3:true},
-{id:3,text:"Take Jack to the park before dinner",done:false,big3:true},
-{id:4,text:"Fix the invoicing spreadsheet",done:false,big3:false},
-],
-deposits:[
-{id:11,name:"Open the Word",area:"spiritual",freq:"daily",customDays:[],createdAt:TODAY},
-{id:12,name:"Workout",area:"physical",freq:"custom",customDays:[1,2,4,6],createdAt:TODAY},
-{id:13,name:"Deep work block",area:"professional",freq:"weekdays",customDays:[],createdAt:TODAY},
-{id:14,name:"Phone down at dinner",area:"relational",freq:"daily",createdAt:TODAY,customDays:[]},
-],
-goals:[{id:21,area:"professional",text:"Get the business to $30k months without working Saturdays",deadline:"2026-12-31",done:false}],
-log:{}};
+  {id:1,text:"Finish the Henderson proposal",done:false,big3:true},
+  {id:2,text:"Call back the two leads from Friday",done:false,big3:true},
+  {id:3,text:"Take Jack to the park before dinner",done:false,big3:true},
+  {id:4,text:"Fix the invoicing spreadsheet",done:false,big3:false},
+ ],
+ deposits:[
+  {id:11,name:"Open the Word",area:"spiritual",freq:"daily",customDays:[],createdAt:TODAY},
+  {id:12,name:"Workout",area:"physical",freq:"custom",customDays:[1,2,4,6],createdAt:TODAY},
+  {id:13,name:"Deep work block",area:"professional",freq:"weekdays",customDays:[],createdAt:TODAY},
+  {id:14,name:"Phone down at dinner",area:"relational",freq:"daily",createdAt:TODAY,customDays:[]},
+ ],
+ goals:[{id:21,area:"professional",text:"Get the business to $30k months without working Saturdays",deadline:"2026-12-31",done:false}],
+ log:{}};
 const cache=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
 const save=()=>{cache();queueSync()};
+
 // ── sync ──────────────────────────────────────────────────────────
 // Local state stays instant. Writes are debounced and pushed up per table.
 let syncT=null,syncing=false;
 function queueSync(){ if(!USER)return; clearTimeout(syncT); syncT=setTimeout(push,700); }
 async function push(){
-if(!USER||syncing)return; syncing=true;
-try{
-const uid=USER.id;
-await sb.from('deposits').upsert(S.deposits.map((d,i)=>({
-id:d.uuid||undefined,user_id:uid,name:d.name,area:d.area,freq:d.freq,
-custom_days:d.customDays||[],sort_order:i
-})).filter(r=>r.id),{onConflict:'id'});
-await sb.from('tasks').upsert(S.tasks.map((t,i)=>({
-id:t.uuid||undefined,user_id:uid,body:t.text,done:!!t.done,big3:!!t.big3,sort_order:i
-})).filter(r=>r.id),{onConflict:'id'});
-await sb.from('goals').upsert(S.goals.map(g=>({
-id:g.uuid||undefined,user_id:uid,area:g.area,body:g.text,deadline:g.deadline,done:!!g.done
-})).filter(r=>r.id),{onConflict:'id'});
-}catch(e){console.warn('[sync]',e.message)}
-syncing=false;
+ if(!USER||syncing)return; syncing=true;
+ try{
+  const uid=USER.id;
+  await sb.from('deposits').upsert(S.deposits.map((d,i)=>({
+    id:d.uuid||undefined,user_id:uid,name:d.name,area:d.area,freq:d.freq,
+    custom_days:d.customDays||[],sort_order:i
+  })).filter(r=>r.id),{onConflict:'id'});
+  await sb.from('tasks').upsert(S.tasks.map((t,i)=>({
+    id:t.uuid||undefined,user_id:uid,body:t.text,done:!!t.done,big3:!!t.big3,sort_order:i
+  })).filter(r=>r.id),{onConflict:'id'});
+  await sb.from('goals').upsert(S.goals.map(g=>({
+    id:g.uuid||undefined,user_id:uid,area:g.area,body:g.text,deadline:g.deadline,done:!!g.done
+  })).filter(r=>r.id),{onConflict:'id'});
+ }catch(e){console.warn('[sync]',e.message)}
+ syncing=false;
 }
 async function logTick(depUuid,day,done){
-if(!USER||!depUuid)return;
-try{
-if(done) await sb.from('deposit_log').upsert({user_id:USER.id,deposit_id:depUuid,day,done:true},{onConflict:'deposit_id,day'});
-else     await sb.from('deposit_log').delete().eq('deposit_id',depUuid).eq('day',day);
-}catch(e){console.warn('[log]',e.message)}
+ if(!USER||!depUuid)return;
+ try{
+  if(done) await sb.from('deposit_log').upsert({user_id:USER.id,deposit_id:depUuid,day,done:true},{onConflict:'deposit_id,day'});
+  else     await sb.from('deposit_log').delete().eq('deposit_id',depUuid).eq('day',day);
+ }catch(e){console.warn('[log]',e.message)}
 }
+
 // ── hydrate ───────────────────────────────────────────────────────
 async function hydrate(){
-const uid=USER.id;
-const [dep,tsk,gol,aud,lg]=await Promise.all([
-sb.from('deposits').select('*').eq('user_id',uid).eq('archived',false).order('sort_order'),
-sb.from('tasks').select('*').eq('user_id',uid).order('sort_order'),
-sb.from('goals').select('*').eq('user_id',uid).order('deadline'),
-sb.from('audits').select('*').eq('user_id',uid).order('taken_on'),
-sb.from('deposit_log').select('*').eq('user_id',uid),
-]);
-if(dep.data && dep.data.length){
-S.deposits=dep.data.map(d=>({id:d.id,uuid:d.id,name:d.name,area:d.area,freq:d.freq,customDays:d.custom_days||[],createdAt:(d.created_at||'').slice(0,10)}));
-}else{
-// first run: seed his five and write them up
-const seed=S.deposits.map((d,i)=>({user_id:uid,name:d.name,area:d.area,freq:d.freq,custom_days:d.customDays||[],sort_order:i}));
-const ins=await sb.from('deposits').upsert(seed,{onConflict:'user_id,name',ignoreDuplicates:false}).select();
-if(ins.data) S.deposits=ins.data.map(d=>({id:d.id,uuid:d.id,name:d.name,area:d.area,freq:d.freq,customDays:d.custom_days||[],createdAt:(d.created_at||'').slice(0,10)}));
-}
-if(tsk.data && tsk.data.length){
-S.tasks=tsk.data.map(t=>({id:t.id,uuid:t.id,text:t.body,done:t.done,big3:t.big3}));
-}else{
-const seed=S.tasks.map((t,i)=>({user_id:uid,body:t.text,done:!!t.done,big3:!!t.big3,sort_order:i}));
-const ins=await sb.from('tasks').upsert(seed,{onConflict:'user_id,body',ignoreDuplicates:false}).select();
-if(ins.data) S.tasks=ins.data.map(t=>({id:t.id,uuid:t.id,text:t.body,done:t.done,big3:t.big3}));
-}
-S.goals=(gol.data||[]).map(g=>({id:g.id,uuid:g.id,area:g.area,text:g.body,deadline:g.deadline,done:g.done}));
-S.audits=(aud.data||[]).map(a=>({date:a.taken_on,areas:a.areas,pill:a.pillars,overall:Number(a.overall)}));
-S.log={};
-(lg.data||[]).forEach(r=>{ (S.log[r.day]=S.log[r.day]||{})[r.deposit_id]=r.done?1:0 });
-cache();
+ const uid=USER.id;
+ const [dep,tsk,gol,aud,lg]=await Promise.all([
+  sb.from('deposits').select('*').eq('user_id',uid).eq('archived',false).order('sort_order'),
+  sb.from('tasks').select('*').eq('user_id',uid).order('sort_order'),
+  sb.from('goals').select('*').eq('user_id',uid).order('deadline'),
+  sb.from('audits').select('*').eq('user_id',uid).order('taken_on'),
+  sb.from('deposit_log').select('*').eq('user_id',uid),
+ ]);
+ if(dep.data && dep.data.length){
+  S.deposits=dep.data.map(d=>({id:d.id,uuid:d.id,name:d.name,area:d.area,freq:d.freq,customDays:d.custom_days||[],createdAt:(d.created_at||'').slice(0,10)}));
+ }else{
+  // first run: seed his five and write them up
+  const seed=S.deposits.map((d,i)=>({user_id:uid,name:d.name,area:d.area,freq:d.freq,custom_days:d.customDays||[],sort_order:i}));
+  const ins=await sb.from('deposits').upsert(seed,{onConflict:'user_id,name',ignoreDuplicates:false}).select();
+  if(ins.data) S.deposits=ins.data.map(d=>({id:d.id,uuid:d.id,name:d.name,area:d.area,freq:d.freq,customDays:d.custom_days||[],createdAt:(d.created_at||'').slice(0,10)}));
+ }
+ if(tsk.data && tsk.data.length){
+  S.tasks=tsk.data.map(t=>({id:t.id,uuid:t.id,text:t.body,done:t.done,big3:t.big3}));
+ }else{
+  const seed=S.tasks.map((t,i)=>({user_id:uid,body:t.text,done:!!t.done,big3:!!t.big3,sort_order:i}));
+  const ins=await sb.from('tasks').upsert(seed,{onConflict:'user_id,body',ignoreDuplicates:false}).select();
+  if(ins.data) S.tasks=ins.data.map(t=>({id:t.id,uuid:t.id,text:t.body,done:t.done,big3:t.big3}));
+ }
+ S.goals=(gol.data||[]).map(g=>({id:g.id,uuid:g.id,area:g.area,text:g.body,deadline:g.deadline,done:g.done}));
+ S.audits=(aud.data||[]).map(a=>({date:a.taken_on,areas:a.areas,pill:a.pillars,overall:Number(a.overall)}));
+ S.log={};
+ (lg.data||[]).forEach(r=>{ (S.log[r.day]=S.log[r.day]||{})[r.deposit_id]=r.done?1:0 });
+ cache();
 }
 const $=id=>document.getElementById(id);
 const area=id=>AREAS.find(a=>a.id===id)||AREAS[0];
@@ -496,90 +535,98 @@ const dueOn=(d,dow)=>{const f=FREQ.find(x=>x.id===d.freq);return d.freq==="custo
 const isDue=d=>dueOn(d,vDow());
 const ticked=id=>!!(S.log[VIEW]||{})[id];
 function weekDates(){const n=vDate();const df=n.getDay()===0?-6:1-n.getDay();const m=new Date(n);m.setDate(n.getDate()+df);
-return Array.from({length:7},(_,i)=>{const d=new Date(m);d.setDate(m.getDate()+i);return d})}
+ return Array.from({length:7},(_,i)=>{const d=new Date(m);d.setDate(m.getDate()+i);return d})}
 function shift(n){const d=vDate();d.setDate(d.getDate()+n);const ns=fmt(d);if(ns>TODAY)return;VIEW=ns;renderDeps()}
 function goToday(){VIEW=TODAY;renderDeps()}
 $('today').textContent=new Date().toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'});
+
 function go(v){document.querySelectorAll('.view').forEach(s=>s.classList.remove('on'));$('v-'+v).classList.add('on');
-if(v==='fit5')renderFit5();
-document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.v===v));window.scrollTo(0,0)}
+ if(v==='fit5')renderFit5();
+ document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.v===v));window.scrollTo(0,0)}
 function vid(t){$('mtitle').textContent=t;$('mo').classList.add('on')}
 function closeVid(){$('mo').classList.remove('on')}
+
+/* ---------- BIG THREE ---------- */
 function big3(){return S.tasks.filter(t=>t.big3).slice(0,3)}
 function renderB3(){
-const b=big3();
-let rows=b.map((t,i)=>
-'<div class="b3row'+(t.done?' done':'')+'"><span class="b3n">'+(i+1)+'</span>'
-+'<span class="b3t">'+esc(t.text)+'</span>'
-+'<button class="tog'+(t.done?' on':'')+'" onclick="doneTask('+t.id+')" aria-label="Mark done">'+CHK+'</button></div>').join('');
-for(let i=b.length;i<3;i++){
-rows+='<div class="b3row"><span class="b3n">'+(i+1)+'</span><span class="b3t empty">Nothing picked yet</span>'
-+'<button class="pick" onclick="go(\'tasks\')">Choose</button></div>';
-}
-$('b3').innerHTML=rows;
-const done=b.filter(t=>t.done).length;
-$('c-b3').textContent=done+' of '+b.length;   // never counts an empty slot
+ const b=big3();
+ let rows=b.map((t,i)=>
+  '<div class="b3row'+(t.done?' done':'')+'"><span class="b3n">'+(i+1)+'</span>'
+  +'<span class="b3t">'+esc(t.text)+'</span>'
+  +'<button class="tog'+(t.done?' on':'')+'" onclick="doneTask('+t.id+')" aria-label="Mark done">'+CHK+'</button></div>').join('');
+ for(let i=b.length;i<3;i++){
+  rows+='<div class="b3row"><span class="b3n">'+(i+1)+'</span><span class="b3t empty">Nothing picked yet</span>'
+   +'<button class="pick" onclick="go(\'tasks\')">Choose</button></div>';
+ }
+ $('b3').innerHTML=rows;
+ const done=b.filter(t=>t.done).length;
+ $('c-b3').textContent=done+' of '+b.length;   // never counts an empty slot
 }
 function doneTask(id){S.tasks=S.tasks.map(t=>t.id===id?{...t,done:!t.done}:t);save();renderB3();renderTasks()}
+
+/* ---------- TASKS ---------- */
 function renderTasks(){
-const starred=S.tasks.filter(t=>t.big3).length;
-$('tasks').innerHTML = S.tasks.length ? S.tasks.map(t=>
-'<div class="task'+(t.done?' done':'')+'">'
-+'<button class="tog'+(t.done?' on':'')+'" onclick="doneTask('+t.id+')" aria-label="Done">'+CHK+'</button>'
-+'<span class="tt">'+esc(t.text)+'</span>'
-+'<button class="star'+(t.big3?' on':'')+'" title="'+(t.big3?'In the Big Three':'Make this one of the Big Three')+'" onclick="star('+t.id+')">&#9733;</button>'
-+'<button class="ico" onclick="delTask('+t.id+')" title="Delete">&#10005;</button></div>'
-).join('') : '<div class="empty">Nothing here yet. Put it all down below.</div>';
-$('c-task').textContent=starred+' starred';
+ const starred=S.tasks.filter(t=>t.big3).length;
+ $('tasks').innerHTML = S.tasks.length ? S.tasks.map(t=>
+  '<div class="task'+(t.done?' done':'')+'">'
+  +'<button class="tog'+(t.done?' on':'')+'" onclick="doneTask('+t.id+')" aria-label="Done">'+CHK+'</button>'
+  +'<span class="tt">'+esc(t.text)+'</span>'
+  +'<button class="star'+(t.big3?' on':'')+'" title="'+(t.big3?'In the Big Three':'Make this one of the Big Three')+'" onclick="star('+t.id+')">&#9733;</button>'
+  +'<button class="ico" onclick="delTask('+t.id+')" title="Delete">&#10005;</button></div>'
+ ).join('') : '<div class="empty">Nothing here yet. Put it all down below.</div>';
+ $('c-task').textContent=starred+' starred';
 }
 async function addTask(){const v=$('tnew').value.trim();if(!v)return;
-const t={id:Date.now(),text:v,done:false,big3:false};
-if(USER){const r=await sb.from('tasks').insert({user_id:USER.id,body:v,sort_order:S.tasks.length}).select().single();if(r.data){t.id=r.data.id;t.uuid=r.data.id}}
-S.tasks.push(t);$('tnew').value="";save();renderTasks();renderB3()}
+ const t={id:Date.now(),text:v,done:false,big3:false};
+ if(USER){const r=await sb.from('tasks').insert({user_id:USER.id,body:v,sort_order:S.tasks.length}).select().single();if(r.data){t.id=r.data.id;t.uuid=r.data.id}}
+ S.tasks.push(t);$('tnew').value="";save();renderTasks();renderB3()}
 function star(id){
-const t=S.tasks.find(x=>x.id===id);
-if(!t.big3 && S.tasks.filter(x=>x.big3).length>=3){alert("Three is the point. Unstar one first.");return}
-t.big3=!t.big3;save();renderTasks();renderB3();
+ const t=S.tasks.find(x=>x.id===id);
+ if(!t.big3 && S.tasks.filter(x=>x.big3).length>=3){alert("Three is the point. Unstar one first.");return}
+ t.big3=!t.big3;save();renderTasks();renderB3();
 }
 function delTask(id){const t=S.tasks.find(x=>x.id===id);S.tasks=S.tasks.filter(x=>x.id!==id);save();renderTasks();renderB3();
-if(USER&&t&&t.uuid) sb.from('tasks').delete().eq('id',t.uuid).then(()=>{});}
+ if(USER&&t&&t.uuid) sb.from('tasks').delete().eq('id',t.uuid).then(()=>{});}
+
+/* ---------- DEPOSITS ---------- */
 function renderDeps(){
-const due=S.deposits.filter(isDue), wk=weekDates();
-$('deps').innerHTML = due.length ? due.map(d=>{
-const a=area(d.area), f=FREQ.find(x=>x.id===d.freq);
-const target=d.freq==="custom"?(d.customDays||[]).length:(f?f.days.length:7);
-let done=0;
-const strip=wk.map(dt=>{
-const ds=fmt(dt), dd=dt.getDay();
-const ap=d.freq==="custom"?(d.customDays||[]).includes(dd):(f?f.days.includes(dd):true);
-const on=!!(S.log[ds]||{})[d.id]; if(on)done++;
-const cls=!ap?'na':(on?'on':(ds<TODAY?'miss':''));
-return '<span class="'+(ds===VIEW?'vw':'')+'"><em>'+DAYN[dd]+'</em><i class="'+cls+'"></i></span>';
-}).join('');
-const on=ticked(d.id);
-return '<div class="dep'+(on?' done':'')+'">'
-+'<button class="tog'+(on?' on':'')+'" onclick="tick('+d.id+')" aria-label="'+esc(d.name)+'">'+CHK+'</button>'
-+'<div class="dmeta"><div class="t">'+esc(d.name)+'</div><div class="m">'
-+'<span class="chip" style="color:'+a.c+'">'+a.name+'</span>'
-+'<span class="freq">'+(d.freq==="custom"?(d.customDays||[]).map(x=>DAYN[x]).join(" "):f.name)+'</span></div>'
-+'<div class="wk">'+strip+'</div></div>'
-+'<div class="right"><span class="cnt2"><b>'+done+'</b>/'+target+'</span>'
-+'<button class="ico" onclick="startEdit('+d.id+')" title="Edit">&#9998;</button></div></div>';
-}).join('') : '<div class="empty">Nothing due on this day. Add one below, or rest.</div>';
-const dv=vDate(), isTod=VIEW===TODAY;
-const yest=new Date();yest.setDate(yest.getDate()-1);
-$('dlab').textContent=dv.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
-$('dsub').textContent=isTod?'Today':(VIEW===fmt(yest)?'Yesterday':'Catching up');
-$('navNext').disabled=isTod;
-$('jump').className='jump'+(isTod?' hide':'');
-$('depSec').firstChild.textContent=isTod?'Today\u2019s deposits ':'Deposits ';
-const dn=due.filter(d=>ticked(d.id)).length;
-$('c-dep').textContent=dn+' of '+due.length;
-$('s1').innerHTML=dn+'<small>/'+due.length+'</small>';
-stats(); if(document.getElementById('month'))renderMonth();
+ const due=S.deposits.filter(isDue), wk=weekDates();
+ $('deps').innerHTML = due.length ? due.map(d=>{
+  const a=area(d.area), f=FREQ.find(x=>x.id===d.freq);
+  const target=d.freq==="custom"?(d.customDays||[]).length:(f?f.days.length:7);
+  let done=0;
+  const strip=wk.map(dt=>{
+   const ds=fmt(dt), dd=dt.getDay();
+   const ap=d.freq==="custom"?(d.customDays||[]).includes(dd):(f?f.days.includes(dd):true);
+   const on=!!(S.log[ds]||{})[d.id]; if(on)done++;
+   const cls=!ap?'na':(on?'on':(ds<TODAY?'miss':''));
+   return '<span class="'+(ds===VIEW?'vw':'')+'"><em>'+DAYN[dd]+'</em><i class="'+cls+'"></i></span>';
+  }).join('');
+  const on=ticked(d.id);
+  return '<div class="dep'+(on?' done':'')+'">'
+   +'<button class="tog'+(on?' on':'')+'" onclick="tick('+d.id+')" aria-label="'+esc(d.name)+'">'+CHK+'</button>'
+   +'<div class="dmeta"><div class="t">'+esc(d.name)+'</div><div class="m">'
+     +'<span class="chip" style="color:'+a.c+'">'+a.name+'</span>'
+     +'<span class="freq">'+(d.freq==="custom"?(d.customDays||[]).map(x=>DAYN[x]).join(" "):f.name)+'</span></div>'
+     +'<div class="wk">'+strip+'</div></div>'
+   +'<div class="right"><span class="cnt2"><b>'+done+'</b>/'+target+'</span>'
+     +'<button class="ico" onclick="startEdit('+d.id+')" title="Edit">&#9998;</button></div></div>';
+ }).join('') : '<div class="empty">Nothing due on this day. Add one below, or rest.</div>';
+ const dv=vDate(), isTod=VIEW===TODAY;
+ const yest=new Date();yest.setDate(yest.getDate()-1);
+ $('dlab').textContent=dv.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+ $('dsub').textContent=isTod?'Today':(VIEW===fmt(yest)?'Yesterday':'Catching up');
+ $('navNext').disabled=isTod;
+ $('jump').className='jump'+(isTod?' hide':'');
+ $('depSec').firstChild.textContent=isTod?'Today\u2019s deposits ':'Deposits ';
+ const dn=due.filter(d=>ticked(d.id)).length;
+ $('c-dep').textContent=dn+' of '+due.length;
+ $('s1').innerHTML=dn+'<small>/'+due.length+'</small>';
+ stats(); if(document.getElementById('month'))renderMonth();
 }
 function tick(id){const l=S.log[VIEW]||{};l[id]=!l[id];S.log[VIEW]=l;cache();renderDeps();
-const d=S.deposits.find(x=>x.id===id); logTick(d&&d.uuid,VIEW,!!l[id]);}
+ const d=S.deposits.find(x=>x.id===id); logTick(d&&d.uuid,VIEW,!!l[id]);}
+
 let draft=null;
 function startAdd(){draft={id:Date.now(),name:"",area:"spiritual",freq:"daily",customDays:[],createdAt:TODAY,_new:true};renderEd()}
 function startEdit(id){draft=JSON.parse(JSON.stringify(S.deposits.find(x=>x.id===id)));renderEd()}
@@ -587,310 +634,316 @@ function cancelEd(){draft=null;$('editor').innerHTML=""}
 function setD(k,v){draft[k]=v;renderEd()}
 function togDay(n){const c=draft.customDays||[];draft.customDays=c.includes(n)?c.filter(x=>x!==n):[...c,n].sort();renderEd()}
 async function saveD(){
-if(!draft.name.trim()){alert("Give it a name.");return}
-if(draft.freq==="custom"&&!(draft.customDays||[]).length){alert("Pick at least one day.");return}
-const{_new,...rec}=draft;
-if(_new&&USER){
-const r=await sb.from('deposits').insert({user_id:USER.id,name:rec.name,area:rec.area,freq:rec.freq,custom_days:rec.customDays||[],sort_order:S.deposits.length}).select().single();
-if(r.data){rec.id=r.data.id;rec.uuid=r.data.id}
-}
-S.deposits=_new?[...S.deposits,rec]:S.deposits.map(d=>d.id===rec.id?rec:d);
-draft=null;save();$('editor').innerHTML="";renderDeps();
+ if(!draft.name.trim()){alert("Give it a name.");return}
+ if(draft.freq==="custom"&&!(draft.customDays||[]).length){alert("Pick at least one day.");return}
+ const{_new,...rec}=draft;
+ if(_new&&USER){
+  const r=await sb.from('deposits').insert({user_id:USER.id,name:rec.name,area:rec.area,freq:rec.freq,custom_days:rec.customDays||[],sort_order:S.deposits.length}).select().single();
+  if(r.data){rec.id=r.data.id;rec.uuid=r.data.id}
+ }
+ S.deposits=_new?[...S.deposits,rec]:S.deposits.map(d=>d.id===rec.id?rec:d);
+ draft=null;save();$('editor').innerHTML="";renderDeps();
 }
 function delD(){if(!confirm("Delete this deposit? Its history goes too."))return;
-const u=draft.uuid; S.deposits=S.deposits.filter(d=>d.id!==draft.id);draft=null;save();$('editor').innerHTML="";renderDeps();
-if(USER&&u) sb.from('deposits').delete().eq('id',u).then(()=>{});}
+ const u=draft.uuid; S.deposits=S.deposits.filter(d=>d.id!==draft.id);draft=null;save();$('editor').innerHTML="";renderDeps();
+ if(USER&&u) sb.from('deposits').delete().eq('id',u).then(()=>{});}
 function renderEd(){
-if(!draft){$('editor').innerHTML="";return}
-$('editor').innerHTML='<div class="ed">'
-+'<div class="fld"><label>The deposit</label><input value="'+esc(draft.name)+'" placeholder="Open the Word" oninput="draft.name=this.value"></div>'
-+'<div class="fld"><label>Area of life</label><div class="areas">'
-+AREAS.map(a=>'<button class="ab'+(draft.area===a.id?' on':'')+'" style="'+(draft.area===a.id?'color:'+a.c:'')+'" onclick="setD(\'area\',\''+a.id+'\')">'+a.name+'</button>').join('')
-+'</div></div>'
-+'<div class="fld"><label>How often</label><select onchange="setD(\'freq\',this.value)">'
-+FREQ.map(f=>'<option value="'+f.id+'"'+(draft.freq===f.id?' selected':'')+'>'+f.name+'</option>').join('')
-+'</select></div>'
-+(draft.freq==="custom"?'<div class="fld"><label>Which days</label><div class="days">'
-+DAYN.map((d,i)=>'<button class="dy'+((draft.customDays||[]).includes(i)?' on':'')+'" onclick="togDay('+i+')">'+d+'</button>').join('')+'</div></div>':'')
-+'<div class="edacts">'+(draft._new?'':'<button class="btn d" onclick="delD()">Delete</button>')
-+'<button class="btn g" onclick="cancelEd()">Cancel</button><button class="btn p" onclick="saveD()">Save</button></div></div>';
+ if(!draft){$('editor').innerHTML="";return}
+ $('editor').innerHTML='<div class="ed">'
+  +'<div class="fld"><label>The deposit</label><input value="'+esc(draft.name)+'" placeholder="Open the Word" oninput="draft.name=this.value"></div>'
+  +'<div class="fld"><label>Area of life</label><div class="areas">'
+   +AREAS.map(a=>'<button class="ab'+(draft.area===a.id?' on':'')+'" style="'+(draft.area===a.id?'color:'+a.c:'')+'" onclick="setD(\'area\',\''+a.id+'\')">'+a.name+'</button>').join('')
+  +'</div></div>'
+  +'<div class="fld"><label>How often</label><select onchange="setD(\'freq\',this.value)">'
+   +FREQ.map(f=>'<option value="'+f.id+'"'+(draft.freq===f.id?' selected':'')+'>'+f.name+'</option>').join('')
+  +'</select></div>'
+  +(draft.freq==="custom"?'<div class="fld"><label>Which days</label><div class="days">'
+   +DAYN.map((d,i)=>'<button class="dy'+((draft.customDays||[]).includes(i)?' on':'')+'" onclick="togDay('+i+')">'+d+'</button>').join('')+'</div></div>':'')
+  +'<div class="edacts">'+(draft._new?'':'<button class="btn d" onclick="delD()">Delete</button>')
+  +'<button class="btn g" onclick="cancelEd()">Cancel</button><button class="btn p" onclick="saveD()">Save</button></div></div>';
 }
+
+/* ---------- GOALS ---------- */
 let gdraft=null;
 const days=d=>{const n=Math.ceil((new Date(d+"T12:00:00")-new Date())/864e5);return n>0?n:0};
 function startGoal(){gdraft={id:Date.now(),area:"professional",text:"",deadline:"",done:false,_new:true};renderGEd()}
 function editGoal(id){gdraft=JSON.parse(JSON.stringify(S.goals.find(g=>g.id===id)));renderGEd()}
 function setG(k,v){gdraft[k]=v;renderGEd()}
 async function saveG(){
-if(!gdraft.text.trim()){alert("What's the goal?");return}
-if(!gdraft.deadline){alert("Give it a date. A goal with no date is a wish.");return}
-const{_new,...rec}=gdraft;
-if(_new&&USER){
-const r=await sb.from('goals').insert({user_id:USER.id,area:rec.area,body:rec.text,deadline:rec.deadline}).select().single();
-if(r.data){rec.id=r.data.id;rec.uuid=r.data.id}
-}
-S.goals=_new?[...S.goals,rec]:S.goals.map(g=>g.id===rec.id?rec:g);
-gdraft=null;save();$('goalEd').innerHTML="";renderGoals();
+ if(!gdraft.text.trim()){alert("What's the goal?");return}
+ if(!gdraft.deadline){alert("Give it a date. A goal with no date is a wish.");return}
+ const{_new,...rec}=gdraft;
+ if(_new&&USER){
+  const r=await sb.from('goals').insert({user_id:USER.id,area:rec.area,body:rec.text,deadline:rec.deadline}).select().single();
+  if(r.data){rec.id=r.data.id;rec.uuid=r.data.id}
+ }
+ S.goals=_new?[...S.goals,rec]:S.goals.map(g=>g.id===rec.id?rec:g);
+ gdraft=null;save();$('goalEd').innerHTML="";renderGoals();
 }
 function delG(){if(!confirm("Delete this goal?"))return;const u=gdraft.uuid;
-S.goals=S.goals.filter(g=>g.id!==gdraft.id);gdraft=null;save();$('goalEd').innerHTML="";renderGoals();
-if(USER&&u) sb.from('goals').delete().eq('id',u).then(()=>{});}
+ S.goals=S.goals.filter(g=>g.id!==gdraft.id);gdraft=null;save();$('goalEd').innerHTML="";renderGoals();
+ if(USER&&u) sb.from('goals').delete().eq('id',u).then(()=>{});}
 function cancelG(){gdraft=null;$('goalEd').innerHTML=""}
 function doneGoal(id){S.goals=S.goals.map(g=>g.id===id?{...g,done:!g.done}:g);save();renderGoals()}
 function renderGEd(){
-if(!gdraft){$('goalEd').innerHTML="";return}
-$('goalEd').innerHTML='<div class="doc" style="margin-bottom:16px"><div class="ed" style="border-top:0">'
-+'<div class="fld"><label>Area of life</label><div class="areas">'
-+AREAS.map(a=>'<button class="ab'+(gdraft.area===a.id?' on':'')+'" style="'+(gdraft.area===a.id?'color:'+a.c:'')+'" onclick="setG(\'area\',\''+a.id+'\')">'+a.name+'</button>').join('')
-+'</div></div>'
-+'<div class="fld"><label>The goal</label><textarea rows="2" placeholder="What are you actually after?" oninput="gdraft.text=this.value">'+esc(gdraft.text)+'</textarea></div>'
-+'<div class="fld"><label>By when</label><input type="date" value="'+esc(gdraft.deadline)+'" oninput="gdraft.deadline=this.value"></div>'
-+'<div class="edacts">'+(gdraft._new?'':'<button class="btn d" onclick="delG()">Delete</button>')
-+'<button class="btn g" onclick="cancelG()">Cancel</button><button class="btn p" onclick="saveG()">Save goal</button></div></div></div>';
+ if(!gdraft){$('goalEd').innerHTML="";return}
+ $('goalEd').innerHTML='<div class="doc" style="margin-bottom:16px"><div class="ed" style="border-top:0">'
+  +'<div class="fld"><label>Area of life</label><div class="areas">'
+   +AREAS.map(a=>'<button class="ab'+(gdraft.area===a.id?' on':'')+'" style="'+(gdraft.area===a.id?'color:'+a.c:'')+'" onclick="setG(\'area\',\''+a.id+'\')">'+a.name+'</button>').join('')
+  +'</div></div>'
+  +'<div class="fld"><label>The goal</label><textarea rows="2" placeholder="What are you actually after?" oninput="gdraft.text=this.value">'+esc(gdraft.text)+'</textarea></div>'
+  +'<div class="fld"><label>By when</label><input type="date" value="'+esc(gdraft.deadline)+'" oninput="gdraft.deadline=this.value"></div>'
+  +'<div class="edacts">'+(gdraft._new?'':'<button class="btn d" onclick="delG()">Delete</button>')
+  +'<button class="btn g" onclick="cancelG()">Cancel</button><button class="btn p" onclick="saveG()">Save goal</button></div></div></div>';
 }
 function renderGoals(){
-$('goals').innerHTML = S.goals.length ? S.goals.map(g=>{
-const a=area(g.area);
-return '<div class="goal'+(g.done?' done':'')+'">'
-+'<div class="gh"><span class="chip" style="color:'+a.c+'">'+a.name+'</span>'
-+'<span class="gacts"><button class="ico" onclick="doneGoal('+g.id+')" title="Mark done">'+(g.done?'&#10003;':'&#9711;')+'</button>'
-+'<button class="ico" onclick="editGoal('+g.id+')" title="Edit">&#9998;</button></span></div>'
-+'<div class="gt">'+esc(g.text)+'</div>'
-+'<div class="gb"><span class="days"><span class="dv" style="color:'+(g.done?'var(--sage)':'var(--ink)')+'">'+(g.done?'Done':days(g.deadline))+'</span>'
-+'<span class="dl">'+(g.done?'Finished':'days left')+'</span></span>'
-+'<span class="dd">Deadline<b>'+new Date(g.deadline+"T12:00:00").toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})+'</b></span></div></div>';
-}).join('') : '<div class="doc empty" style="grid-column:1/-1">No goals yet. One per area of life is plenty.</div>';
-$('c-goal').textContent=S.goals.filter(g=>!g.done).length+' open';
+ $('goals').innerHTML = S.goals.length ? S.goals.map(g=>{
+  const a=area(g.area);
+  return '<div class="goal'+(g.done?' done':'')+'">'
+   +'<div class="gh"><span class="chip" style="color:'+a.c+'">'+a.name+'</span>'
+    +'<span class="gacts"><button class="ico" onclick="doneGoal('+g.id+')" title="Mark done">'+(g.done?'&#10003;':'&#9711;')+'</button>'
+    +'<button class="ico" onclick="editGoal('+g.id+')" title="Edit">&#9998;</button></span></div>'
+   +'<div class="gt">'+esc(g.text)+'</div>'
+   +'<div class="gb"><span class="days"><span class="dv" style="color:'+(g.done?'var(--sage)':'var(--ink)')+'">'+(g.done?'Done':days(g.deadline))+'</span>'
+    +'<span class="dl">'+(g.done?'Finished':'days left')+'</span></span>'
+    +'<span class="dd">Deadline<b>'+new Date(g.deadline+"T12:00:00").toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})+'</b></span></div></div>';
+ }).join('') : '<div class="doc empty" style="grid-column:1/-1">No goals yet. One per area of life is plenty.</div>';
+ $('c-goal').textContent=S.goals.filter(g=>!g.done).length+' open';
 }
+
 function stats(){
-let wd=0,wt=0;
-weekDates().forEach(dt=>{ if(fmt(dt)>TODAY)return;
-const ds=fmt(dt),dd=dt.getDay();
-S.deposits.forEach(d=>{
-const ap=dueOn(d,dd); if(!ap)return;wt++;if((S.log[ds]||{})[d.id])wd++;});
-});
-$('s2').textContent=(wt?Math.round(wd/wt*100):0)+'%';
-let st=0;for(let i=0;i<400;i++){const dt=new Date();dt.setDate(dt.getDate()-i);
-if(Object.values(S.log[fmt(dt)]||{}).some(Boolean))st++;else if(i>0)break;}
-$('s3').textContent=st;
+ let wd=0,wt=0;
+ weekDates().forEach(dt=>{ if(fmt(dt)>TODAY)return;
+  const ds=fmt(dt),dd=dt.getDay();
+  S.deposits.forEach(d=>{
+   const ap=dueOn(d,dd); if(!ap)return;wt++;if((S.log[ds]||{})[d.id])wd++;});
+ });
+ $('s2').textContent=(wt?Math.round(wd/wt*100):0)+'%';
+ let st=0;for(let i=0;i<400;i++){const dt=new Date();dt.setDate(dt.getDate()-i);
+  if(Object.values(S.log[fmt(dt)]||{}).some(Boolean))st++;else if(i>0)break;}
+ $('s3').textContent=st;
 }
+/* ---------- WHERE DEPOSITS WENT (last 30 days) ---------- */
 function renderMonth(){
-const tally={},byId={};
-S.deposits.forEach(d=>byId[d.id]=d);
-AREAS.forEach(a=>tally[a.id]=0);
-let total=0;
-for(let i=0;i<30;i++){
-const dt=new Date();dt.setDate(dt.getDate()-i);
-const day=S.log[fmt(dt)]||{};
-Object.keys(day).forEach(k=>{if(!day[k])return;const d=byId[k];if(!d)return;tally[d.area]=(tally[d.area]||0)+1;total++});
+ const tally={},byId={};
+ S.deposits.forEach(d=>byId[d.id]=d);
+ AREAS.forEach(a=>tally[a.id]=0);
+ let total=0;
+ for(let i=0;i<30;i++){
+  const dt=new Date();dt.setDate(dt.getDate()-i);
+  const day=S.log[fmt(dt)]||{};
+  Object.keys(day).forEach(k=>{if(!day[k])return;const d=byId[k];if(!d)return;tally[d.area]=(tally[d.area]||0)+1;total++});
+ }
+ const max=Math.max(1,...Object.values(tally));
+ $('month').innerHTML = AREAS.map(a=>
+  '<div class="mrow"><span class="ml">'+a.name+'</span>'
+  +'<span class="mb"><i style="width:'+(tally[a.id]/max*100)+'%;background:'+a.c+'"></i></span>'
+  +'<span class="mv">'+tally[a.id]+'</span></div>').join('')
+  + '<div class="mnote">'+(total
+     ? 'Five accounts. The short bars are the ones quietly going into debt.'
+     : 'Nothing logged yet. Tick a deposit and this fills in.')+'</div>';
 }
-const max=Math.max(1,...Object.values(tally));
-$('month').innerHTML = AREAS.map(a=>
-'<div class="mrow"><span class="ml">'+a.name+'</span>'
-+'<span class="mb"><i style="width:'+(tally[a.id]/max*100)+'%;background:'+a.c+'"></i></span>'
-+'<span class="mv">'+tally[a.id]+'</span></div>').join('')
-+ '<div class="mnote">'+(total
-? 'Five accounts. The short bars are the ones quietly going into debt.'
-: 'Nothing logged yet. Tick a deposit and this fills in.')+'</div>';
-}
+
+/* ---------- MONTHLY FIT5 PROMPT ---------- */
 function renderPrompt(){
-const last=S.lastAudit||null;
-const due = !last || (new Date()-new Date(last+'T12:00:00'))/864e5 >= 30;
-if(!due){$('fit5prompt').innerHTML='';return}
-$('fit5prompt').innerHTML='<div class="prompt"><div class="pt">'
-+'<div class="pk">Monthly check</div>'
-+'<div class="ph">Time for your Fit5 audit.</div>'
-+'<div class="pd">Every area of your life is moving toward fitness or toward sickness. Ten questions, ninety seconds, and you will know which is which.</div>'
-+'<div class="pa"><button class="btn p" onclick="doAudit()">Take the audit</button>'
-+'<button class="btn g" onclick="snooze()">Not now</button></div></div></div>';
+ const last=S.lastAudit||null;
+ const due = !last || (new Date()-new Date(last+'T12:00:00'))/864e5 >= 30;
+ if(!due){$('fit5prompt').innerHTML='';return}
+ $('fit5prompt').innerHTML='<div class="prompt"><div class="pt">'
+  +'<div class="pk">Monthly check</div>'
+  +'<div class="ph">Time for your Fit5 audit.</div>'
+  +'<div class="pd">Every area of your life is moving toward fitness or toward sickness. Ten questions, ninety seconds, and you will know which is which.</div>'
+  +'<div class="pa"><button class="btn p" onclick="doAudit()">Take the audit</button>'
+  +'<button class="btn g" onclick="snooze()">Not now</button></div></div></div>';
 }
 function doAudit(){S.lastAudit=TODAY;save();renderPrompt();alert("The Fit5 audit slots in here.")}
 function snooze(){const d=new Date();d.setDate(d.getDate()-23);S.lastAudit=fmt(d);save();renderPrompt()}
+
+/* ---------- FIT5 AUDIT ---------- */
 const PILLARS=[
-{id:"discipline",name:"Discipline",c:"#4E7A64",hint:"Do you do it when you do not feel like it?"},
-{id:"purpose",name:"Purpose",c:"#8C6D3F",hint:"Do you know what you are building and why?"},
+ {id:"discipline",name:"Discipline",c:"#4E7A64",hint:"Do you do it when you do not feel like it?"},
+ {id:"purpose",name:"Purpose",c:"#8C6D3F",hint:"Do you know what you are building and why?"},
 ];
 const HINTS={spiritual:"Word, prayer, walking with God",mental:"Clear, focused, present",physical:"Energy, health, strength",relational:"Present husband and father",professional:"Business serves your life"};
+
 let ans={};
 const monthKey=d=>d.slice(0,7);
 function needsAudit(){
-const last=(S.audits||[]).slice(-1)[0];
-return !last || monthKey(last.date)!==monthKey(TODAY);
+ const last=(S.audits||[]).slice(-1)[0];
+ return !last || monthKey(last.date)!==monthKey(TODAY);
 }
 function renderBanner(){
-const el=$('fit5banner'); if(!el)return;
-if(!needsAudit()||S.bannerHidden===monthKey(TODAY)){el.innerHTML='';return}
-el.innerHTML='<div class="banner"><div class="pk">'+new Date().toLocaleDateString('en-US',{month:'long'})+' check</div>'
-+'<div class="ph">Your Fit5 audit is due.</div>'
-+'<div class="pd">Seven sliders. You will see which areas moved toward fitness this month and which quietly slid.</div>'
-+'<div class="pa"><button class="btn p" onclick="go(\'fit5\')">Take the audit</button>'
-+'<button class="btn g" onclick="hideBanner()">Not now</button></div></div>';
+ const el=$('fit5banner'); if(!el)return;
+ if(!needsAudit()||S.bannerHidden===monthKey(TODAY)){el.innerHTML='';return}
+ el.innerHTML='<div class="banner"><div class="pk">'+new Date().toLocaleDateString('en-US',{month:'long'})+' check</div>'
+  +'<div class="ph">Your Fit5 audit is due.</div>'
+  +'<div class="pd">Seven sliders. You will see which areas moved toward fitness this month and which quietly slid.</div>'
+  +'<div class="pa"><button class="btn p" onclick="go(\'fit5\')">Take the audit</button>'
+  +'<button class="btn g" onclick="hideBanner()">Not now</button></div></div>';
 }
 function hideBanner(){S.bannerHidden=monthKey(TODAY);save();renderBanner()}
+
 function renderFit5(){
-const el=$('fit5body'); if(!el)return;
-const A=S.audits||[];
-if(S.taking){ el.innerHTML=auditForm(); return }
-if(!A.length){
-el.innerHTML='<div class="doc empty">No audits yet. The first one takes ninety seconds and becomes your baseline.</div>'
-+'<button class="btn p" style="margin-top:16px" onclick="startAudit()">Take your first audit</button>';
-return;
-}
-const last=A[A.length-1], first=A[0];
-const avg=(A.reduce((t,a)=>t+a.overall,0)/A.length).toFixed(1);
-const delta=(last.overall-first.overall).toFixed(1);
-let html='<div class="res">'
-+'<div class="big"><div class="v">'+last.overall.toFixed(1)+'</div><div class="k">Latest, out of 10</div></div>'
-+'<div class="big"><div class="v">'+avg+'</div><div class="k">Average across '+A.length+'</div></div></div>'
-+(last.pill?'<div class="res">'+PILLARS.map(o=>'<div class="big"><div class="v" style="color:'+o.c+'">'+(last.pill[o.id]||0)+'</div><div class="k">'+o.name+'</div></div>').join('')+'</div>':'');
-// trend
-if(A.length>1){
-const w=560,h=110,pad=6;
-const xs=(i)=>pad+i*((w-pad*2)/(A.length-1));
-const ys=(v)=>h-pad-(v/10)*(h-pad*2);
-const pts=A.map((a,i)=>xs(i)+','+ys(a.overall)).join(' ');
-html+='<div class="trend"><svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none">'
-+[0,5,10].map(v=>'<line x1="0" y1="'+ys(v)+'" x2="'+w+'" y2="'+ys(v)+'" stroke="#E2DCCF" stroke-width="1"/>').join('')
-+'<polyline points="'+pts+'" fill="none" stroke="#4E7A64" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>'
-+A.map((a,i)=>'<circle cx="'+xs(i)+'" cy="'+ys(a.overall)+'" r="4" fill="#4E7A64"/>').join('')
-+'</svg>'
-+'<div style="display:flex;justify-content:space-between;font-family:var(--lf);font-weight:600;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-top:8px">'
-+'<span>'+new Date(first.date+"T12:00:00").toLocaleDateString('en-US',{month:'short',year:'2-digit'})+'</span>'
-+'<span class="'+(delta>=0?'up':'dn')+'">'+(delta>=0?'+':'')+delta+' since you started</span>'
-+'<span>'+new Date(last.date+"T12:00:00").toLocaleDateString('en-US',{month:'short',year:'2-digit'})+'</span></div>';
-// then vs now per area
-const ALL=AREAS.concat(PILLARS.map(o=>({id:o.id,name:o.name,c:o.c,_p:1})));
-html+=ALL.map(a=>{
-const gf=a._p?(first.pill||{}):first.areas, gl=a._p?(last.pill||{}):last.areas;
-const f=gf[a.id]||0,l=gl[a.id]||0;
-return '<div class="cmp"'+(a._p?' style="border-top:1px solid var(--rule)"':'')+'><span class="cl">'+a.name+'</span>'
-+'<span class="ct"><span class="rail"></span>'
-+'<span class="dot d0" style="left:'+(f/10*100)+'%"></span>'
-+'<span class="dot d1" style="left:'+(l/10*100)+'%;background:'+a.c+'"></span></span>'
-+'<span class="cv"><s>'+f.toFixed(1)+'</s> &rarr; '+l.toFixed(1)+'</span></div>';
-}).join('');
-html+='</div>';
-}
-html+='<div class="sec">Every audit <span class="cnt">'+A.length+'</span></div><div class="hist">'
-+A.slice().reverse().map(a=>'<div class="hrow"><span class="hd">'
-+new Date(a.date+"T12:00:00").toLocaleDateString('en-US',{month:'long',year:'numeric'})
-+'<small>'+AREAS.map(x=>x.name.slice(0,3)+' '+(a.areas[x.id]||0).toFixed(0)).join(' &middot; ')
-+(a.pill?'  &nbsp;|&nbsp;  Dis '+a.pill.discipline+' &middot; Pur '+a.pill.purpose:'')+'</small></span>'
-+'<span class="hv">'+a.overall.toFixed(1)+'</span></div>').join('')+'</div>';
-if(needsAudit()) html+='<button class="btn p" style="margin-top:16px" onclick="startAudit()">Take this month\u2019s audit</button>';
-el.innerHTML=html;
+ const el=$('fit5body'); if(!el)return;
+ const A=S.audits||[];
+ if(S.taking){ el.innerHTML=auditForm(); return }
+ if(!A.length){
+  el.innerHTML='<div class="doc empty">No audits yet. The first one takes ninety seconds and becomes your baseline.</div>'
+   +'<button class="btn p" style="margin-top:16px" onclick="startAudit()">Take your first audit</button>';
+  return;
+ }
+ const last=A[A.length-1], first=A[0];
+ const avg=(A.reduce((t,a)=>t+a.overall,0)/A.length).toFixed(1);
+ const delta=(last.overall-first.overall).toFixed(1);
+ let html='<div class="res">'
+  +'<div class="big"><div class="v">'+last.overall.toFixed(1)+'</div><div class="k">Latest, out of 10</div></div>'
+  +'<div class="big"><div class="v">'+avg+'</div><div class="k">Average across '+A.length+'</div></div></div>'
+  +(last.pill?'<div class="res">'+PILLARS.map(o=>'<div class="big"><div class="v" style="color:'+o.c+'">'+(last.pill[o.id]||0)+'</div><div class="k">'+o.name+'</div></div>').join('')+'</div>':'');
+ // trend
+ if(A.length>1){
+  const w=560,h=110,pad=6;
+  const xs=(i)=>pad+i*((w-pad*2)/(A.length-1));
+  const ys=(v)=>h-pad-(v/10)*(h-pad*2);
+  const pts=A.map((a,i)=>xs(i)+','+ys(a.overall)).join(' ');
+  html+='<div class="trend"><svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none">'
+   +[0,5,10].map(v=>'<line x1="0" y1="'+ys(v)+'" x2="'+w+'" y2="'+ys(v)+'" stroke="#E2DCCF" stroke-width="1"/>').join('')
+   +'<polyline points="'+pts+'" fill="none" stroke="#4E7A64" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>'
+   +A.map((a,i)=>'<circle cx="'+xs(i)+'" cy="'+ys(a.overall)+'" r="4" fill="#4E7A64"/>').join('')
+   +'</svg>'
+   +'<div style="display:flex;justify-content:space-between;font-family:var(--lf);font-weight:600;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-top:8px">'
+   +'<span>'+new Date(first.date+"T12:00:00").toLocaleDateString('en-US',{month:'short',year:'2-digit'})+'</span>'
+   +'<span class="'+(delta>=0?'up':'dn')+'">'+(delta>=0?'+':'')+delta+' since you started</span>'
+   +'<span>'+new Date(last.date+"T12:00:00").toLocaleDateString('en-US',{month:'short',year:'2-digit'})+'</span></div>';
+  // then vs now per area
+  const ALL=AREAS.concat(PILLARS.map(o=>({id:o.id,name:o.name,c:o.c,_p:1})));
+  html+=ALL.map(a=>{
+   const gf=a._p?(first.pill||{}):first.areas, gl=a._p?(last.pill||{}):last.areas;
+   const f=gf[a.id]||0,l=gl[a.id]||0;
+   return '<div class="cmp"'+(a._p?' style="border-top:1px solid var(--rule)"':'')+'><span class="cl">'+a.name+'</span>'
+    +'<span class="ct"><span class="rail"></span>'
+     +'<span class="dot d0" style="left:'+(f/10*100)+'%"></span>'
+     +'<span class="dot d1" style="left:'+(l/10*100)+'%;background:'+a.c+'"></span></span>'
+    +'<span class="cv"><s>'+f.toFixed(1)+'</s> &rarr; '+l.toFixed(1)+'</span></div>';
+  }).join('');
+  html+='</div>';
+ }
+ html+='<div class="sec">Every audit <span class="cnt">'+A.length+'</span></div><div class="hist">'
+  +A.slice().reverse().map(a=>'<div class="hrow"><span class="hd">'
+   +new Date(a.date+"T12:00:00").toLocaleDateString('en-US',{month:'long',year:'numeric'})
+   +'<small>'+AREAS.map(x=>x.name.slice(0,3)+' '+(a.areas[x.id]||0).toFixed(0)).join(' &middot; ')
+    +(a.pill?'  &nbsp;|&nbsp;  Dis '+a.pill.discipline+' &middot; Pur '+a.pill.purpose:'')+'</small></span>'
+   +'<span class="hv">'+a.overall.toFixed(1)+'</span></div>').join('')+'</div>';
+ if(needsAudit()) html+='<button class="btn p" style="margin-top:16px" onclick="startAudit()">Take this month\u2019s audit</button>';
+ el.innerHTML=html;
 }
 function startAudit(){
-const last=(S.audits||[]).slice(-1)[0];
-ans={};
-AREAS.forEach(a=>ans[a.id]=last?Math.round(last.areas[a.id]||5):5);
-PILLARS.forEach(o=>ans[o.id]=last&&last.pill?Math.round(last.pill[o.id]||5):5);
-S.taking=true;renderFit5();window.scrollTo(0,0)}
+ const last=(S.audits||[]).slice(-1)[0];
+ ans={};
+ AREAS.forEach(a=>ans[a.id]=last?Math.round(last.areas[a.id]||5):5);
+ PILLARS.forEach(o=>ans[o.id]=last&&last.pill?Math.round(last.pill[o.id]||5):5);
+ S.taking=true;renderFit5();window.scrollTo(0,0)}
 function auditForm(){
-const row=(o,grp)=>{
-const v=ans[o.id]!==undefined?ans[o.id]:5;
-const col=grp==='p'?o.c:(AREAS.find(a=>a.id===o.id)||{}).c;
-return '<div class="sl"><div class="slh"><span class="n">'+o.name
-+'<em>'+(grp==='p'?o.hint:HINTS[o.id])+'</em></span>'
-+'<span class="v" style="color:'+col+'">'+v+'</span></div>'
-+'<input type="range" min="1" max="10" step="1" value="'+v+'" oninput="setA(\''+o.id+'\',this.value)">'
-+'<div class="slt"><span>Sliding</span><span>Holding</span><span>Strong</span></div></div>';
-};
-return '<div class="grp"><div class="grph"><b>The Fit5 &middot; your five areas</b><span>Where is each one pointed this month?</span></div>'
-+AREAS.map(a=>row(a,'a')).join('')+'</div>'
-+'<div class="grp"><div class="grph"><b>The two underneath</b><span>Not areas of life. The things that hold them up.</span></div>'
-+PILLARS.map(o=>row(o,'p')).join('')+'</div>'
-+'<div style="display:flex;gap:8px"><button class="btn g" onclick="cancelAudit()">Cancel</button>'
-+'<button class="btn p" onclick="saveAudit()">Save this month</button></div>';
+ const row=(o,grp)=>{
+  const v=ans[o.id]!==undefined?ans[o.id]:5;
+  const col=grp==='p'?o.c:(AREAS.find(a=>a.id===o.id)||{}).c;
+  return '<div class="sl"><div class="slh"><span class="n">'+o.name
+   +'<em>'+(grp==='p'?o.hint:HINTS[o.id])+'</em></span>'
+   +'<span class="v" style="color:'+col+'">'+v+'</span></div>'
+   +'<input type="range" min="1" max="10" step="1" value="'+v+'" oninput="setA(\''+o.id+'\',this.value)">'
+   +'<div class="slt"><span>Sliding</span><span>Holding</span><span>Strong</span></div></div>';
+ };
+ return '<div class="grp"><div class="grph"><b>The Fit5 &middot; your five areas</b><span>Where is each one pointed this month?</span></div>'
+   +AREAS.map(a=>row(a,'a')).join('')+'</div>'
+  +'<div class="grp"><div class="grph"><b>The two underneath</b><span>Not areas of life. The things that hold them up.</span></div>'
+   +PILLARS.map(o=>row(o,'p')).join('')+'</div>'
+  +'<div style="display:flex;gap:8px"><button class="btn g" onclick="cancelAudit()">Cancel</button>'
+  +'<button class="btn p" onclick="saveAudit()">Save this month</button></div>';
 }
 function setA(id,v){ans[id]=+v;
-const host=$('fit5body'); const sc=host.scrollTop;
-renderFit5(); host.scrollTop=sc;}
+ const host=$('fit5body'); const sc=host.scrollTop;
+ renderFit5(); host.scrollTop=sc;}
 function cancelAudit(){S.taking=false;ans={};renderFit5()}
 function saveAudit(){
-const areas={},pill={};
-AREAS.forEach(a=>areas[a.id]=ans[a.id]!==undefined?ans[a.id]:5);
-PILLARS.forEach(o=>pill[o.id]=ans[o.id]!==undefined?ans[o.id]:5);
-const overall=Math.round(AREAS.reduce((t,a)=>t+areas[a.id],0)/5*10)/10;
-S.audits=[...(S.audits||[]),{date:TODAY,areas,pill,overall}];
-S.taking=false;ans={};cache();renderFit5();renderBanner();
-if(USER) sb.from('audits').insert({user_id:USER.id,taken_on:TODAY,areas,pillars:pill,overall}).then(r=>{if(r.error)console.warn(r.error.message)});
+ const areas={},pill={};
+ AREAS.forEach(a=>areas[a.id]=ans[a.id]!==undefined?ans[a.id]:5);
+ PILLARS.forEach(o=>pill[o.id]=ans[o.id]!==undefined?ans[o.id]:5);
+ const overall=Math.round(AREAS.reduce((t,a)=>t+areas[a.id],0)/5*10)/10;
+ S.audits=[...(S.audits||[]),{date:TODAY,areas,pill,overall}];
+ S.taking=false;ans={};cache();renderFit5();renderBanner();
+ if(USER) sb.from('audits').insert({user_id:USER.id,taken_on:TODAY,areas,pillars:pill,overall}).then(r=>{if(r.error)console.warn(r.error.message)});
 }
+
+/* ---------- INSTALL BAR ---------- */
 function renderBar(){
-const el=$('ibar'); if(!el)return;
-if(STANDALONE||S.barHidden){el.innerHTML='';return}
-el.innerHTML='<div class="ibar"><span class="ph"></span>'
-+'<span class="it"><b>Keep this one tap away</b>'
-+'<span>Add it to your home screen and it opens like any other app. Takes about fifteen seconds.</span></span>'
-+'<button class="ig" onclick="openSet()">Show me how</button>'
-+'<button class="ix" onclick="hideBar()" aria-label="Hide">&#10005;</button></div>';
+ const el=$('ibar'); if(!el)return;
+ if(STANDALONE||S.barHidden){el.innerHTML='';return}
+ el.innerHTML='<div class="ibar"><span class="ph"></span>'
+  +'<span class="it"><b>Keep this one tap away</b>'
+  +'<span>Add it to your home screen and it opens like any other app. Takes about fifteen seconds.</span></span>'
+  +'<button class="ig" onclick="openSet()">Show me how</button>'
+  +'<button class="ix" onclick="hideBar()" aria-label="Hide">&#10005;</button></div>';
 }
 function hideBar(){S.barHidden=true;save();renderBar()}
+
+/* ---------- SETTINGS SHEET ---------- */
 function openSet(){$('setSheet').classList.add('on');renderInstall()}
 function closeSet(){$('setSheet').classList.remove('on')}
+
+/* ---------- ADD TO HOME SCREEN ---------- */
 const IOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 const STANDALONE=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone;
 let insTab=IOS?'ios':'android';
 function renderInstall(){
-const host=$('installCard'); if(!host)return;
-if(STANDALONE){host.innerHTML='<div class="doc empty">Already on your home screen. Nothing to do.</div>';return}
-const steps = insTab==='ios'
-? ['Open this page in <b>Safari</b>. Chrome on iPhone cannot do this.',
-'Tap the <b>Share</b> button at the bottom, the square with the arrow.',
-'Scroll and tap <b>Add to Home Screen</b>.',
-'Tap <b>Add</b>. It now opens full screen like any other app.']
-: ['Open this page in <b>Chrome</b> or <b>Samsung Internet</b>.',
-'Tap the <b>three dots</b> in the top right.',
-'Tap <b>Add to Home screen</b>, or <b>Install app</b> if you see it.',
-'Tap <b>Add</b>. The icon lands on your home screen.'];
-host.innerHTML='<div class="install" style="margin-top:0">'
-+'<div class="seg"><button class="sg'+(insTab==='ios'?' on':'')+'" onclick="setIns(\'ios\')">iPhone</button>'
-+'<button class="sg'+(insTab==='android'?' on':'')+'" onclick="setIns(\'android\')">Android &amp; Samsung</button></div>'
-+'<ol>'+steps.map(s=>'<li>'+s+'</li>').join('')+'</ol>'
-+(insTab==='ios'?'<div class="warn">If you do not see Add to Home Screen, you are not in Safari. That is the only browser on iPhone that can do it.</div>':'')
-+'</div>';
+ const host=$('installCard'); if(!host)return;
+ if(STANDALONE){host.innerHTML='<div class="doc empty">Already on your home screen. Nothing to do.</div>';return}
+ const steps = insTab==='ios'
+  ? ['Open this page in <b>Safari</b>. Chrome on iPhone cannot do this.',
+     'Tap the <b>Share</b> button at the bottom, the square with the arrow.',
+     'Scroll and tap <b>Add to Home Screen</b>.',
+     'Tap <b>Add</b>. It now opens full screen like any other app.']
+  : ['Open this page in <b>Chrome</b> or <b>Samsung Internet</b>.',
+     'Tap the <b>three dots</b> in the top right.',
+     'Tap <b>Add to Home screen</b>, or <b>Install app</b> if you see it.',
+     'Tap <b>Add</b>. The icon lands on your home screen.'];
+ host.innerHTML='<div class="install" style="margin-top:0">'
+  +'<div class="seg"><button class="sg'+(insTab==='ios'?' on':'')+'" onclick="setIns(\'ios\')">iPhone</button>'
+  +'<button class="sg'+(insTab==='android'?' on':'')+'" onclick="setIns(\'android\')">Android &amp; Samsung</button></div>'
+  +'<ol>'+steps.map(s=>'<li>'+s+'</li>').join('')+'</ol>'
+  +(insTab==='ios'?'<div class="warn">If you do not see Add to Home Screen, you are not in Safari. That is the only browser on iPhone that can do it.</div>':'')
+  +'</div>';
 }
 function setIns(t){insTab=t;renderInstall()}
 function dismissInstall(){S.installDismissed=true;save();renderInstall()}
+
+/* ---------- AUTH ---------- */
 const gm=(t,ok)=>{const e=$('gmsg');e.textContent=t;e.className='gmsg on '+(ok?'ok':'bad')};
-function mode(m){$('gateMagic').style.display=m==='magic'?'':'none';$('gatePw').style.display=m==='pw'?'':'none';$('gmsg').className='gmsg';
-$('gsub').textContent=m==='pw'?'Enter the password you set inside the app.':'Put in your name and email and I will send you a link. There is no password to make up.'}
+
 async function sendLink(){
-const name=$('inName').value.trim(), email=$('inEmail').value.trim();
-if(!name){gm('I need your first name.');return}
-if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){gm('That email does not look right.');return}
-const b=$('btnLink'); b.disabled=true; b.textContent='Sending...';
-const {error}=await sb.auth.signInWithOtp({email,options:{data:{first_name:name},emailRedirectTo:location.href.split('#')[0].split('?')[0]}});
-b.disabled=false; b.textContent='Send me the link';
-if(error){gm(error.message);return}
-gm('Check your email. The link is on its way to '+email+'. It can take a minute, and it might land in spam the first time.',true);
-}
-async function signInPw(){
-const {error}=await sb.auth.signInWithPassword({email:$('pwEmail').value.trim(),password:$('pwPass').value});
-if(error)gm(error.message);
-}
-async function setPassword(){
-const v=$('newPw').value;
-if(v.length<8){$('pwMsg').textContent='Eight characters or more.';$('pwMsg').style.color='var(--maroon)';return}
-const {error}=await sb.auth.updateUser({password:v});
-$('pwMsg').textContent=error?error.message:'Saved. You can sign in with that from now on.';
-$('pwMsg').style.color=error?'var(--maroon)':'var(--sage)';
-if(!error)$('newPw').value='';
+ const name=$('inName').value.trim(), email=$('inEmail').value.trim();
+ if(!name){gm('I need your first name.');return}
+ if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){gm('That email does not look right.');return}
+ const b=$('btnLink'); b.disabled=true; b.textContent='Sending...';
+ const {error}=await sb.auth.signInWithOtp({email,options:{data:{first_name:name},emailRedirectTo:location.href.split('#')[0].split('?')[0]}});
+ b.disabled=false; b.textContent='Send me the link';
+ if(error){gm(error.message);return}
+ gm('Check your email. The link is on its way to '+email+'. It can take a minute, and it might land in spam the first time.',true);
 }
 async function signOut(){await sb.auth.signOut();location.reload()}
+
 let booting=false;
 async function boot(){
-if(booting)return; booting=true;
-try{
-const {data:{session}}=await sb.auth.getSession();
-$('boot').style.display='none';
-if(!session){$('gate').style.display='flex';booting=false;return}
-USER=session.user;
-$('gate').style.display='none'; $('appRoot').style.display='';
-const em=$('setEmail'); if(em)em.textContent=USER.email;
-try{await hydrate()}catch(e){console.warn('[hydrate]',e.message)}
-renderBar();renderB3();renderTasks();renderDeps();renderGoals();renderMonth();renderBanner();renderFit5();
-history.replaceState(null,'',location.pathname);
-}finally{ booting=false; }
+ if(booting)return; booting=true;
+ try{
+ const {data:{session}}=await sb.auth.getSession();
+ $('boot').style.display='none';
+ if(!session){$('gate').style.display='flex';booting=false;return}
+ USER=session.user;
+ $('gate').style.display='none'; $('appRoot').style.display='';
+ const em=$('setEmail'); if(em)em.textContent=USER.email;
+ try{await hydrate()}catch(e){console.warn('[hydrate]',e.message)}
+ renderBar();renderB3();renderTasks();renderDeps();renderGoals();renderMonth();renderBanner();renderFit5();
+ history.replaceState(null,'',location.pathname);
+ }finally{ booting=false; }
 }
 sb.auth.onAuthStateChange((evt)=>{ if(evt==='SIGNED_IN'&&!USER)boot(); });
 boot();
