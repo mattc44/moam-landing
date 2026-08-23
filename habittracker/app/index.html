@@ -271,6 +271,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:2px;bac
 .gatebox .gs{color:var(--ink2);font-size:15.5px;margin-bottom:26px}
 .gf{margin-bottom:14px}
 .gf label{display:block;font-family:var(--lf);font-weight:700;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
+.gf label i{font-style:normal;font-weight:400;letter-spacing:.08em;color:var(--ink3);opacity:.72}
 .gf input{width:100%;background:var(--card);border:1px solid #CFC7B8;border-radius:2px;padding:14px;outline:none;font-size:16px;transition:border-color .15s}
 .gf input:focus{border-color:var(--sage)}
 .gbtn{width:100%;padding:16px;background:var(--sage);color:#fff;border-radius:2px;font-family:var(--lf);font-weight:700;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;transition:background .18s}
@@ -310,11 +311,11 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:2px;bac
 <div class="gate" id="gate" style="display:none"><div class="gatebox">
   <div class="gm"><img src="/habittracker/assets/logo.png" alt=""><span>Man on a Mission</span></div>
   <h1>The <em>Daily Discipline System.</em></h1>
-  <p class="gs" id="gsub">Put in your name and email. I will send you a link, you tap it, and you are in. Nothing to make up and nothing to remember.</p>
+  <p class="gs" id="gsub">New here or coming back, this is the same door. Put in your email and I will send you a link. Nothing to make up and nothing to remember.</p>
 
   <div id="gateMagic">
-    <div class="gf"><label>First name</label><input id="inName" autocomplete="given-name" placeholder="Matt"></div>
     <div class="gf"><label>Email</label><input id="inEmail" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com"></div>
+    <div class="gf"><label>First name <i>first time only</i></label><input id="inName" autocomplete="given-name" placeholder="Matt"></div>
     <button class="gbtn" id="btnLink" onclick="sendLink()">Send me the link</button>
   </div>
 
@@ -920,13 +921,15 @@ const gm=(t,ok)=>{const e=$('gmsg');e.textContent=t;e.className='gmsg on '+(ok?'
 
 async function sendLink(){
  const name=$('inName').value.trim(), email=$('inEmail').value.trim();
- if(!name){gm('I need your first name.');return}
  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){gm('That email does not look right.');return}
+ // Supabase only applies this on FIRST sign-up, so a returning man can leave it blank
+ // and his saved name is untouched.
+ if(name){try{localStorage.setItem('dds_name',name)}catch(e){}}
  const b=$('btnLink'); b.disabled=true; b.textContent='Sending...';
- const {error}=await sb.auth.signInWithOtp({email,options:{data:{first_name:name},emailRedirectTo:location.href.split('#')[0].split('?')[0]}});
+ const {error}=await sb.auth.signInWithOtp({email,options:{data:name?{first_name:name}:{},emailRedirectTo:location.href.split('#')[0].split('?')[0]}});
  b.disabled=false; b.textContent='Send me the link';
  if(error){gm(error.message);return}
- gm('Check your email. The link is on its way to '+email+'. It can take a minute, and it might land in spam the first time.',true);
+ gm('Check your email. The link is on its way to '+email+'. It can take a minute, and it might land in spam the first time. Each link works once, so grab a fresh one for every device.',true);
 }
 async function signOut(){await sb.auth.signOut();location.reload()}
 
@@ -936,7 +939,21 @@ async function boot(){
  try{
  const {data:{session}}=await sb.auth.getSession();
  $('boot').style.display='none';
- if(!session){$('gate').style.display='flex';booting=false;return}
+ if(!session){
+   $('gate').style.display='flex';
+   // A used or expired link comes back with the reason in the URL fragment.
+   // Without this it reads as a blank signup form and looks like the app forgot him.
+   const q=new URLSearchParams(location.hash.slice(1));
+   const code=q.get('error_code')||'', desc=q.get('error_description')||'';
+   if(code||desc){
+     const stale=/expired|invalid|otp/i.test(code+' '+desc);
+     gm(stale
+       ? 'That link had already been used. Each one works once and lasts an hour. Pop your email in and I will send a fresh one.'
+       : decodeURIComponent(desc.replace(/\+/g,' ')) || 'That link did not work. Put your email in for a new one.');
+     try{const n=localStorage.getItem('dds_name'); if(n&&$('inName'))$('inName').value=n;}catch(e){}
+     history.replaceState(null,'',location.pathname);
+   }
+   booting=false;return}
  USER=session.user;
  $('gate').style.display='none'; $('appRoot').style.display='';
  const em=$('setEmail'); if(em)em.textContent=USER.email;
