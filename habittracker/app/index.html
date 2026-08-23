@@ -483,7 +483,13 @@ const FREQ=[
 const DAYN=["S","M","T","W","T","F","S"];
 const SUPA_URL="https://yluooiafdkxrkrrdevxj.supabase.co";
 const SUPA_KEY="sb_publishable_8Vi7vGtIbJ_5WwNX_Fg4BA_EX79REhm";
+// Read the fragment FIRST. detectSessionInUrl strips it during createClient, so a
+// recovery link's type=recovery is gone by the time boot() runs. Cost Matt a live test.
+const URLQ=new URLSearchParams(location.hash.slice(1));
+const CAME_FROM_RECOVERY=URLQ.get('type')==='recovery';
 const sb=window.supabase.createClient(SUPA_URL,SUPA_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+// Belt and braces: supabase-js fires this specifically for a recovery link.
+let RECOVERY=CAME_FROM_RECOVERY;
 let USER=null;
 const KEY="dds-v2";
 const fmt=d=>{const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),dd=String(d.getDate()).padStart(2,"0");return y+"-"+m+"-"+dd};
@@ -1051,7 +1057,10 @@ async function setNewPw(){
  const {error}=await sb.auth.updateUser({password:pass});
  b.disabled=false; b.textContent='Save it and go in';
  if(error){gm(error.message);return}
- location.hash=''; location.reload();
+ RECOVERY=false;
+ history.replaceState(null,'',location.pathname);
+ gm('Password saved. Taking you in...',true);
+ USER=null; await boot();
 }
 
 async function sendLink(){
@@ -1069,12 +1078,12 @@ async function boot(){
  try{
  const {data:{session}}=await sb.auth.getSession();
  $('boot').style.display='none';
- const hq=new URLSearchParams(location.hash.slice(1));
+ const hq=URLQ;
 
  // A recovery link signs him in AND means "let him pick a new password" — so this has
  // to be checked before the normal session branch, or he lands in the app and the
  // reset he just asked for silently never happens.
- if(hq.get('type')==='recovery' && session){
+ if(RECOVERY && session){
    $('gate').style.display='flex'; view('newpw'); booting=false; return}
 
  if(!session){
@@ -1100,6 +1109,12 @@ async function boot(){
  history.replaceState(null,'',location.pathname);
  }finally{ booting=false; }
 }
-sb.auth.onAuthStateChange((evt)=>{ if(evt==='SIGNED_IN'&&!USER)boot(); });
+sb.auth.onAuthStateChange((evt)=>{
+ if(evt==='PASSWORD_RECOVERY'){
+   RECOVERY=true;
+   $('boot').style.display='none'; $('appRoot').style.display='none';
+   $('gate').style.display='flex'; view('newpw'); return}
+ if(evt==='SIGNED_IN'&&!USER&&!RECOVERY)boot();
+});
 boot();
 </script></body></html>
