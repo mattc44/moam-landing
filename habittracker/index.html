@@ -1,0 +1,131 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Habit Tracker for Christian Men &middot; Man on a Mission</title>
+<meta name="description" content="A free habit tracker for driven Christian men. Identify your top three priorities each day, track your habits across every important area of life, and spend about ninety seconds a day becoming a more disciplined leader.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=Archivo:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+ --paper:#F4F1EA;--card:#FFF;--ink:#211D18;--ink2:#575147;--ink3:#8B8479;
+ --hair:#DDD6C8;--sage:#4E7A64;--sageLt:#7B9E8E;--band:#EFEBE1;
+ --df:'Newsreader',Georgia,serif;--bf:'Instrument Sans',system-ui,sans-serif;--lf:'Archivo',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden;background:var(--paper)}
+body{font-family:var(--bf);color:var(--ink);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.in{max-width:1040px;margin:0 auto;padding:0 26px}
+
+nav{position:sticky;top:0;z-index:40;background:rgba(244,241,234,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
+nav .in{display:flex;align-items:center;gap:11px;padding-top:14px;padding-bottom:14px}
+nav img{width:24px;height:24px}
+nav .wm{font-family:var(--lf);font-weight:700;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase}
+nav .go{margin-left:auto;padding:12px 22px;background:var(--sage);color:#fff;font-family:var(--lf);font-weight:700;font-size:11px;letter-spacing:.13em;text-transform:uppercase;border-radius:2px;transition:background .2s}
+nav .go:hover{background:#3F6553}
+
+h1{font-family:var(--df);font-weight:600;letter-spacing:-.026em;font-size:clamp(36px,5vw,58px);line-height:1.06}
+h1 em{font-style:italic;font-weight:400;color:var(--sage)}
+h2{font-family:var(--df);font-weight:600;letter-spacing:-.02em;font-size:clamp(26px,3.4vw,38px);line-height:1.14;margin-bottom:16px}
+h3{font-family:var(--df);font-weight:600;font-size:21px;letter-spacing:-.012em;margin-bottom:7px}
+p{color:var(--ink2)}
+.lead{font-size:19.5px;line-height:1.56}
+
+.btn{display:inline-block;padding:19px 38px;background:var(--sage);color:#fff;border-radius:2px;font-family:var(--lf);font-weight:700;font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;transition:background .2s,transform .2s}
+.btn:hover{background:#3F6553;transform:translateY(-2px)}
+.btn.ink{background:var(--ink)}.btn.ink:hover{background:#3A342B}
+.fine{font-size:13.5px;color:var(--ink3);margin-top:13px}
+.ctaline{margin-top:42px}
+
+/* hero */
+.hero{padding:66px 0 74px}
+.hg{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.hero .sub{margin:22px 0 30px;max-width:44ch}
+.phone{width:296px;margin:0 auto;border:10px solid #1C1813;border-radius:38px;overflow:hidden;box-shadow:0 24px 56px rgba(33,29,24,.22),0 3px 10px rgba(33,29,24,.1)}
+.phone img{display:block;width:100%;height:auto}
+
+/* three */
+.strip{background:var(--band);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:64px 0}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.tri .n{font-family:var(--lf);font-weight:700;font-size:10.5px;letter-spacing:.18em;color:var(--sage);margin-bottom:12px;display:block}
+.tri p{font-size:16px}
+
+/* inside */
+.inside{padding:76px 0}
+.rows{margin-top:34px;border-top:1px solid var(--hair)}
+.row{display:grid;grid-template-columns:112px 1fr;gap:26px;padding:24px 0;border-bottom:1px solid var(--hair);align-items:start}
+.row .t{font-family:var(--lf);font-weight:700;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);padding-top:6px}
+.row p{font-size:16.5px}
+
+/* close */
+.close{padding:78px 0 86px;background:var(--band);border-top:1px solid var(--hair);text-align:center}
+.close h2{max-width:20ch;margin:0 auto 16px}
+.close .lead{max-width:48ch;margin:0 auto 30px}
+.sig{margin-top:26px;font-size:14.5px;color:var(--ink3)}
+.sig b{color:var(--ink);font-weight:600}
+footer{padding:32px 0;text-align:center}
+footer .e{font-family:var(--lf);font-weight:700;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--sage)}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+@media(max-width:860px){
+ .hg{grid-template-columns:1fr;gap:44px}
+ .phone{width:264px}
+ .tri{grid-template-columns:1fr;gap:32px}
+ .hero{padding:48px 0 56px}.strip{padding:50px 0}.inside{padding:56px 0}.close{padding:56px 0 62px}
+ .row{grid-template-columns:1fr;gap:6px}.row .t{padding-top:0}
+ nav .wm{display:none}
+ nav .go{padding:11px 16px;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important}}
+</style></head><body>
+
+<nav><div class="in"><img src="/habittracker/assets/logo.png" alt=""><span class="wm">Man on a Mission</span>
+<a class="go" href="/habittracker/app">Get it free</a></div></nav>
+
+<section class="hero"><div class="in hg">
+  <div>
+    <h1 class="rv">A free habit tracker for <em>driven Christian men.</em></h1>
+    <p class="lead sub rv d1">Every morning it shows you the three things that matter most, and the habits you said you were going to keep. You tick them off as you go, and once a month you get an honest look at how every area of your life is actually doing.</p>
+    <div class="rv d2"><a class="btn" href="/habittracker/app">Get it free</a>
+      <p class="fine">Your name and your email is all it takes. No card, no password, nothing to install.</p></div>
+  </div>
+  <div class="rv d1"><div class="phone"><img src="/habittracker/assets/app.jpg" alt="The habit tracker running on a phone"></div></div>
+</div></section>
+
+<section class="strip"><div class="in">
+  <div class="tri">
+    <div class="rv"><span class="n">01</span><h3>Identify the top three priorities of each day</h3><p>Before the day starts pulling at you, you decide the three things that would make it count. Everything else waits its turn.</p></div>
+    <div class="rv d1"><span class="n">02</span><h3>Track your habits across every important area of life</h3><p>Not just the business. Your faith, your body, your marriage and your mind all get tracked in the same place, so nothing quietly slides while you are busy winning somewhere else.</p></div>
+    <div class="rv d2"><span class="n">03</span><h3>Ninety seconds a day to become a more disciplined leader</h3><p>Open it in the morning, tick things off as you go, close it. Consistency is the only thing that compounds, and this is what keeps you consistent.</p></div>
+  </div>
+  <div class="ctaline rv d3" style="text-align:center"><a class="btn ink" href="/habittracker/app">Get it free</a></div>
+</div></section>
+
+<section class="inside"><div class="in">
+  <h2 class="rv">What you get when you sign in</h2>
+  <p class="lead rv d1" style="max-width:52ch">Four simple screens. You can set the whole thing up in about five minutes and then it takes a minute a day.</p>
+  <div class="rows">
+    <div class="row rv"><span class="t">Today</span><div><h3>Your three priorities and your habits</h3><p>Both on one screen, so you open the app once and see everything you committed to. If you miss a day you can step back and tick it off.</p></div></div>
+    <div class="row rv"><span class="t">Tasks</span><div><h3>Everything on your plate, in one list</h3><p>Write it all down so it stops living in your head, then star the three that matter today. It will not let you star a fourth, because that is the whole point.</p></div></div>
+    <div class="row rv"><span class="t">Goals</span><div><h3>What you are chasing this year</h3><p>Set a goal for each area of your life with a real deadline, and watch the days count down. It will not save a goal without a date on it.</p></div></div>
+    <div class="row rv"><span class="t">Fit5</span><div><h3>A monthly check on the five areas of your life</h3><p>Once a month you rate yourself out of ten on the five areas that make up a whole man: mental, physical, spiritual, relational and professional. It takes about a minute, and over time you get a line showing exactly which areas are climbing and which ones have been sliding while you were not looking.</p></div></div>
+  </div>
+  <div class="ctaline rv"><a class="btn" href="/habittracker/app">Get it free</a>
+    <p class="fine">Add it to your home screen and it opens like any other app on your phone.</p></div>
+</div></section>
+
+<section class="close"><div class="in">
+  <h2 class="rv">Three priorities, your habits, and one honest look each month.</h2>
+  <p class="lead rv d1">That is the whole system. It is the one I use myself to stay consistent when the week gets loud, and I am giving it to you for free with nothing waiting at the end of it.</p>
+  <div class="rv d2"><a class="btn" href="/habittracker/app">Get it free</a></div>
+  <p class="sig rv d3"><b>Matt Chenard</b> &middot; Man on a Mission</p>
+</div></section>
+
+<footer><div class="in"><div class="e">Earn Your Dopamine.</div></div></footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -5% 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script></body></html>
