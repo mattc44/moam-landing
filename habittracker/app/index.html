@@ -281,6 +281,14 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:2px;bac
 .gmsg.on{display:block}
 .gmsg.ok{background:var(--sageW);border:1px solid var(--sage);color:#2F4A3E}
 .gmsg.bad{background:#F7EBEB;border:1px solid var(--maroon);color:var(--maroon)}
+.gseg{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);margin-bottom:26px}
+.gseg button{min-width:0;padding:13px 8px;font-family:var(--lf);font-weight:700;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);background:var(--tint);transition:background .16s,color .16s}
+.gseg button+button{border-left:1px solid var(--rule)}
+.gseg button.on{background:var(--sage);color:#fff}
+.gpw{position:relative}
+.gpw input{padding-right:64px}
+.gpw button{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-family:var(--lf);font-weight:700;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--sage)}
+.ghint{font-size:12.5px;color:var(--ink3);margin-top:-6px;margin-bottom:14px;line-height:1.45}
 .gtog{margin-top:18px;font-size:13.5px;color:var(--ink3);text-align:center}
 .gtog button{color:var(--sage);text-decoration:underline;font-size:13.5px}
 .gfine{margin-top:22px;font-size:12.5px;color:var(--ink3);line-height:1.5}
@@ -311,12 +319,45 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:2px;bac
 <div class="gate" id="gate" style="display:none"><div class="gatebox">
   <div class="gm"><img src="/habittracker/assets/logo.png" alt=""><span>Man on a Mission</span></div>
   <h1>The <em>Daily Discipline System.</em></h1>
-  <p class="gs" id="gsub">New here or coming back, this is the same door. Put in your email and I will send you a link. Nothing to make up and nothing to remember.</p>
+  <p class="gs" id="gsub">Three things that matter today, the habits you keep, and one honest look each month.</p>
 
-  <div id="gateMagic">
+  <div class="gseg" id="gseg">
+    <button id="segIn" class="on" onclick="view('in')">Log in</button>
+    <button id="segUp" onclick="view('up')">Sign up</button>
+  </div>
+
+  <div id="paneIn">
     <div class="gf"><label>Email</label><input id="inEmail" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com"></div>
-    <div class="gf"><label>First name <i>first time only</i></label><input id="inName" autocomplete="given-name" placeholder="Matt"></div>
-    <button class="gbtn" id="btnLink" onclick="sendLink()">Send me the link</button>
+    <div class="gf"><label>Password</label><div class="gpw">
+      <input id="inPass" type="password" autocomplete="current-password" placeholder="Your password">
+      <button type="button" onclick="peek('inPass',this)">Show</button></div></div>
+    <button class="gbtn" id="btnIn" onclick="logIn()">Log in</button>
+    <div class="gtog"><button onclick="view('forgot')">Forgotten your password?</button></div>
+  </div>
+
+  <div id="paneUp" style="display:none">
+    <div class="gf"><label>First name</label><input id="upName" autocomplete="given-name" placeholder="Matt"></div>
+    <div class="gf"><label>Email</label><input id="upEmail" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com"></div>
+    <div class="gf"><label>Password</label><div class="gpw">
+      <input id="upPass" type="password" autocomplete="new-password" placeholder="At least 8 characters">
+      <button type="button" onclick="peek('upPass',this)">Show</button></div></div>
+    <p class="ghint">Use your real email. It is how you get back in if you ever forget this password.</p>
+    <button class="gbtn" id="btnUp" onclick="signUp()">Create my account</button>
+  </div>
+
+  <div id="paneForgot" style="display:none">
+    <p class="ghint" style="margin-top:0">Put your email in and I will send you a link to set a new password.</p>
+    <div class="gf"><label>Email</label><input id="fgEmail" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com"></div>
+    <button class="gbtn" id="btnFg" onclick="sendReset()">Send the reset link</button>
+    <div class="gtog"><button onclick="view('in')">Back to log in</button></div>
+  </div>
+
+  <div id="paneNewPw" style="display:none">
+    <p class="ghint" style="margin-top:0">Set your new password. This is the last step.</p>
+    <div class="gf"><label>New password</label><div class="gpw">
+      <input id="npPass" type="password" autocomplete="new-password" placeholder="At least 8 characters">
+      <button type="button" onclick="peek('npPass',this)">Show</button></div></div>
+    <button class="gbtn" id="btnNp" onclick="setNewPw()">Save it and go in</button>
   </div>
 
   <div class="gmsg" id="gmsg"></div>
@@ -919,17 +960,106 @@ function dismissInstall(){S.installDismissed=true;save();renderInstall()}
 /* ---------- AUTH ---------- */
 const gm=(t,ok)=>{const e=$('gmsg');e.textContent=t;e.className='gmsg on '+(ok?'ok':'bad')};
 
-async function sendLink(){
- const name=$('inName').value.trim(), email=$('inEmail').value.trim();
- if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){gm('That email does not look right.');return}
- // Supabase only applies this on FIRST sign-up, so a returning man can leave it blank
- // and his saved name is untouched.
- if(name){try{localStorage.setItem('dds_name',name)}catch(e){}}
- const b=$('btnLink'); b.disabled=true; b.textContent='Sending...';
- const {error}=await sb.auth.signInWithOtp({email,options:{data:name?{first_name:name}:{},emailRedirectTo:location.href.split('#')[0].split('?')[0]}});
- b.disabled=false; b.textContent='Send me the link';
+const PANES={in:'paneIn',up:'paneUp',forgot:'paneForgot',newpw:'paneNewPw'};
+const SUBS={
+ in:'Three things that matter today, the habits you keep, and one honest look each month.',
+ up:'Takes about thirty seconds. You are in the app straight after.',
+ forgot:'Happens to everyone.',
+ newpw:'Almost there.'};
+
+function view(v){
+ for(const k in PANES){const el=$(PANES[k]); if(el)el.style.display = k===v?'':'none'}
+ const seg=$('gseg'); if(seg)seg.style.display=(v==='in'||v==='up')?'':'none';
+ $('segIn').classList.toggle('on',v==='in');
+ $('segUp').classList.toggle('on',v==='up');
+ $('gsub').textContent=SUBS[v]||SUBS.in;
+ $('gmsg').className='gmsg';
+}
+function peek(id,btn){
+ const el=$(id); const show=el.type==='password';
+ el.type=show?'text':'password'; btn.textContent=show?'Hide':'Show';
+}
+
+const EMAIL_RE=/^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+// He chose straight-in signup, so nothing verifies the address. A typo means a dead
+// GHL record and a man who can never reset. Catch the common ones before they cost him.
+const TYPOS={'gmial.com':'gmail.com','gmai.com':'gmail.com','gmail.co':'gmail.com','gmail.con':'gmail.com',
+ 'gnail.com':'gmail.com','hotmial.com':'hotmail.com','hotmail.co':'hotmail.com','yahoo.co':'yahoo.com',
+ 'outlook.co':'outlook.com','icloud.co':'icloud.com','shaw.a':'shaw.ca','telus.net.':'telus.net'};
+function typoOf(email){
+ const d=(email.split('@')[1]||'').toLowerCase();
+ return TYPOS[d] ? email.split('@')[0]+'@'+TYPOS[d] : null;
+}
+let typoOK='';
+function emailProblem(email,fieldId){
+ if(!EMAIL_RE.test(email)) return 'That email does not look right.';
+ const fix=typoOf(email);
+ if(fix && typoOK!==email){
+   typoOK=email;
+   const f=$(fieldId); if(f)f.value=fix;
+   return 'Did you mean '+fix+'? I have corrected it — press the button again if that is right.';
+ }
+ return null;
+}
+
+async function logIn(){
+ const email=$('inEmail').value.trim(), pass=$('inPass').value;
+ if(!EMAIL_RE.test(email)){gm('That email does not look right.');return}
+ if(!pass){gm('Put your password in.');return}
+ const b=$('btnIn'); b.disabled=true; b.textContent='Signing in...';
+ const {error}=await sb.auth.signInWithPassword({email,password:pass});
+ b.disabled=false; b.textContent='Log in';
+ if(error){
+   gm(/invalid login/i.test(error.message)
+     ? 'That email and password do not match. If you have forgotten it, use the link below.'
+     : error.message);
+   return}
+}
+
+async function signUp(){
+ const name=$('upName').value.trim(), email=$('upEmail').value.trim(), pass=$('upPass').value;
+ if(!name){gm('What is your first name?');return}
+ const bad=emailProblem(email,'upEmail'); if(bad){gm(bad);return}
+ if(pass.length<8){gm('Make the password at least eight characters.');return}
+ const b=$('btnUp'); b.disabled=true; b.textContent='Creating...';
+ const {data,error}=await sb.auth.signUp({email,password:pass,options:{data:{first_name:name}}});
+ b.disabled=false; b.textContent='Create my account';
+ if(error){
+   gm(/already registered|already exists/i.test(error.message)
+     ? 'You already have an account with that email. Log in instead, or use the forgotten-password link.'
+     : error.message);
+   return}
+ try{localStorage.setItem('dds_name',name)}catch(e){}
+ // Confirmations are off, so a session comes back immediately and onAuthStateChange boots.
+ if(!data.session) gm('Account made. Check your email to confirm, then come back and log in.',true);
+}
+
+async function sendReset(){
+ const email=$('fgEmail').value.trim();
+ if(!EMAIL_RE.test(email)){gm('That email does not look right.');return}
+ const b=$('btnFg'); b.disabled=true; b.textContent='Sending...';
+ const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.href.split('#')[0].split('?')[0]});
+ b.disabled=false; b.textContent='Send the reset link';
  if(error){gm(error.message);return}
- gm('Check your email. The link is on its way to '+email+'. It can take a minute, and it might land in spam the first time. Each link works once, so grab a fresh one for every device.',true);
+ gm('Sent. Check your email for the link to set a new password. It can land in spam the first time.',true);
+}
+
+async function setNewPw(){
+ const pass=$('npPass').value;
+ if(pass.length<8){gm('Make it at least eight characters.');return}
+ const b=$('btnNp'); b.disabled=true; b.textContent='Saving...';
+ const {error}=await sb.auth.updateUser({password:pass});
+ b.disabled=false; b.textContent='Save it and go in';
+ if(error){gm(error.message);return}
+ location.hash=''; location.reload();
+}
+
+async function sendLink(){
+ const email=$('inEmail').value.trim();
+ if(!EMAIL_RE.test(email)){gm('Put your email in first, then tap this again.');return}
+ const {error}=await sb.auth.signInWithOtp({email,options:{emailRedirectTo:location.href.split('#')[0].split('?')[0]}});
+ if(error){gm(error.message);return}
+ gm('Sent. The link works once and lasts an hour.',true);
 }
 async function signOut(){await sb.auth.signOut();location.reload()}
 
@@ -939,6 +1069,14 @@ async function boot(){
  try{
  const {data:{session}}=await sb.auth.getSession();
  $('boot').style.display='none';
+ const hq=new URLSearchParams(location.hash.slice(1));
+
+ // A recovery link signs him in AND means "let him pick a new password" — so this has
+ // to be checked before the normal session branch, or he lands in the app and the
+ // reset he just asked for silently never happens.
+ if(hq.get('type')==='recovery' && session){
+   $('gate').style.display='flex'; view('newpw'); booting=false; return}
+
  if(!session){
    $('gate').style.display='flex';
    // A used or expired link comes back with the reason in the URL fragment.
@@ -948,9 +1086,9 @@ async function boot(){
    if(code||desc){
      const stale=/expired|invalid|otp/i.test(code+' '+desc);
      gm(stale
-       ? 'That link had already been used. Each one works once and lasts an hour. Pop your email in and I will send a fresh one.'
+       ? 'That link had already been used — each one works once and lasts an hour. Log in with your password below, or send yourself a fresh reset link.'
        : decodeURIComponent(desc.replace(/\+/g,' ')) || 'That link did not work. Put your email in for a new one.');
-     try{const n=localStorage.getItem('dds_name'); if(n&&$('inName'))$('inName').value=n;}catch(e){}
+     view('in');
      history.replaceState(null,'',location.pathname);
    }
    booting=false;return}
