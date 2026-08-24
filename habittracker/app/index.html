@@ -578,6 +578,11 @@ async function hydrate(){
  cache();
 }
 const $=id=>document.getElementById(id);
+// Ids are numbers before a man signs in and UUID strings after hydrate. Unquoted
+// interpolation produced onclick="tick(60c560f9-0bd3-...)" — invalid JS that threw
+// silently, so nothing on the page worked once real data loaded.
+const jsq=v=>"'"+String(v).replace(/\\/g,'\\\\').replace(/'/g,"\\'")+"'";
+const sameId=(a,b)=>String(a)===String(b);
 const area=id=>AREAS.find(a=>a.id===id)||AREAS[0];
 const dueOn=(d,dow)=>{const f=FREQ.find(x=>x.id===d.freq);return d.freq==="custom"?(d.customDays||[]).includes(dow):(f?f.days.includes(dow):true)};
 const isDue=d=>dueOn(d,vDow());
@@ -601,7 +606,7 @@ function renderB3(){
  let rows=b.map((t,i)=>
   '<div class="b3row'+(t.done?' done':'')+'"><span class="b3n">'+(i+1)+'</span>'
   +'<span class="b3t">'+esc(t.text)+'</span>'
-  +'<button class="tog'+(t.done?' on':'')+'" onclick="doneTask('+t.id+')" aria-label="Mark done">'+CHK+'</button></div>').join('');
+  +'<button class="tog'+(t.done?' on':'')+'" onclick="doneTask('+jsq(t.id)+')" aria-label="Mark done">'+CHK+'</button></div>').join('');
  for(let i=b.length;i<3;i++){
   rows+='<div class="b3row"><span class="b3n">'+(i+1)+'</span><span class="b3t empty">Nothing picked yet</span>'
    +'<button class="pick" onclick="go(\'tasks\')">Choose</button></div>';
@@ -610,17 +615,17 @@ function renderB3(){
  const done=b.filter(t=>t.done).length;
  $('c-b3').textContent=done+' of '+b.length;   // never counts an empty slot
 }
-function doneTask(id){S.tasks=S.tasks.map(t=>t.id===id?{...t,done:!t.done}:t);save();renderB3();renderTasks()}
+function doneTask(id){S.tasks=S.tasks.map(t=>sameId(t.id,id)?{...t,done:!t.done}:t);save();renderB3();renderTasks()}
 
 /* ---------- TASKS ---------- */
 function renderTasks(){
  const starred=S.tasks.filter(t=>t.big3).length;
  $('tasks').innerHTML = S.tasks.length ? S.tasks.map(t=>
   '<div class="task'+(t.done?' done':'')+'">'
-  +'<button class="tog'+(t.done?' on':'')+'" onclick="doneTask('+t.id+')" aria-label="Done">'+CHK+'</button>'
+  +'<button class="tog'+(t.done?' on':'')+'" onclick="doneTask('+jsq(t.id)+')" aria-label="Done">'+CHK+'</button>'
   +'<span class="tt">'+esc(t.text)+'</span>'
-  +'<button class="star'+(t.big3?' on':'')+'" title="'+(t.big3?'In the Big Three':'Make this one of the Big Three')+'" onclick="star('+t.id+')">&#9733;</button>'
-  +'<button class="ico" onclick="delTask('+t.id+')" title="Delete">&#10005;</button></div>'
+  +'<button class="star'+(t.big3?' on':'')+'" title="'+(t.big3?'In the Big Three':'Make this one of the Big Three')+'" onclick="star('+jsq(t.id)+')">&#9733;</button>'
+  +'<button class="ico" onclick="delTask('+jsq(t.id)+')" title="Delete">&#10005;</button></div>'
  ).join('') : '<div class="empty">Nothing here yet. Put it all down below.</div>';
  $('c-task').textContent=starred+' starred';
 }
@@ -629,11 +634,11 @@ async function addTask(){const v=$('tnew').value.trim();if(!v)return;
  if(USER){const r=await sb.from('tasks').insert({user_id:USER.id,body:v,sort_order:S.tasks.length}).select().single();if(r.data){t.id=r.data.id;t.uuid=r.data.id}}
  S.tasks.push(t);$('tnew').value="";save();renderTasks();renderB3()}
 function star(id){
- const t=S.tasks.find(x=>x.id===id);
+ const t=S.tasks.find(x=>sameId(x.id,id));
  if(!t.big3 && S.tasks.filter(x=>x.big3).length>=3){alert("Three is the point. Unstar one first.");return}
  t.big3=!t.big3;save();renderTasks();renderB3();
 }
-function delTask(id){const t=S.tasks.find(x=>x.id===id);S.tasks=S.tasks.filter(x=>x.id!==id);save();renderTasks();renderB3();
+function delTask(id){const t=S.tasks.find(x=>sameId(x.id,id));S.tasks=S.tasks.filter(x=>!sameId(x.id,id));save();renderTasks();renderB3();
  if(USER&&t&&t.uuid) sb.from('tasks').delete().eq('id',t.uuid).then(()=>{});}
 
 /* ---------- DEPOSITS ---------- */
@@ -652,13 +657,13 @@ function renderDeps(){
   }).join('');
   const on=ticked(d.id);
   return '<div class="dep'+(on?' done':'')+'">'
-   +'<button class="tog'+(on?' on':'')+'" onclick="tick('+d.id+')" aria-label="'+esc(d.name)+'">'+CHK+'</button>'
+   +'<button class="tog'+(on?' on':'')+'" onclick="tick('+jsq(d.id)+')" aria-label="'+esc(d.name)+'">'+CHK+'</button>'
    +'<div class="dmeta"><div class="t">'+esc(d.name)+'</div><div class="m">'
      +'<span class="chip" style="color:'+a.c+'">'+a.name+'</span>'
      +'<span class="freq">'+(d.freq==="custom"?(d.customDays||[]).map(x=>DAYN[x]).join(" "):f.name)+'</span></div>'
      +'<div class="wk">'+strip+'</div></div>'
    +'<div class="right"><span class="cnt2"><b>'+done+'</b>/'+target+'</span>'
-     +'<button class="ico" onclick="startEdit('+d.id+')" title="Edit">&#9998;</button></div></div>';
+     +'<button class="ico" onclick="startEdit('+jsq(d.id)+')" title="Edit">&#9998;</button></div></div>';
  }).join('') : '<div class="empty">Nothing due on this day. Add one below, or rest.</div>';
  const dv=vDate(), isTod=VIEW===TODAY;
  const yest=new Date();yest.setDate(yest.getDate()-1);
@@ -673,11 +678,11 @@ function renderDeps(){
  stats(); if(document.getElementById('month'))renderMonth();
 }
 function tick(id){const l=S.log[VIEW]||{};l[id]=!l[id];S.log[VIEW]=l;cache();renderDeps();
- const d=S.deposits.find(x=>x.id===id); logTick(d&&d.uuid,VIEW,!!l[id]);}
+ const d=S.deposits.find(x=>sameId(x.id,id)); logTick(d&&d.uuid,VIEW,!!l[id]);}
 
 let draft=null;
 function startAdd(){draft={id:Date.now(),name:"",area:"spiritual",freq:"daily",customDays:[],createdAt:TODAY,_new:true};renderEd()}
-function startEdit(id){draft=JSON.parse(JSON.stringify(S.deposits.find(x=>x.id===id)));renderEd()}
+function startEdit(id){draft=JSON.parse(JSON.stringify(S.deposits.find(x=>sameId(x.id,id))));renderEd()}
 function cancelEd(){draft=null;$('editor').innerHTML=""}
 function setD(k,v){draft[k]=v;renderEd()}
 function togDay(n){const c=draft.customDays||[];draft.customDays=c.includes(n)?c.filter(x=>x!==n):[...c,n].sort();renderEd()}
@@ -689,11 +694,11 @@ async function saveD(){
   const r=await sb.from('deposits').insert({user_id:USER.id,name:rec.name,area:rec.area,freq:rec.freq,custom_days:rec.customDays||[],sort_order:S.deposits.length}).select().single();
   if(r.data){rec.id=r.data.id;rec.uuid=r.data.id}
  }
- S.deposits=_new?[...S.deposits,rec]:S.deposits.map(d=>d.id===rec.id?rec:d);
+ S.deposits=_new?[...S.deposits,rec]:S.deposits.map(d=>sameId(d.id,rec.id)?rec:d);
  draft=null;save();$('editor').innerHTML="";renderDeps();
 }
 function delD(){if(!confirm("Delete this deposit? Its history goes too."))return;
- const u=draft.uuid; S.deposits=S.deposits.filter(d=>d.id!==draft.id);draft=null;save();$('editor').innerHTML="";renderDeps();
+ const u=draft.uuid; S.deposits=S.deposits.filter(d=>!sameId(d.id,draft.id));draft=null;save();$('editor').innerHTML="";renderDeps();
  if(USER&&u) sb.from('deposits').delete().eq('id',u).then(()=>{});}
 function renderEd(){
  if(!draft){$('editor').innerHTML="";return}
@@ -715,7 +720,7 @@ function renderEd(){
 let gdraft=null;
 const days=d=>{const n=Math.ceil((new Date(d+"T12:00:00")-new Date())/864e5);return n>0?n:0};
 function startGoal(){gdraft={id:Date.now(),area:"professional",text:"",deadline:"",done:false,_new:true};renderGEd()}
-function editGoal(id){gdraft=JSON.parse(JSON.stringify(S.goals.find(g=>g.id===id)));renderGEd()}
+function editGoal(id){gdraft=JSON.parse(JSON.stringify(S.goals.find(g=>sameId(g.id,id))));renderGEd()}
 function setG(k,v){gdraft[k]=v;renderGEd()}
 async function saveG(){
  if(!gdraft.text.trim()){alert("What's the goal?");return}
@@ -725,14 +730,14 @@ async function saveG(){
   const r=await sb.from('goals').insert({user_id:USER.id,area:rec.area,body:rec.text,deadline:rec.deadline}).select().single();
   if(r.data){rec.id=r.data.id;rec.uuid=r.data.id}
  }
- S.goals=_new?[...S.goals,rec]:S.goals.map(g=>g.id===rec.id?rec:g);
+ S.goals=_new?[...S.goals,rec]:S.goals.map(g=>sameId(g.id,rec.id)?rec:g);
  gdraft=null;save();$('goalEd').innerHTML="";renderGoals();
 }
 function delG(){if(!confirm("Delete this goal?"))return;const u=gdraft.uuid;
- S.goals=S.goals.filter(g=>g.id!==gdraft.id);gdraft=null;save();$('goalEd').innerHTML="";renderGoals();
+ S.goals=S.goals.filter(g=>!sameId(g.id,gdraft.id));gdraft=null;save();$('goalEd').innerHTML="";renderGoals();
  if(USER&&u) sb.from('goals').delete().eq('id',u).then(()=>{});}
 function cancelG(){gdraft=null;$('goalEd').innerHTML=""}
-function doneGoal(id){S.goals=S.goals.map(g=>g.id===id?{...g,done:!g.done}:g);save();renderGoals()}
+function doneGoal(id){S.goals=S.goals.map(g=>sameId(g.id,id)?{...g,done:!g.done}:g);save();renderGoals()}
 function renderGEd(){
  if(!gdraft){$('goalEd').innerHTML="";return}
  $('goalEd').innerHTML='<div class="doc" style="margin-bottom:16px"><div class="ed" style="border-top:0">'
@@ -749,8 +754,8 @@ function renderGoals(){
   const a=area(g.area);
   return '<div class="goal'+(g.done?' done':'')+'">'
    +'<div class="gh"><span class="chip" style="color:'+a.c+'">'+a.name+'</span>'
-    +'<span class="gacts"><button class="ico" onclick="doneGoal('+g.id+')" title="Mark done">'+(g.done?'&#10003;':'&#9711;')+'</button>'
-    +'<button class="ico" onclick="editGoal('+g.id+')" title="Edit">&#9998;</button></span></div>'
+    +'<span class="gacts"><button class="ico" onclick="doneGoal('+jsq(g.id)+')" title="Mark done">'+(g.done?'&#10003;':'&#9711;')+'</button>'
+    +'<button class="ico" onclick="editGoal('+jsq(g.id)+')" title="Edit">&#9998;</button></span></div>'
    +'<div class="gt">'+esc(g.text)+'</div>'
    +'<div class="gb"><span class="days"><span class="dv" style="color:'+(g.done?'var(--sage)':'var(--ink)')+'">'+(g.done?'Done':days(g.deadline))+'</span>'
     +'<span class="dl">'+(g.done?'Finished':'days left')+'</span></span>'
