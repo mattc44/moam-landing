@@ -44,10 +44,6 @@ button{border:0;background:none;cursor:pointer}
 h1{font-family:var(--df);font-weight:600;font-size:clamp(27px,6.2vw,36px);line-height:1.12;letter-spacing:-.02em;margin:24px 0 6px}
 h1 em{font-style:italic;color:var(--sage)}
 .sub{color:var(--ink2);font-size:15.5px;margin-bottom:8px;max-width:54ch}
-.howto{display:inline-flex;align-items:center;gap:7px;font-family:var(--lf);font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:22px;padding:6px 0}
-.howto:hover{color:var(--ink)}
-.howto .pl{width:16px;height:16px;border:1.5px solid currentColor;border-radius:50%;position:relative;flex:0 0 auto}
-.howto .pl::after{content:'';position:absolute;left:5.5px;top:3.5px;border-left:5px solid currentColor;border-top:3.5px solid transparent;border-bottom:3.5px solid transparent}
 
 .sec{font-family:var(--lf);font-weight:700;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin:28px 0 10px;display:flex;align-items:center;gap:12px}
 .sec .cnt{color:var(--ink);font-family:var(--df);font-weight:600;font-size:14px;letter-spacing:0;text-transform:none}
@@ -296,12 +292,6 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:2px;bac
 .foot{text-align:center;font-family:var(--lf);font-weight:700;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#B0A899;padding:40px 0 8px}
 
 /* video modal */
-.mo{position:fixed;inset:0;background:rgba(36,31,25,.72);display:none;align-items:center;justify-content:center;z-index:999;padding:20px}
-.mo.on{display:flex}
-.mob{background:var(--card);border:1px solid var(--rule);border-radius:2px;max-width:640px;width:100%}
-.mob .mh{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--rule)}
-.mob .mt{font-family:var(--lf);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
-.mob .mv{aspect-ratio:16/9;background:var(--tint);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:14px;text-align:center;padding:20px}
 
 @media(max-width:600px){
  .wrap{padding:0 14px 52px}
@@ -380,7 +370,6 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:2px;bac
 <section class="view on" id="v-today">
   <h1>Today's <em>Big Three.</em></h1>
   <p class="sub">Three things that would make today count. Pick them from your tasks, or type them straight in.</p>
-  <button class="howto" onclick="vid('The Big Three')"><span class="pl"></span>Watch how this works</button>
 
   <div class="sec">The Big Three <span class="cnt" id="c-b3"></span></div>
   <div class="doc" id="b3"></div>
@@ -412,7 +401,6 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:2px;bac
 <section class="view" id="v-tasks">
   <h1>Everything <em>on your plate.</em></h1>
   <p class="sub">Dump it all here so it stops living in your head. Then star the three that actually matter today.</p>
-  <button class="howto" onclick="vid('Organising your tasks')"><span class="pl"></span>Watch how this works</button>
   <div class="sec">Your list <span class="cnt" id="c-task"></span></div>
   <div class="doc"><div id="tasks"></div>
     <div class="tin"><input id="tnew" placeholder="Add a task and press enter" onkeydown="if(event.key==='Enter')addTask()"><button class="btn p" onclick="addTask()">Add</button></div>
@@ -423,7 +411,6 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:2px;bac
 <section class="view" id="v-fit5">
   <h1>Your <em>Fit5 audit.</em></h1>
   <p class="sub">Every area is moving toward fitness or toward sickness. Once a month, seven sliders, ninety seconds.</p>
-  <button class="howto" onclick="vid('The Fit5 audit')"><span class="pl"></span>Watch how this works</button>
   <div id="fit5body"></div>
 </section>
 
@@ -431,7 +418,6 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:2px;bac
 <section class="view" id="v-goals">
   <h1>This year's <em>goals.</em></h1>
   <p class="sub">One per area of life is plenty. A goal with no date is a wish.</p>
-  <button class="howto" onclick="vid('Setting goals that hold')"><span class="pl"></span>Watch how this works</button>
   <div class="sec">Your goals <span class="cnt" id="c-goal"></span></div>
   <div id="goalEd"></div>
   <button class="btn p" style="margin-bottom:16px" onclick="startGoal()">+ Add a goal</button>
@@ -455,13 +441,6 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:2px;bac
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="mo" id="mo" onclick="if(event.target===this)closeVid()">
-  <div class="mob">
-    <div class="mh"><span class="mt" id="mtitle"></span><button class="ico" onclick="closeVid()">&#10005;</button></div>
-    <div class="mv">Matt records this one.<br>Drop the embed here.</div>
   </div>
 </div>
 
@@ -596,8 +575,6 @@ $('today').textContent=new Date().toLocaleDateString('en-US',{weekday:'long',mon
 function go(v){document.querySelectorAll('.view').forEach(s=>s.classList.remove('on'));$('v-'+v).classList.add('on');
  if(v==='fit5')renderFit5();
  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.v===v));window.scrollTo(0,0)}
-function vid(t){$('mtitle').textContent=t;$('mo').classList.add('on')}
-function closeVid(){$('mo').classList.remove('on')}
 
 /* ---------- BIG THREE ---------- */
 function big3(){return S.tasks.filter(t=>t.big3).slice(0,3)}
@@ -652,7 +629,12 @@ function renderDeps(){
    const ds=fmt(dt), dd=dt.getDay();
    const ap=d.freq==="custom"?(d.customDays||[]).includes(dd):(f?f.days.includes(dd):true);
    const on=!!(S.log[ds]||{})[d.id]; if(on)done++;
-   const cls=!ap?'na':(on?'on':(ds<TODAY?'miss':''));
+   // A day before the habit existed is not a miss. Without this a man who signs up
+   // on a Sunday sees six maroon squares for a week he was never here for, which is
+   // the first thing he ever sees in the app. createdAt is already loaded in hydrate().
+   const born=d.createdAt||'';
+   const before=born&&ds<born;
+   const cls=!ap?'na':(on?'on':(ds<TODAY&&!before?'miss':''));
    return '<span class="'+(ds===VIEW?'vw':'')+'"><em>'+DAYN[dd]+'</em><i class="'+cls+'"></i></span>';
   }).join('');
   const on=ticked(d.id);
