@@ -187,6 +187,16 @@ h1 em{font-style:italic;color:var(--sage)}
 .install li{font-size:14.5px;line-height:1.55;margin-bottom:7px;color:var(--ink2)}
 .install li b{color:var(--ink);font-weight:600}
 .install .warn{font-size:12.5px;color:var(--maroon);padding:0 18px 16px;line-height:1.45}
+.walk{background:var(--card);border:1px solid var(--rule);border-radius:2px;padding:16px 16px 14px;margin-bottom:18px}
+.walk b{display:block;font-family:var(--df);font-weight:600;font-size:19px;line-height:1.2;margin-bottom:4px}
+.walk .ws{font-size:14px;color:var(--ink2);line-height:1.4;margin-bottom:12px}
+.walk .play{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--ink);color:var(--paper);padding:14px 16px;border-radius:2px;margin-bottom:12px}
+.walk .play i{width:34px;height:34px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:13px;flex:0 0 auto}
+.walk .play span{font-family:var(--lf);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.walk .frame{position:relative;padding-bottom:56.25%;height:0;margin-bottom:12px;background:#000;border-radius:2px;overflow:hidden}
+.walk .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.walk .wb{display:flex;gap:8px;flex-wrap:wrap}
+.walk .wb .btn{flex:1 1 auto;text-align:center}
 .ibar{display:flex;align-items:center;gap:12px;background:var(--sage);color:#fff;padding:13px 16px;margin-bottom:18px;border-radius:2px}
 .ibar .ph{width:26px;height:36px;border:2px solid rgba(255,255,255,.85);border-radius:4px;position:relative;flex:0 0 auto}
 .ibar .ph::after{content:'';position:absolute;left:50%;bottom:3px;width:9px;height:2px;background:rgba(255,255,255,.85);transform:translateX(-50%);border-radius:1px}
@@ -442,6 +452,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:2px;bac
   <div class="sheetb">
     <div class="sh"><b>Settings</b><button class="ico" onclick="closeSet()">&#10005;</button></div>
     <div class="sc">
+      <div id="walkCard"></div>
       <div class="sec" style="margin-top:0">Put this on your home screen</div>
       <div id="installCard"></div>
       <div class="sec">Your account</div>
@@ -481,6 +492,10 @@ const sb=window.supabase.createClient(SUPA_URL,SUPA_KEY,{auth:{persistSession:tr
 // Belt and braces: supabase-js fires this specifically for a recovery link.
 let RECOVERY=CAME_FROM_RECOVERY;
 let USER=null;
+// Matt's walkthrough video. Empty = the card and the Settings row do not render.
+// Set to the Loom share URL (https://www.loom.com/share/<id>) and rebuild.
+const WALK_URL="";
+const walkEmbed=()=>WALK_URL.replace('/share/','/embed/');
 const KEY="dds-v2";
 const fmt=d=>{const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),dd=String(d.getDate()).padStart(2,"0");return y+"-"+m+"-"+dd};
 const TODAY=fmt(new Date());
@@ -922,6 +937,16 @@ function saveAudit(){
 /* ---------- INSTALL BAR ---------- */
 function renderBar(){
  const el=$('ibar'); if(!el)return;
+ if(WALK_URL && !S.walk){
+  el.innerHTML='<div class="walk"><b>Watch how this works</b>'
+   +'<div class="ws">Sixty seconds. The four screens, what to tap, and how to make it a habit you actually keep.</div>'
+   +(S.walkOpen
+     ? '<div class="frame"><iframe src="'+walkEmbed()+'?hide_owner=true&hide_share=true&hide_title=true" allow="autoplay; fullscreen" allowfullscreen></iframe></div>'
+     : '<button class="play" onclick="S.walkOpen=true;renderBar()"><i>&#9654;</i><span>Play the walkthrough</span></button>')
+   +'<div class="wb"><button class="btn p" onclick="setWalk(\'done\')">Got it, hide this</button>'
+   +'<button class="btn g" onclick="setWalk(\'later\')">Save it for later</button></div></div>';
+  return;
+ }
  if(STANDALONE||S.barHidden){el.innerHTML='';return}
  el.innerHTML='<div class="ibar"><span class="ph"></span>'
   +'<span class="it"><b>Keep this one tap away</b>'
@@ -930,6 +955,10 @@ function renderBar(){
   +'<button class="ix" onclick="hideBar()" aria-label="Hide">&#10005;</button></div>';
 }
 function hideBar(){S.barHidden=true;save();renderBar()}
+function setWalk(v){
+ S.walk=v;S.walkOpen=false;save();renderBar();
+ if(v==='later'){const el=$('ibar');el.innerHTML='<div class="walk" style="padding:12px 16px"><div class="ws" style="margin:0">Saved. It lives under Settings whenever you want it.</div></div>';setTimeout(renderBar,2600)}
+}
 
 /* ---------- SETTINGS SHEET ---------- */
 function openSet(){$('setSheet').classList.add('on');renderInstall()}
@@ -940,6 +969,7 @@ const IOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='M
 const STANDALONE=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone;
 let insTab=IOS?'ios':'android';
 function renderInstall(){
+ const w=$('walkCard'); if(w){w.innerHTML=WALK_URL?'<div class="doc" style="padding:14px 18px;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;gap:12px"><span style="font-size:14px;color:var(--ink2)">The sixty-second walkthrough, whenever you want it.</span><a class="btn p" href="'+WALK_URL+'" target="_blank" rel="noopener" style="flex:0 0 auto;text-decoration:none">Watch it</a></div>':'';}
  const host=$('installCard'); if(!host)return;
  if(STANDALONE){host.innerHTML='<div class="doc empty">Already on your home screen. Nothing to do.</div>';return}
  const steps = insTab==='ios'
