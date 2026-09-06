@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Opening your application…</title>
+<!--
+  Why this page exists (Sept 6 2026):
+  The GHL application form redirects to the Typeform by setting the TOP window's location
+  from inside its iframe. That tears the iframe down before its own Meta pixel "Lead" can
+  send, so Meta counted 1 Lead for 11 real GHL leads (Sept 2-5). The form's redirect URL
+  now points HERE instead. This page is on manonmission.ca, fires Lead once with an event
+  id, then forwards every query parameter it received on to the Typeform. The pixel inside
+  the GHL form is switched off so each submission counts exactly once.
+-->
+<style>
+  html,body{margin:0;height:100%;background:#F5F1E8;color:#2B2B2B;font-family:-apple-system,"Helvetica Neue",Arial,sans-serif}
+  main{min-height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
+  p{margin:0;font-size:17px;line-height:1.5}
+  a{color:#7B9E8E}
+</style>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1692779035222395');
+fbq('track', 'PageView');
+fbq('track', 'Lead', {}, { eventID: 'moam-app-' + Date.now() });
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1692779035222395&ev=Lead&noscript=1"/></noscript>
+</head>
+<body>
+<main>
+  <p>Opening your application…<br>
+  <a id="go" href="https://form.typeform.com/to/vP787Q9P">Tap here if it doesn't open in a moment.</a></p>
+</main>
+<script>
+  (function () {
+    var target = 'https://form.typeform.com/to/vP787Q9P';
+    var qs = window.location.search;
+    if (qs && qs.length > 1) { target += qs; }
+    document.getElementById('go').href = target;
+    // Short hold so the Lead beacon is on its way before we leave.
+    setTimeout(function () { window.location.replace(target); }, 400);
+  })();
+</script>
+</body>
+</html>
