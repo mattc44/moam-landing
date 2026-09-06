@@ -859,24 +859,25 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
 </div>
 <script>
   // Meta "Lead" was undercounting after form_embed.js went live (Sept 1 2026): GHL counted
-  // 11 ad leads Sept 2-5, Meta's pixel counted 1. The GHL form fires its own pixel Lead
-  // INSIDE the iframe on submit and, in the same instant, posts ["modify-parent-url", url]
-  // to this page; form_embed.js then navigates this page to the Typeform straight away,
-  // tearing the iframe down before its pixel request finishes. For the six weeks before
-  // the embed script existed that request always completed and Meta's count matched GHL.
-  // This listener is registered BEFORE form_embed.js so it runs first: it takes over the
-  // redirect and holds it for 900ms so the iframe's Lead reaches Meta. The page fires no
-  // Lead of its own, so every submission counts exactly once. Nothing else changes.
-  (function holdRedirectForPixel() {
+  // 11 ad leads Sept 2-5, Meta's pixel counted 1. The GHL form used to fire its own pixel
+  // Lead INSIDE the iframe on submit and, in the same instant, post ["modify-parent-url",
+  // url] to this page; form_embed.js navigated away and the iframe's request died with it.
+  // This listener is registered BEFORE form_embed.js so it runs first: on the form's
+  // redirect message it fires Lead from THIS page (fbq sends it with a beacon that survives
+  // navigation, and it is on manonmission.ca so Test Events can see it), then performs the
+  // same redirect. The pixel inside the GHL form is switched off so each submit counts once.
+  (function fireLeadOnFormRedirect() {
     window.addEventListener('message', function (e) {
       try {
         var d = e.data;
         if (!Array.isArray(d) || d[0] !== 'modify-parent-url' || !d[1]) { return; }
         var frame = document.getElementById('moam-form-frame');
         if (!frame || e.source !== frame.contentWindow) { return; }
+        if (typeof fbq === 'function') {
+          fbq('track', 'Lead', {}, { eventID: 'moam-app-' + Date.now() });
+        }
         e.stopImmediatePropagation();
-        var url = d[1];
-        setTimeout(function () { window.location.href = url; }, 900);
+        window.location.href = d[1];
       } catch (err) { /* let form_embed.js handle it as before */ }
     }, true);
   })();
