@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>The Daily Discipline System</title>
-<meta name="theme-color" content="#FAF7F0">
+<meta name="theme-color" content="#FFFFFF">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Daily Discipline">
@@ -319,7 +319,34 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:2px;bac
  .right{gap:6px}
  .wk i{width:12px;height:12px}
 }
-</style></head><body>
+</style>
+<!-- MOAM website rebrand, Oct 6 2026: one override layer on top of the Field Notes styles. -->
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style id="moam-rebrand">
+:root{--paper:#FFFFFF;--card:#FFF;--ink:#1A1A1A;--ink2:#5E5E58;--ink3:#8C8C85;--rule:#E3E1DA;--hair:#E3E1DA;--tint:#F5F4EF;
+ --sage:#5E806F;--sageLt:#7B9E8E;--sageW:#E8F0EC;--maroon:#7C2D2D;
+ --df:'Bricolage Grotesque',system-ui,sans-serif;--bf:'Manrope',system-ui,sans-serif;--lf:'Manrope',system-ui,sans-serif}
+.mast{border-bottom:1px solid var(--hair)}
+.mast img{width:32px;height:32px}
+.mast .nm{font-size:12.5px;letter-spacing:.12em}
+.tabs{position:sticky;top:0;z-index:20;background:var(--tint);border:0;border-radius:999px;padding:4px;gap:4px;margin:14px 0 10px}
+.tab{flex:1;border:0;margin:0;border-radius:999px;padding:10px 8px;text-transform:none;letter-spacing:0;font-size:14px;font-weight:700}
+.tab.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(26,26,26,.12)}
+.btn,.gbtn,.jump,.pick,.chip,.gear,.mast .gear{border-radius:999px}
+.btn,.gbtn{text-transform:none;letter-spacing:0;font-size:15px}
+.gbtn{padding:15px}
+.stat,.goal,.month,.mb,.install,.walk,.frame,.doc,.op,.ab,.dy,.ibar,.ig,.nav,.gmsg{border-radius:14px}
+.ico,.play{border-radius:50%}
+h1,h2,h3{letter-spacing:-.02em}
+em{font-style:normal}
+.gseg{border:0;border-radius:999px;background:var(--tint);padding:4px;gap:4px;overflow:hidden}
+.gseg button{border-radius:999px;text-transform:none;letter-spacing:0;font-size:14px;background:transparent}
+.gseg button+button{border-left:0}
+.gseg button.on{background:var(--sage);color:#fff}
+.invite a{border-radius:999px;text-transform:none;letter-spacing:0;font-size:15px;padding:13px 24px;font-family:var(--bf)}
+input,select,textarea{border-radius:12px}
+</style>
+</head><body>
 
 <div class="boot" id="boot">Loading&hellip;</div>
 
