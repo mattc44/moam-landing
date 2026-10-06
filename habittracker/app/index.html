@@ -338,13 +338,17 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:2px;bac
 .stat,.goal,.month,.mb,.install,.walk,.frame,.doc,.op,.ab,.dy,.ibar,.ig,.nav,.gmsg{border-radius:14px}
 .ico,.play{border-radius:50%}
 h1,h2,h3{letter-spacing:-.02em}
-em{font-style:normal}
+em,h1 em,h2 em,.gatebox h1 em{font-style:normal}
 .gseg{border:0;border-radius:999px;background:var(--tint);padding:4px;gap:4px;overflow:hidden}
 .gseg button{border-radius:999px;text-transform:none;letter-spacing:0;font-size:14px;background:transparent}
 .gseg button+button{border-left:0}
 .gseg button.on{background:var(--sage);color:#fff}
 .invite a{border-radius:999px;text-transform:none;letter-spacing:0;font-size:15px;padding:13px 24px;font-family:var(--bf)}
-input,select,textarea{border-radius:12px}
+.fld input,.fld select,.fld textarea,.tin input,.gf input{border-radius:12px;border-color:#D5D3CC}
+input[type=range]::-webkit-slider-thumb{border-radius:50%}
+input[type=range]::-moz-range-thumb{border-radius:50%}
+input[type=range]::-webkit-slider-runnable-track{border-radius:999px}
+input[type=range]::-moz-range-track{border-radius:999px}
 </style>
 </head><body>
 
