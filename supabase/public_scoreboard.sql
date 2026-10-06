@@ -1,0 +1,4 @@
+-- Applied to Mission Control (vjohrikezdbcvdcvwbvn) Oct 6 2026 as migration `public_scoreboard`.
+-- Feeds the homepage scoreboard. Returns totals only: {as_of, bible, date_nights, workouts, deposits, men}.
+-- Excludes Matt's account, demo and test accounts. Call: POST /rest/v1/rpc/public_scoreboard with the publishable key.
+-- Source of truth is the live function: select pg_get_functiondef('public.public_scoreboard()'::regprocedure);
