@@ -15,6 +15,7 @@
 .score .badge{display:inline-flex;align-items:center;gap:12px;padding:8px 18px 8px 8px;border:1.5px solid rgba(201,170,113,.55);border-radius:999px;background:rgba(201,170,113,.1);margin-bottom:22px}
 .score .badge img{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);padding:4px}
 .score .badge span{font:800 13px/1 var(--bf);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.score .f3live{text-align:center;margin:0 0 18px}
 .score .live{display:block;font:600 13px/1.5 var(--bf);color:#B9CBC2;margin-top:18px;text-wrap:balance}
 .score .live i{display:inline-block;vertical-align:1px;margin-right:8px;width:8px;height:8px;border-radius:50%;background:#6FD39B;box-shadow:0 0 0 0 rgba(111,211,155,.6);animation:tmpulse 2s infinite}
 @keyframes tmpulse{70%{box-shadow:0 0 0 9px rgba(111,211,155,0)}100%{box-shadow:0 0 0 0 rgba(111,211,155,0)}}
@@ -405,14 +406,14 @@ fbq('track', 'PageView');
 
 <section class="score" id="scoreboard"><div class="wrap">
   <div class="top">
-    <div class="badge"><img src="assets/logo-mark.png" alt=""><span>The MOAM Team Mission · 2026</span></div>
+    <div class="badge"><img src="assets/logo-mark.png" alt=""><span>The MOAM Team Mission</span></div>
     <h2>What the men in this program <em>are building.</em></h2>
-    <span class="live"><i></i>Live from Mission Control · updates every time a man logs a habit</span>
   </div>
   <div class="money">
     <div><span class="big" data-count="1.08" data-pre="$" data-suf="M" data-dec="2">$1.08M</span><span class="lbl">Average yearly revenue</span><span class="mid">per man in the program</span></div>
     <div><span class="big" data-count="289" data-pre="$" data-suf="K">$289K</span><span class="lbl">Average yearly take-home</span><span class="mid">per man in the program · mission goal $500K</span></div>
   </div>
+  <span class="live f3live"><i></i>Live from Mission Control · updates every time a man logs a habit</span>
   <div class="f3">
     <div class="f" data-goal="50000"><span class="area">Faith</span><b data-count="2156" data-key="bible">2,156</b><p>times men opened the Bible or spent time with the Lord</p><div class="bar"><i></i></div><div class="goal"><span class="pct">72%</span><span>Mission goal: 50,000</span></div></div>
     <div class="f fam" data-goal="1000"><span class="area">Family</span><b data-count="138" data-key="date_nights">138</b><p>date nights with their wives</p><div class="bar"><i></i></div><div class="goal"><span class="pct">55%</span><span>Mission goal: 1,000</span></div></div>
