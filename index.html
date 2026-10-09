@@ -411,12 +411,12 @@ fbq('track', 'PageView');
   </div>
   <div class="money">
     <div><span class="big" data-count="1.08" data-pre="$" data-suf="M" data-dec="2">$1.08M</span><span class="lbl">Average yearly revenue</span><span class="mid">per man in the program</span></div>
-    <div><span class="big" data-count="289" data-pre="$" data-suf="K">$289K</span><span class="lbl">Average yearly take-home</span><span class="mid">per man in the program</span></div>
+    <div><span class="big" data-count="289" data-pre="$" data-suf="K">$289K</span><span class="lbl">Average yearly take-home</span><span class="mid">per man in the program · mission goal $500K</span></div>
   </div>
   <div class="f3">
-    <div class="f" data-goal="3000"><span class="area">Faith</span><b data-count="2156" data-key="bible">2,156</b><p>times men opened the Bible so far this year</p><div class="bar"><i></i></div><div class="goal"><span class="pct">72%</span><span>2026 goal: 3,000</span></div></div>
-    <div class="f fam" data-goal="250"><span class="area">Family</span><b data-count="138" data-key="date_nights">138</b><p>date nights with their wives</p><div class="bar"><i></i></div><div class="goal"><span class="pct">55%</span><span>2026 goal: 250</span></div></div>
-    <div class="f fit" data-goal="1500"><span class="area">Fitness</span><b data-count="1017" data-key="workouts">1,017</b><p>workouts logged</p><div class="bar"><i></i></div><div class="goal"><span class="pct">68%</span><span>2026 goal: 1,500</span></div></div>
+    <div class="f" data-goal="50000"><span class="area">Faith</span><b data-count="2156" data-key="bible">2,156</b><p>times men opened the Bible or spent time with the Lord</p><div class="bar"><i></i></div><div class="goal"><span class="pct">72%</span><span>Mission goal: 50,000</span></div></div>
+    <div class="f fam" data-goal="1000"><span class="area">Family</span><b data-count="138" data-key="date_nights">138</b><p>date nights with their wives</p><div class="bar"><i></i></div><div class="goal"><span class="pct">55%</span><span>Mission goal: 1,000</span></div></div>
+    <div class="f fit" data-goal="25000"><span class="area">Fitness</span><b data-count="1017" data-key="workouts">1,017</b><p>workouts logged</p><div class="bar"><i></i></div><div class="goal"><span class="pct">68%</span><span>Mission goal: 25,000</span></div></div>
   </div>
   <div class="foot">
     <div class="deps">Daily deposits: <strong data-count="9362" data-key="deposits">9,362</strong> habits logged by <span data-key="men">43</span> men since March 2026 in the important areas of life: faith, family, fitness, and business.</div>
@@ -729,7 +729,7 @@ fbq('track', 'PageView');
 <script>
 /* Team Mission goal bars: width = live count / 2026 goal. Re-read after the live fetch lands. */
 (function(){var sec=document.getElementById('scoreboard');if(!sec)return;
-  function fill(){[].slice.call(sec.querySelectorAll('.f[data-goal]')).forEach(function(f){var b=f.querySelector('b[data-count]'),g=+f.dataset.goal,v=+b.dataset.count,p=Math.min(100,Math.round(100*v/g));f.querySelector('.bar i').style.width=p+'%';f.querySelector('.pct').textContent=p+'% of the way';});}
+  function fill(){[].slice.call(sec.querySelectorAll('.f[data-goal]')).forEach(function(f){var b=f.querySelector('b[data-count]'),g=+f.dataset.goal,v=+b.dataset.count,p=Math.min(100,100*v/g);f.querySelector('.bar i').style.width=Math.max(p,1.5)+'%';f.querySelector('.pct').textContent=(100*v/g<10?(100*v/g).toFixed(1):Math.round(100*v/g))+'% of the mission';});}
   var go=function(){fill();setTimeout(fill,2500);setTimeout(fill,6000);};
   if(!('IntersectionObserver' in window)){go();return;}
   var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){io.disconnect();go();}},{threshold:.2});io.observe(sec);})();
