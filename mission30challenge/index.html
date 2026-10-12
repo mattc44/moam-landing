@@ -1,307 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mission 30 — 30 Days to Get Your Life Back in Order</title>
-<meta name="description" content="A 30-day challenge for Christian men who are done drifting. 8 habits, a live leaderboard, and a monthly prize. Doors open 48 hours a month. Join the waitlist to be notified.">
-<link rel="icon" type="image/png" href="/mission30challenge/assets/favicon.png">
-<link rel="apple-touch-icon" href="/mission30challenge/assets/favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..700&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mission 30 Challenge</title>
+<meta name="description" content="A 30-day challenge for Christian men. 8 habits across faith, family, fitness and business, a live leaderboard, and a monthly winner prize. $49/month.">
+<link rel="icon" href="/mission30challenge/assets/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
-  :root {
-    --black: #0A0A0A;
-    --white: #F5F5F0;
-    --paper: #EFE9E3;
-    --card: #FAF7F3;
-    --sage: #7B9E8E;
-    --sage-hover: #8FB3A1;
-    --sage-dark: #5E806F;
-    --blood: #8B3A3A;
-    --gray: #A3A39C;
-    --mid: #4A4A45;
-    --dark-alt: #131311;
-    --card-dark: #121210;
-    --df: 'Newsreader', serif;
-    --dw: 600;
-    --dls: -0.015em;
-    /* aliases so the ported GHL modal (verbatim markup) resolves its vars */
-    --ink-2: #121210;
-    --wm: rgba(245,245,240,0.72);
-    --sans: 'Instrument Sans', sans-serif;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-  body {
-    font-family: 'Instrument Sans', sans-serif;
-    background: var(--black);
-    color: var(--white);
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    font-optical-sizing: auto;
-  }
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 9999;
-  }
-  .ac { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; }
+@font-face{font-family:'Bricolage';src:url(/assets/v14/bricolage.woff2) format('woff2');font-weight:700}
+@font-face{font-family:'Bricolage';src:url(/assets/v14/bricolage-500.woff2) format('woff2');font-weight:500}
+@font-face{font-family:'Manrope';src:url(/assets/v14/manrope.woff2) format('woff2');font-weight:400 700}
+@font-face{font-family:'Instrument Serif';src:url(/assets/v14/iserif-italic.woff2) format('woff2');font-style:italic}
+/* Layout: the manonmission.ca system. White page, one rounded dark hero, a deep-pine Team Mission band, off-white alternates. */
+:root{--white:#FFFFFF;--off:#F5F4EF;--ink:#0E0E0E;--ink2:#181816;--text:#1A1A1A;--muted:#5E5E58;--line:#E3E1DA;--pine:#5E806F;--pine2:#4E6E5F;--sage:#7B9E8E;--sage2:#8FB3A1;--tint:#E8F0EC;--gold:#C9AA71;--deep:#1B2A24;--wine:#8C3B44;
+--hf:'Bricolage',system-ui,-apple-system,Helvetica,Arial,sans-serif;--bf:'Manrope',system-ui,-apple-system,Helvetica,Arial,sans-serif;--ac:'Instrument Serif',Georgia,serif;color-scheme:light}
+:root[data-theme="dark"]{color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--text);font-family:var(--bf);font-size:18.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{max-width:100%}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--pine);outline-offset:3px}
+h1,h2,h3{font-family:var(--hf);font-weight:700;margin:0;letter-spacing:-.02em;line-height:1.04;text-wrap:balance}
+em{font-family:var(--ac);font-style:italic;font-weight:400}
+p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(18px,3.5vw,40px)}
+.narrow{max-width:820px}
+section{padding:clamp(64px,9vw,112px) 0}
+.alt{background:var(--off)}
+.center{text-align:center}
+.eyebrow{display:inline-block;font:700 12px/1 var(--bf);letter-spacing:.14em;text-transform:uppercase;color:var(--pine);margin-bottom:16px}
+.h2{font-size:clamp(32px,4.4vw,54px);max-width:20ch}
+.center .h2{margin:0 auto}
+.h2 em{color:var(--pine)}
+.lead{font-size:clamp(18px,1.6vw,21px);color:var(--muted);max-width:58ch;margin-top:20px}
+.center .lead{margin-left:auto;margin-right:auto}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--pine);color:#fff;border:0;border-radius:999px;padding:17px 28px;font:700 16px/1 var(--bf);text-decoration:none;cursor:pointer;transition:background .2s,transform .2s;white-space:nowrap}
+.btn:hover{background:var(--pine2);transform:translateY(-1px)}
+.btn.gold{background:var(--gold);color:var(--ink)}.btn.gold:hover{background:#D8BC86}
+.btn.white{background:#fff;color:var(--ink)}.btn.white:hover{background:var(--off)}
+.cta-row{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:clamp(36px,4vw,52px)}
+.cta-row small{font:600 14px/1.4 var(--bf);color:var(--muted)}
+.dark .cta-row small,.score .cta-row small{color:#B9CBC2}
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 12px 48px;
-    background: rgba(10,10,10,0.82);
-    backdrop-filter: blur(24px);
-    border-bottom: 1px solid rgba(245,245,240,0.06);
-  }
-  .nav-brand { display: flex; align-items: center; text-decoration: none; }
-  .nav-brand img { height: 66px; width: auto; object-fit: contain; display: block; }
-  .nav-cta { background: var(--sage); color: #0c0c0b; padding: 12px 30px; font-weight: 600; font-size: 0.76rem; letter-spacing: 1.6px; text-transform: uppercase; text-decoration: none; transition: background 0.3s ease, box-shadow 0.3s ease; border-radius: 2px; }
-  .nav-cta:hover { background: var(--sage-hover); box-shadow: 0 8px 32px rgba(123,158,142,0.35); }
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+nav .row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(14px,2vw,24px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 18px/1 var(--hf);letter-spacing:-.01em}
+.brand img{width:32px;height:32px;filter:invert(1)}
+.brand small{font:600 13px/1 var(--bf);color:var(--muted);letter-spacing:0;margin-left:2px}
+nav .btn{padding:13px 20px;font-size:14.5px}
+@media(max-width:560px){.brand small{display:none}}
 
-  /* BUTTONS */
-  .btn-primary { display: inline-block; background: var(--sage); color: #0c0c0b; padding: 19px 48px; font-weight: 600; font-size: 0.82rem; letter-spacing: 1.8px; text-transform: uppercase; text-decoration: none; transition: background 0.3s ease, box-shadow 0.3s ease; border-radius: 2px; will-change: transform; }
-  .btn-primary:hover { background: var(--sage-hover); box-shadow: 0 16px 48px rgba(123,158,142,0.4); }
-  .cta-row { display: flex; align-items: center; gap: 26px; margin-top: 60px; flex-wrap: wrap; }
-  .cta-note { font-size: 0.76rem; letter-spacing: 1.2px; text-transform: uppercase; color: var(--gray); }
-  .cta-note em { font-style: normal; color: var(--sage); }
-  .light .cta-note { color: var(--mid); }
-  .light .cta-note em { color: var(--sage-dark); }
+/* hero */
+.heroWrap{padding:8px clamp(10px,1.5vw,20px) 0}
+.hero{position:relative;background:var(--ink);color:#fff;border-radius:28px;overflow:hidden;display:grid;grid-template-columns:48% 52%;min-height:620px;max-width:1440px;margin:0 auto;isolation:isolate}
+.hero .bg{position:absolute;top:0;bottom:0;right:0;width:62%;z-index:0}
+.hero .bg img{width:100%;height:100%;object-fit:cover;object-position:62% 40%}
+.hero .bg::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--ink) 0%,rgba(14,14,14,.85) 16%,rgba(14,14,14,.3) 38%,rgba(14,14,14,0) 56%)}
+.hero .copy{padding:clamp(40px,5vw,72px) clamp(24px,4vw,56px);display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.hero .m30mark{width:150px;margin-bottom:22px}
+.hero h1{font-size:clamp(40px,5vw,68px);max-width:13ch}
+.hero h1 em{color:var(--sage2)}
+.hero .sub{font-size:clamp(17px,1.35vw,19.5px);color:#D6D6CF;max-width:44ch;margin:22px 0 30px;line-height:1.55}
+.hero .cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.hero .cta a.link{font:600 15px/1 var(--bf);color:#fff;text-decoration:none;border-bottom:1.5px solid rgba(255,255,255,.4);padding-bottom:4px}
+.hero .note{margin-top:22px;font:600 14px/1.4 var(--bf);color:#B9B9B2}
+.hero .tagline{position:absolute;right:22px;bottom:22px;z-index:2;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:10px 16px;font:600 13px/1 var(--bf)}
+@media(max-width:860px){.hero{grid-template-columns:1fr;min-height:0}.hero .bg{width:100%;height:400px;bottom:auto}.hero .bg::before{background:linear-gradient(180deg,rgba(14,14,14,0) 40%,var(--ink) 100%)}.hero .copy{padding-top:300px}.hero .tagline{display:none}.hero .m30mark{width:120px}}
 
-  /* HERO */
-  .hero { position: relative; padding: 210px 48px 200px; overflow: hidden; background: var(--black); }
-  .hero-photo { position: absolute; top: 0; right: 0; width: 60%; height: 100%; overflow: hidden; }
-  .hero-photo-inner { position: absolute; inset: -4% -3%; will-change: transform; }
-  .hero-photo img { width: 100%; height: 115%; object-fit: cover; object-position: 50% 28%; filter: grayscale(0.3) contrast(1.06) brightness(0.78); will-change: transform; transform: scale(1.04); animation: heroKenBurns 28s ease-in-out infinite alternate; }
-  @keyframes heroKenBurns {
-    0%   { transform: scale(1.04) translate3d(0, 0, 0); }
-    100% { transform: scale(1.09) translate3d(-2%, -1.6%, 0); }
-  }
-  .hero-photo::after { content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to right, var(--black) 2%, rgba(10,10,10,0.86) 26%, rgba(10,10,10,0.25) 62%, rgba(10,10,10,0.45) 100%),
-                linear-gradient(to top, var(--black) 4%, transparent 45%),
-                linear-gradient(to bottom, var(--black) 0%, transparent 30%); }
-  .hero-inner { position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-  .hero-kicker { font-size: 0.74rem; letter-spacing: 3.5px; text-transform: uppercase; font-weight: 600; color: var(--sage); margin-bottom: 26px; opacity: 0; animation: fadeUp 1s ease forwards 0.2s; }
-  .hero h1 { font-family: var(--df); font-weight: var(--dw); font-size: clamp(2.9rem, 5.6vw, 5.1rem); line-height: 1.06; letter-spacing: var(--dls); max-width: 880px; opacity: 0; animation: fadeUp 1s ease forwards 0.35s; }
-  .hero h1 em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: var(--sage); letter-spacing: 0; }
-  .hero-sub { font-size: 1.1rem; line-height: 1.8; color: rgba(245,245,240,0.72); max-width: 540px; margin-top: 34px; opacity: 0; animation: fadeUp 1s ease forwards 0.6s; }
-  .hero-actions { margin-top: 48px; display: flex; align-items: center; gap: 26px; flex-wrap: wrap; opacity: 0; animation: fadeUp 1s ease forwards 0.8s; }
+/* Team Mission band, same build as the homepage scoreboard */
+.score{padding:clamp(60px,8vw,110px) 0;background:radial-gradient(ellipse 80% 60% at 50% 0%,#2B4238 0%,var(--deep) 70%);color:#fff;position:relative;overflow:hidden}
+.score .top{text-align:center;max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+.score .badge{display:inline-flex;align-items:center;gap:12px;padding:8px 18px 8px 8px;border:1.5px solid rgba(201,170,113,.55);border-radius:999px;background:rgba(201,170,113,.1);margin-bottom:22px}
+.score .badge img{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);padding:4px}
+.score .badge span{font:800 13px/1 var(--bf);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.score h2{font-size:clamp(34px,4.6vw,58px);max-width:19ch;color:#fff}
+.score h2 em{color:var(--gold)}
+.score .lead{color:#C9D6CF;margin-top:20px}
+.score .live{display:block;text-align:center;font:600 13px/1.5 var(--bf);color:#B9CBC2;margin:clamp(34px,4vw,48px) 0 18px}
+.score .live i{display:inline-block;vertical-align:1px;margin-right:8px;width:8px;height:8px;border-radius:50%;background:#6FD39B;animation:tmpulse 2s infinite}
+@keyframes tmpulse{0%{box-shadow:0 0 0 0 rgba(111,211,155,.6)}70%{box-shadow:0 0 0 9px rgba(111,211,155,0)}100%{box-shadow:0 0 0 0 rgba(111,211,155,0)}}
+.score .f3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,24px);max-width:1120px;margin:0 auto}
+.score .f{background:#fff;color:var(--ink);border-radius:22px;padding:clamp(24px,3vw,34px);border-top:6px solid var(--sage)}
+.score .f.fam{border-top-color:var(--wine)}.score .f.fam .area{color:var(--wine)}.score .f.fam .bar i{background:var(--wine)}
+.score .f.fit{border-top-color:var(--gold)}.score .f.fit .area{color:#9A7A3C}.score .f.fit .bar i{background:var(--gold)}
+.score .f .area{font:700 12px/1 var(--bf);letter-spacing:.16em;text-transform:uppercase;color:var(--pine)}
+.score .f b{display:block;font:700 clamp(52px,6vw,78px)/1 var(--hf);letter-spacing:-.04em;margin:16px 0 8px;font-variant-numeric:tabular-nums}
+.score .f p{font-size:17.5px;line-height:1.45;color:var(--text)}
+.score .f .hab{display:inline-block;margin-top:12px;font:600 13px/1.3 var(--bf);color:var(--muted);background:var(--off);border-radius:999px;padding:7px 12px}
+.score .bar{height:10px;border-radius:99px;background:#ECEAE2;margin-top:18px;overflow:hidden}
+.score .bar i{display:block;height:100%;width:2%;border-radius:99px;background:var(--sage);transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+.score .goal{display:flex;justify-content:space-between;gap:10px;margin-top:9px;font:700 13px/1.3 var(--bf);color:var(--muted);font-variant-numeric:tabular-nums}
+.score .goal span:last-child{color:var(--ink)}
+.score .deps{text-align:center;font:600 19px/1.45 var(--bf);color:#fff;max-width:46ch;margin:clamp(32px,4vw,44px) auto 0}
+.score .deps strong{font-family:var(--hf);font-size:24px;letter-spacing:-.02em;color:var(--gold)}
+@media(max-width:860px){.score .f3{grid-template-columns:1fr}}
 
-  /* SECTION SCAFFOLD */
-  .light { background: var(--paper); color: var(--black); }
-  section { padding: 130px 48px; }
-  .inner { max-width: 1100px; margin: 0 auto; }
-  .eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
-  .eyebrow small { font-size: 0.72rem; letter-spacing: 3.5px; text-transform: uppercase; font-weight: 600; color: var(--sage); }
-  .eyebrow::after { content: ''; height: 1px; flex: 0 0 64px; background: rgba(123,158,142,0.5); }
-  .light .eyebrow small { color: var(--sage-dark); }
-  .s-problem .eyebrow small, .s-cost .eyebrow small { color: var(--blood); }
-  .s-problem .eyebrow::after, .s-cost .eyebrow::after { background: rgba(139,58,58,0.45); }
-  h2 { font-family: var(--df); font-weight: var(--dw); font-size: clamp(2.15rem, 4.2vw, 3.4rem); line-height: 1.12; letter-spacing: var(--dls); max-width: 820px; margin-bottom: 22px; }
-  h2 em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; }
-  .s-problem h2 em, .s-cost h2 em { color: var(--blood); }
-  .dark h2 em, .dark-alt h2 em { color: var(--sage); }
-  .light h2 em { color: var(--sage-dark); }
-  .lead { font-size: 1.06rem; line-height: 1.8; max-width: 580px; color: var(--gray); }
-  .light .lead { color: var(--mid); }
-  .dark { background: var(--black); color: var(--white); }
-  .dark-alt { background: var(--dark-alt); color: var(--white); }
 
-  .mask { overflow: hidden; }
-  .mask > * { transform: translateY(110%); transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1); }
-  .mask.visible > * { transform: translateY(0); }
-  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .d1 { transition-delay: 0.12s; } .d2 { transition-delay: 0.24s; } .d3 { transition-delay: 0.36s; }
+/* problem */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,22px);margin-top:clamp(36px,4vw,52px)}
+.pcard{background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:clamp(24px,3vw,32px)}
+.pcard .no{font:700 12px/1 var(--bf);letter-spacing:.14em;text-transform:uppercase;color:var(--wine)}
+.pcard h3{font-size:clamp(22px,2vw,26px);margin:14px 0 10px}
+.pcard p{color:var(--muted);font-size:17.5px}
+.turn{font:700 clamp(22px,2.4vw,30px)/1.3 var(--hf);letter-spacing:-.015em;text-align:center;max-width:30ch;margin:clamp(40px,5vw,60px) auto 0;text-wrap:balance}
+@media(max-width:860px){.cards3{grid-template-columns:1fr}}
 
-  /* PAIN CARDS */
-  .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 64px; background: rgba(10,10,10,0.09); }
-  .pain-card { background: var(--card); padding: 48px 38px; border-top: 2px solid rgba(139,58,58,0.35); transition: all 0.45s ease; }
-  .pain-card:hover { border-top-color: var(--blood); background: #FFFDFA; transform: translateY(-5px); box-shadow: 0 24px 48px rgba(10,10,10,0.08); }
-  .pain-num { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.15rem; color: var(--blood); margin-bottom: 18px; }
-  .pain-card h3 { font-family: var(--df); font-weight: var(--dw); font-size: 1.4rem; margin-bottom: 12px; color: var(--black); }
-  .pain-card p { font-size: 0.98rem; line-height: 1.75; color: var(--mid); }
-  .stakes { margin-top: 76px; max-width: 820px; }
-  .stakes p { font-family: 'Instrument Serif', serif; font-style: italic; font-size: clamp(1.6rem, 3.1vw, 2.4rem); line-height: 1.32; color: var(--black); }
-  .stakes p em { color: var(--blood); }
+/* guide */
+.guide{display:grid;grid-template-columns:5fr 6fr;gap:clamp(32px,5vw,72px);align-items:center}
+.guide .ph{border-radius:24px;overflow:hidden;aspect-ratio:4/5;background:var(--off)}
+.guide .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.guide .body p{margin-top:18px;color:var(--text)}
+.guide .body p.big{font:700 clamp(21px,2vw,25px)/1.4 var(--hf);letter-spacing:-.01em}
+.pull{margin:28px 0 0;padding:22px 24px;background:var(--tint);border-radius:18px;font-size:17.5px;line-height:1.55}
+.pull cite{display:block;margin-top:10px;font:700 13px/1 var(--bf);font-style:normal;letter-spacing:.06em;text-transform:uppercase;color:var(--pine)}
+.sig{margin-top:22px;font:700 15px/1.3 var(--bf)}
+.creds{display:flex;flex-wrap:wrap;gap:14px 26px;margin-top:28px;padding-top:24px;border-top:1.5px solid var(--line)}
+.cred{display:flex;align-items:center;gap:10px;font:600 13.5px/1.25 var(--bf);color:var(--muted)}
+.cred img{width:52px;height:52px;object-fit:contain}
+@media(max-width:860px){.guide{grid-template-columns:1fr}.guide .ph{max-width:460px}}
 
-  /* SAGE BAND */
-  .band { background: var(--sage); padding: 62px 48px; }
-  .band-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
-  .band h3 { font-family: var(--df); font-weight: var(--dw); font-size: clamp(1.5rem, 2.6vw, 2.1rem); color: #0c0c0b; max-width: 640px; line-height: 1.18; }
-  .band .btn-primary { background: var(--black); color: var(--white); flex-shrink: 0; }
-  .band .btn-primary:hover { background: #1e1e1c; box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+/* plan + phone */
+.plan{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(36px,5vw,72px);align-items:center}
+.steps{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:18px}
+.steps li{display:grid;grid-template-columns:52px 1fr;gap:18px;align-items:start;background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:22px}
+.steps .n{width:52px;height:52px;border-radius:50%;background:var(--pine);color:#fff;display:grid;place-items:center;font:700 22px/1 var(--hf)}
+.steps h3{font-size:23px;margin-bottom:6px}
+.steps p{color:var(--muted);font-size:17px}
+.phone{width:min(340px,100%);margin:0 auto;background:var(--ink);border-radius:44px;padding:12px;box-shadow:0 40px 80px rgba(14,14,14,.18)}
+.screen{background:#fff;border-radius:34px;padding:24px 16px 20px;min-width:0}
+.screen .hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.screen .hd b{font:700 19px/1 var(--hf)}
+.screen .hd span{font:700 13px/1 var(--bf);background:var(--tint);color:var(--pine2);border-radius:999px;padding:7px 11px;font-variant-numeric:tabular-nums;transition:background .3s,color .3s}
+.screen .hd span.complete{background:var(--pine);color:#fff}
+.screen .day{font:600 12.5px/1 var(--bf);color:var(--muted);margin-bottom:14px}
+.drow{display:grid;grid-template-columns:24px 1fr auto;gap:10px;align-items:center;padding:10px 6px;border-top:1px solid var(--line);font:600 14px/1.25 var(--bf)}
+.drow small{font:600 11px/1 var(--bf);color:var(--muted)}
+.drow .cb{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;transition:background .25s,border-color .25s}
+.drow .cb svg{opacity:0;transition:opacity .2s}
+.drow.checked .cb{background:var(--pine);border-color:var(--pine)}
+.drow.checked .cb svg{opacity:1}
+.prog{height:8px;border-radius:99px;background:#ECEAE2;margin-top:14px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--pine);border-radius:99px;transition:width .5s}
+.phone-cap{text-align:center;font:600 13px/1.4 var(--bf);color:var(--muted);margin-top:16px}
+@media(max-width:900px){.plan{grid-template-columns:1fr}}
 
-  /* GUIDE */
-  .s-guide { background: var(--white); }
-  .guide-grid { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 80px; align-items: center; margin-top: 28px; }
-  .guide-copy p { font-size: 1.08rem; line-height: 1.9; color: var(--mid); margin-bottom: 22px; max-width: 530px; }
-  .guide-copy p strong { color: var(--black); font-weight: 600; }
-  .guide-photo { position: relative; overflow: hidden; border-radius: 3px; }
-  .guide-photo img { width: 100%; height: 112%; object-fit: cover; display: block; filter: saturate(0.88) contrast(1.02); will-change: transform; }
-  .guide-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.18), transparent 40%); pointer-events: none; }
-  .guide-quote { margin-top: 44px; border-left: 3px solid var(--sage-dark); padding: 26px 34px; max-width: 620px; }
-  .guide-quote p { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.28rem; line-height: 1.62; color: var(--mid); }
-  .guide-attr { margin-top: 16px; font-weight: 600; font-size: 0.85rem; color: var(--black); }
-  .guide-attr span { color: var(--sage-dark); font-weight: 500; font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; margin-left: 10px; }
-  /* CREDENTIALS STRIP (nested under guide photo) */
-  .guide-right { display: flex; flex-direction: column; }
-  .guide-creds { margin-top: 32px; display: flex; flex-direction: column; gap: 26px; }
-  .cred-group { display: flex; flex-direction: column; gap: 15px; }
-  .cred-label { font-size: 0.64rem; letter-spacing: 2px; text-transform: uppercase; color: var(--sage-dark); font-weight: 700; }
-  .cred-items { display: flex; flex-wrap: wrap; gap: 22px 16px; }
-  .cred-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; width: 112px; }
-  .cred-badge { display: flex; align-items: center; justify-content: center; }
-  .cred-item.cert .cred-badge, .cred-item.cert img { height: 74px; }
-  .cred-item.cert img { width: auto; display: block; }
-  .cred-item.biz .cred-badge { height: 46px; }
-  .cred-item.biz img { max-height: 44px; max-width: 104px; width: auto; display: block; object-fit: contain; }
-  .cred-cap { font-size: 0.6rem; letter-spacing: 0.6px; text-transform: uppercase; color: var(--mid); font-weight: 600; line-height: 1.4; }
-  @media (max-width: 760px) {
-    .guide-creds { margin-top: 30px; gap: 24px; }
-    .cred-item { width: 30%; min-width: 96px; }
-  }
+/* what you get */
+.get{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(24px,4vw,48px);margin-top:clamp(36px,4vw,52px);align-items:start}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.item{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:24px}
+.item h3{font-size:21px;margin-bottom:8px}
+.item p{color:var(--muted);font-size:16.5px;line-height:1.5}
+.item.wide{grid-column:span 2}
+.price{background:var(--ink);color:#fff;border-radius:24px;padding:clamp(28px,3.5vw,40px);text-align:center;position:sticky;top:90px}
+.price .amt{font:700 clamp(60px,7vw,86px)/1 var(--hf);letter-spacing:-.04em}
+.price .amt small{font:600 22px/1 var(--bf);letter-spacing:0;color:#B9B9B2}
+.price p{color:#B9B9B2;margin:14px 0 26px;font-size:16px}
+.price .btn{width:100%;justify-content:center}
+@media(max-width:900px){.get{grid-template-columns:1fr}.price{position:static}}
+@media(max-width:560px){.items{grid-template-columns:1fr}.item.wide{grid-column:auto}}
 
-  /* PLAN */
-  .steps { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(245,245,240,0.06); }
-  .step-card { background: var(--card-dark); padding: 52px 40px; transition: all 0.45s ease; }
-  .step-card:hover { background: rgba(123,158,142,0.06); transform: translateY(-5px); }
-  .step-num { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 2.8rem; color: var(--sage); line-height: 1; margin-bottom: 22px; }
-  .step-card h3 { font-family: var(--df); font-weight: var(--dw); font-size: 1.46rem; margin-bottom: 12px; }
-  .step-card p { font-size: 0.98rem; line-height: 1.75; color: var(--gray); }
+/* outcome */
+.olist{list-style:none;margin:clamp(32px,4vw,44px) auto 0;padding:0;max-width:760px;display:grid;gap:12px}
+.olist li{display:grid;grid-template-columns:30px 1fr;gap:14px;align-items:start;font:600 clamp(18px,1.6vw,20px)/1.45 var(--bf);padding:16px 20px;background:#fff;border-radius:16px;border:1.5px solid var(--line)}
+.olist li::before{content:"";width:26px;height:26px;border-radius:50%;background:var(--pine) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2l2.3 2.3 4.7-5' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat;margin-top:1px}
+.closer{max-width:62ch;margin:clamp(32px,4vw,44px) auto 0;color:var(--muted);text-align:center;font-size:clamp(18px,1.5vw,20px)}
 
-  /* PHONE DEMO */
-  .demo-wrap { display: flex; flex-direction: column; align-items: center; margin: 84px 0 12px; }
-  .demo-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--sage); margin-bottom: 32px; }
-  .phone-frame { width: 276px; background: #0d0d0d; border-radius: 42px; border: 1px solid rgba(245,245,240,0.14); overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,0.55), 0 0 80px rgba(123,158,142,0.08), 0 0 0 1px rgba(245,245,240,0.03); }
-  .phone-bar { height: 34px; background: #0d0d0d; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 5px; }
-  .phone-notch { width: 82px; height: 20px; background: #000; border-radius: 0 0 14px 14px; }
-  .phone-screen { padding: 16px 18px 24px; background: var(--card-dark); }
-  .demo-hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
-  .demo-app-title { font-family: var(--df); font-weight: var(--dw); font-size: 0.92rem; letter-spacing: 0.4px; color: rgba(245,245,240,0.92); }
-  .demo-score-badge { font-size: 10px; font-weight: 700; color: var(--sage-hover); background: rgba(123,158,142,0.15); padding: 3px 9px; border-radius: 2px; transition: background 0.3s; }
-  .demo-score-badge.complete { background: rgba(123,158,142,0.3); }
-  .demo-day { font-size: 8.5px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; color: rgba(245,245,240,0.28); margin-bottom: 14px; }
-  .demo-row { display: flex; align-items: center; gap: 9px; padding: 7px 10px; border-radius: 3px; margin-bottom: 2px; transition: background 0.35s; }
-  .demo-row.checked { background: rgba(123,158,142,0.1); }
-  .demo-cb { width: 17px; height: 17px; border-radius: 3px; border: 1.5px solid rgba(245,245,240,0.18); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: background 0.28s, border-color 0.28s; }
-  .demo-row.checked .demo-cb { background: rgba(123,158,142,0.85); border-color: rgba(123,158,142,0.85); }
-  .demo-ck { opacity: 0; transition: opacity 0.18s 0.1s; }
-  .demo-row.checked .demo-ck { opacity: 1; }
-  .demo-rn { font-size: 11px; font-weight: 600; color: rgba(245,245,240,0.42); transition: color 0.3s; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .demo-row.checked .demo-rn { color: rgba(245,245,240,0.78); }
-  .demo-rc { font-size: 8px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(245,245,240,0.2); white-space: nowrap; }
-  .demo-progress { height: 2px; background: rgba(245,245,240,0.06); border-radius: 1px; margin: 14px 0 0; overflow: hidden; }
-  .demo-progress-fill { height: 100%; width: 0%; background: linear-gradient(to right, rgba(123,158,142,0.6), rgba(123,158,142,1)); border-radius: 1px; transition: width 0.4s ease; }
+/* testimonials: Nick's video is the feature */
+.feature{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center;margin-top:clamp(40px,5vw,60px)}
+.vid{position:relative;border-radius:26px;overflow:hidden;background:var(--ink);aspect-ratio:9/16;box-shadow:0 40px 80px rgba(14,14,14,.16);max-width:100%}
+.vid video{width:100%;height:100%;object-fit:cover;display:block}
+.vid .play{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(180deg,rgba(14,14,14,0) 50%,rgba(14,14,14,.6) 100%);border:0;cursor:pointer;padding:0;color:#fff}
+.vid .play span{width:86px;height:86px;border-radius:50%;background:rgba(255,255,255,.95);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:transform .2s}
+.vid .play:hover span{transform:scale(1.06)}
+.vid .play small{position:absolute;left:20px;bottom:18px;font:700 13px/1 var(--bf);letter-spacing:.06em}
+.vid.playing .play{display:none}
+.fq .who{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.fq .who img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.fq .who b{display:block;font:700 19px/1.2 var(--hf)}
+.fq .who span{font:600 14px/1.3 var(--bf);color:var(--muted)}
+.fq h3{font-size:clamp(34px,4vw,54px);line-height:1.05}
+.fq h3 em{color:var(--pine)}
+.fq blockquote{margin:24px 0 0;font-size:clamp(18px,1.5vw,20.5px);line-height:1.6;color:var(--text);padding-left:20px;border-left:3px solid var(--sage)}
+.fq .meta{margin-top:18px;font:600 14px/1.4 var(--bf);color:var(--muted)}
+.qgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(48px,6vw,72px)}
+.q{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+.q p{font-size:17.5px;line-height:1.55}
+.q cite{font:700 13px/1.3 var(--bf);font-style:normal;color:var(--pine);letter-spacing:.04em}
+.q cite span{display:block;font-weight:600;color:var(--muted);letter-spacing:0;margin-top:3px}
+.qwide{margin-top:16px;background:var(--deep);color:#fff;border-radius:24px;padding:clamp(28px,4vw,48px);display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3vw,36px);align-items:start}
+.qwide .mk{font:400 110px/.7 var(--ac);font-style:italic;color:var(--gold)}
+.qwide p{font:500 clamp(20px,2vw,26px)/1.45 var(--hf);letter-spacing:-.01em}
+.qwide cite{display:block;margin-top:16px;font:700 13px/1.3 var(--bf);font-style:normal;color:var(--gold);letter-spacing:.06em;text-transform:uppercase}
+.verb{text-align:center;margin-top:20px;font:600 13px/1.4 var(--bf);color:var(--muted)}
+@media(max-width:900px){.feature{grid-template-columns:1fr}.vid{width:min(400px,100%);margin:0 auto}.qgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.qgrid{grid-template-columns:1fr}.qwide{grid-template-columns:1fr}.qwide .mk{font-size:80px}}
 
-  /* OFFER STACK */
-  .get-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 64px; background: rgba(10,10,10,0.09); }
-  .get-item { background: var(--card); padding: 42px 40px; position: relative; transition: all 0.45s ease; }
-  .get-item::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--sage); transform: scaleX(0); transform-origin: left; transition: transform 0.45s ease; }
-  .get-item:hover::before { transform: scaleX(1); }
-  .get-item:hover { transform: translateY(-5px); box-shadow: 0 24px 48px rgba(10,10,10,0.07); }
-  .get-item h3 { font-family: var(--df); font-weight: var(--dw); font-size: 1.34rem; margin-bottom: 10px; color: var(--black); }
-  .get-item p { font-size: 0.96rem; line-height: 1.72; color: var(--mid); }
-  .get-item.full { grid-column: 1 / -1; }
-  .price-card { margin-top: 64px; background: var(--card); border-top: 3px solid var(--sage); box-shadow: 0 30px 70px rgba(10,10,10,0.09); padding: 56px 64px; display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap; }
-  .price-num { font-family: var(--df); font-weight: var(--dw); font-size: clamp(3.4rem, 6vw, 5rem); line-height: 1; color: var(--black); }
-  .price-num em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: var(--sage-dark); font-size: 0.42em; }
-  .price-terms { font-size: 0.74rem; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); margin-top: 14px; }
+/* path */
+.dark{background:var(--ink);color:#fff}
+.dark .eyebrow{color:var(--sage2)}
+.dark .h2 em{color:var(--sage2)}
+.dark .lead{color:#B9B9B2}
+.path{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:clamp(40px,5vw,60px)}
+.stop{background:var(--ink2);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:28px 24px}
+.stop .t{font:700 clamp(46px,4.6vw,60px)/1 var(--hf);letter-spacing:-.04em;color:#fff}
+.stop .t small{display:block;font:700 12px/1 var(--bf);letter-spacing:.14em;text-transform:uppercase;color:var(--sage2);margin-top:10px}
+.stop p{color:#C9C9C2;font-size:16.5px;line-height:1.55;margin-top:18px}
+@media(max-width:1000px){.path{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.path{grid-template-columns:1fr}}
 
-  /* SUCCESS STATE */
-  .win-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 64px; background: rgba(10,10,10,0.09); }
-  .win-item { display: flex; align-items: center; gap: 20px; background: var(--card); padding: 30px 34px; transition: background 0.3s ease; }
-  .win-item:hover { background: #FFFDFA; }
-  .win-check { width: 24px; height: 24px; border-radius: 50%; background: rgba(94,128,111,0.14); color: var(--sage-dark); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .win-item p { font-size: 0.98rem; line-height: 1.65; color: var(--black); font-weight: 500; }
-  .win-close { margin-top: 64px; max-width: 660px; font-size: 1.06rem; line-height: 1.85; color: var(--mid); }
+/* final */
+.final{padding:clamp(40px,6vw,72px) 0}
+.finalCard{background:radial-gradient(ellipse 80% 70% at 50% 0%,#2B4238 0%,var(--deep) 75%);color:#fff;border-radius:28px;padding:clamp(48px,7vw,96px) clamp(24px,5vw,72px);text-align:center}
+.finalCard img{width:150px;margin:0 auto 22px;display:block}
+.finalCard h2{font-size:clamp(34px,4.6vw,58px);max-width:18ch;margin:0 auto}
+.finalCard h2 em{color:var(--gold)}
+.finalCard p{color:#C9D6CF;max-width:56ch;margin:20px auto 0;font-size:clamp(18px,1.5vw,20px)}
 
-  /* TESTIMONIALS (dark variant of quote cards) */
-  .quote-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 56px; background: rgba(245,245,240,0.06); }
-  .quote-card { background: var(--card-dark); padding: 46px 42px; display: flex; flex-direction: column; justify-content: space-between; border-left: 2px solid var(--sage); transition: all 0.45s ease; }
-  .quote-card:hover { background: rgba(123,158,142,0.06); transform: translateY(-5px); }
-  .quote-card p { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.22rem; line-height: 1.65; color: rgba(245,245,240,0.82); }
-  .quote-name { margin-top: 28px; font-weight: 600; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--sage); }
+footer{border-top:1.5px solid var(--line);padding:36px 0 44px}
+footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;font:600 14px/1.4 var(--bf);color:var(--muted)}
+footer .row a{text-decoration:none;margin-left:20px}
+footer .row a:hover{color:var(--text)}
 
-  /* NEGATIVE STAKES */
-  .cost-copy { margin-top: 48px; max-width: 720px; }
-  .cost-copy p { font-size: 1.1rem; line-height: 1.85; color: var(--mid); }
-  .cost-copy p + p { margin-top: 24px; }
-  .cost-punch { margin-top: 52px; max-width: 820px; }
-  .cost-punch p { font-family: 'Instrument Serif', serif; font-style: italic; font-size: clamp(1.6rem, 3.1vw, 2.4rem); line-height: 1.32; color: var(--black); }
-  .cost-punch p em { color: var(--blood); }
 
-  /* PATH FORWARD */
-  .path-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 64px; background: rgba(245,245,240,0.06); }
-  .path-card { background: var(--card-dark); padding: 52px 38px; border-top: 2px solid transparent; transition: all 0.45s ease; }
-  .path-card:hover { border-top-color: var(--sage); background: rgba(123,158,142,0.06); transform: translateY(-5px); }
-  .path-period { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 3rem; color: var(--sage); line-height: 1; }
-  .path-unit { display: block; font-size: 0.7rem; font-weight: 600; letter-spacing: 2.4px; text-transform: uppercase; color: var(--gray); margin: 12px 0 26px; }
-  .path-card p { font-size: 0.95rem; line-height: 1.75; color: var(--gray); }
-
-  /* FINAL */
-  .final { text-align: center; padding: 180px 48px; position: relative; overflow: hidden; }
-  .final::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 115%, rgba(123,158,142,0.14) 0%, transparent 60%); pointer-events: none; }
-  .final > * { position: relative; }
-  .final .eyebrow { justify-content: center; }
-  .final h2 { margin: 0 auto 24px; max-width: 900px; }
-  .final .lead { margin: 0 auto 52px; }
-  .final-meta { margin-top: 32px; font-size: 0.74rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); }
-  .final-meta em { font-style: normal; color: var(--sage); }
-
-  /* FOOTER */
-  footer { padding: 46px 48px; border-top: 1px solid rgba(245,245,240,0.06); background: var(--black); }
-  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
-  .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
-  .footer-links a { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,245,240,0.35); text-decoration: none; transition: color 0.3s; }
-  .footer-links a:hover { color: var(--white); }
-  footer p { font-size: 0.72rem; color: rgba(245,245,240,0.25); letter-spacing: 1px; }
-
-  /* REDUCED MOTION */
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .hero-kicker, .hero h1, .hero-sub, .hero-actions { animation: none; opacity: 1; }
-    .reveal, .mask, .mask h2 { opacity: 1 !important; transform: none !important; transition: none !important; }
-    .hero-photo img { animation: none; transform: scale(1.04); }
-    .hero-photo-inner { transform: none !important; }
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 1100px) {
-    .hero-photo { width: 100%; opacity: 0.45; }
-    .hero-photo::after { background: linear-gradient(to right, var(--black) 0%, rgba(10,10,10,0.7) 100%), linear-gradient(to bottom, var(--black) 0%, transparent 30%), linear-gradient(to top, var(--black) 4%, transparent 45%); }
-    .path-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 960px) {
-    nav { padding: 10px 24px; }
-    .nav-brand img { height: 54px; }
-    section { padding: 96px 28px; }
-    .hero { padding: 170px 28px 170px; }
-    .guide-grid { grid-template-columns: 1fr; gap: 52px; }
-    .guide-photo { max-width: 440px; }
-    .pain-grid, .steps, .get-grid, .win-grid, .quote-grid { grid-template-columns: 1fr; }
-    .price-card { padding: 46px 32px; }
-  }
-  @media (max-width: 600px) {
-    nav { padding: 8px 16px; }
-    .nav-brand img { height: 46px; }
-    .nav-cta { padding: 9px 18px; font-size: 0.68rem; }
-    section { padding: 64px 18px; }
-    .hero { padding: 140px 18px 140px; }
-    .btn-primary { width: 100%; text-align: center; }
-    .path-grid { grid-template-columns: 1fr; }
-    .final { padding: 110px 18px; }
-    footer { padding: 32px 18px; }
-    .footer-inner { flex-direction: column; text-align: center; }
-  }
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 </style>
-<!-- Meta Pixel Code (same pixel as the new manonmission.ca site — the current Mission 30 page had none) -->
+<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -321,454 +247,235 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
 </head>
 <body>
 
-<nav>
-  <a href="https://manonmission.ca" class="nav-brand">
-    <img src="/mission30challenge/assets/mission30-logo.png" alt="Mission 30">
-  </a>
-  <a href="#start" class="nav-cta">Join the Waitlist</a>
-</nav>
+<nav><div class="row">
+  <a class="brand" href="https://manonmission.ca"><img src="/assets/logo-mark.png" alt="">Mission 30 <small>by Man on a Mission</small></a>
+  <a class="btn" href="https://www.skool.com/manonamissionchallenge/about">Join Today</a>
+</div></nav>
 
-<!-- 1 · HERO -->
-<header class="hero">
-  <div class="hero-photo"><div class="hero-photo-inner" id="hero-parallax"><img src="/mission30challenge/assets/matt-deadlift.png" alt="Matt Chenard deadlifting" id="hero-img"></div></div>
-  <div class="hero-inner">
-    <p class="hero-kicker">The Mission 30 Challenge</p>
+<div class="heroWrap"><header class="hero">
+  <div class="bg"><img src="/mission30challenge/assets/hero-cold-plunge.jpg" alt="Matt Chenard in a cold plunge"></div>
+  <div class="copy">
+    <img class="m30mark" src="/mission30challenge/assets/mission30-logo.png" alt="Mission 30">
     <h1>30 days to get your life <em>back in order.</em></h1>
-    <p class="hero-sub">A 30-day challenge for Christian men who are done drifting. 8 habits across your faith, your family, your fitness, and your business. A live leaderboard. A prize for the man who wins the month.</p>
-    <div class="hero-actions">
-      <a href="#start" class="btn-primary">Join the Waitlist</a>
-      <p class="cta-note">Doors open <em>48 hours a month</em> · get on the list</p>
+    <p class="sub">A 30-day challenge for Christian men who are done drifting. 8 habits across your faith, your family, your fitness, and your business. A live leaderboard. A prize for whoever wins the month.</p>
+    <div class="cta"><a class="btn" href="https://www.skool.com/manonamissionchallenge/about">Join Today</a><a class="link" href="#how-it-works">See How It Works</a></div>
+    <p class="note">$49/month · cancel anytime</p>
+  </div>
+  <span class="tagline">Faith · Family · Fitness</span>
+</header></div>
+
+<!-- THE MOAM TEAM MISSION: same live counts as the homepage. Mission 30 logs feed public_scoreboard() directly. -->
+<section class="score" id="scoreboard" style="margin-top:28px"><div class="wrap">
+  <div class="top">
+    <div class="badge"><img src="/assets/logo-mark.png" alt=""><span>The MOAM Team Mission</span></div>
+    <h2>Every habit you check off counts toward <em>one shared mission.</em></h2>
+    <p class="lead">Mission 30 runs inside Mission Control, the same app every man in Man on a Mission uses. Every Bible reading, date night and workout you log adds to these numbers.</p>
+  </div>
+  <span class="live"><i></i>Live from Mission Control · updates every time someone logs a habit</span>
+  <div class="f3">
+    <div class="f" data-goal="50000"><span class="area">Faith</span><b data-count="2379" data-key="bible">2,379</b><p>times men opened the Bible or spent time with the Lord</p><span class="hab">📖 Read Bible</span><div class="bar"><i></i></div><div class="goal"><span class="pct">4.8% of the mission</span><span>Mission goal: 50,000</span></div></div>
+    <div class="f fam" data-goal="5000"><span class="area">Family</span><b data-count="168" data-key="date_nights">168</b><p>date nights with their wives</p><span class="hab">❤️ Date Night / Friends Hangout</span><div class="bar"><i></i></div><div class="goal"><span class="pct">3.4% of the mission</span><span>Mission goal: 5,000</span></div></div>
+    <div class="f fit" data-goal="25000"><span class="area">Fitness</span><b data-count="1148" data-key="workouts">1,148</b><p>workouts logged</p><span class="hab">💪 Work Out</span><div class="bar"><i></i></div><div class="goal"><span class="pct">4.6% of the mission</span><span>Mission goal: 25,000</span></div></div>
+  </div>
+  <p class="deps">Daily deposits: <strong data-count="10188" data-key="deposits">10,188</strong> habits logged by <span data-key="men">43</span> men since March 2026.</p>
+  <div class="cta-row"><a class="btn gold" href="https://www.skool.com/manonamissionchallenge/about">Join Today</a><small>Your first log counts the day you start.</small></div>
+</div></section>
+
+<section><div class="wrap center">
+  <span class="eyebrow">The problem</span>
+  <h2 class="h2">You know what you should be doing. <em>So why isn't it happening?</em></h2>
+  <div class="cards3" style="text-align:left">
+    <div class="pcard"><span class="no">No. 1</span><h3>Strong Monday, gone by Thursday</h3><p>You start the week strong and fall off by Thursday. You've told yourself "this is the year" before.</p></div>
+    <div class="pcard"><span class="no">No. 2</span><h3>The gym gets cut first</h3><p>The moment the calendar fills up, your health is the first thing to go. Your faith gets Sunday morning if you're lucky.</p></div>
+    <div class="pcard"><span class="no">No. 3</span><h3>Home, but not really there</h3><p>The business gets everything. Your family gets what's left of you at the end of the day.</p></div>
+  </div>
+  <p class="turn">Wanting it was never the problem. You just never had a system that could hold when life got hard.</p>
+  <div class="cta-row"><a class="btn" href="https://www.skool.com/manonamissionchallenge/about">Join Today</a><small>$49/month · cancel anytime</small></div>
+</div></section>
+
+<section class="alt"><div class="wrap"><div class="guide">
+  <div class="ph"><img src="/mission30challenge/assets/matt-deadlift.png" alt="Matt Chenard deadlifting" loading="lazy"></div>
+  <div class="body">
+    <span class="eyebrow">Your guide</span>
+    <h2 class="h2">I know <em>the struggle.</em></h2>
+    <p class="big">One of my businesses is a gym I've been running for 13 years. Between 2020 and 2023 we went through 5 openings and closures and 7 months of not being able to use our space while still paying rent. We lost $1.2 million.</p>
+    <p>I built this system because I needed something that would hold when everything was falling apart, not just when things were easy.</p>
+    <p>Now I'm up before 5am. Cold plunge done. Bible read. The important work handled. Present with my family. Training consistently. A full day of rest every week. Over time it stops feeling like discipline and starts being who you are.</p>
+    <p>I've coached over 100 Christian entrepreneurs through the same thing. They all had the desire. What was missing was a system that could hold through the hard stretches. Mission 30 is 30 days to prove it to yourself.</p>
+    <div class="pull">"I'd been trying to build a consistent morning routine for five or six years. Having something I can actually check on and check off every single day — that's what finally made it stick."<cite>Man on a Mission member</cite></div>
+    <p class="sig">Matt Chenard, Founder, Man on a Mission</p>
+    <div class="creds">
+      <div class="cred"><img src="/mission30challenge/assets/badges/cert-hero-on-a-mission.png" alt="" loading="lazy">Certified Life Plan Coach</div>
+      <div class="cred"><img src="/mission30challenge/assets/badges/cert-business-made-simple.png" alt="" loading="lazy">Certified Business Coach</div>
+      <div class="cred"><img src="/mission30challenge/assets/badges/cert-flight-plan.png" alt="" loading="lazy">Certified Small Business Flight Plan Coach</div>
     </div>
   </div>
-</header>
+</div></div></section>
 
-<!-- DOORS / WAITLIST NOTICE -->
-<section class="dark-alt">
-  <div class="inner" style="max-width:800px;text-align:center;margin:0 auto">
-    <p class="reveal" style="font-size:0.72rem;letter-spacing:3.5px;text-transform:uppercase;font-weight:600;color:var(--sage);margin-bottom:24px">How the doors work</p>
-    <div class="mask"><h2 style="margin:0 auto 24px">Doors open for <em>48 hours</em>, once a month.</h2></div>
-    <p class="lead reveal" style="margin:0 auto 40px">Each month, Mission 30 opens to new men for a single 48-hour window. When the window closes or the spots fill, the doors shut until the next month. The waitlist is how you get notified the moment they open, so you don't miss your window.</p>
-    <div class="reveal"><a href="#start" class="btn-primary">Join the Waitlist</a></div>
+<section id="how-it-works"><div class="wrap"><div class="plan">
+  <div>
+    <span class="eyebrow">The plan</span>
+    <h2 class="h2">Three steps to <em>winning the month.</em></h2>
+    <ol class="steps">
+      <li><span class="n">1</span><div><h3>Sign up</h3><p>Join on Skool, create your account, and start tracking that day. You need 30 days on the leaderboard to qualify for the monthly prize.</p></div></li>
+      <li><span class="n">2</span><div><h3>Track your habits</h3><p>Your bespoke habit tracker. 8 habits across faith, family, fitness, and business. Your progress is live on the leaderboard from day one.</p></div></li>
+      <li><span class="n">3</span><div><h3>Win the month</h3><p>Compete for the top spot. The highest performer each month wins the prize. Show up for 30 days and watch what changes.</p></div></li>
+    </ol>
   </div>
-</section>
-
-<!-- 2 · PROBLEM -->
-<section class="light s-problem">
-  <div class="inner">
-    <div class="eyebrow reveal"><small>01 · The problem</small></div>
-    <div class="mask"><h2>You know what you should be doing. <em>So why isn't it happening?</em></h2></div>
-    <div class="pain-grid">
-      <div class="pain-card reveal">
-        <div class="pain-num">No. 1</div>
-        <h3>Strong Monday, gone by Thursday</h3>
-        <p>You start the week strong and fall off by Thursday. You've told yourself "this is the year" before.</p>
-      </div>
-      <div class="pain-card reveal d1">
-        <div class="pain-num">No. 2</div>
-        <h3>The gym gets cut first</h3>
-        <p>The moment the calendar fills up, your health is the first thing to go. Your faith gets Sunday morning if you're lucky.</p>
-      </div>
-      <div class="pain-card reveal d2">
-        <div class="pain-num">No. 3</div>
-        <h3>Home, but not really there</h3>
-        <p>The business gets everything. Your family gets what's left of you at the end of the day.</p>
+  <div>
+    <div class="phone" aria-label="Example of the Mission 30 habit tracker">
+      <div class="screen">
+        <div class="hd"><b>Mission Control</b><span id="demo-badge">0 / 8</span></div>
+        <div class="day">Day 12 · Saturday</div>
+        <div class="drow" data-demo><span class="cb"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>📖 Read Bible<small>Spiritual</small></div>
+        <div class="drow" data-demo><span class="cb"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>🥩 Follow Nutrition Plan<small>Physical</small></div>
+        <div class="drow" data-demo><span class="cb"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>🌲 30 Min Outside<small>Mental</small></div>
+        <div class="drow" data-demo><span class="cb"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>💪 Work Out<small>Physical</small></div>
+        <div class="drow" data-demo><span class="cb"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>☕ Morning Routine<small>Professional</small></div>
+        <div class="drow" data-demo><span class="cb"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>❤️ Date Night / Friends<small>Relational</small></div>
+        <div class="drow" data-demo><span class="cb"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>✝️ Bible Study / Men's Group<small>Spiritual</small></div>
+        <div class="drow" data-demo><span class="cb"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>🙏 Sabbath, Full Rest Day<small>Spiritual</small></div>
+        <div class="prog"><i id="demo-bar"></i></div>
       </div>
     </div>
-    <div class="stakes reveal">
-      <p>Wanting it was never the problem. You just never had a system <em>that could hold when life got hard.</em></p>
-    </div>
-    <div class="cta-row reveal">
-      <a href="#start" class="btn-primary">Join the Waitlist</a>
-      <p class="cta-note">$49/month · <em>cancel anytime</em></p>
-    </div>
-  </div>
-</section>
-
-<!-- SAGE BAND -->
-<div class="band">
-  <div class="band-inner">
-    <h3>Stop starting over every Monday.</h3>
-    <a href="#start" class="btn-primary">Join the Waitlist</a>
-  </div>
-</div>
-
-<!-- 3 · GUIDE -->
-<section class="light s-guide">
-  <div class="inner">
-    <div class="eyebrow reveal"><small>02 · Your guide</small></div>
-    <div class="mask"><h2>I know <em>the struggle.</em></h2></div>
-    <div class="guide-grid">
-      <div class="guide-copy reveal">
-        <p>One of my businesses is a gym I've been running for 13 years. Between 2020 and 2023 we went through 5 openings and closures and 7 months of not being able to use our space while still paying rent. <strong>We lost $1.2 million.</strong></p>
-        <p><strong>I built this system because I needed something that would hold when everything was falling apart</strong> &mdash; not just when things were easy.</p>
-        <p>Now I'm up before 5am. Cold plunge done. Bible read. The important work handled. Present with my family. Training consistently. A full day of rest every week. Over time it stops feeling like discipline and starts being who you are.</p>
-        <p>I've coached over 100 Christian entrepreneurs through the same thing. They all had the desire. What was missing was a system that could hold through the hard stretches. <strong>Mission 30 is 30 days to prove it to yourself.</strong></p>
-        <div class="guide-quote">
-          <p>"I'd been trying to build a consistent morning routine for five or six years. Having something I can actually check on and check off every single day &mdash; that's what finally made it stick."</p>
-          <div class="guide-attr">Man on a Mission Member <span>Verbatim</span></div>
-        </div>
-      </div>
-      <div class="guide-right reveal d1">
-        <div class="guide-photo"><img src="/mission30challenge/assets/hero-cold-plunge.jpg" alt="Matt Chenard in the cold plunge" id="guide-img"></div>
-        <div class="guide-creds">
-          <div class="cred-group">
-            <span class="cred-label">Certified Coach</span>
-            <div class="cred-items">
-              <div class="cred-item cert"><div class="cred-badge"><img src="/mission30challenge/assets/badges/cert-hero-on-a-mission.png" alt="Certified Hero on a Mission Life Plan Coach" loading="lazy"></div><span class="cred-cap">Certified Life Plan Coach</span></div>
-              <div class="cred-item cert"><div class="cred-badge"><img src="/mission30challenge/assets/badges/cert-business-made-simple.png" alt="Business Made Simple Certified Coach" loading="lazy"></div><span class="cred-cap">Certified Business Coach</span></div>
-              <div class="cred-item cert"><div class="cred-badge"><img src="/mission30challenge/assets/badges/cert-flight-plan.png" alt="Certified Small Business Flight Plan Coach" loading="lazy"></div><span class="cred-cap">Certified Small Business Flight Plan Coach</span></div>
-            </div>
-          </div>
-          <div class="cred-group">
-            <span class="cred-label">Founder &amp; Owner</span>
-            <div class="cred-items">
-              <div class="cred-item biz"><div class="cred-badge"><img src="/mission30challenge/assets/badges/biz-greater-purpose.png" alt="Greater Purpose Health &amp; Fitness" loading="lazy"></div><span class="cred-cap">Gym Business</span></div>
-              <div class="cred-item biz"><div class="cred-badge"><img src="/mission30challenge/assets/badges/biz-tmt-marketing.png" alt="TMT Marketing" loading="lazy"></div><span class="cred-cap">Marketing Business</span></div>
-              <div class="cred-item biz"><div class="cred-badge"><img src="/mission30challenge/assets/badges/biz-earn-your-dopamine.png" alt="Earn Your Dopamine" loading="lazy"></div><span class="cred-cap">Merch Business</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cta-row reveal">
-      <a href="#start" class="btn-primary">Join the Waitlist</a>
-      <p class="cta-note">Matt Chenard · <em>Founder, Man on a Mission</em></p>
-    </div>
-  </div>
-</section>
-
-<!-- 4 · HOW IT WORKS + PHONE DEMO -->
-<section class="dark" id="how-it-works">
-  <div class="inner">
-    <div class="eyebrow reveal"><small>03 · The plan</small></div>
-    <div class="mask"><h2>Three steps to <em>winning the month.</em></h2></div>
-    <div class="steps">
-      <div class="step-card reveal">
-        <div class="step-num">1</div>
-        <h3>Sign up</h3>
-        <p>Join during the monthly 48-hour window, create your account, and start tracking that day. You need 30 days on the leaderboard to qualify for the monthly prize.</p>
-      </div>
-      <div class="step-card reveal d1">
-        <div class="step-num">2</div>
-        <h3>Track your habits</h3>
-        <p>Your bespoke habit tracker. 8 habits across faith, family, fitness, and business. Your progress is live on the leaderboard from day one.</p>
-      </div>
-      <div class="step-card reveal d2">
-        <div class="step-num">3</div>
-        <h3>Win the month</h3>
-        <p>Compete for the top spot. The highest performer each month wins the prize. Show up for 30 days and watch what changes.</p>
-      </div>
-    </div>
-
-    <div class="demo-wrap reveal">
-      <div class="demo-label">What it looks like inside</div>
-      <div class="phone-frame" id="phone-demo">
-        <div class="phone-bar"><div class="phone-notch"></div></div>
-        <div class="phone-screen">
-          <div class="demo-hdr">
-            <div class="demo-app-title">Mission Control</div>
-            <div class="demo-score-badge" id="demo-badge">0 / 8</div>
-          </div>
-          <div class="demo-day">Day 12 &middot; Saturday</div>
-          <div class="demo-row" data-demo><div class="demo-cb"><svg class="demo-ck" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="demo-rn">Read Bible</div><div class="demo-rc">Spiritual</div></div>
-          <div class="demo-row" data-demo><div class="demo-cb"><svg class="demo-ck" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="demo-rn">Follow Nutrition Plan</div><div class="demo-rc">Physical</div></div>
-          <div class="demo-row" data-demo><div class="demo-cb"><svg class="demo-ck" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="demo-rn">30 Min Outside</div><div class="demo-rc">Mental</div></div>
-          <div class="demo-row" data-demo><div class="demo-cb"><svg class="demo-ck" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="demo-rn">Work Out</div><div class="demo-rc">Physical</div></div>
-          <div class="demo-row" data-demo><div class="demo-cb"><svg class="demo-ck" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="demo-rn">Morning Routine</div><div class="demo-rc">Professional</div></div>
-          <div class="demo-row" data-demo><div class="demo-cb"><svg class="demo-ck" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="demo-rn">Date Night / Friends</div><div class="demo-rc">Relational</div></div>
-          <div class="demo-row" data-demo><div class="demo-cb"><svg class="demo-ck" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="demo-rn">Bible Study / Men's Group</div><div class="demo-rc">Spiritual</div></div>
-          <div class="demo-row" data-demo><div class="demo-cb"><svg class="demo-ck" width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2L7.5 2" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="demo-rn">Sabbath — Full Rest</div><div class="demo-rc">Spiritual</div></div>
-          <div class="demo-progress"><div class="demo-progress-fill" id="demo-bar"></div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cta-row reveal" style="justify-content: center;">
-      <a href="#start" class="btn-primary">Join the Waitlist</a>
-      <p class="cta-note">$49/month · <em>cancel anytime</em></p>
-    </div>
-  </div>
-</section>
-
-<!-- 5 · OFFER STACK -->
-<section class="light">
-  <div class="inner">
-    <div class="eyebrow reveal"><small>04 · What you get</small></div>
-    <div class="mask"><h2>Everything you get <em>for $49 a month.</em></h2></div>
-    <div class="get-grid">
-      <div class="get-item reveal">
-        <h3>Bespoke habit tracker</h3>
-        <p>Built specifically for the 8 habits. Check it off daily. Watch your streak grow.</p>
-      </div>
-      <div class="get-item reveal d1">
-        <h3>Live leaderboard</h3>
-        <p>Your progress ranked against every man in the cohort. Accountability you can see.</p>
-      </div>
-      <div class="get-item reveal">
-        <h3>Monthly winner prize</h3>
-        <p>Top performer each month wins. Something to compete for. Something to earn.</p>
-      </div>
-      <div class="get-item reveal d1">
-        <h3>Monthly masterclass</h3>
-        <p>One per month led by Matt. Personal development, business growth, AI tools, systems, productivity. Practical and applicable.</p>
-      </div>
-      <div class="get-item full reveal">
-        <h3>The 8 habits</h3>
-        <p>Faith. Family. Fitness. Mental. Professional. The daily operating system that changes everything &mdash; built across all five areas of your life.</p>
-      </div>
-    </div>
-    <div class="price-card reveal">
-      <div>
-        <div class="price-num">$49<em>/month</em></div>
-        <div class="price-terms">Month to month · no contracts · cancel anytime</div>
-      </div>
-      <a href="#start" class="btn-primary">Join the Waitlist</a>
-    </div>
-  </div>
-</section>
-
-<!-- 6 · SUCCESS STATE -->
-<section class="light" style="background: var(--white);">
-  <div class="inner">
-    <div class="eyebrow reveal"><small>05 · The outcome</small></div>
-    <div class="mask"><h2>This is what <em>30 days looks like.</em></h2></div>
-    <div class="win-grid">
-      <div class="win-item reveal"><div class="win-check"><svg width="11" height="11" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>You wake up before your family and you've already won the first battle of the day</p></div>
-      <div class="win-item reveal d1"><div class="win-check"><svg width="11" height="11" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>The gym happens. Not sometimes. Consistently.</p></div>
-      <div class="win-item reveal"><div class="win-check"><svg width="11" height="11" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>Your Bible isn't sitting on the nightstand unopened</p></div>
-      <div class="win-item reveal d1"><div class="win-check"><svg width="11" height="11" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>You come home and you're actually there</p></div>
-      <div class="win-item reveal"><div class="win-check"><svg width="11" height="11" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>You stop white-knuckling it through the week and start operating from a system</p></div>
-      <div class="win-item reveal d1"><div class="win-check"><svg width="11" height="11" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>You become the man your family already thinks you are</p></div>
-    </div>
-    <p class="win-close reveal">Thirty days won't fix everything. But they'll prove something to you that motivation never could &mdash; that you're capable of showing up when you build the right structure around it. That changes how you see yourself. And that changes everything else.</p>
-    <div class="cta-row reveal">
-      <a href="#start" class="btn-primary">Join the Waitlist</a>
-      <p class="cta-note">$49/month · <em>cancel anytime</em></p>
-    </div>
-  </div>
-</section>
-
-<!-- 7 · TESTIMONIALS -->
-<section class="dark-alt">
-  <div class="inner">
-    <div class="eyebrow reveal"><small>06 · The men inside</small></div>
-    <div class="mask"><h2>What Man on a Mission members <em>are experiencing.</em></h2></div>
-    <div class="quote-grid">
-      <div class="quote-card reveal">
-        <p>"I'd been trying to build a consistent morning routine for five or six years. Having something I can actually check on and check off every single day &mdash; that's what finally made it stick."</p>
-        <div class="quote-name">Man on a Mission Member</div>
-      </div>
-      <div class="quote-card reveal d1">
-        <p>"I played hockey 3 days in a row and worked out every one of those days. I haven't worked out consistently in around 15 years &mdash; sore in a good way."</p>
-        <div class="quote-name">Man on a Mission Member</div>
-      </div>
-      <div class="quote-card reveal d2">
-        <p>"Took the family fishing after work and we caught 61 fish in 2.5 hours. I normally wouldn't have gone out after a workday, but I wanted to make a memory regardless of the outcome. MOAM has helped me beat procrastination in a lot of areas."</p>
-        <div class="quote-name">Man on a Mission Member</div>
-      </div>
-      <div class="quote-card reveal d3">
-        <p>"When you have your priorities clear and you actually build a schedule that reflects them &mdash; that's when you feel a level of peace and confidence. Because you know you're doing what you're supposed to be doing."</p>
-        <div class="quote-name">Man on a Mission Member</div>
-      </div>
-    </div>
-    <div class="cta-row reveal">
-      <a href="#start" class="btn-primary">Join the Waitlist</a>
-      <p class="cta-note">Every quote is verbatim from a real member</p>
-    </div>
-  </div>
-</section>
-
-<!-- 8 · NEGATIVE STAKES -->
-<section class="light s-cost">
-  <div class="inner">
-    <div class="eyebrow reveal"><small>07 · The cost of waiting</small></div>
-    <div class="mask"><h2>What does another 30 days of drifting <em>cost you?</em></h2></div>
-    <div class="cost-copy reveal">
-      <p>Another month of telling yourself you'll start Monday. Another month of your family getting the version of you that everything else already used up. Another month of going to bed knowing you didn't do the things that actually matter to you.</p>
-    </div>
-    <div class="cost-punch reveal">
-      <p>The 30 days are going to pass regardless. The only question is <em>who you are on the other side of them.</em></p>
-    </div>
-    <div class="cta-row reveal">
-      <a href="#start" class="btn-primary">Join the Waitlist</a>
-      <p class="cta-note">$49/month · <em>cancel anytime</em></p>
-    </div>
-  </div>
-</section>
-
-<!-- 9 · PATH FORWARD -->
-<section class="dark">
-  <div class="inner">
-    <div class="eyebrow reveal"><small>08 · The path</small></div>
-    <div class="mask"><h2>This is what consistent men <em>look like.</em></h2></div>
-    <div class="path-grid">
-      <div class="path-card reveal">
-        <div class="path-period">30</div>
-        <span class="path-unit">Days</span>
-        <p>You finished what you started. The habits are no longer something you have to force. You've got a streak, a system, and proof that you can show up when it matters. Most men never make it here. You did.</p>
-      </div>
-      <div class="path-card reveal d1">
-        <div class="path-period">90</div>
-        <span class="path-unit">Days</span>
-        <p>The people around you are noticing. Your wife. Your kids. Your team. You're calmer, more present, more consistent than you've been in years. It didn't take a complete life overhaul. It took 8 habits and a decision to stop starting over.</p>
-      </div>
-      <div class="path-card reveal d2">
-        <div class="path-period">6</div>
-        <span class="path-unit">Months</span>
-        <p>You don't recognize the old patterns anymore. The drift that used to pull you under doesn't have the same grip. You wake up with a plan. You execute. You lead your family from a full tank instead of an empty one.</p>
-      </div>
-      <div class="path-card reveal d3">
-        <div class="path-period">1</div>
-        <span class="path-unit">Year</span>
-        <p>You're the man your family needed you to be. Your faith is daily, not occasional. Your body is strong. Your business has a leader at the front of it. And you did it one day at a time.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 10 · FINAL CTA -->
-<section class="dark final">
-  <div class="eyebrow reveal"><small>Get on the list</small></div>
-  <div class="mask"><h2>Doors open for 48 hours. <em>Don't miss it.</em></h2></div>
-  <p class="lead reveal">Mission 30 opens to new men for one 48-hour window a month, and the spots fill fast. Get on the waitlist and I'll notify you the moment the doors open, before it fills.</p>
-  <div class="reveal">
-    <a href="#start" class="btn-primary">Join the Waitlist</a>
-  </div>
-  <p class="final-meta reveal">Doors open 48 hours, once a month · $49/month · <em>cancel anytime</em></p>
-</section>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-links">
-      <a href="https://manonmission.ca">Man on a Mission</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Contact</a>
-    </div>
-    <p>© 2026 Man on a Mission™ · Matt Chenard</p>
-    <p style="color: rgba(245,245,240,0.4);">Earn Your Dopamine.</p>
-  </div>
-</footer>
-
-<!-- FORM MODAL — ported verbatim from the live Mission 30 page -->
-<div id="m30-modal" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(8,8,8,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto">
-  <div style="position:relative;width:100%;max-width:500px;background:var(--ink-2);border-radius:2px;border:1px solid rgba(255,255,255,.07);overflow:hidden;margin:auto">
-    <button id="m30-close" aria-label="Close" style="position:absolute;top:14px;right:18px;background:none;border:none;cursor:pointer;color:var(--wm);font-family:var(--sans);font-size:18px;z-index:10;line-height:1;padding:4px">✕</button>
-    <iframe
-      src="https://link.tmtmarketing.co/widget/form/niImsb2Owe1GwzpJr5Bd"
-      style="display:block;width:100%;height:785px;border:none"
-      id="popup-niImsb2Owe1GwzpJr5Bd"
-      data-form-name="Mission30 Challenge- Waitlist"
-      data-form-id="niImsb2Owe1GwzpJr5Bd"
-      data-layout-iframe-id="popup-niImsb2Owe1GwzpJr5Bd"
-      data-height="785"
-      title="Mission30 Challenge- Waitlist"
-    ></iframe>
+    <p class="phone-cap">What it looks like inside Mission Control</p>
   </div>
 </div>
-<script src="https://link.tmtmarketing.co/js/form_embed.js"></script>
+<div class="cta-row"><a class="btn" href="https://www.skool.com/manonamissionchallenge/about">Join Today</a><small>$49/month · cancel anytime</small></div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <div class="center"><span class="eyebrow">What you get</span>
+  <h2 class="h2">Everything you get <em>for $49/month.</em></h2></div>
+  <div class="get">
+    <div class="items">
+      <div class="item"><h3>Bespoke habit tracker</h3><p>Built specifically for the 8 habits. Check it off daily. Watch your streak grow.</p></div>
+      <div class="item"><h3>Live leaderboard</h3><p>Your progress ranked against everyone in the cohort. Accountability you can see.</p></div>
+      <!-- PRIZE: update value/type here -->
+      <div class="item"><h3>Monthly winner prize</h3><p>Top performer each month wins. Something to compete for. Something to earn.</p></div>
+      <div class="item"><h3>Monthly masterclass</h3><p>One per month led by Matt. Personal development, business growth, AI tools, systems, productivity. Practical and applicable.</p></div>
+      <div class="item wide"><h3>The 8 habits</h3><p>Faith. Family. Fitness. Mental. Professional. The daily operating system that changes everything, built across all five areas of your life.</p></div>
+    </div>
+    <div class="price">
+      <div class="amt">$49<small>/month</small></div>
+      <p>Month to month · no contracts · cancel anytime</p>
+      <a class="btn gold" href="https://www.skool.com/manonamissionchallenge/about">Join Today</a>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="center"><span class="eyebrow">The outcome</span>
+  <h2 class="h2">This is what <em>30 days looks like.</em></h2></div>
+  <ul class="olist">
+    <li>You wake up before your family and you've already won the first battle of the day</li>
+    <li>The gym happens. Not sometimes. Consistently.</li>
+    <li>Your Bible isn't sitting on the nightstand unopened</li>
+    <li>You come home and you're actually there</li>
+    <li>You stop white-knuckling it through the week and start operating from a system</li>
+    <li>You become the man your family already thinks you are</li>
+  </ul>
+  <p class="closer">Thirty days won't fix everything. But they'll prove something to you that motivation never could: that you're capable of showing up when you build the right structure around it. That changes how you see yourself. And that changes everything else.</p>
+  <div class="cta-row"><a class="btn" href="https://www.skool.com/manonamissionchallenge/about">Join Today</a><small>$49/month · cancel anytime</small></div>
+</div></section>
+
+<section class="alt" id="stories"><div class="wrap">
+  <div class="center"><span class="eyebrow">Inside Mission 30</span>
+  <h2 class="h2">What Mission 30 members <em>are experiencing.</em></h2></div>
+
+  <div class="feature">
+    <div class="vid" id="nickvid">
+      <video preload="none" playsinline poster="/assets/v14/nick.jpg"><source src="https://stream.mux.com/r7AMdApAiFHjYWijojzr9TaEtzePvZd00J2eC8vua00jQ/medium.mp4" type="video/mp4"></video>
+      <button class="play" type="button" aria-label="Play Nick's story"><span><svg width="30" height="30" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="#0E0E0E"/></svg></span><small>1:21 · Filmed on a hike</small></button>
+    </div>
+    <div class="fq">
+      <div class="who"><img src="/assets/v14/nick.jpg" alt=""><div><b>Dr. Nick</b><span>Chiropractor and clinic owner · Mission 30</span></div></div>
+      <h3>"The to-do list <em>never ended."</em></h3>
+      <blockquote>"I wouldn't do anything fun until I got the to-do list complete… As the weeks kept clicking by, the weekends kept clicking by, the to-do list never ended. I always felt anxious… I felt guilty. If I was doing something fun with my family, I would not relax because I would go straight to my computer… I also was able to have guilt-free family time to carve out chunks of time where I was able to rest, have fun, be with my family, go on amazing hikes like this."</blockquote>
+      <p class="meta">Watch Nick tell it in his own words.</p>
+    </div>
+  </div>
+
+  <div class="qgrid">
+    <div class="q"><p>"Able to get more done in one day since we started!! Also getting in the word daily is a game changer."</p><cite>Maximus<span>Mission 30 member</span></cite></div>
+    <div class="q"><p>"A couple wins today, got the morning right and was able to make a brunch with my wife and son happen after the gym! Set me up for what would be a testing day at work."</p><cite>Oli<span>Mission 30 member</span></cite></div>
+    <div class="q"><p>"Getting into a good rhythm now that the school year is starting up has been awesome. Getting my whole morning routine and my Bible reading done by 8 or 8:30 feels really good."</p><cite>Joseph<span>Mission 30 member</span></cite></div>
+    <div class="q"><p>"So far been able to get into the word every day this week and it highlighted how much more I need to get outside without my earbuds in. We got our first 30 minute walk in as family today"</p><cite>Lucas<span>Mission 30 member</span></cite></div>
+    <div class="q"><p>"It's like you're always trying to beat that one guy that's right above you."</p><cite>Lucas<span>Mission 30 member, on the leaderboard</span></cite></div>
+    <div class="q"><p>"Was in the word every day this week and worked out 4 times"</p><cite>Oli<span>Mission 30 member</span></cite></div>
+  </div>
+  <div class="qwide">
+    <span class="mk">“</span>
+    <div><p>This last Sunday, thanks to the Mission 30, I was able to just do nothing the whole day. And it was so enriching to realize that you don't need to go all the time. You need that rest, just like when you're working out. If you're always tearing yourself up, you can't grow in your strength.</p><cite>Bill · Mission 30 member</cite></div>
+  </div>
+  <p class="verb">Every quote is verbatim from a real member</p>
+  <div class="cta-row"><a class="btn" href="https://www.skool.com/manonamissionchallenge/about">Join Today</a><small>$49/month · cancel anytime</small></div>
+</div></section>
+
+<section><div class="wrap narrow center">
+  <span class="eyebrow">The cost of waiting</span>
+  <h2 class="h2">What does another 30 days of drifting <em>cost you?</em></h2>
+  <p class="lead">Another month of telling yourself you'll start Monday. Another month of your family getting the version of you that everything else already used up. Another month of going to bed knowing you didn't do the things that actually matter to you.</p>
+  <p class="turn">The 30 days are going to pass regardless. The only question is who you are on the other side of them.</p>
+  <div class="cta-row"><a class="btn" href="https://www.skool.com/manonamissionchallenge/about">Join Today</a><small>$49/month · cancel anytime</small></div>
+</div></section>
+
+<section class="dark"><div class="wrap">
+  <div class="center"><span class="eyebrow">The path</span>
+  <h2 class="h2">This is what <em>consistent men look like.</em></h2></div>
+  <div class="path">
+    <div class="stop"><div class="t">30<small>Days</small></div><p>You finished what you started. The habits are no longer something you have to force. You've got a streak, a system, and proof that you can show up when it matters. Most men never make it here. You did.</p></div>
+    <div class="stop"><div class="t">90<small>Days</small></div><p>The people around you are noticing. Your wife. Your kids. Your team. You're calmer, more present, more consistent than you've been in years. It didn't take a complete life overhaul. It took 8 habits and a decision to stop starting over.</p></div>
+    <div class="stop"><div class="t">6<small>Months</small></div><p>You don't recognize the old patterns anymore. The drift that used to pull you under doesn't have the same grip. You wake up with a plan. You execute. You lead your family from a full tank instead of an empty one.</p></div>
+    <div class="stop"><div class="t">1<small>Year</small></div><p>You're the man your family needed you to be. Your faith is daily, not occasional. Your body is strong. Your business has a leader at the front of it. And you did it one day at a time.</p></div>
+  </div>
+</div></section>
+
+<section class="final"><div class="wrap"><div class="finalCard">
+  <img src="/mission30challenge/assets/mission30-logo.png" alt="Mission 30">
+  <h2>Start your 30 days <em>today.</em></h2>
+  <p>Join today and start tracking the same day. Your first habit counts on the leaderboard and toward the Team Mission from day one.</p>
+  <div class="cta-row"><a class="btn gold" href="https://www.skool.com/manonamissionchallenge/about">Join Today</a><small>$49/month · cancel anytime</small></div>
+</div></div></section>
+
+<footer><div class="wrap"><div class="row">
+  <span>© 2026 Man on a Mission™ · Matt Chenard</span>
+  <span><a href="https://manonmission.ca">Man on a Mission</a><a href="https://manonmission.ca">Privacy Policy</a><a href="https://manonmission.ca">Contact</a></span>
+</div></div></footer>
+
 
 <script>
-  // Scroll-in reveals (new site pattern)
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal, .mask').forEach(el => io.observe(el));
+/* Nick's video: big play button, then native controls */
+(function(){
+  var w=document.getElementById('nickvid');if(!w)return;var v=w.querySelector('video');
+  w.querySelector('.play').addEventListener('click',function(){w.classList.add("playing");v.controls=true;v.play();});
+  v.addEventListener("play",function(){w.classList.add("playing");v.controls=true;});
+})();
 
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* Phone demo: ticks the 8 habits, holds, resets */
+(function(){
+  var rows=document.querySelectorAll('[data-demo]'),badge=document.getElementById('demo-badge'),bar=document.getElementById('demo-bar');
+  if(!rows.length||!badge)return;
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){[].forEach.call(rows,function(r){r.classList.add('checked')});badge.textContent='8 / 8';badge.classList.add('complete');bar.style.width='100%';return;}
+  var idx=0;
+  function tick(){if(idx<rows.length){rows[idx].classList.add('checked');idx++;badge.textContent=idx+' / 8';if(idx===8)badge.classList.add('complete');bar.style.width=(idx/8*100)+'%';setTimeout(tick,idx<4?820:920);}else setTimeout(reset,2600);}
+  function reset(){[].forEach.call(rows,function(r){r.classList.remove('checked')});idx=0;badge.textContent='0 / 8';badge.classList.remove('complete');bar.style.width='0';setTimeout(tick,900);}
+  setTimeout(tick,1200);
+})();
 
-  // Ambient hero motion — Ken Burns runs via CSS on #hero-img.
-  // JS drives the #hero-parallax wrapper with scroll glide + (desktop) mouse drift.
-  const heroParallax = document.getElementById('hero-parallax');
-  const guideImg = document.getElementById('guide-img');
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  let hpScroll = 0, hpMouseX = 0, hpMouseY = 0;
-  let hpFrame = null;
-  function applyHeroTransform() {
-    hpFrame = null;
-    if (heroParallax) heroParallax.style.transform =
-      `translate3d(${hpMouseX.toFixed(2)}px, ${(hpScroll + hpMouseY).toFixed(2)}px, 0)`;
-  }
-  function requestHero() {
-    if (reducedMotion || !heroParallax) return;
-    if (hpFrame == null) hpFrame = requestAnimationFrame(applyHeroTransform);
-  }
-
-  // Layer 2 — scroll glide (works on mobile: driven by scroll, not cursor)
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      const y = window.scrollY;
-      if (!reducedMotion) {
-        if (heroParallax && y < window.innerHeight * 1.6) { hpScroll = y * 0.14; requestHero(); }
-        if (guideImg) {
-          const r = guideImg.getBoundingClientRect();
-          const p = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
-          guideImg.style.transform = `translateY(${p * -26}px)`;
-        }
-      }
-      ticking = false;
-    });
-  }, { passive: true });
-
-  // Layer 3 — desktop-only mouse drift (pure enhancement; skipped on touch / reduced-motion)
-  if (finePointer && !reducedMotion && heroParallax) {
-    const hero = document.querySelector('.hero');
-    hero.addEventListener('mousemove', (e) => {
-      const r = hero.getBoundingClientRect();
-      const nx = (e.clientX - r.left) / r.width - 0.5;   // -0.5 .. 0.5
-      const ny = (e.clientY - r.top) / r.height - 0.5;
-      hpMouseX = nx * -18;   // shift opposite the cursor
-      hpMouseY = ny * -12;
-      requestHero();
-    }, { passive: true });
-    hero.addEventListener('mouseleave', () => { hpMouseX = 0; hpMouseY = 0; requestHero(); }, { passive: true });
-  }
-
-  // Form modal — ported verbatim from the live Mission 30 page
-  const modal=document.getElementById('m30-modal');
-  function openModal(){modal.style.display='flex';document.body.style.overflow='hidden';}
-  function closeModal(){modal.style.display='none';document.body.style.overflow='';}
-  document.getElementById('m30-close').addEventListener('click',closeModal);
-  modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-  document.querySelectorAll('a[href="#start"]').forEach(el=>{
-    el.addEventListener('click',e=>{e.preventDefault();openModal();});
-  });
-
-  // Phone demo animation — ported verbatim from the live Mission 30 page
-  (function(){
-    const rows=document.querySelectorAll('[data-demo]');
-    const badge=document.getElementById('demo-badge');
-    const bar=document.getElementById('demo-bar');
-    if(!rows.length||!badge)return;
-    let idx=0,running=false;
-    function tick(){
-      if(idx<rows.length){
-        rows[idx].classList.add('checked');
-        idx++;
-        badge.textContent=idx+' / 8';
-        if(idx===8){badge.classList.add('complete');}
-        bar.style.width=(idx/8*100)+'%';
-        setTimeout(tick,idx<4?820:920);
-      } else {
-        setTimeout(reset,2600);
-      }
-    }
-    function reset(){
-      rows.forEach(r=>r.classList.remove('checked'));
-      badge.classList.remove('complete');
-      idx=0;badge.textContent='0 / 8';bar.style.width='0%';
-      setTimeout(tick,500);
-    }
-    const obs=new IntersectionObserver(entries=>{
-      if(entries[0].isIntersecting&&!running){running=true;obs.disconnect();setTimeout(tick,700);}
-    },{threshold:.35});
-    const target=document.getElementById('phone-demo');
-    if(target)obs.observe(target);
-  })();
+/* Team Mission: live totals from public_scoreboard (totals only, no names). Markup numbers are the fallback. */
+(function(){
+  var sec=document.getElementById('scoreboard');if(!sec)return;
+  function fmt(n){return Math.round(n).toLocaleString('en-US');}
+  function fill(){[].forEach.call(sec.querySelectorAll('.f[data-goal]'),function(f){var b=f.querySelector('b[data-count]'),g=+f.dataset.goal,v=+b.dataset.count,p=100*v/g;b.textContent=fmt(v);f.querySelector('.bar i').style.width=Math.max(Math.min(p,100),2)+'%';f.querySelector('.pct').textContent=(p<10?p.toFixed(1):Math.round(p))+'% of the mission';});
+    var d=sec.querySelector('.deps strong');d.textContent=fmt(+d.dataset.count);}
+  fill();
+  try{
+    fetch('https://vjohrikezdbcvdcvwbvn.supabase.co/rest/v1/rpc/public_scoreboard',{method:'POST',headers:{'apikey':'sb_publishable_n8i20c0GCwX7J2s4NRYRSg_tXAMDG2M','Content-Type':'application/json'},body:'{}'})
+    .then(function(r){return r.ok?r.json():null;}).then(function(d){if(!d)return;
+      [].forEach.call(sec.querySelectorAll('[data-key]'),function(el){var v=+d[el.dataset.key];if(!(v>0))return;if(el.hasAttribute('data-count'))el.dataset.count=v;else el.textContent=fmt(v);});fill();}).catch(function(){});
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
