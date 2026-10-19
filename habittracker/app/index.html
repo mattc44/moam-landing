@@ -128,6 +128,7 @@ h1 em{font-style:italic;color:var(--sage)}
 .btn{padding:10px 20px;border-radius:2px;font-family:var(--lf);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;transition:.15s}
 .btn.p{background:var(--ink);color:var(--paper)}.btn.p:hover{background:#3A332A}
 .btn.g{border:1px solid #CFC7B8;color:var(--ink2)}.btn.g:hover{background:var(--card)}
+a.btn{display:inline-block;text-decoration:none;text-align:center}
 .btn.d{color:var(--maroon)}.btn.d:hover{background:#F6EAEA}
 
 /* stats */
@@ -438,6 +439,7 @@ input[type=range]::-moz-range-track{border-radius:999px}
     <div class="stat"><div class="v" id="s3">0</div><div class="k">Day streak</div></div>
   </div>
 
+  <div id="vslcard"></div>
   <div id="fit5banner"></div>
 
   <div class="sec">Where your deposits went <span class="cnt">last 30 days</span></div>
@@ -486,6 +488,7 @@ input[type=range]::-moz-range-track{border-radius:999px}
     <div class="sh"><b>Settings</b><button class="ico" onclick="closeSet()">&#10005;</button></div>
     <div class="sc">
       <div id="walkCard"></div>
+      <div id="vslSet"></div>
       <div class="sec" style="margin-top:0">Put this on your home screen</div>
       <div id="installCard"></div>
       <div class="sec">Your account</div>
@@ -529,6 +532,9 @@ let USER=null;
 // Set to the Loom share URL (https://www.loom.com/share/<id>) and rebuild.
 const WALK_URL="https://www.loom.com/share/fff2f02fcd2547c8aee70725d58a8216";
 const walkEmbed=()=>WALK_URL.replace('/share/','/embed/');
+// The bridge to the Steady Leader VSL (Black Belt Naked Funnel: every free tool ends on a topical next step).
+// Copy is Matt's own Day 1 email line. Shows once he has ticked a deposit today.
+const VSL_URL="https://youtu.be/w8uLp5c7TXk";
 const KEY="dds-v2";
 const fmt=d=>{const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),dd=String(d.getDate()).padStart(2,"0");return y+"-"+m+"-"+dd};
 const TODAY=fmt(new Date());
@@ -716,7 +722,23 @@ function renderDeps(){
  const dn=due.filter(d=>ticked(d.id)).length;
  $('c-dep').textContent=dn+' of '+due.length;
  $('s1').innerHTML=dn+'<small>/'+due.length+'</small>';
- stats(); if(document.getElementById('month'))renderMonth();
+ stats(); renderVsl(isTod?dn:0); if(document.getElementById('month'))renderMonth();
+}
+function renderVsl(dn){
+ const el=$('vslcard'); if(!el)return;
+ if(VIEW!==TODAY||!dn||S.vslHidden){el.innerHTML='';return}
+ el.innerHTML='<div class="banner"><div class="pk">Deposit logged</div>'
+  +'<div class="ph">I made a video on why discipline keeps falling apart and how to make it stick.</div>'
+  +'<div class="pa"><a class="btn p" href="'+VSL_URL+'" target="_blank" rel="noopener" onclick="vslGo()">Watch the video</a>'
+  +'<button class="btn g" onclick="vslHide()">Hide this</button></div></div>';
+}
+function vslGo(){S.vslHidden=true;cache();setTimeout(()=>renderVsl(0),400)}
+function vslHide(){S.vslHidden=true;cache();renderVsl(0)}
+function renderVslSet(){
+ const el=$('vslSet'); if(!el)return;
+ el.innerHTML='<div class="doc" style="padding:14px 18px;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;gap:12px">'
+  +'<span style="font-size:14px;color:var(--ink2)">Why discipline keeps falling apart, and how to make it stick.</span>'
+  +'<a class="btn g" href="'+VSL_URL+'" target="_blank" rel="noopener">Watch</a></div>';
 }
 function tick(id){const l=S.log[VIEW]||{};l[id]=!l[id];S.log[VIEW]=l;cache();renderDeps();
  const d=S.deposits.find(x=>sameId(x.id,id)); logTick(d&&d.uuid,VIEW,!!l[id]);}
@@ -994,7 +1016,7 @@ function setWalk(v){
 }
 
 /* ---------- SETTINGS SHEET ---------- */
-function openSet(){$('setSheet').classList.add('on');renderInstall()}
+function openSet(){$('setSheet').classList.add('on');renderInstall();renderVslSet()}
 function closeSet(){$('setSheet').classList.remove('on')}
 
 /* ---------- ADD TO HOME SCREEN ---------- */
