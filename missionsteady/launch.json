@@ -1,0 +1,15 @@
+{
+ "spots_total": 20,
+ "early_bird_ends": "2026-11-03T05:00:00Z",
+ "group_starts": "2026-11-17T21:30:00Z",
+ "spots_claimed": 0,
+ "note": "Early-bird ends midnight Eastern Mon Nov 2. Training starts Tue Nov 17, 2:30pm MT (4:30pm ET). On each sale bump spots_claimed; bump bonus_claimed for each of the first 5.",
+ "bonus_total": 5,
+ "bonus_claimed": 0,
+ "checkout": {
+  "eb_full": "",
+  "eb_plan": "",
+  "full": "",
+  "plan": ""
+ }
+}
