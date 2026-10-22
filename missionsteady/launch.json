@@ -7,8 +7,8 @@
  "bonus_total": 5,
  "bonus_claimed": 0,
  "checkout": {
-  "eb_full": "",
-  "eb_plan": "",
+  "eb_full": "https://matthewchenard.mysamcart.com/checkout/missionstead-yearlybird-pif",
+  "eb_plan": "https://matthewchenard.mysamcart.com/checkout/missionstead-yearlybird-pif",
   "full": "",
   "plan": ""
  }
