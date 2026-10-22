@@ -1,0 +1,393 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Burnout Audit &middot; Man on a Mission</title>
+<meta name="description" content="A free app for driven Christian men in business. See how many hours a year you're losing to work someone else should carry, what an hour of you is worth, and what to delegate, automate and eliminate.">
+<meta property="og:title" content="The Burnout Audit">
+<meta property="og:description" content="See how many hours a year you're losing, and get them back. Free, on your phone.">
+<link rel="icon" href="/burnoutaudit/assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+:root{--white:#FFFFFF;--off:#F5F4EF;--ink:#0E0E0E;--text:#1A1A1A;--muted:#5E5E58;--line:#E3E1DA;--pine:#5E806F;--pine2:#4E6E5F;--sage:#7B9E8E;--sage2:#8FB3A1;--tint:#E8F0EC;--gold:#C9AA71;--deep:#14211C;
+--hf:'Bricolage Grotesque',system-ui,-apple-system,Helvetica,Arial,sans-serif;--bf:'Manrope',system-ui,-apple-system,Helvetica,Arial,sans-serif;--ac:'Instrument Serif',Georgia,serif;color-scheme:light}
+:root[data-theme="dark"]{color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:light}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--text);font-family:var(--bf);font-size:18.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--pine);outline-offset:3px}
+h1,h2,h3{font-family:var(--hf);font-weight:700;margin:0;letter-spacing:-.02em;line-height:1.04;text-wrap:balance}
+em{font-family:var(--ac);font-style:italic;font-weight:400}
+p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(18px,3.5vw,40px)}
+.center{text-align:center}
+section{padding:clamp(64px,9vw,112px) 0}
+.alt{background:var(--off)}
+.eyebrow{display:inline-block;font:700 12px/1.3 var(--bf);letter-spacing:.14em;text-transform:uppercase;color:var(--pine);margin-bottom:16px}
+.h2{font-size:clamp(32px,4.4vw,56px);max-width:20ch;margin:0 auto}
+.h2 em{color:var(--pine)}
+.lead{font-size:clamp(18px,1.6vw,21px);color:var(--muted);max-width:56ch;margin:20px auto 0}
+
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--pine);color:#fff;border:0;border-radius:999px;padding:18px 30px;font:700 16px/1 var(--bf);text-decoration:none;cursor:pointer;transition:background .2s,transform .25s,box-shadow .3s;white-space:nowrap}
+.btn:hover{background:var(--pine2);transform:translateY(-2px)}
+.btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.btn.gold{background:var(--gold);color:var(--ink);box-shadow:0 12px 30px -10px rgba(201,170,113,.6)}
+.btn.gold:hover{background:#D8BC86;box-shadow:0 0 0 6px rgba(201,170,113,.15),0 16px 40px -10px rgba(201,170,113,.75)}
+.btn.sage{background:var(--sage);color:var(--ink);box-shadow:0 12px 32px -12px rgba(123,158,142,.7)}
+.btn.sage:hover{background:var(--sage2);box-shadow:0 0 0 6px rgba(123,158,142,.16),0 16px 40px -10px rgba(123,158,142,.8)}
+.fine{font-size:14.5px;color:var(--muted);margin-top:14px}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 22px;margin-top:clamp(34px,4vw,48px)}
+.cta-row span{font:italic 400 20px/1.3 var(--ac);color:var(--muted)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:box-shadow .3s}
+nav.on{box-shadow:0 1px 0 var(--line),0 10px 30px rgba(0,0,0,.05)}
+nav .row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(14px,2vw,24px);max-width:1440px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 17px/1 var(--hf);letter-spacing:-.01em}
+.brand img{width:32px;height:32px;filter:invert(1)}
+nav .btn{padding:12px 20px;font-size:15px}
+
+/* hero */
+.heroWrap{padding:6px clamp(10px,1.5vw,20px) 0}
+.hero{position:relative;color:#fff;border-radius:28px;overflow:hidden;max-width:1440px;margin:0 auto;isolation:isolate;
+ background:radial-gradient(ellipse 60% 70% at 78% 40%,rgba(94,128,111,.42),transparent 70%),radial-gradient(ellipse 40% 40% at 90% 100%,rgba(201,170,113,.16),transparent 70%),radial-gradient(ellipse 60% 50% at 0% 0%,#1E3029,transparent 70%),#0A0D0C;
+ display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(44px,6vw,84px) clamp(24px,5vw,72px) 0}
+.hero::before{content:"";position:absolute;inset:auto -10% -20% auto;width:70%;height:80%;background:url(/assets/logo-mark.png) right bottom/contain no-repeat;opacity:.04;pointer-events:none;z-index:-1}
+.hero .copy{padding-bottom:clamp(44px,6vw,84px)}
+.hero{padding-bottom:0}
+.heyebrow{display:inline-flex;align-items:center;gap:10px;font:700 12px/1.3 var(--bf);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;padding:8px 16px;border:1.5px solid rgba(201,170,113,.5);border-radius:999px;background:rgba(201,170,113,.08)}
+.hero h1{font-size:clamp(40px,5vw,72px);font-weight:800;letter-spacing:-.035em;max-width:14ch}
+.hero h1 em{color:var(--gold);font-weight:400;letter-spacing:-.01em}
+.hero .sub{font-size:clamp(18px,1.45vw,21px);color:#D6D6CF;max-width:44ch;margin:24px 0 32px;line-height:1.55}
+.hero .fine{color:#9FB2A9}
+.stack3{list-style:none;margin:34px 0 0;padding:24px 0 0;border-top:1px solid rgba(255,255,255,.14);display:grid;grid-template-columns:repeat(3,1fr);gap:16px;font:600 15px/1.35 var(--bf);color:#EDEDE8}
+.stack3 li{padding-left:14px;border-left:2px solid var(--gold)}
+.phoneCol{position:relative;align-self:center;display:flex;justify-content:center;padding:0 0 clamp(44px,6vw,84px)}
+.phoneCol::before{content:"";position:absolute;left:50%;top:18%;width:min(520px,110%);aspect-ratio:1;transform:translateX(-50%);background:radial-gradient(circle,rgba(201,170,113,.28),rgba(94,128,111,.18) 40%,transparent 68%);filter:blur(10px);z-index:-1}
+.phone{width:min(330px,100%);border:11px solid #1A1A1A;border-radius:46px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 40px 90px -20px rgba(0,0,0,.7),0 0 80px -20px rgba(201,170,113,.35);transform:translateY(0)}
+.phone img{width:100%;height:auto;display:block;margin-top:-2px}
+.phone .notch{height:30px;background:#fff;position:relative}
+.phone .notch::after{content:"";position:absolute;left:50%;top:6px;width:96px;height:22px;border-radius:999px;background:#1A1A1A;transform:translateX(-50%)}
+
+/* numbers */
+.glow{position:relative;overflow:hidden;color:#fff;background:radial-gradient(ellipse 70% 55% at 50% 0%,#2E4A3E 0%,rgba(46,74,62,0) 70%),radial-gradient(ellipse 50% 40% at 85% 100%,rgba(201,170,113,.14),transparent 70%),var(--deep);margin-top:clamp(18px,2vw,28px)}
+.glow::before{content:"";position:absolute;inset:auto 0 -6% 0;height:46%;background:url(/assets/logo-mark.png) center bottom/min(70vw,820px) auto no-repeat;opacity:.045;pointer-events:none}
+.glow .wrap{position:relative}
+.glow .eyebrow{color:var(--gold)}
+.glow h2{font-size:clamp(34px,4.6vw,60px);max-width:18ch;margin:0 auto;color:#fff}
+.glow h2 em{color:var(--gold)}
+.glow .lead{color:#B9CBC2}
+.gmoney{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1120px;margin:clamp(40px,5vw,56px) auto 0}
+.ggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1120px;margin:18px auto 0}
+.gt{--x:50%;--y:50%;position:relative;isolation:isolate;border-radius:22px;padding:28px 26px 30px;background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;align-items:flex-start;overflow:hidden;text-align:left;transition:border-color .3s,transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.gt::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(340px circle at var(--x) var(--y),rgba(201,170,113,.20),transparent 55%);opacity:0;transition:opacity .35s}
+.gt:hover{border-color:rgba(201,170,113,.45);transform:translateY(-4px);box-shadow:0 0 0 1px rgba(201,170,113,.15),0 24px 60px -20px rgba(0,0,0,.6),0 0 60px -10px rgba(201,170,113,.25)}
+.gt:hover::before,.gt.lit::before{opacity:1}
+.gt>b{font:800 clamp(44px,4.6vw,64px)/1 var(--hf);letter-spacing:-.04em;color:#fff;font-variant-numeric:tabular-nums;white-space:nowrap}
+.gt.big{padding:34px 34px 36px}
+.gt.big>b{font-size:clamp(60px,8vw,112px);letter-spacing:-.05em;background:linear-gradient(180deg,#fff 30%,#D9E6DF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.gt .gl{font:700 13px/1.3 var(--bf);letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-top:14px}
+.gt small{font-size:16px;line-height:1.45;color:#B9CBC2;margin-top:6px}
+.tag{font:700 11.5px/1 var(--bf);letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:999px;color:#F1DDB4;background:rgba(201,170,113,.14);border:1px solid rgba(201,170,113,.4);margin-bottom:18px}
+.tag.s{color:#DCE8E1;background:rgba(123,158,142,.18);border-color:rgba(123,158,142,.35)}
+.tag.r{color:#F3C9C9;background:rgba(190,80,80,.16);border-color:rgba(220,120,120,.38)}
+.gfoot{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:clamp(36px,4vw,52px);text-align:center}
+.gfoot p{color:#8FA79B;font-size:15px;max-width:60ch}
+.gfoot p.objection{font:italic 400 clamp(22px,2.3vw,30px)/1.35 var(--ac);color:#fff;max-width:34ch;margin:0 auto 8px}
+.objection{font:italic 400 clamp(21px,2.2vw,28px)/1.35 var(--ac);color:#fff;max-width:36ch;margin:0 auto}
+
+/* sound like you */
+.said{max-width:860px;margin:40px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:18px;text-align:left}
+.said figure{margin:0;background:var(--white);border:1.5px solid var(--line);border-radius:20px;padding:26px 26px 22px;box-shadow:0 20px 44px -28px rgba(27,42,36,.35)}
+.said b{display:block;font:700 12px/1 var(--bf);letter-spacing:.14em;text-transform:uppercase;color:var(--pine);margin-bottom:14px}
+.said blockquote{margin:0;font:italic 400 clamp(21px,1.9vw,25px)/1.35 var(--ac);color:var(--text)}
+.said figcaption{margin-top:14px;font-size:14px;color:var(--muted)}
+.stakes{text-align:center;font:700 clamp(22px,2.4vw,30px)/1.25 var(--hf);letter-spacing:-.015em;color:var(--text);max-width:30ch;margin:44px auto 0}
+
+/* what you get: dark cards with cursor glow */
+.dk{position:relative;overflow:hidden;color:#fff;background:radial-gradient(ellipse 65% 45% at 50% 0%,rgba(52,84,70,.55),transparent 70%),radial-gradient(ellipse 45% 35% at 100% 100%,rgba(201,170,113,.10),transparent 70%),#0A0D0C}
+.dk .eyebrow{color:var(--gold)}
+.dk .h2{color:#fff}.dk .h2 em{color:var(--gold)}
+.dk .lead{color:#B9CBC2}
+.dk .cta-row span{color:#B9CBC2}
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:clamp(40px,5vw,56px);text-align:left}
+.card{--x:50%;--y:50%;position:relative;isolation:isolate;border-radius:22px;padding:26px 24px 28px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.11);transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s;display:flex;flex-direction:column}
+.card::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:radial-gradient(320px circle at var(--x) var(--y),rgba(201,170,113,.2),transparent 55%);opacity:0;transition:opacity .35s}
+.card:hover{transform:translateY(-4px);border-color:rgba(201,170,113,.45);box-shadow:0 24px 60px -20px rgba(0,0,0,.7),0 0 60px -12px rgba(201,170,113,.28)}
+.card:hover::before,.card.lit::before{opacity:1}
+.bic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#2B4238,#1B2A24);box-shadow:0 8px 18px -6px rgba(0,0,0,.55),0 0 0 1px rgba(201,170,113,.35) inset}
+.bic svg{width:23px;height:23px;fill:none;stroke:var(--gold);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:23px;margin:20px 0 10px;color:#fff}
+.card p{color:#B9CBC2;font-size:16.5px;line-height:1.5;flex:1}
+.card .ex{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);font:800 30px/1 var(--hf);letter-spacing:-.03em;color:#fff;font-variant-numeric:tabular-nums}
+.card .ex small{display:block;font:600 12px/1.3 var(--bf);letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-top:8px}
+
+/* three ways off your plate */
+.ways{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:clamp(40px,5vw,56px);text-align:left}
+.way{--x:50%;--y:50%;position:relative;isolation:isolate;background:linear-gradient(180deg,#fff,#F6F8F5);border:1px solid rgba(123,158,142,.3);border-radius:22px;padding:30px 28px;box-shadow:0 1px 0 #fff inset,0 24px 48px -24px rgba(27,42,36,.3);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s;overflow:hidden}
+.way::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(300px circle at var(--x) var(--y),rgba(123,158,142,.2),transparent 60%);opacity:0;transition:opacity .3s}
+.way:hover{transform:translateY(-6px);border-color:rgba(123,158,142,.6);box-shadow:0 30px 60px -22px rgba(27,42,36,.35),0 0 0 4px rgba(123,158,142,.12)}
+.way:hover::before,.way.lit::before{opacity:1}
+.way .k{font:700 13px/1 var(--bf);letter-spacing:.14em;text-transform:uppercase;color:var(--pine)}
+.way b{display:block;font:800 clamp(56px,5.6vw,80px)/1 var(--hf);letter-spacing:-.045em;color:var(--ink);margin:16px 0 4px;font-variant-numeric:tabular-nums}
+.way .u{font:600 15px/1.3 var(--bf);color:var(--muted)}
+.way p{margin-top:18px;padding-top:16px;border-top:1.5px solid var(--line);font-size:17px;color:var(--text)}
+.waysnote{margin-top:clamp(34px,4vw,48px);font:italic 400 clamp(22px,2.2vw,28px)/1.35 var(--ac);color:var(--text)}
+
+/* guide */
+.guide{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,72px);align-items:center;text-align:left}
+.guide h2{font-size:clamp(30px,3.8vw,48px);max-width:18ch}
+.guide .empathy{margin-top:20px;font:italic 400 clamp(22px,2vw,26px)/1.35 var(--ac);color:var(--text);max-width:40ch}
+.proof{display:grid;gap:14px}
+.proof div{background:var(--white);border:1.5px solid var(--line);border-left:5px solid var(--pine);border-radius:16px;padding:22px 24px}
+.proof b{display:block;font:800 clamp(34px,3.4vw,46px)/1 var(--hf);letter-spacing:-.035em;color:var(--ink);font-variant-numeric:tabular-nums}
+.proof span{display:block;margin-top:8px;font:600 15px/1.35 var(--bf);color:var(--muted)}
+.sig{margin-top:22px;font:600 15px/1.4 var(--bf);color:var(--muted)}.sig b{color:var(--text)}
+
+/* plan */
+.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:clamp(40px,5vw,56px) auto 0;max-width:1120px;text-align:left;position:relative}
+.plan::before{content:"";position:absolute;left:calc(clamp(12px,2vw,28px) + 32px);right:calc(33.333% - clamp(12px,2vw,28px) - 32px);top:31px;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,170,113,.25));z-index:0}
+.step{position:relative;z-index:1;padding:0 clamp(12px,2vw,28px)}
+.step i{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:var(--ink);color:var(--gold);font:800 24px/1 var(--hf);font-style:normal;box-shadow:0 0 0 6px var(--white),0 0 0 7px rgba(201,170,113,.5),0 14px 30px -10px rgba(0,0,0,.4)}
+.step h3{font-size:24px;margin:22px 0 10px}
+.step p{color:var(--muted);font-size:17px}
+
+/* explanatory paragraph */
+.story{max-width:760px;margin:0 auto;text-align:left}
+.story h2{font-size:clamp(28px,3.4vw,42px)}
+.story p{margin-top:20px;font-size:19px;color:var(--text);line-height:1.7}
+.story details summary{list-style:none;cursor:pointer;color:var(--pine);font-weight:700;margin-top:18px;display:inline-block;border-bottom:1.5px solid var(--sage);padding-bottom:2px}
+.story details summary::-webkit-details-marker{display:none}
+.story details[open] summary{display:none}
+
+/* video */
+.vidWrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,56px);align-items:center;text-align:left;max-width:1120px;margin:0 auto}
+.vid{display:block;position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:#000;box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
+.vid img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.vid:hover img{transform:scale(1.03)}
+.vid::after{content:"";position:absolute;left:50%;top:50%;width:78px;height:78px;margin:-39px;border-radius:50%;background:rgba(255,255,255,.94) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='%230E0E0E'/%3E%3C/svg%3E") 56% 50%/30px no-repeat;box-shadow:0 0 0 10px rgba(255,255,255,.18)}
+.vid span{position:absolute;right:14px;bottom:14px;background:rgba(0,0,0,.75);color:#fff;border-radius:999px;padding:7px 12px;font:700 13px/1 var(--bf)}
+.vidWrap h2{font-size:clamp(28px,3.4vw,44px);max-width:16ch}
+.vidWrap p{color:var(--muted);margin-top:16px;font-size:18px}
+.vidWrap .lnk{display:inline-block;margin-top:22px;font:700 16px/1 var(--bf);color:var(--pine);text-decoration:none;border-bottom:1.5px solid var(--sage);padding-bottom:4px}
+
+/* who + faq */
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:30px auto 0;max-width:900px}
+.chips span{background:var(--white);border:1.5px solid var(--line);border-radius:999px;padding:12px 18px;font:600 15.5px/1.2 var(--bf)}
+.faq{max-width:780px;margin:clamp(44px,5vw,64px) auto 0;text-align:left;border-top:1.5px solid var(--line)}
+.faq details{border-bottom:1.5px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;font:700 20px/1.3 var(--hf);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:18px;font:500 28px/1 var(--bf);color:var(--pine);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{padding:0 0 22px;color:var(--muted);font-size:17.5px;max-width:62ch}
+
+/* final */
+.final{padding:clamp(18px,2vw,28px) clamp(10px,1.5vw,20px) 0}
+.final .box{max-width:1440px;margin:0 auto;border-radius:28px;overflow:hidden;position:relative;color:#fff;text-align:center;padding:clamp(64px,8vw,110px) clamp(20px,4vw,48px);background:radial-gradient(ellipse 70% 60% at 50% 0%,#2E4A3E 0%,rgba(46,74,62,0) 70%),radial-gradient(ellipse 50% 40% at 50% 100%,rgba(201,170,113,.16),transparent 70%),var(--deep)}
+.final h2{font-size:clamp(36px,5vw,66px);max-width:16ch;margin:0 auto}
+.final h2 em{color:var(--gold)}
+.final .lead{color:#B9CBC2}
+.final .fine{color:#9FB2A9}
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;max-width:1440px;margin:0 auto;padding:30px clamp(18px,3.5vw,40px) 36px;font:600 14px/1.4 var(--bf);color:var(--muted)}
+footer a{text-decoration:none}
+footer .links{display:flex;gap:20px;flex-wrap:wrap}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+@media(max-width:1000px){.four{grid-template-columns:1fr 1fr}}
+@media(max-width:860px){
+ .hero{grid-template-columns:1fr;padding:40px 22px 0;text-align:left}
+ .hero .copy{padding-bottom:8px}
+ .phone{width:min(290px,84%)}
+ .phoneCol{padding-bottom:40px}
+ .stack3{grid-template-columns:1fr;gap:10px}
+ .gmoney{grid-template-columns:1fr;gap:12px}.ggrid{grid-template-columns:1fr;gap:12px}
+ .gt{padding:22px 22px 24px}.gt.big{padding:26px 24px 28px}
+ .said{grid-template-columns:1fr}
+ .ways{grid-template-columns:1fr}
+ .guide{grid-template-columns:1fr}
+ .plan{grid-template-columns:1fr;gap:30px}.plan::before{left:31px;right:auto;top:10px;bottom:10px;width:2px;height:auto;background:linear-gradient(180deg,var(--gold),rgba(201,170,113,.25))}
+ .step{display:grid;grid-template-columns:64px 1fr;gap:0 18px;padding:0}.step h3{margin:6px 0 6px}.step p{grid-column:2}
+ .vidWrap{grid-template-columns:1fr}
+ nav .brand span{display:none}
+}
+@media(max-width:560px){.four{grid-template-columns:1fr}.btn{white-space:normal;text-align:center;justify-content:center}}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important}*{transition:none!important}}
+</style>
+</head><body>
+
+<nav id="nav"><div class="row">
+ <a class="brand" href="https://www.manonmission.ca/"><img src="/assets/logo-mark.png" alt=""><span>Man on a Mission</span></a>
+ <a class="btn" href="https://api.leadconnectorhq.com/widget/form/0lxfp5eZlZreec8IL6ak">Get the free audit</a>
+</div></nav>
+
+<!-- 1 HEADER -->
+<div class="heroWrap"><header class="hero">
+ <div class="copy">
+  <span class="heyebrow rv">The Burnout Audit &middot; free app</span>
+  <h1 class="rv d1">See how many hours a year you're losing, <em>and get them back.</em></h1>
+  <p class="sub rv d2">A free app for driven Christian men in business. It shows you what to delegate, automate and eliminate, so you get your week back and your family gets you.</p>
+  <div class="rv d3"><a class="btn gold" href="https://api.leadconnectorhq.com/widget/form/0lxfp5eZlZreec8IL6ak">Get the free audit <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+   <p class="fine">Your first name and email. It opens on your phone, nothing to install.</p></div>
+  <ul class="stack3 rv d3"><li>Know what an hour of you is worth</li><li>See exactly what leaves your desk</li><li>Catch burnout before it costs you the year</li></ul>
+ </div>
+ <div class="phoneCol rv d2"><div class="phone"><div class="notch"></div><img src="/burnoutaudit/assets/app-home.jpg" alt="The Burnout Audit on a phone: $30,460 a year, 884 hours a year across 4 tasks, 416 hours to delegate, 312 to automate, 156 to eliminate"></div></div>
+</header></div>
+
+<!-- 2 STAKES, in numbers -->
+<section class="glow" id="numbers"><div class="wrap center">
+ <span class="eyebrow">What another year like this one costs</span>
+ <h2>You're doing $25 work <em>at $58 an hour.</em></h2>
+ <p class="lead">One man's numbers, run through the app. Four tasks he could hand off, priced at what an hour of him actually earns.</p>
+ <div class="gmoney">
+  <div class="gt big"><span class="tag">Time</span><b data-to="884" data-suf=" hrs">884 hrs</b><span class="gl">A year on four tasks</span><small>Inbox, customer service, cleanup and formatting. Work someone or something else could carry.</small></div>
+  <div class="gt big"><span class="tag">Money</span><b data-to="30460" data-pre="$">$30,460</b><span class="gl">A year of his time</span><small>The gap between what his hour earns and what someone else would charge for the same work.</small></div>
+ </div>
+ <div class="ggrid">
+  <div class="gt"><span class="tag s">Weeks</span><b data-to="22">22</b><span class="gl">Forty-hour weeks a year</span><small>Spent on work that isn't his.</small></div>
+  <div class="gt"><span class="tag s">His hour</span><b data-to="58" data-pre="$">$58</b><span class="gl">What an hour of him earns</span><small>Last month's profit divided by the hours he actually worked.</small></div>
+  <div class="gt"><span class="tag r">Burnout</span><b>42<small style="font-size:.45em;color:#B9CBC2;-webkit-text-fill-color:#B9CBC2"> / 55</small></b><span class="gl">Burnout warning</span><small>Eleven statements on where he's working from.</small></div>
+ </div>
+ <div class="gfoot">
+  <p class="objection">You don't have to be burnt out to take it. Most men who take it are fine on paper. That's the point.</p>
+  <a class="btn gold" href="https://api.leadconnectorhq.com/widget/form/0lxfp5eZlZreec8IL6ak">Get the free audit</a>
+  <p>One example man's numbers from the app. Yours will be different, and they stay on your phone.</p>
+ </div>
+</div></section>
+
+<!-- 2b STAKES, in their words -->
+<section class="alt"><div class="wrap center">
+ <span class="eyebrow">Sound like you?</span>
+ <h2 class="h2">Burnt out. <em>Not present at home.</em></h2>
+ <p class="lead">Two things men tell me on applications and calls, in their own words.</p>
+ <div class="said">
+  <figure class="rv"><b>Burnout</b><blockquote>"I can have an amazing couple of months of work and success, and then I'm on burnout. And then I take a month to recover."</blockquote></figure>
+  <figure class="rv d1"><b>Not present at home</b><blockquote>"I do feel convicted a lot of times about&hellip; my intentional presence with&hellip; my kids or my wife."</blockquote></figure>
+ </div>
+ <p class="stakes rv">The real danger is succeeding at work while slowly becoming a stranger to the people you love most.</p>
+</div></section>
+
+<!-- 3 VALUE -->
+<section class="dk"><div class="wrap center">
+ <span class="eyebrow">What you get</span>
+ <h2 class="h2">Four numbers, and <em>the one thing to hand off this month.</em></h2>
+ <p class="lead">All of it on your phone. Retake it every thirty days and watch which number moves first.</p>
+ <div class="four">
+  <div class="card rv"><span class="bic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>Where you're working from</h3><p>How close you are to burnout and what's driving it.</p><div class="ex">42 / 55<small>Burnout warning</small></div></div>
+  <div class="card rv d1"><span class="bic"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span><h3>What your hour is worth</h3><p>Your real hourly rate, and which phase of business you're in.</p><div class="ex">$58<small>Build phase</small></div></div>
+  <div class="card rv d2"><span class="bic"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span><h3>Which business earns it</h3><p>Every business you own against that hour. Feed it, fix it, or cut it.</p><div class="ex">$18,000<small>A year below his rate</small></div></div>
+  <div class="card rv d3"><span class="bic"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/><path d="M16 16l2 2 4-4"/></svg></span><h3>What leaves your desk</h3><p>Every task priced. Delegate, automate, or eliminate, in hours and dollars a year.</p><div class="ex">884 hrs<small>A year to hand off</small></div></div>
+ </div>
+ <div class="cta-row"><a class="btn sage" href="https://api.leadconnectorhq.com/widget/form/0lxfp5eZlZreec8IL6ak">Get the free audit</a><span>Free. It saves on your phone.</span></div>
+</div></section>
+
+<!-- 3b SUCCESS -->
+<section><div class="wrap center">
+ <span class="eyebrow">Three ways off your plate</span>
+ <h2 class="h2">What comes off your plate <em>in the next thirty days.</em></h2>
+ <p class="lead">The app sorts every task into one of three ways out, in hours and dollars a year. Here's the same man.</p>
+ <div class="ways">
+  <div class="way rv"><span class="k">Delegate</span><b data-to="416">416</b><span class="u">hours a year &middot; $15,160</span><p>Someone does it for less than your hour is worth.</p></div>
+  <div class="way rv d1"><span class="k">Automate</span><b data-to="312">312</b><span class="u">hours a year &middot; $10,200</span><p>A system does it, and nobody's hours are spent.</p></div>
+  <div class="way rv d2"><span class="k">Eliminate</span><b data-to="156">156</b><span class="u">hours a year &middot; $5,100</span><p>It stops, and nothing breaks.</p></div>
+ </div>
+ <p class="waysnote">That's the evenings back, and a week that lets you sleep.</p>
+</div></section>
+
+<!-- 4 GUIDE -->
+<section class="alt"><div class="wrap guide">
+ <div>
+  <span class="eyebrow">Who built it</span>
+  <h2>I know what a sixty-hour week feels like from the inside.</h2>
+  <p class="empathy">I ran a business for ten years, nearly lost it, and my family got the leftovers. I built this so you can see what your week is costing before it costs you what it cost me.</p>
+  <p class="sig"><b>Matt Chenard</b> &middot; Founder, Man on a Mission</p>
+ </div>
+ <div class="proof">
+  <div class="rv"><b>10+ years</b><span>Coaching Christian men in business</span></div>
+  <div class="rv d1"><b>743</b><span>Men have applied to work with me</span></div>
+ </div>
+</div></section>
+
+<!-- 6 PLAN -->
+<section><div class="wrap center">
+ <span class="eyebrow">How it works</span>
+ <h2 class="h2">Three steps, and your week <em>is on one screen tonight.</em></h2>
+ <div class="plan">
+  <div class="step rv"><i>1</i><h3>Answer eleven statements.</h3><p>About two minutes. You get a read on where you're working from: green, amber, or burnout warning.</p></div>
+  <div class="step rv d1"><i>2</i><h3>Put in last month's profit and your hours.</h3><p>You get what an hour of you is actually worth, and which phase of business you're in.</p></div>
+  <div class="step rv d2"><i>3</i><h3>Price your businesses and your tasks.</h3><p>You get the one to cut, what leaves your desk this month, and the hours back.</p></div>
+ </div>
+ <div class="cta-row"><a class="btn" href="https://api.leadconnectorhq.com/widget/form/0lxfp5eZlZreec8IL6ak">Get the free audit</a><span>Your first name and email to start.</span></div>
+</div></section>
+
+<!-- 7 EXPLANATORY PARAGRAPH -->
+<section class="alt"><div class="wrap">
+ <div class="story">
+  <span class="eyebrow">The whole thing in one paragraph</span>
+  <h2>Read this if you're the kind of man who does his homework.</h2>
+  <p>Most driven Christian men in business are losing hundreds of hours a year to work they should have handed off long ago, and they can't feel it because the business keeps growing. They call it a busy season.</p>
+  <details><summary>Read more</summary>
+   <p>The real cost is the man who comes home at seven, sits on the floor with his kids, and is still in the office. His wife noticed before he did. Nobody has ever shown him, in his own numbers, what his week is costing.</p>
+   <p>The Burnout Audit does that. Eleven statements tell you where you're working from. Last month's profit and your hours tell you what an hour of you is worth. Then every business and every task gets priced against that hour, and the app tells you what to feed, what to fix, and what to delegate, automate or eliminate this month.</p>
+   <p>Take it, do the one thing it flags, and retake it in thirty days. The number that moves first tells you where the pressure is coming from. Do nothing and next year looks like this one, with the same hours, the same evenings, and burnout making the decision for you.</p>
+  </details>
+ </div>
+</div></section>
+
+<!-- 8 TRANSITIONAL CTA -->
+<section><div class="wrap">
+ <div class="vidWrap">
+  <a class="vid rv" href="https://www.youtube.com/watch?v=xdMvnY0PtkM" target="_blank" rel="noopener" aria-label="Watch the twelve-minute video on YouTube"><img src="/burnoutaudit/assets/xdMvnY0PtkM.jpg" alt=""><span>12 min</span></a>
+  <div class="rv d1">
+   <span class="eyebrow">Not ready yet?</span>
+   <h2>You'll never look at time, money and energy the same.</h2>
+   <p>The twelve-minute video the whole audit runs on, from my YouTube channel. Watch it, then take the audit when you're ready.</p>
+   <a class="lnk" href="https://www.youtube.com/watch?v=xdMvnY0PtkM" target="_blank" rel="noopener">Watch it on YouTube &rarr;</a>
+  </div>
+ </div>
+</div></section>
+
+<!-- 9 JUNK DRAWER -->
+<section class="alt"><div class="wrap center">
+ <span class="eyebrow">Who it's for</span>
+ <h2 class="h2">If you're one of these, <em>it's for you.</em></h2>
+ <div class="chips"><span>The contractor running three crews from his truck</span><span>The agency owner who is the agency</span><span>The man with two businesses and no weekends</span><span>The pastor with a business on the side</span><span>The one who's fine on paper</span></div>
+ <div class="faq">
+  <details><summary>Is it free?</summary><p>Yes. Your first name and email get you in.</p></details>
+  <details><summary>Do I need an account?</summary><p>No. It saves on your phone or in your browser. Add it to your home screen and it opens like an app.</p></details>
+  <details><summary>Who sees my answers?</summary><p>You. They stay on your device and never leave it unless you send them to me. That also means they don't move from your phone to your laptop.</p></details>
+  <details><summary>How long does it take?</summary><p>The audit is eleven statements, about two minutes. Your hour, your businesses and your tasks take a few more. The monthly retest is the two minutes.</p></details>
+ </div>
+</div></section>
+
+<div class="final"><div class="box">
+ <span class="eyebrow" style="color:var(--gold)">Free &middot; driven Christian men in business</span>
+ <h2>Find out what your week <em>is costing you.</em></h2>
+ <p class="lead">Then hand off the one thing it flags, and get the evening back.</p>
+ <div class="cta-row"><a class="btn gold" href="https://api.leadconnectorhq.com/widget/form/0lxfp5eZlZreec8IL6ak">Get the free audit</a></div>
+ <p class="fine">Saves on your phone. Nothing to install.</p>
+</div></div>
+
+<footer><span>&copy; 2026 Man on a Mission &middot; Earn Your Dopamine.</span><span class="links"><a href="https://www.manonmission.ca/">manonmission.ca</a><a href="https://www.manonmission.ca/habittracker">Free habit tracker</a><a href="https://www.youtube.com/@mattchenard" target="_blank" rel="noopener">YouTube</a><a href="https://www.instagram.com/mattchenard" target="_blank" rel="noopener">Instagram</a></span></footer>
+
+<script>
+(function(){
+ var nav=document.getElementById('nav');addEventListener('scroll',function(){nav.classList.toggle('on',scrollY>10)},{passive:true});
+ var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,touch=matchMedia('(hover: none)').matches;
+ document.querySelectorAll('.gt,.card,.way').forEach(function(t){t.addEventListener('pointermove',function(e){var r=t.getBoundingClientRect();t.style.setProperty('--x',(e.clientX-r.left)+'px');t.style.setProperty('--y',(e.clientY-r.top)+'px')})});
+ if(!('IntersectionObserver' in window)){document.querySelectorAll('.rv').forEach(function(e){e.classList.add('on')});return}
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -5% 0px'});
+ document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+ var cio=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;var t=en.target;cio.unobserve(t);
+  if(touch){t.classList.add('lit');setTimeout(function(){t.classList.remove('lit')},1600)}
+  var b=t.querySelector('b[data-to]');if(!b||rm)return;var to=+b.dataset.to,pre=b.dataset.pre||'',suf=b.dataset.suf||'',t0=performance.now();
+  (function step(now){var k=Math.min(1,(now-t0)/1400),e=1-Math.pow(1-k,3);b.textContent=pre+Math.round(to*e).toLocaleString('en-US')+suf;if(k<1)requestAnimationFrame(step)})(t0);});},{threshold:.4});
+ document.querySelectorAll('.gt,.card,.way').forEach(function(t){cio.observe(t)});
+})();
+</script>
+</body></html>
