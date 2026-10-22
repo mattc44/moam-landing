@@ -681,6 +681,15 @@ html.js #numbers .tile.counted .tl path{stroke-dashoffset:0}
 .stickyjoin .btn{padding:13px 22px;background:#8FB3A1;color:#0E1714}
 @media (max-width:900px){.stickyjoin{display:flex}}
 .vid a.thumb.playing{aspect-ratio:16/9;background:#000}.vid a.thumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media (max-width:900px){
+ .mcx-stage{padding:6px 16px 8px}
+ .mcx-frame{width:74%;margin:0 auto;border-radius:12px}
+ .mcx-bar{padding:6px 9px;gap:5px}.mcx-bar i{width:7px;height:7px}.mcx-bar span{font-size:10.5px;margin-left:6px}
+ .mcx-screens img[data-fit=contain]{padding:8px}
+ .mcx-rail{width:74%;margin:8px auto 0}.mcx-rail svg{display:none}.mcx-dots button{height:4px}
+ .beat{min-height:0;justify-content:flex-start;padding:26px 0 44px}
+ .mcx-beats{padding-bottom:30vh}.beat h3{font-size:24px;margin-bottom:8px}.beat p{font-size:17px}
+}
 </style>
 
 <header class="bar">
@@ -946,7 +955,7 @@ html.js #numbers .tile.counted .tl path{stroke-dashoffset:0}
    </div>
    <div class="mcx-stage" aria-hidden="false">
     <div class="mcx-frame">
-     <div class="mcx-bar"><i></i><i></i><i></i><span>app.manonmission.ca</span></div>
+     <div class="mcx-bar"><i></i><i></i><i></i><span>Mission Control app</span></div>
      <div class="mcx-screens">
       <img src="/missionsteady/assets/mc/mc1.jpg" alt="Your climber levelling up from Level 1 to Level 3" data-i="0" class="on">
       <img src="/missionsteady/assets/mc/mc2.jpg" alt="The climb up Everest, with metres earned for each habit logged" data-i="1">
@@ -1315,7 +1324,7 @@ document.querySelectorAll('.card,.tile').forEach(function(c){c.addEventListener(
  function set(i){if(i===cur)return;cur=i;beats.forEach(function(b,k){b.classList.toggle('on',k===i)});imgs.forEach(function(m,k){m.classList.toggle('on',k===i)});
   dots.forEach(function(d,k){d.classList.toggle('on',k===i);d.classList.toggle('done',k<i)});if(liv)liv.style.strokeDashoffset=L*(1-(i+1)/beats.length)}
  if(beats.length){set(0);
-  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)set(+e.target.dataset.i)})},{rootMargin:innerWidth<=900?'-64% 0px -26% 0px':'-45% 0px -45% 0px'});beats.forEach(function(b){io.observe(b)})}
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)set(+e.target.dataset.i)})},{rootMargin:innerWidth<=900?(function(){var st=document.querySelector('.mcx-stage'),sb=st?st.offsetHeight+112:360,L=Math.round(sb+(innerHeight-sb)*0.55);return '-'+L+'px 0px -'+(innerHeight-L-2)+'px 0px'})():'-45% 0px -45% 0px'});beats.forEach(function(b){io.observe(b)})}
   dots.forEach(function(d,k){d.querySelector('button').addEventListener('click',function(){beats[k].scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})})})}
  /* live numbers into beat 6 */
  try{fetch('https://vjohrikezdbcvdcvwbvn.supabase.co/rest/v1/rpc/public_scoreboard',{method:'POST',headers:{'apikey':'sb_publishable_n8i20c0GCwX7J2s4NRYRSg_tXAMDG2M','Content-Type':'application/json'},body:'{}'}).then(function(r){return r.ok?r.json():null}).then(function(d){if(!d||!beats[5])return;var p=beats[5].querySelector('p');
