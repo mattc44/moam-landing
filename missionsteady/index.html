@@ -1364,6 +1364,14 @@ document.querySelectorAll('.card,.tile').forEach(function(c){c.addEventListener(
 document.querySelectorAll('.vid a.thumb[data-loom],.vid a.thumb[data-yt]').forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();if(t.classList.contains('playing'))return;
  var f=document.createElement('iframe'),yt=t.dataset.yt;f.src=yt?'https://www.youtube-nocookie.com/embed/'+yt+'?autoplay=1&rel=0&modestbranding=1&playsinline=1':'https://www.loom.com/embed/'+t.dataset.loom+'?autoplay=1&hide_owner=true&hide_share=true&hide_title=true';
  f.allow='autoplay; fullscreen; picture-in-picture';f.setAttribute('allowfullscreen','');f.title=t.getAttribute('aria-label');t.classList.add('playing');t.innerHTML='';t.appendChild(f);t.removeAttribute('href')})});
+/* Join buttons: photos below load lazily and push #join ~950px down mid-scroll, so the jump used to stop on "Two ways". Load them, then keep re-aiming until #join is in place. */
+document.querySelectorAll('a[href="#join"]').forEach(function(a){a.addEventListener('click',function(e){var j=document.getElementById('join');if(!j)return;e.preventDefault();
+ document.querySelectorAll('img[loading="lazy"]').forEach(function(i){i.loading='eager'});
+ var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,t0=Date.now(),last=null,still=0;
+ function go(b){scrollTo({top:Math.round(j.getBoundingClientRect().top+scrollY),behavior:b})}
+ go(reduce?'auto':'smooth');history.replaceState(null,'','#join');
+ (function chk(){var d=Math.abs(j.getBoundingClientRect().top);var y=Math.round(j.getBoundingClientRect().top+scrollY);if(y!==last){last=y;still=0;go(reduce?'auto':'smooth')}else still++;if(Date.now()-t0<4000&&(d>4||still<3))setTimeout(chk,250)})();
+})});
 </script>
 
 </body></html>
