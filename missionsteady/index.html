@@ -690,17 +690,29 @@ html.js #numbers .tile.counted .tl path{stroke-dashoffset:0}
  .beat{min-height:0;justify-content:flex-start;padding:26px 0 44px}
  .mcx-beats{padding-bottom:30vh}.beat h3{font-size:24px;margin-bottom:8px}.beat p{font-size:17px}
 }
+.meter{grid-template-columns:repeat(20,1fr)!important;gap:4px}
+.meter i{height:16px;border-radius:4px;background:transparent!important;box-shadow:none!important;border:1.5px solid}
+.meter i{min-width:0}
+.meter i.t1{border-color:rgba(239,231,214,.7)}.meter i.t2{border-color:rgba(143,179,161,.75)}.meter i.t3{border-color:rgba(160,172,168,.4)}
+.meter i.on.t1{background:#EFE7D6!important}.meter i.on.t2{background:#8FB3A1!important}.meter i.on.t3{background:#A0ACA8!important}
+.tiers{display:grid;gap:9px;margin-top:16px;text-align:left}
+.tr{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:#D2DED7;line-height:1.35}
+.tr i{flex:0 0 14px;height:14px;border-radius:4px;margin-top:2px}
+.tr.t1 i{background:#EFE7D6}.tr.t2 i{background:#8FB3A1}.tr.t3 i{background:#A0ACA8}
+.tr b{color:#fff}.tr small{display:block;font-size:13px;opacity:.8;margin-top:1px}
+.tr.gone{opacity:.45}.tr.gone small{text-decoration:none}
+.ebcount{display:block;margin-top:6px;font-size:15px;font-weight:600;color:#3F6455}.ebcount b,.ebcount b.low-n{color:inherit!important}
 </style>
 
 <header class="bar">
  <div class="eb" id="eb">
   <div class="wrap">
-   <span data-phase="early"><b>Early-bird: $590</b> until Mon, Nov 2<span class="x">, then $790</span></span>
+   <span data-phase="early"><b>Early-bird: $590</b> for the first 12 men<span class="x">, then $790</span></span>
    <span data-phase="regular" hidden><b>Training starts Tue, Nov 17</b></span>
    <span class="sep" data-phase="open"></span>
    <span data-phase="open"><span data-cdlbl>Ends in</span> <span class="t" data-cdline>12d 04h 31m</span></span>
    <span class="sep" data-phase="open"></span>
-   <span data-phase="open"><b data-left>20</b> of <span data-total>20</span> spots left</span>
+   <span data-phase="early"><b data-ebleft>12</b> of 12 early-bird spots left</span><span data-phase="regular" hidden><b data-left>20</b> of <span data-total>20</span> spots left</span>
    <span data-phase="full" hidden><b>Mission Steady is full.</b> All <span data-total>20</span> spots are taken.</span>
   </div>
  </div>
@@ -723,7 +735,7 @@ html.js #numbers .tile.counted .tl path{stroke-dashoffset:0}
    <svg class="heroline" viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="hlg" x1="0" x2="600" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#C25555"/><stop offset=".26" stop-color="#C25555"/><stop offset=".46" stop-color="#8FB3A1"/><stop offset="1" stop-color="#8FB3A1"/></linearGradient></defs><path d="M4 20 Q17 0 30 20 Q43 40 56 20 Q68 3 80 20 Q92 36 104 20 Q115 8 126 20 Q137 31 148 20 Q158 13 168 20 Q177 25 186 20 Q194 17 202 20 L588 20" fill="none" stroke="url(#hlg)" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>
    <p class="sub">The 6-week Mission 5 install has helped my clients go from overwhelmed and mentally distant to consistent, present fathers and husbands at home, regardless of the season they're in.</p>
    <div class="cta-row" style="margin-top:34px"><a class="btn gold" href="#join">Join Mission Steady</a></div>
-   <p class="price-line"><span data-phase="early">Training starts Tue, Nov 17 at 4:30pm Eastern · Early-bird $590 until Nov 2, then $790</span><span data-phase="regular" hidden>Training starts Tue, Nov 17 at 4:30pm Eastern · $790 paid in full, or 3 payments of $330</span> · <span data-left>20</span> of <span data-total>20</span> spots left</p>
+   <p class="price-line"><span data-phase="early">Training starts Tue, Nov 17 at 4:30pm Eastern · Early-bird $590 for the first 12 men, then $790</span><span data-phase="regular" hidden>Training starts Tue, Nov 17 at 4:30pm Eastern · $790 paid in full, or 3 payments of $330</span> · <span data-left>20</span> of <span data-total>20</span> spots left</p>
   </div>
   <div class="photo"><img src="/missionsteady/assets/matt.jpg" alt="Matt Chenard in the Canadian Rockies"></div>
  </div>
@@ -1087,21 +1099,25 @@ html.js #numbers .tile.counted .tl path{stroke-dashoffset:0}
   </ol>
   <div class="launch" data-phase="open">
    <div class="lb">
-    <div class="lb-k" data-phase="early">Early-bird price ends Mon, Nov 2</div>
+    <div class="lb-k" data-phase="early">Training starts Tue, Nov 17</div>
     <div class="lb-k" data-phase="regular" hidden>Training starts Tue, Nov 17</div>
     <div class="cd" aria-live="off"><span><b data-cd="d">12</b><i>days</i></span><span><b data-cd="h">04</b><i>hours</i></span><span><b data-cd="m">31</b><i>min</i></span><span><b data-cd="s">10</b><i>sec</i></span></div>
-    <p data-phase="early">At midnight Eastern on Nov 2 the price goes to $790.</p>
+    <p data-phase="early">Join now and you're in the calls and Mission Control today. Early-bird is $590 for the first 12 men. After the 12th, the price goes to $790.</p>
     <p data-phase="regular" hidden>Join now and you're in the calls and Mission Control today. Doors close when training starts or the spots are gone.</p>
    </div>
    <div class="lb">
     <div class="lb-k">Spots in Mission Steady</div>
     <div class="lb-n"><span data-left>20</span> <small>of <span data-total>20</span> left</small></div>
     <div class="meter" id="meter" aria-hidden="true"></div>
-    <p>20 men, so every one of you gets an onboarding call and a week-4 one-on-one with me.</p>
+    <div class="tiers">
+ <div class="tr t1"><i></i><div><b>Spots 1–5</b> · $590 + a 90-minute Blueprint Session with me<small data-tl="1">5 left</small></div></div>
+ <div class="tr t2"><i></i><div><b>Spots 6–12</b> · $590 early-bird<small data-tl="2">7 left</small></div></div>
+ <div class="tr t3"><i></i><div><b>Spots 13–20</b> · $790<small data-tl="3">8 left</small></div></div>
+</div><p>20 men, so every one of you gets an onboarding call and a week-4 one-on-one with me.</p>
    </div>
   </div>
   <div class="prices" data-phase="early">
-   <div class="price best"><span class="pill">Early-bird · best value</span><div class="nm">Pay in full</div><div class="amt">$590<s>$790</s></div><span class="save">You save $200</span><span class="bpill" data-bonus-on>+ Blueprint Session bonus · <b data-bleft>5</b> of 5 left</span><p>One payment, and you're in the calls and Mission Control today. Training starts Tue, Nov 17.</p><a class="btn" href="#PAYMENT-LINK-EB-590">Join for $590</a></div>
+   <div class="price best"><span class="pill">Early-bird · first 12 men</span><div class="nm">Pay in full</div><div class="amt">$590<s>$790</s></div><span class="save">You save $200</span><span class="ebcount"><b data-ebleft>12</b> of 12 left at this price</span><span class="bpill" data-bonus-on>+ Blueprint Session bonus · <b data-bleft>5</b> of 5 left</span><p>One payment, and you're in the calls and Mission Control today. Training starts Tue, Nov 17.</p><a class="btn" href="#PAYMENT-LINK-EB-590">Join for $590</a></div>
    <div class="price"><div class="nm">Early-bird payment plan</div><div class="amt">$247 <small>× 3</small></div><p>$247 today, then $247 at 2 weeks and 4 weeks. $741 in total, down from $990.</p><a class="btn ghost" href="#PAYMENT-LINK-EB-3x247">Join with 3 payments</a></div>
   </div>
   <div class="prices" data-phase="regular" hidden>
@@ -1154,14 +1170,14 @@ html.js #numbers .tile.counted .tl path{stroke-dashoffset:0}
    <h2>Become a steady leader <em>at home.</em></h2>
    <p>If you want the same system that got the guys above their results, installed in your life over 6 weeks starting Nov 17, join below.</p>
    <p>I want fast action takers who are done living in complacency and want to become a steady leader at home to their family.</p>
-   <div class="cta-row"><a class="btn gold" href="#join">Join Mission Steady</a><span data-phase="early">Early-bird $590 until Nov 2 · <span data-left>20</span> spots left</span><span data-phase="regular" hidden>$790, or 3 payments of $330 · <span data-left>20</span> spots left</span></div>
+   <div class="cta-row"><a class="btn gold" href="#join">Join Mission Steady</a><span data-phase="early">Early-bird $590 · <span data-ebleft>12</span> of 12 left at this price</span><span data-phase="regular" hidden>$790, or 3 payments of $330 · <span data-left>20</span> spots left</span></div>
    <div class="sig">Matt</div>
    <p class="later">Now's not the right time? <a href="https://www.manonmission.ca/apply-next/" target="_blank" rel="noopener">Apply for a future round</a> and be the first to know when the next one opens.</p>
   </div>
  </div>
 </section>
 </main>
-<div class="stickyjoin" id="stickyjoin" aria-hidden="true"><div class="sj-t"><b data-phase="early">$590 early-bird</b><b data-phase="regular" hidden>$790 · starts Nov 17</b><span data-phase="open"><span data-cdlbl>Ends in</span> <span data-cdline>11d 08h</span></span></div><a class="btn" href="#join" tabindex="-1">Join</a></div>
+<div class="stickyjoin" id="stickyjoin" aria-hidden="true"><div class="sj-t"><b data-phase="early">$590 · <span data-ebleft>12</span> of 12 left</b><b data-phase="regular" hidden>$790 · starts Nov 17</b><span data-phase="open"><span data-cdlbl>Ends in</span> <span data-cdline>11d 08h</span></span></div><a class="btn" href="#join" tabindex="-1">Join</a></div>
 
 
 <script>
@@ -1210,27 +1226,27 @@ document.querySelectorAll('.card,.tile').forEach(function(c){c.addEventListener(
 })();
 /* early-bird launch: spots from launch.json (Claude updates it on each sale), phase from the clock */
 (function(){
- var S={spots_total:20,spots_claimed:0,early_bird_ends:"2026-11-03T05:00:00Z",group_starts:"2026-11-17T21:30:00Z"};
+ var S={eb_spots:12,bonus_spots:5,spots_total:20,spots_claimed:0,early_bird_ends:"2026-11-03T05:00:00Z",group_starts:"2026-11-17T21:30:00Z"};
  var $=function(q){return [].slice.call(document.querySelectorAll(q))};
  var meter=document.getElementById('meter');
- function phase(){var left=S.spots_total-S.spots_claimed;if(left<=0)return 'full';return Date.now()<Date.parse(S.early_bird_ends)?'early':'regular'}
+ function phase(){var left=S.spots_total-S.spots_claimed;if(left<=0)return 'full';return S.spots_claimed<S.eb_spots?'early':'regular'}
  function render(){
   var p=phase(),left=Math.max(0,S.spots_total-S.spots_claimed),low=left>0&&left<=5;
   $('[data-phase]').forEach(function(el){var k=el.dataset.phase;el.hidden=!(k===p||(k==='open'&&p!=='full'))});
   $('[data-left]').forEach(function(el){el.textContent=left;el.classList.toggle('low-n',low)});
-  $('[data-total]').forEach(function(el){el.textContent=S.spots_total});
+  $('[data-total]').forEach(function(el){el.textContent=S.spots_total});var c=S.spots_claimed,ebl=Math.max(0,S.eb_spots-c);$('[data-ebleft]').forEach(function(el){el.textContent=ebl;el.classList.toggle('low-n',ebl<=3)});var tl={1:Math.max(0,S.bonus_spots-c),2:Math.max(0,S.eb_spots-Math.max(c,S.bonus_spots)),3:Math.max(0,S.spots_total-Math.max(c,S.eb_spots))},tt={1:S.bonus_spots,2:S.eb_spots-S.bonus_spots,3:S.spots_total-S.eb_spots};$('[data-tl]').forEach(function(el){var k=el.dataset.tl,n=tl[k];el.textContent=n?n+' of '+tt[k]+' left':'All taken';el.parentNode.parentNode.classList.toggle('gone',!n)});
   var bs=document.getElementById('barspots');if(bs)bs.classList.toggle('low',low);
-  if(meter){var h='';for(var i=0;i<S.spots_total;i++)h+='<i'+(i<S.spots_claimed?' class="on"':'')+'></i>';meter.innerHTML=h;meter.style.gridTemplateColumns='repeat('+S.spots_total+',1fr)'}
+  if(meter){var h='';for(var i=0;i<S.spots_total;i++)h+='<i class="'+(i<S.bonus_spots?'t1':i<S.eb_spots?'t2':'t3')+(i<S.spots_claimed?' on':'')+'"></i>';meter.innerHTML=h;meter.style.gridTemplateColumns='repeat('+S.spots_total+',1fr)'}
   $('a[href="#join"]').forEach(function(a){if(!a.dataset.t)a.dataset.t=a.textContent;a.textContent=p==='full'?'The group is full':a.dataset.t});
   tick();
  }
  var cur;
  function tick(){
-  var p=phase(),to=Date.parse(p==='early'?S.early_bird_ends:S.group_starts),ms=Math.max(0,to-Date.now());
+  var p=phase(),to=Date.parse(S.group_starts),ms=Math.max(0,to-Date.now());
   var d=Math.floor(ms/864e5),h=Math.floor(ms/36e5)%24,m=Math.floor(ms/6e4)%60,sx=Math.floor(ms/1e3)%60,pad=function(n){return(n<10?'0':'')+n};
   var v={d:d,h:pad(h),m:pad(m),s:pad(sx)};
   $('[data-cd]').forEach(function(el){el.textContent=v[el.dataset.cd]});
-  $('[data-cdlbl]').forEach(function(el){el.textContent=p==='early'?'Ends in':'Starts in'});
+  $('[data-cdlbl]').forEach(function(el){el.textContent='Starts in'});
   $('[data-cdline]').forEach(function(el){el.textContent=d+'d '+pad(h)+'h '+pad(m)+'m'});
   if(cur&&cur!==p){cur=p;render();return}cur=p;
  }
