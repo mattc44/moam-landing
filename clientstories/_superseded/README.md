@@ -1,0 +1,1 @@
+Retired Oct 26 2026. This was the Sept 10 2026 Client Stories page (180 anonymous quotes, sage/Newsreader brand). Replaced by the Wall of Wins build (`06 - Projects/Marketing System/Wall of Wins (Oct 26 2026)/` in the vault), which carries the same 179 quotes plus 230 Slack wins and the three videos. Kept here so nothing links to a dead file.
