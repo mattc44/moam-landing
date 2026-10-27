@@ -1251,7 +1251,7 @@ document.querySelectorAll('.card,.tile').forEach(function(c){c.addEventListener(
   if(cur&&cur!==p){cur=p;render();return}cur=p;
  }
  render();setInterval(tick,1000);
- try{fetch('/missionsteady/launch.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){if(!d)return;['spots_total','spots_claimed'].forEach(function(k){if(typeof d[k]==='number')S[k]=d[k]});['early_bird_ends','group_starts'].forEach(function(k){if(d[k]&&!isNaN(Date.parse(d[k])))S[k]=d[k]});render()}).catch(function(){})}catch(e){}
+ try{fetch('/missionsteady/launch.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){if(!d)return;if(typeof d.spots_total==='number')S.spots_total=d.spots_total;if(typeof d.spots_claimed==='number'&&d.spots_claimed>S.spots_claimed)S.spots_claimed=d.spots_claimed;['early_bird_ends','group_starts'].forEach(function(k){if(d[k]&&!isNaN(Date.parse(d[k])))S[k]=d[k]});render()}).catch(function(){})}catch(e){}
  /* real sales, counted live from Mission Control (missionsteady_count); never lower than launch.json */
  try{fetch('https://vjohrikezdbcvdcvwbvn.supabase.co/rest/v1/rpc/missionsteady_count',{method:'POST',headers:{'apikey':'sb_publishable_n8i20c0GCwX7J2s4NRYRSg_tXAMDG2M','Content-Type':'application/json'},body:'{}'}).then(function(r){return r.ok?r.json():null}).then(function(d){var n=d&&+d.claimed;if(n>S.spots_claimed){S.spots_claimed=n;render();window.__msClaimed=n;document.dispatchEvent(new Event('ms-claimed'))}}).catch(function(){})}catch(e){}
 })();
@@ -1351,7 +1351,7 @@ document.querySelectorAll('.card,.tile').forEach(function(c){c.addEventListener(
  function bonus(total,claimed){var left=Math.max(0,total-claimed);document.querySelectorAll('[data-bleft]').forEach(function(e){e.textContent=left});document.querySelectorAll('[data-btotal]').forEach(function(e){e.textContent=total});
   document.querySelectorAll('[data-bonus-on]').forEach(function(e){e.hidden=left<=0});var b=document.querySelector('.bonus');if(b)b.classList.toggle('gone',left<=0);
   document.querySelectorAll('.b-left').forEach(function(e){e.textContent=left>0?left+' of '+total+' left.':'All '+total+' are claimed.'})}
- bonus(5,0);document.addEventListener('ms-claimed',function(){bonus(5,Math.min(5,window.__msClaimed||0))});try{fetch('/missionsteady/launch.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){if(d&&typeof d.bonus_total==='number')bonus(d.bonus_total,d.bonus_claimed||0)}).catch(function(){})}catch(e){}
+ bonus(5,0);document.addEventListener('ms-claimed',function(){bonus(5,Math.min(5,window.__msClaimed||0))});try{fetch('/missionsteady/launch.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){if(d&&typeof d.bonus_total==='number')bonus(d.bonus_total,Math.max(d.bonus_claimed||0,Math.min(d.bonus_total,window.__msClaimed||0)))}).catch(function(){})}catch(e){}
  /* send this to your wife */
  document.querySelectorAll('[data-share]').forEach(function(b){b.addEventListener('click',function(){var url=location.href.split('#')[0],text="Have a look at this. It's the 6-week group I'm thinking about joining with Matt Chenard.";
   var msg=document.querySelector('[data-share-msg]');
