@@ -1,9 +1,9 @@
 {
  "spots_total": 10,
  "early_bird_ends": "2026-11-03T05:00:00Z",
- "group_starts": "2026-11-17T21:30:00Z",
+ "group_starts": "2026-11-17T19:30:00Z",
  "spots_claimed": 0,
- "note": "Nov 1 2026: 10 spots, early-bird $590 = first 7 sales, Blueprint Session = first 5. Spots count live from missionsteady_count(). Training starts Tue Nov 17, 2:30pm MT (4:30pm ET).",
+ "note": "Nov 1 2026: 10 spots, early-bird $590 = first 7 sales, Blueprint Session = first 5. Spots count live from missionsteady_count(). Training starts Tue Nov 17, 1:30pm Alberta (2:30pm ET, 11:30am PT); moved Nov 5.",
  "bonus_total": 5,
  "bonus_claimed": 0,
  "checkout": {
