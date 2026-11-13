@@ -11,6 +11,40 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=Archivo:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Cormorant+Garamond:ital,wght@1,600&display=swap" rel="stylesheet">
+<style>
+/* Mission Steady invite, Nov 13 2026. Pop-up once, then a Today banner + the bottom card, until the first call (Tue Nov 17 1:30pm Alberta). Turns itself off. */
+.msShade{position:fixed;inset:0;z-index:60;background:rgba(10,13,12,.55);display:flex;align-items:flex-end;justify-content:center;animation:msFade .25s ease}
+.msSheet{width:100%;max-width:520px;max-height:92vh;overflow-y:auto;background:#0E1412;color:#fff;border-radius:26px 26px 0 0;padding:22px 20px calc(24px + env(safe-area-inset-bottom,0px));animation:msUp .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes msUp{from{transform:translateY(100%)}to{transform:none}}@keyframes msFade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.msShade,.msSheet{animation:none}}
+.msGrab{width:40px;height:4px;border-radius:4px;background:#36423D;margin:0 auto 18px}
+.msLock{display:flex;align-items:center;justify-content:center;gap:9px}
+.msLock img{width:30px;height:30px;filter:invert(1)}
+.msLock .t{display:flex;align-items:baseline;gap:7px;line-height:1}
+.msLock .m{font-family:'Cinzel',Georgia,serif;font-weight:600;font-size:17px;color:#7B9E8E;letter-spacing:.04em}
+.msLock .s{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:22.5px;color:#fff}
+.msLock svg{display:block;margin-top:3px}
+.msWhen{display:inline-block;margin:16px 0 10px;font:700 11px/1 var(--bf);letter-spacing:.14em;text-transform:uppercase;color:#7B9E8E;background:#1E2B26;padding:7px 10px;border-radius:999px}
+.msSheet h3{font-family:var(--df);font-weight:700;font-size:25px;line-height:1.1;letter-spacing:-.02em;margin:0 0 10px;color:#fff}
+.msSheet p{color:#C9D3CE;font-size:15px;line-height:1.5;margin:0}
+.msWho{display:flex;align-items:center;gap:12px;margin:16px 0 18px;padding:12px;border-radius:14px;background:#161E1B}
+.msWho img{width:46px;height:46px;border-radius:50%;object-fit:cover;flex:none}
+.msWho p{font-size:13.5px;color:#DCE4E0}
+.msBtn{display:block;width:100%;text-align:center;border-radius:999px;padding:15px;background:#7B9E8E;color:#0E1412;font:700 15.5px/1 var(--bf);text-decoration:none}
+.msSub{text-align:center;font-size:13px;color:#8FA39A;margin-top:10px}
+.msNo{display:block;width:100%;background:transparent;border:0;color:#A6B4AE;font:600 14px/1 var(--bf);padding:14px;margin-top:2px;cursor:pointer}
+.msBar{position:relative;margin:0 0 14px}
+.msBar a{display:flex;align-items:center;gap:12px;background:#0E1412;color:#fff;border-radius:16px;padding:12px 40px 12px 14px;text-decoration:none}
+.msBar .ic{flex:none;width:40px;height:40px;border-radius:12px;background:#1E2B26;display:grid;place-items:center}
+.msBar .ic img{width:24px;height:24px;filter:invert(1)}
+.msBar b{display:block;font-size:14.5px;line-height:1.25}
+.msBar small{display:block;font-size:12.5px;color:#B9CBC2;margin-top:2px;line-height:1.3}
+.msBar .x{position:absolute;top:50%;right:10px;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;border:0;background:#1E2B26;color:#B9CBC2;font-size:13px;cursor:pointer}
+.invite.ms{background:#0E1412;color:#fff;border:0;border-radius:18px;padding:24px 18px}
+.invite.ms h3{color:#fff;margin-top:14px}.invite.ms p{color:#C9D3CE}
+.invite.ms a{background:#7B9E8E;color:#0E1412}
+</style>
 <style>
 :root{
  --paper:#FAF7F0;--card:#FFF;--ink:#241F19;--ink2:#5C554A;--ink3:#8C8478;
@@ -414,6 +448,7 @@ input[type=range]::-moz-range-track{border-radius:999px}
 </div>
 
 <div id="ibar"></div>
+<div id="msBar"></div>
 
 <!-- TODAY -->
 <section class="view on" id="v-today">
@@ -475,7 +510,7 @@ input[type=range]::-moz-range-track{border-radius:999px}
 </section>
 
 <!-- Matt's invite, Sept 4 2026. Sits under every tab. Links to the website, not the application. -->
-<div class="invite">
+<div class="invite" id="invite">
   <h3>Want to join?</h3>
   <p>I take on a handful of driven Christian men each month who want to scale their business without sacrificing their faith, their family, or their fitness.</p>
   <a href="https://www.manonmission.ca/?utm_source=habittracker&amp;utm_medium=app&amp;utm_campaign=dds" target="_blank" rel="noopener">Click here if so</a>
@@ -1153,6 +1188,44 @@ async function sendLink(){
  if(error){gm(error.message);return}
  gm('Sent. The link works once and lasts an hour.',true);
 }
+
+/* ---------- MISSION STEADY INVITE (Nov 13 2026) ----------
+   Once per phone: a pop-up on open. "Not now" leaves a banner on top (closable). The bottom card becomes Mission Steady.
+   Everything stops at the first call, Tue Nov 17 1:30pm Alberta (19:30 UTC), and the normal "Want to join?" card comes back.
+   A man who signed up in the last hour gets the banner but no pop-up, so the walkthrough comes first. */
+const MS_END=Date.parse('2026-11-17T19:30:00Z');
+const MS_URL='https://www.manonmission.ca/?utm_source=habittracker&utm_medium=app&utm_campaign=missionsteady#apply';
+const msGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+const msSet=k=>{try{localStorage.setItem(k,'1')}catch(e){}};
+const MS_LOCK='<div class="msLock"><img src="/habittracker/assets/logo.png" alt=""><div><div class="t"><span class="m">MISSION</span><span class="s">Steady</span></div><svg width="150" height="8" viewBox="0 0 150 8" aria-hidden="true"><defs><linearGradient id="msg" x1="0" x2="1"><stop offset="0" stop-color="#8B3A3A"/><stop offset=".42" stop-color="#7B9E8E"/></linearGradient></defs><path d="M2 4 C10 0,16 8,24 4 S38 0,46 4 S60 6,70 4 L144 4" fill="none" stroke="url(#msg)" stroke-width="2"/><circle cx="145" cy="4" r="2.6" fill="#7B9E8E"/></svg></div></div>';
+function msBarRender(){
+ const el=$('msBar'); if(!el)return;
+ el.innerHTML=(Date.now()<MS_END && !msGet('ms_bar_closed') && msGet('ms_pop_seen'))
+  ? '<div class="msBar"><a href="'+MS_URL+'" target="_blank" rel="noopener"><span class="ic"><img src="/habittracker/assets/logo.png" alt=""></span><span><b>Mission Steady starts Tuesday</b><small>Become a steady and present husband and father in 6 weeks.</small></span></a><button class="x" aria-label="Close" onclick="msSet(\'ms_bar_closed\');msBarRender()">&#10005;</button></div>'
+  : '';
+}
+function msClosePop(){msSet('ms_pop_seen');const p=document.getElementById('msPop');if(p)p.remove();msBarRender()}
+function msInvite(){
+ if(Date.now()>=MS_END)return;
+ const inv=$('invite');
+ if(inv){inv.classList.add('ms');inv.innerHTML=MS_LOCK+'<h3>Join us Tuesday</h3><p>Become a steady and present husband and father in 6 weeks. Six Tuesdays with me, starting Nov 17.</p><a href="'+MS_URL+'" target="_blank" rel="noopener">Apply Now</a>';}
+ const fresh=USER&&USER.created_at&&(Date.now()-Date.parse(USER.created_at)<3600e3);
+ if(fresh && !msGet('ms_pop_seen')) msSet('ms_pop_seen');
+ if(!msGet('ms_pop_seen')){
+  const d=document.createElement('div');d.className='msShade';d.id='msPop';
+  d.onclick=e=>{if(e.target===d)msClosePop()};
+  d.innerHTML='<div class="msSheet" role="dialog" aria-label="Mission Steady"><div class="msGrab"></div>'+MS_LOCK
+   +'<div style="text-align:center"><span class="msWhen">Starts Tue, Nov 17 &middot; 2:30pm ET</span></div>'
+   +'<h3>Become a steady and present husband and father in 6 weeks.</h3>'
+   +'<p>I\'m taking a small group of driven Christian men through Mission 5, live. We start Tuesday.</p>'
+   +'<div class="msWho"><img src="/habittracker/assets/matt-face.jpg" alt="Matt Chenard"><p>Six Tuesdays with me on Zoom, plus Mission Control and the group chat from day one.</p></div>'
+   +'<a class="msBtn" href="'+MS_URL+'" target="_blank" rel="noopener" onclick="msClosePop()">Apply Now</a>'
+   +'<div class="msSub">You hear back within 48 hours.</div>'
+   +'<button class="msNo" onclick="msClosePop()">Not now</button></div>';
+  document.body.appendChild(d);
+ }
+ msBarRender();
+}
 async function signOut(){await sb.auth.signOut();location.reload()}
 
 let booting=false;
@@ -1189,6 +1262,7 @@ async function boot(){
  const em=$('setEmail'); if(em)em.textContent=USER.email;
  try{await hydrate()}catch(e){console.warn('[hydrate]',e.message)}
  renderBar();renderB3();renderTasks();renderDeps();renderGoals();renderMonth();renderBanner();renderFit5();
+ try{msInvite()}catch(e){console.warn('[ms]',e.message)}
  history.replaceState(null,'',location.pathname);
  }finally{ booting=false; }
 }

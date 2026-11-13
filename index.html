@@ -1196,6 +1196,8 @@ fbq('track', 'PageView');
   (function passAttributionToForm(){try{var incoming=new URLSearchParams(window.location.search);var keep=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','fbclid','ad_id','adset_id','campaign_id'];var out=new URLSearchParams();keep.forEach(function(k){if(incoming.get(k)){out.set(k,incoming.get(k));}});var qs=out.toString();if(qs){document.getElementById('moam-form-frame').src=MOAM_FORM_BASE+'?'+qs;}}catch(e){}})();
   function openMOAMForm(){if(typeof fbq==='function'){fbq('trackCustom','ApplicationOpened');}document.getElementById('moam-modal').style.display='flex';}
   function closeMOAMForm(){document.getElementById('moam-modal').style.display='none';}
+  // A link ending in #apply (the habit tracker's Mission Steady invite, Nov 13 2026) opens the application straight away.
+  if(location.hash==='#apply'){window.addEventListener('load',function(){openMOAMForm();});}
   window.addEventListener('click',function(e){if(e.target===document.getElementById('moam-modal')){closeMOAMForm();}});
 </script>
 <script>
