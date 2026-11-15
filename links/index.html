@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Man on a Mission | Matt Chenard</title>
+<meta name="description" content="Helping driven Christian men succeed in business without sacrificing their faith, family, or fitness.">
+<link rel="icon" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.manonmission.ca/links">
+<meta property="og:title" content="Man on a Mission | Matt Chenard">
+<meta property="og:description" content="Helping driven Christian men succeed in business without sacrificing their faith, family, or fitness.">
+<meta property="og:image" content="https://www.manonmission.ca/links/img/og-links.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.manonmission.ca/links/img/og-links.jpg">
+<meta name="theme-color" content="#0d1311">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Manrope:wght@300;400;500;600;700&family=Geist+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+.ph{--night:#0d1311;--pine:#16211d;--sage:#7B9E8E;--ice:#a6d2cd;--snow:#daeee1;--paper:#F5F4EF;--line:rgba(166,210,205,.14);--soft:#9fb3ac;
+ width:380px;max-width:100%;border-radius:46px;padding:11px;background:#1c1f1e;box-shadow:0 24px 70px rgba(0,0,0,.45),inset 0 0 0 1px #3a3d3c}
+.sc{border-radius:36px;height:800px;overflow-y:auto;scrollbar-width:none;background:linear-gradient(180deg,var(--night) 0%,#101816 55%,#0c1210 100%);color:var(--paper);font-family:Manrope,sans-serif}
+.sc::-webkit-scrollbar{display:none}
+.sc a{text-decoration:none;color:inherit}
+.hero{position:relative;height:290px;background:url(/links/img/matt-portrait.jpg) center 20%/cover}
+.hero.tall{height:300px}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,19,17,.25) 0%,rgba(13,19,17,0) 25%,rgba(13,19,17,.25) 60%,var(--night) 100%)}
+.lock{position:absolute;top:20px;left:0;right:0;z-index:2;display:flex;justify-content:center;align-items:center;gap:10px;font:600 11px 'Geist Mono',monospace;letter-spacing:.32em;text-shadow:0 1px 8px rgba(0,0,0,.35)}
+.lock img{width:26px}
+.who{position:relative;z-index:2;text-align:center;padding:0 22px;margin-top:-78px}
+.sig{width:232px;display:block;margin:0 auto;filter:drop-shadow(0 2px 10px rgba(0,0,0,.4))}
+.tg{margin:10px auto 0;font-size:14px;line-height:1.5;max-width:300px;color:#c9d6d1;font-weight:300}
+.who.b{margin-top:-58px}
+.emb{width:34px;display:block;margin:0 auto 10px}
+.mm{font:400 40px/1 Newsreader,serif;margin:0;letter-spacing:-.01em;text-shadow:0 2px 16px rgba(0,0,0,.35)}
+.with{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px;font:italic 400 16px Newsreader,serif;color:var(--ice)}
+.sig.sm{width:120px;margin:0}
+.links{padding:22px 16px 4px;display:grid;gap:10px}
+.lbl{margin:14px 4px 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#7f9690}
+
+/* Apply: reactive */
+.sc .apply{color:#0E0E0E}
+.apply{position:relative;display:block;padding:20px 18px;border-radius:18px;background:linear-gradient(160deg,#f6f5f0 0%,#e7efe9 100%);color:#0E0E0E;overflow:hidden;
+ box-shadow:0 0 0 1px rgba(123,158,142,.35),0 10px 30px rgba(0,0,0,.25);transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+.apply span{display:block;position:relative}
+.apply .k{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#4f6b5f}
+.apply .t{font:400 29px/1.06 Newsreader,serif;margin:6px 0}
+.apply .d{font-size:13.5px;line-height:1.45;color:#3d4642}
+.apply .btn{display:inline-flex!important;align-items:center;gap:8px;margin-top:14px;padding:11px 18px;border-radius:999px;background:#0E0E0E;color:#F5F4EF;font:700 14px Manrope;transition:background .25s,gap .25s}
+.apply i{display:inline-flex;width:16px;height:16px;transition:transform .25s}
+.apply i svg{width:16px;height:16px}
+.apply .shine{position:absolute!important;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.75) 50%,transparent 65%);transform:translateX(-120%);transition:transform .8s ease}
+.apply:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(123,158,142,.7),0 16px 40px rgba(123,158,142,.28)}
+.apply:hover .shine{transform:translateX(120%)}
+.apply:hover .btn{background:#3f5f52}
+.apply:hover i{transform:translateX(4px)}
+.apply:active{transform:scale(.98)}
+.apply .rip{position:absolute!important;border-radius:50%;background:rgba(123,158,142,.35);transform:scale(0);animation:rip .6s ease-out forwards;pointer-events:none}
+@keyframes rip{to{transform:scale(4);opacity:0}}
+.apply.pulse{animation:pulse 2.6s ease-in-out 1.2s 2}
+@keyframes pulse{50%{box-shadow:0 0 0 1px rgba(123,158,142,.8),0 0 0 8px rgba(123,158,142,.12),0 10px 30px rgba(0,0,0,.25)}}
+
+/* rows */
+.row{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:14px;background:rgba(166,210,205,.05);border:1px solid var(--line);transition:transform .2s,border-color .2s,background .2s}
+.row:hover{transform:translateY(-2px);border-color:rgba(123,158,142,.6);background:rgba(123,158,142,.1)}
+.row .ic{flex:0 0 38px;height:38px;border-radius:10px;background:rgba(123,158,142,.16);color:var(--ice);display:flex;align-items:center;justify-content:center}
+.row .ic svg{width:20px;height:20px}
+.row .tx b{display:block;font:700 14.5px/1.25 Manrope}
+.row .tx span{display:block;font-size:12.5px;line-height:1.35;margin-top:2px;color:var(--soft)}
+.row .ar{margin-left:auto;width:16px;height:16px;color:#6f8a82;transition:transform .2s,color .2s}
+.row .ar svg{width:16px;height:16px}
+.row:hover .ar{transform:translateX(3px);color:var(--sage)}
+.m30{padding:9px 12px}.m30 .tx b{font-size:14px}
+
+/* visual cards */
+.vis{display:block;border-radius:18px;overflow:hidden;background:#131c19;border:1px solid var(--line);transition:transform .25s,border-color .25s}
+.vis:hover{transform:translateY(-3px);border-color:rgba(123,158,142,.6)}
+.mos{position:relative;display:grid!important;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:3px}
+.mos span{aspect-ratio:16/9}
+.mos span{background-size:cover;background-position:center}
+.m1{grid-column:1/3;transition:transform .5s}
+.vis:hover .m1{transform:scale(1.04)}
+.play{position:absolute;left:50%;top:33%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(13,19,17,.65);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;color:#fff;border:1px solid rgba(255,255,255,.35);transition:transform .25s,background .25s}
+.play svg{width:24px;height:24px}
+.vis:hover .play{transform:translate(-50%,-50%) scale(1.08);background:rgba(123,158,142,.85)}
+.cap{display:block;padding:14px 16px 16px}
+.cap>*{display:block}
+.yk{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#7f9690;margin-bottom:6px}
+.cap b{font:400 26px/1.05 Newsreader,serif}
+.cd{font-size:13px;color:var(--soft);margin-top:5px;line-height:1.45;font-weight:300}
+.go{display:inline-flex!important;align-items:center;gap:6px;margin-top:12px;font:700 13.5px Manrope;color:var(--ice)}
+.go i{display:inline-flex;width:15px;height:15px;transition:transform .2s}.go i svg{width:15px;height:15px}
+.vis:hover .go i{transform:translateX(3px)}
+.faces{display:flex!important;height:150px;gap:3px}
+.faces span{flex:1;background-size:cover;background-position:center 30%;filter:saturate(.85);transition:flex .35s}
+.cs:hover .faces span:hover{flex:1.6}
+.soc{display:flex;justify-content:center;gap:12px;padding:20px 0 4px}
+.soc a{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);color:#dfe9e5;transition:border-color .2s,color .2s}
+.soc a:hover{border-color:var(--sage);color:var(--ice)}
+.soc svg{width:19px;height:19px}.soc img{width:22px}
+.foot{text-align:center;padding:14px 0 26px;font:600 10px 'Geist Mono',monospace;letter-spacing:.3em;color:#4f625c}
+
+html,body{margin:0;background:#0b100e}
+body{font-family:Manrope,system-ui,sans-serif}
+.ph{width:100%;max-width:480px;margin:0 auto;padding:0;border-radius:0;background:none;box-shadow:none}
+.sc{height:auto;min-height:100vh;overflow:visible;border-radius:0}
+@media (min-width:600px){body{padding:28px 0}.sc{border-radius:28px;min-height:auto;box-shadow:0 30px 80px rgba(0,0,0,.5)}.hero{border-radius:28px 28px 0 0}}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1692779035222395');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<main class="ph"><div class="sc">
+<div class="hero"><div class="lock"><img src="/links/img/em-white.png" alt="">MAN ON A MISSION</div></div>
+<div class="who"><img class="sig" src="/links/img/sig-white.png" alt="Matt Chenard"><p class="tg">Helping driven Christian men succeed in business without sacrificing their faith, family, or fitness.</p></div>
+<div class="links">
+<a class="apply" href="https://www.manonmission.ca/?utm_source=linkinbio&utm_medium=social&utm_campaign=links&utm_content=apply#apply" data-t="apply"><span class="shine"></span><span class="k">Start here</span><span class="t">Apply to Man on a Mission</span><span class="d">Get unstuck and build unbreakable discipline in your faith, family, fitness and business.</span><span class="btn">Apply now <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></span></a>
+<a class="row m30" href="https://www.manonmission.ca/mission30challenge/?utm_source=linkinbio&utm_medium=social&utm_campaign=links&utm_content=mission30" data-t="mission30"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span><span class="tx"><b>Mission 30 Challenge</b><span>30 days to get your life back in order.</span></span><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+<div class="lbl">Free tools</div>
+<a class="row" href="https://www.manonmission.ca/habittracker?utm_source=linkinbio&utm_medium=social&utm_campaign=links&utm_content=habittracker" data-t="habittracker"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></span><span class="tx"><b>Free Habit Tracker</b><span>Track your daily deposits.</span></span><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+<a class="row" href="https://www.manonmission.ca/burnoutaudit/start?utm_source=linkinbio&utm_medium=social&utm_campaign=links&utm_content=burnoutaudit" data-t="burnoutaudit"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 18a8 8 0 1 1 16 0"/><path d="M12 18l4-6"/></svg></span><span class="tx"><b>Free Burnout Audit</b><span>See what your week is really costing you.</span></span><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+<div class="lbl">Watch</div>
+<a class="vis yt" href="https://www.youtube.com/@mattchenard">
+  <span class="mos"><span class="m1" style="background-image:url(/links/img/yt.jpg)"></span><span class="m2" style="background-image:url(/links/img/yt2.jpg)"></span><span class="m3" style="background-image:url(/links/img/nick.jpg)"></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg></span></span>
+  <span class="cap"><span class="yk">YouTube</span><b>Free Weekly Trainings</b><span class="cd">Answering questions in life and business from a biblical worldview.</span><span class="go">Watch the channel <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></span></span></a>
+<div class="lbl">Proof</div>
+<a class="vis cs" href="https://www.manonmission.ca/clientstories?utm_source=linkinbio&utm_medium=social&utm_campaign=links&utm_content=clientstories" data-t="clientstories">
+  <span class="faces"><span style="background-image:url(/links/img/wins.jpg)"></span><span style="background-image:url(/links/img/brent.jpg)"></span><span style="background-image:url(/links/img/nickv.jpg)"></span></span>
+  <span class="cap"><b>Client Stories</b><span class="cd">Real wins from men in the program, in their own words.</span><span class="go">See their stories <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></span></span></a>
+<div class="soc"><a href="https://instagram.com/mattchenard" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/@mattchenard" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg></a><a href="https://www.manonmission.ca/" aria-label="Website"><img src="/links/img/em-white.png" alt=""></a></div>
+</div><div class="foot">MAN ON A MISSION</div>
+</div></main>
+<script>
+// Pass along any tag the bio link itself carried (e.g. /links?utm_source=instagram), so the application shows which platform he came from.
+(function(){try{var q=new URLSearchParams(location.search),src=q.get('utm_source');if(!src)return;document.querySelectorAll('a[data-t]').forEach(function(a){var u=new URL(a.href);u.searchParams.set('utm_source',src);a.href=u.toString();});}catch(e){}})();
+// Count each tap in Meta as a custom event
+document.querySelectorAll('a[data-t]').forEach(function(a){a.addEventListener('click',function(){try{fbq('trackCustom','LinkInBioClick',{link:a.dataset.t});}catch(e){}});});
+
+document.querySelectorAll('.apply').forEach(a=>{a.classList.add('pulse');a.addEventListener('pointerdown',e=>{const r=a.getBoundingClientRect(),s=document.createElement('span'),z=Math.max(r.width,r.height)/2;s.className='rip';s.style.width=s.style.height=z+'px';s.style.left=(e.clientX-r.left-z/2)+'px';s.style.top=(e.clientY-r.top-z/2)+'px';a.appendChild(s);setTimeout(()=>s.remove(),650)})});
+</script>
+</body>
+</html>
