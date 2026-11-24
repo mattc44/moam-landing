@@ -9,7 +9,7 @@
  "checkout": {
   "eb_full": "https://matthewchenard.mysamcart.com/checkout/missionstead-yearlybird-pif",
   "eb_plan": "https://matthewchenard.mysamcart.com/checkout/missionstead-yearlybird-pif",
-  "full": "https://matthewchenard.samcart.com/products/mission-steady-pif",
-  "plan": "https://matthewchenard.samcart.com/products/mission-steady-pif"
+  "full": "https://matthewchenard.mysamcart.com/checkout/mission-steady-pif",
+  "plan": "https://matthewchenard.mysamcart.com/checkout/mission-steady-pif"
  }
 }
