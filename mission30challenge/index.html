@@ -239,6 +239,16 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1692779035222395');
 fbq('track', 'PageView');
+fbq('track', 'ViewContent', {content_name: 'Mission 30'});
+// Join Today -> Skool: Meta can't see the Skool sale, so the click is the conversion.
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href*="skool.com/manonamissionchallenge"]');
+  if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+  e.preventDefault();
+  var go = function () { window.location.href = a.href; };
+  try { fbq('track', 'InitiateCheckout', {content_name: 'Mission 30'}); } catch (err) {}
+  setTimeout(go, 300);
+});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1692779035222395&ev=PageView&noscript=1"
