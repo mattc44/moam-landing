@@ -3,13 +3,13 @@
  "early_bird_ends": "2026-11-03T05:00:00Z",
  "group_starts": "2026-11-17T19:30:00Z",
  "spots_claimed": 0,
- "note": "Nov 1 2026: 10 spots, early-bird $590 = first 7 sales, Blueprint Session = first 5. Spots count live from missionsteady_count(). Training starts Tue Nov 17, 1:30pm Alberta (2:30pm ET, 11:30am PT); moved Nov 5.",
+ "note": "Nov 24 2026: EVERGREEN. $790 PIF or 3 x $330 on one SamCart checkout (products 1148275 / 1148276). No spots, no dates; the page no longer reads spots or group_starts. Early-bird keys kept for history only.",
  "bonus_total": 5,
  "bonus_claimed": 0,
  "checkout": {
   "eb_full": "https://matthewchenard.mysamcart.com/checkout/missionstead-yearlybird-pif",
   "eb_plan": "https://matthewchenard.mysamcart.com/checkout/missionstead-yearlybird-pif",
-  "full": "",
-  "plan": ""
+  "full": "https://matthewchenard.samcart.com/products/mission-steady-pif",
+  "plan": "https://matthewchenard.samcart.com/products/mission-steady-pif"
  }
 }
