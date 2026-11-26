@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/favicon.png">
+<title>Application received · Man on a Mission</title>
+<meta property="og:title" content="Application received · Man on a Mission">
+<!--
+  Why this page exists (Nov 26 2026):
+  The Typeform application (vP787Q9P) sends every man here the moment he finishes it.
+  This page tells Meta "this man FINISHED the application" (SubmitApplication), which is a
+  different signal from Lead (he only started it). The words below are Matt's own thank-you
+  message, copied from the Typeform ending screen it replaces.
+  The event fires only when the address carries ?a=1 (what the Typeform sends) and only once
+  per browser session, so a refresh or a direct visit is never counted.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Manrope:wght@400;500;600&display=swap">
+<style>
+:root{--ink:#0E0E0E;--text:#1A1A1A;--muted:#5E5E58;--line:#E3E1DA;--pine:#5E806F;--pine2:#4E6E5E;--sage:#7B9E8E;
+--hf:'Bricolage Grotesque',system-ui,-apple-system,Helvetica,Arial,sans-serif;--bf:'Manrope',system-ui,-apple-system,Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}
+html{background:#fff}
+body{margin:0;background:#fff;color:var(--text);font:400 18px/1.65 var(--bf);-webkit-font-smoothing:antialiased;
+padding-block:max(40px,env(safe-area-inset-top,0px)) 64px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+main{max-width:640px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;font:600 13px/1 var(--bf);letter-spacing:.14em;text-transform:uppercase;color:var(--pine);margin-bottom:44px}
+.brand img{width:40px;height:40px;filter:invert(1)}
+h1{font:800 clamp(38px,8vw,60px)/1.02 var(--hf);letter-spacing:-.025em;margin:0 0 28px;text-wrap:balance}
+p{margin:0 0 18px}
+ul{margin:0 0 18px;padding-left:22px}
+li{margin:0 0 6px}
+.sign{margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--pine);color:#fff;border-radius:999px;padding:18px 30px;font:600 17px/1 var(--bf);text-decoration:none;margin-top:14px;transition:background .2s,transform .2s}
+.btn:hover{background:var(--pine2);transform:translateY(-1px)}
+</style>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1692779035222395');
+fbq('track', 'PageView');
+(function () {
+  try {
+    var fromForm = /[?&]a=1(&|$)/.test(window.location.search);
+    var seen = false;
+    try { seen = sessionStorage.getItem('moam-app-finished') === '1'; } catch (e) {}
+    if (fromForm && !seen) {
+      fbq('track', 'SubmitApplication', {}, { eventID: 'moam-app-done-' + Date.now() });
+      try { sessionStorage.setItem('moam-app-finished', '1'); } catch (e) {}
+    }
+  } catch (err) {}
+})();
+</script>
+</head>
+<body>
+<main>
+  <div class="brand"><img src="/assets/v14/logo-mark.png" alt=""><span>Man on a Mission</span></div>
+  <h1>Thank you for applying!</h1>
+  <p>Hey, I appreciate you taking the time to apply to work with me.</p>
+  <p>I’ll review your application personally and follow up with next steps if it looks like a good fit.</p>
+  <p>In the meantime, here’s what to look at next.</p>
+  <p>Below, you’ll find a small collection of videos and case studies that walk through:</p>
+  <ul>
+    <li>How my systems actually work</li>
+    <li>How clients have applied them in real businesses</li>
+    <li>A bit about me, including my struggles and successes as an entrepreneur</li>
+  </ul>
+  <p>This will help you understand:</p>
+  <ul>
+    <li>How I think</li>
+    <li>How I work with clients</li>
+    <li>Whether my approach aligns with what you’re looking for</li>
+  </ul>
+  <p>If it resonates, we’ll build from there.</p>
+  <p class="sign">Talk soon,<br>Matt</p>
+  <a class="btn" href="/clientstories">Check it out</a>
+</main>
+</body>
+</html>
