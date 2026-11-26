@@ -21,6 +21,20 @@
   a{color:#7B9E8E}
 </style>
 <script>
+  // Nov 26 2026: the GHL form now hands over the man's name, email and phone in the part of
+  // the address after "#", so the Typeform can fill its contact question in for him.
+  // The "#" part never reaches our server. We copy it here and wipe it from the address
+  // BEFORE the Meta pixel below loads, so his details are never sent to Meta.
+  window.__moamHandoff = '';
+  try {
+    var h = window.location.hash || '';
+    if (h.length > 1) {
+      window.__moamHandoff = h.slice(1);
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  } catch (e) {}
+</script>
+<script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
 n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
@@ -43,6 +57,25 @@ src="https://www.facebook.com/tr?id=1692779035222395&ev=Lead&noscript=1"/></nosc
     var target = 'https://form.typeform.com/to/vP787Q9P';
     var qs = window.location.search;
     if (qs && qs.length > 1) { target += qs; }
+    // Pass his name, email and phone to the Typeform after "#" (never in the "?" part).
+    // Only these four are passed. A raw "+" (phone "+1780…", plus-addressed emails) is kept
+    // as a real plus sign. An unfilled tag ("{{contact.email}}") or a blank is skipped.
+    try {
+      var allowed = { first_name: 1, last_name: 1, email: 1, phone: 1 };
+      var out = [];
+      var parts = (window.__moamHandoff || '').split('&');
+      for (var i = 0; i < parts.length; i++) {
+        var eq = parts[i].indexOf('=');
+        if (eq < 1) { continue; }
+        var k = parts[i].slice(0, eq);
+        var v = parts[i].slice(eq + 1).replace(/\+/g, '%2B');
+        try { v = decodeURIComponent(v); } catch (e) {}
+        v = v.replace(/^\s+|\s+$/g, '');
+        if (!allowed[k] || !v || v.indexOf('{{') !== -1 || v === 'null' || v === 'undefined') { continue; }
+        out.push(k + '=' + encodeURIComponent(v));
+      }
+      if (out.length) { target += '#' + out.join('&'); }
+    } catch (e) {}
     document.getElementById('go').href = target;
     // Short hold so the Lead beacon is on its way before we leave.
     setTimeout(function () { window.location.replace(target); }, 400);
